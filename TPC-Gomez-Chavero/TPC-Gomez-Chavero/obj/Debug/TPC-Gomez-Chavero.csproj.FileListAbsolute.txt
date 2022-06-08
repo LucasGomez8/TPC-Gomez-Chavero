@@ -57,3 +57,13 @@ C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\D
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.csproj.CopyComplete
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.dll
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.pdb
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\TPC-Gomez-Chavero.dll.config
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\TPC-Gomez-Chavero.dll
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\TPC-Gomez-Chavero.pdb
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.csproj.AssemblyReference.cache
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.csproj.CoreCompileInputs.cache
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.csproj.CopyComplete
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.dll
+C:\Users\Chavero\Source\Repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.pdb
