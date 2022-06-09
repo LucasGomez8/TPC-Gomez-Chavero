@@ -29,6 +29,18 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/Pages/MisVentas.aspx">Mis Ventas</a>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Formularios
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/Pages/AgregarProducto.aspx">Agregar Productos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Agregar Clientes</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Agregar Vendedores</a></li>
+                      </ul>
+                    </li>
                   </ul>
                 </div>
               </div>
