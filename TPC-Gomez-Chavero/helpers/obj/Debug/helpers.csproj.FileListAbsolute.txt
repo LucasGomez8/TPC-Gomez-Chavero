@@ -1,0 +1,8 @@
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\bin\Debug\helpers.dll
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\bin\Debug\helpers.pdb
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\obj\Debug\helpers.csproj.AssemblyReference.cache
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\obj\Debug\helpers.Properties.Resources.resources
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\obj\Debug\helpers.csproj.GenerateResource.cache
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\obj\Debug\helpers.csproj.CoreCompileInputs.cache
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\obj\Debug\helpers.dll
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\helpers\obj\Debug\helpers.pdb

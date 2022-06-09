@@ -1,0 +1,9 @@
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\bin\Debug\services.dll
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\bin\Debug\services.pdb
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\bin\Debug\domain.dll
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\bin\Debug\domain.pdb
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.csproj.AssemblyReference.cache
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.csproj.CoreCompileInputs.cache
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.csproj.CopyComplete
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.dll
+C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.pdb
