@@ -7,20 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace TPC_Gomez_Chavero
+namespace TPC_Gomez_Chavero.Pages
 {
 
 
-    public partial class WebForm1
+    public partial class Login
     {
-
-        /// <summary>
-        /// Control tipoUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipoUsuario;
     }
 }
