@@ -3,3 +3,9 @@ C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\domain\bin\Deb
 C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\domain\obj\Debug\domain.csproj.CoreCompileInputs.cache
 C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\domain\obj\Debug\domain.dll
 C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\domain\obj\Debug\domain.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\domain.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\domain.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.AssemblyReference.cache
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.CoreCompileInputs.cache
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.pdb

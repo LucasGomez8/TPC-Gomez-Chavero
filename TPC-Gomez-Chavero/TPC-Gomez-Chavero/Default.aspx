@@ -2,4 +2,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <h3>Soy el Home</h3>
+    <asp:Label ID="lblBienvenida" runat="server"></asp:Label>
 </asp:Content>

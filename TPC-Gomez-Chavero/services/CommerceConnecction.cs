@@ -17,7 +17,7 @@ namespace services
 
                 while (da.dataReader.Read())
                 {
-                    if ((string)da.dataReader["nick"]==nick && (string)da.dataReader["pass"]==pass)
+                    if ((string)da.dataReader["nick"]==nick && (string)da.dataReader["contraseña"] == pass)
                     {
                         return true;
                     }

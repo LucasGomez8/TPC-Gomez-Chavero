@@ -7,3 +7,12 @@ C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\D
 C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.csproj.CopyComplete
 C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.dll
 C:\Users\Chavero\Desktop\Nueva carpeta\TP3_Prog3\Tp3_Programacion\services\obj\Debug\services.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\services.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\services.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\domain.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\domain.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\obj\Debug\services.csproj.AssemblyReference.cache
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\obj\Debug\services.csproj.CoreCompileInputs.cache
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\obj\Debug\services.csproj.CopyComplete
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\obj\Debug\services.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\obj\Debug\services.pdb

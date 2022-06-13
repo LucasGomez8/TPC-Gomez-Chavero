@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace domain
 {
-    class UserType
+    public class UserType
     {
         public int ID { get; set; }
         public string Description { get; set; }
