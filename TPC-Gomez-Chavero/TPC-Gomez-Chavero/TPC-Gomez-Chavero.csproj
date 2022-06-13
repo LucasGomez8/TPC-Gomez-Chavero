@@ -67,11 +67,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\Default.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Pages\AgregarCliente.aspx" />
-    <Content Include="Pages\AgregarVendedor.aspx" />
-    <Content Include="Pages\AgregarProducto.aspx" />
+    <Content Include="Pages\Altas\AgregarCliente.aspx" />
+    <Content Include="Pages\Altas\AgregarVendedor.aspx" />
+    <Content Include="Pages\Altas\AgregarProducto.aspx" />
+    <Content Include="Pages\Bajas\BajaCliente.aspx" />
+    <Content Include="Pages\Bajas\BajaProducto.aspx" />
+    <Content Include="Pages\Bajas\BajaUsuario.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\MisVentas.aspx" />
     <Content Include="Web.config" />
@@ -88,26 +92,47 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AgregarCliente.aspx.cs">
+    <Compile Include="Pages\Altas\AgregarCliente.aspx.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\AgregarCliente.aspx.designer.cs">
+    <Compile Include="Pages\Altas\AgregarCliente.aspx.designer.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AgregarVendedor.aspx.cs">
+    <Compile Include="Pages\Altas\AgregarVendedor.aspx.cs">
       <DependentUpon>AgregarVendedor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\AgregarVendedor.aspx.designer.cs">
+    <Compile Include="Pages\Altas\AgregarVendedor.aspx.designer.cs">
       <DependentUpon>AgregarVendedor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AgregarProducto.aspx.cs">
+    <Compile Include="Pages\Altas\AgregarProducto.aspx.cs">
       <DependentUpon>AgregarProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\AgregarProducto.aspx.designer.cs">
+    <Compile Include="Pages\Altas\AgregarProducto.aspx.designer.cs">
       <DependentUpon>AgregarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaCliente.aspx.cs">
+      <DependentUpon>BajaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaCliente.aspx.designer.cs">
+      <DependentUpon>BajaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaProducto.aspx.cs">
+      <DependentUpon>BajaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaProducto.aspx.designer.cs">
+      <DependentUpon>BajaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaUsuario.aspx.cs">
+      <DependentUpon>BajaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaUsuario.aspx.designer.cs">
+      <DependentUpon>BajaUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -152,6 +177,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Pages\Modificaciones\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\domain\domain.csproj">

@@ -34,15 +34,28 @@
                         Altas
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/Pages/AgregarProducto.aspx">Productos</a></li>
+                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarProducto.aspx">Productos</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/Pages/AgregarCliente.aspx">Clientes</a></li>
+                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarCliente.aspx">Clientes</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/Pages/AgregarVendedor.aspx">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarVendedor.aspx">Usuarios</a></li>
                       </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bajas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaProducto.aspx">Productos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaCliente.aspx">Clientes</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaUsuario.aspx">Usuarios</a></li>
+                        </ul>
+                        
+                    </li>
                     <li class="navbar-item">
-                        <a class="nav-link" href="/Pages/Login.aspx">Log in</a>
+                        <a class="nav-link" runat="server" id="aLogin" href="/Pages/Login.aspx">Log in</a>
                     </li>
                   </ul>
                 </div>

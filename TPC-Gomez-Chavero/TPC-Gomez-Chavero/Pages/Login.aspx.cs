@@ -24,7 +24,9 @@ namespace TPC_Gomez_Chavero.Pages
 
             if (cc.UserVerify(nick, pass))
             {
-                Response.Redirect("~/?login=true");
+                Session["Nickname"] = nick;
+                Session["Password"] = pass;
+                Response.Redirect("~/");
             }
             else
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using domain;
 
 namespace TPC_Gomez_Chavero
 {
@@ -6,17 +7,14 @@ namespace TPC_Gomez_Chavero
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            bool login = false;
             lblBienvenida.Visible = false;
-            if (Request.QueryString["login"] != null)
+            adminSession.Visible = false;
+            if (Session["Nickname"] != null && Session["Password"] != null)
             {
-                    Boolean.TryParse(Request.QueryString["login"], out login);
-            }
-
-            if (login)
-            {
+                string nick = Session["Nickname"].ToString();
                 lblBienvenida.Visible = true;
-                lblBienvenida.Text = "Bienvenido!";
+                lblBienvenida.Text =nick + " tu acceso fue exitoso!";
+                adminSession.Visible = true;
             }
         }
     }

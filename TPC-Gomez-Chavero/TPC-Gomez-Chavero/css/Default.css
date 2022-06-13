@@ -1,0 +1,14 @@
+﻿body {
+}
+
+
+.item{
+    height: 300px;
+    width: 300px;
+    box-shadow: 2px 1px 5px 0px black;
+    border-radius: 6px;
+    margin: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-content:center;
+}

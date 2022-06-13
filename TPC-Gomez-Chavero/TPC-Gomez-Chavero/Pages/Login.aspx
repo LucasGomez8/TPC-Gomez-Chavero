@@ -16,7 +16,7 @@
                <div class="mb-3 row justify-content-center">
                    <label for="txtPass" class="col-sm-2 col-form-label">Password</label>
                  <div class="col-sm-6 text-center">
-                   <asp:TextBox ID="txtPass" CssClass="form-control" runat="server"></asp:TextBox>
+                   <asp:TextBox ID="txtPass" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
                  </div>
                </div>
                <div class="mb-3 row justify-content-center">
