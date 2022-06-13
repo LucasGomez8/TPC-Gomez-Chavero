@@ -13,7 +13,7 @@ namespace services
 
         public DataAccess()
         {
-            connection = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;");
+            connection = new SqlConnection("server=.\\SQLEXPRESS; database=TPC; integrated security=true;");
             command = new SqlCommand();
         }
 

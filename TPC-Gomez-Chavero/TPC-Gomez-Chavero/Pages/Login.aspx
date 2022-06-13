@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Login" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row mt-2">
@@ -25,4 +27,9 @@
 
         </div>
     </div>
+        <script>
+            function onLogin(nick, pass) {
+                __doPostBack("onLogin", nick, pass);
+            }
+        </script>
 </asp:Content>
