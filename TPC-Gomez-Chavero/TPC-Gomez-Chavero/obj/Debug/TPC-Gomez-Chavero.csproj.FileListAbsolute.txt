@@ -181,3 +181,9 @@ C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\s
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\domain.pdb
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\helpers.pdb
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\services.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\domain.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\helpers.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\services.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\domain.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\helpers.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\services.pdb

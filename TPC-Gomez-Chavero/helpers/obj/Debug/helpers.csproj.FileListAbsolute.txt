@@ -14,3 +14,11 @@ C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpe
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.csproj.CoreCompileInputs.cache
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.dll
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\bin\Debug\helpers.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\bin\Debug\helpers.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.csproj.AssemblyReference.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.Properties.Resources.resources
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.csproj.GenerateResource.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.pdb

@@ -26,13 +26,13 @@
                 </a>
             </div>
             <div class="col-md-3 item">
-                <a href="/Pages/AgregarVendedor.aspx">
+                <a href="/Pages/Altas/AgregarVendedor.aspx">
                 <h3>Dar de Alta un usuario</h3>
                     <p>Aqui podras dar de alta a los usuarios correspondientes</p>
                 </a>
             </div>
             <div class="col-md-3 item">
-                <a href="/Pages/AgregarProducto.aspx">
+                <a href="/Pages/Altas/AgregarProducto.aspx">
                 <h3>Dar de Alta un Producto</h3>
                     <p>Aqui podras dar de alta a los Productos correspondientes</p>
                 </a>

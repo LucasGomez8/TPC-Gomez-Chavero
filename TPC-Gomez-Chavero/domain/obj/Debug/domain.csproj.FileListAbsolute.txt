@@ -9,3 +9,9 @@ C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.CoreCompileInputs.cache
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.dll
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\domain.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\domain.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.AssemblyReference.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.pdb

@@ -2,17 +2,18 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
-        <div class="row mt-3 text-center">
+    <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
+    <div class="container frmStyle">
+        <div class="row mt-3 text-center ">
             <div class="col-md-12">
                 <h3>Productos</h3>
             </div>
         </div>
-        <div class="row mt-5">
-            <form>
+        <div class="row mt-5 mb-5 ">
+            <form class="frmStyle">
               <div class="form-group mb-3">
-                <label for="nombre">Nombre</label>
-                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre"/>
+                <label for="txtNombre">Nombre</label>
+                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
               </div>
               <div class="form-group mb-3">
                 <label for="descripcion">Descripcion</label>
@@ -36,20 +37,23 @@
                 </div>
                   <div class="form-group mb-5">
                       <div class="row ">
-                          <div class="col-md-6">
-                              <label for="stockNumero">Stock Minimo</label>
-                              <input type="number" class="form-control" id="stockNumero" name="numero" placeholder="Stock Minimo" value="0" />
+                          <div class="col-md-4">
+                              <label for="txtStock">Stock Actual</label>
+                              <asp:TextBox ID="txtStock" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-4">
+                              <label for="txtStockMinimo">Stock Minimo</label>
+                              <asp:TextBox ID="txtStockMinimo" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                          </div>
+                          <div class="col-md-4">
                               <label for="porcentajeVenta">Porcentaje de Venta</label>
-                              <input type="number" class="form-control" name="porcentajeVenta" id="porcentajeVenta" placeholder="Stock Minimo" value="0" />
+                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
                       </div>
                   </div>
                 <div class="form-group mb-5">
                     <input type="file" name="name" class="form-control" value="" placeholder="+"/>
                 </div>
-    
               <button type="submit" id="submit" class="btn btn-primary">Agregar</button>
             </form>
         </div>
