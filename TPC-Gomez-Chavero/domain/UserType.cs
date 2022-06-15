@@ -8,7 +8,7 @@ namespace domain
 {
     public class UserType
     {
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string Description { get; set; }
     }
 }

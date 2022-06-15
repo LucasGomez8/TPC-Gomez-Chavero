@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using domain;
 using services;
 
 namespace TPC_Gomez_Chavero.Pages
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,19 +21,36 @@ namespace TPC_Gomez_Chavero.Pages
             string nick = txtNick.Text;
             string pass = txtPass.Text;
 
-            CommerceConnecction cc = new CommerceConnecction();
+            ABMService abm = new ABMService();
+            UserService userService = new UserService();
+            User user = userService.login(nick, pass);
 
-            if (cc.UserVerify(nick, pass))
+            
+            if (abm.createTypes("Samsung", "Marcas") == 1)
             {
-                Session["Nickname"] = nick;
-                Session["Password"] = pass;
-                Response.Redirect("~/");
+                Session["user"] = user;
+                lblError.Text = "Marca cargada con existo";
+                lblError.Visible = true;
+
             }
             else
             {
                 lblError.Text = "Ha ocurrido un error";
                 lblError.Visible = true;
             }
+            /*
+            if (user != null)
+            {
+                Session["user"] = user;
+                lblError.Text = "Hola " + user.Nick + " eres " + user.type.Description;
+                lblError.Visible = true;
+
+            }
+            else
+            {
+                lblError.Text = "Ha ocurrido un error";
+                lblError.Visible = true;
+            }*/
         }
     }
 }
