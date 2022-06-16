@@ -24,31 +24,31 @@ namespace TPC_Gomez_Chavero
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
-        /// Control categoria.
+        /// Control dropCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList categoria;
+        protected global::System.Web.UI.WebControls.DropDownList dropCategoria;
 
         /// <summary>
-        /// Control marca.
+        /// Control dropMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList marca;
+        protected global::System.Web.UI.WebControls.DropDownList dropMarca;
 
         /// <summary>
-        /// Control tipoProducto.
+        /// Control dropProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipoProducto;
+        protected global::System.Web.UI.WebControls.DropDownList dropProducto;
 
         /// <summary>
         /// Control txtStock.

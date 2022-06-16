@@ -6,7 +6,7 @@ namespace TPC_Gomez_Chavero
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Nickname"] != null && Session["Password"] != null)
+            if (Session["user"] != null)
             {
                 aLogin.Visible = false;
             }

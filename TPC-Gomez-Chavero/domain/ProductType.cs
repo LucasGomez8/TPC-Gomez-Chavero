@@ -8,7 +8,7 @@ namespace domain
 {
     public class ProductType
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Descripcion { get; set; }
     }
 }

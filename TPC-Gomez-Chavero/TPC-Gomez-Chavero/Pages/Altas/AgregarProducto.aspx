@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
     <div class="container frmStyle">
-        <div class="row mt-3 text-center ">
+        <div class="row mt-3 mb-5 text-center ">
             <div class="col-md-12">
                 <h3>Productos</h3>
             </div>
@@ -23,15 +23,15 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="categoria">Categoria</label>
-                          <asp:DropDownList CssClass="form-control" ID="categoria" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" ID="dropCategoria" runat="server"></asp:DropDownList>
                       </div>
                       <div class="col-md-4">
                           <label for="marca">Marca</label>
-                          <asp:DropDownList CssClass="form-control" ID="marca" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" ID="dropMarca" runat="server"></asp:DropDownList>
                       </div>
                       <div class="col-md-4">
                           <label for="tipoProducto">Tipo Producto</label>
-                          <asp:DropDownList CssClass="form-control" ID="tipoProducto" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" ID="dropProducto" runat="server"></asp:DropDownList>
                       </div>
                   </div>
                 </div>

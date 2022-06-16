@@ -73,7 +73,10 @@
     <Content Include="css\Default.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Altas\AgregarCategoria.aspx" />
     <Content Include="Pages\Altas\AgregarCliente.aspx" />
+    <Content Include="Pages\Altas\AgregarMarca.aspx" />
+    <Content Include="Pages\Altas\AgregarTipoProducto.aspx" />
     <Content Include="Pages\Altas\AgregarVendedor.aspx" />
     <Content Include="Pages\Altas\AgregarProducto.aspx" />
     <Content Include="Pages\Bajas\BajaCliente.aspx" />
@@ -95,12 +98,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Altas\AgregarCategoria.aspx.cs">
+      <DependentUpon>AgregarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarCategoria.aspx.designer.cs">
+      <DependentUpon>AgregarCategoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Altas\AgregarCliente.aspx.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Altas\AgregarCliente.aspx.designer.cs">
       <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarMarca.aspx.cs">
+      <DependentUpon>AgregarMarca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarMarca.aspx.designer.cs">
+      <DependentUpon>AgregarMarca.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarTipoProducto.aspx.cs">
+      <DependentUpon>AgregarTipoProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarTipoProducto.aspx.designer.cs">
+      <DependentUpon>AgregarTipoProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Altas\AgregarVendedor.aspx.cs">
       <DependentUpon>AgregarVendedor.aspx</DependentUpon>

@@ -25,19 +25,17 @@ namespace TPC_Gomez_Chavero.Pages
             UserService userService = new UserService();
             User user = userService.login(nick, pass);
 
-            
-            if (abm.createTypes("Samsung", "Marcas") == 1)
+            if (user != null)
             {
                 Session["user"] = user;
-                lblError.Text = "Marca cargada con existo";
-                lblError.Visible = true;
-
+                Response.Redirect("~/");
             }
             else
             {
-                lblError.Text = "Ha ocurrido un error";
-                lblError.Visible = true;
+                lblError.Text = "Usuario o Contraseña Incorrecta";
             }
+
+
             /*
             if (user != null)
             {

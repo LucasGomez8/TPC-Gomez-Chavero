@@ -5,15 +5,14 @@ namespace TPC_Gomez_Chavero
 {
     public partial class Default : System.Web.UI.Page
     {
+        User ingreso;
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblBienvenida.Visible = false;
-            adminSession.Visible = false;
-            if (Session["Nickname"] != null && Session["Password"] != null)
+            if (Session["user"] != null)
             {
-                string nick = Session["Nickname"].ToString();
+                ingreso = (User)Session["user"];
                 lblBienvenida.Visible = true;
-                lblBienvenida.Text =nick + " tu acceso fue exitoso!";
+                lblBienvenida.Text = ingreso.Nombre.ToString() + " tu acceso fue exitoso!";
                 adminSession.Visible = true;
             }
         }
