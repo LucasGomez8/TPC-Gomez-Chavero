@@ -8,6 +8,8 @@ namespace TPC_Gomez_Chavero
         User ingreso;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            adminSession.Visible = false;
             if (Session["user"] != null)
             {
                 ingreso = (User)Session["user"];

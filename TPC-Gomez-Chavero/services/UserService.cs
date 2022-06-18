@@ -1,5 +1,6 @@
 ﻿using domain;
 using System;
+using System.Collections.Generic;
 
 namespace services
 {
@@ -49,6 +50,72 @@ namespace services
             {
                 da.closeConnection();
             }
+        }
+
+        public List<UserType> getTypes()
+        {
+            List<UserType> typelist = new List<UserType>();
+            DataAccess da = new DataAccess();
+
+            try
+            {
+
+                da.setConsulta("Select idTipoUsuario, descripcion from TipoUsuario");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    UserType response = new UserType();
+                    response.ID = (long)da.dataReader["idTipoUsuario"];
+                    response.Description = (string)da.dataReader["descripcion"];
+
+
+                    typelist.Add(response);
+                }
+
+                return typelist;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
+
+        public int userAdd(string nombre, string apellido, string dni, long idtipo, string nick, string pass, string date)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("insert into Usuarios(Nombre, Apellido, DNI, IdTipoUsuario, nick, contraseña, fechaNac) values(@nombre, @apellido, @dni, @idtipo, @nick, @pass, @date)");
+                da.setConsultaWhitParameters("@nombre", nombre);
+                da.setConsultaWhitParameters("@apellido", apellido);
+                da.setConsultaWhitParameters("@dni", dni);
+                da.setConsultaWhitParameters("@idtipo", idtipo);
+                da.setConsultaWhitParameters("@nick", nick);
+                da.setConsultaWhitParameters("@pass", pass);
+                da.setConsultaWhitParameters("@date", date);
+
+                da.executeAction();
+
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
         }
     }
 }

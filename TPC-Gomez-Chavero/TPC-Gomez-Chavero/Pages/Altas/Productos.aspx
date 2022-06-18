@@ -1,9 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarProducto.aspx.cs" Inherits="TPC_Gomez_Chavero.WebForm1" %>
-
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
-    <div class="container frmStyle">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Altas.Productos" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
+    <div class="container frmStyle mb-4 ">
         <div class="row mt-3 mb-5 text-center ">
             <div class="col-md-12">
                 <h3>Productos</h3>
@@ -17,7 +15,7 @@
               </div>
               <div class="form-group mb-3">
                 <label for="descripcion">Descripcion</label>
-                <textarea maxlength="250" id="descripcion" class="form-control"></textarea>
+                <textarea maxlength="250" id="descripcion" runat="server" class="form-control"></textarea>
               </div>
               <div class="form-group mb-3">
                   <div class="row">
@@ -54,8 +52,12 @@
                 <div class="form-group mb-5">
                     <input type="file" name="name" class="form-control" value="" placeholder="+"/>
                 </div>
-              <button type="submit" id="submit" class="btn btn-primary">Agregar</button>
             </form>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+              <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary"  onClick="btnSubmit_Click" Text="Agregar" />
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

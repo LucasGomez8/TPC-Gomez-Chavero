@@ -50,17 +50,17 @@
                         Altas
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarProducto.aspx">Productos</a></li>
+                        <li><a class="dropdown-item" href="/Pages/Altas/Productos.aspx">Productos</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarCliente.aspx">Clientes</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarVendedor.aspx">Usuarios</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarMarca.aspx">Marca</a></li>  
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarCategoria.aspx">Categoria</a></li>  
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarTipoProducto.aspx">Tipo de Producto</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarUsuario.aspx">Usuario</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">

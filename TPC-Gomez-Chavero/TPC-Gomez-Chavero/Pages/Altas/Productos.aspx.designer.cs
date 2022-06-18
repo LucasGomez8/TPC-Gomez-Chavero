@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace TPC_Gomez_Chavero
+namespace TPC_Gomez_Chavero.Pages.Altas
 {
 
 
-    public partial class WebForm1
+    public partial class Productos
     {
 
         /// <summary>
@@ -22,6 +22,15 @@ namespace TPC_Gomez_Chavero
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
+        /// Control descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcion;
 
         /// <summary>
         /// Control dropCategoria.
@@ -76,5 +85,14 @@ namespace TPC_Gomez_Chavero
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorcentajeVenta;
+
+        /// <summary>
+        /// Control btnSubmit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

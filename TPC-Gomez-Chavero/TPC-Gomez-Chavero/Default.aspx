@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="col-md-3 item">
-                <a href="/Pages/Altas/AgregarProducto.aspx">
+                <a href="/Pages/Altas/Productos.aspx">
                 <h3>Dar de Alta un Producto</h3>
                     <p>Aqui podras dar de alta a los Productos correspondientes</p>
                 </a>

@@ -11,26 +11,26 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 {
 
 
-    public partial class AgregarCliente
+    public partial class AgregarUsuario
     {
 
         /// <summary>
-        /// Control txtNombreCliente.
+        /// Control txtNombreUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreCliente;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreUsuario;
 
         /// <summary>
-        /// Control txtDNIorCuit.
+        /// Control txtApellidoUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDNIorCuit;
+        protected global::System.Web.UI.WebControls.TextBox txtApellidoUsuario;
 
         /// <summary>
         /// Control txtFechaNac.
@@ -42,22 +42,40 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.TextBox txtFechaNac;
 
         /// <summary>
-        /// Control txtEmail.
+        /// Control txtDni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtDni;
 
         /// <summary>
-        /// Control txtTelefono.
+        /// Control txtNick.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+        protected global::System.Web.UI.WebControls.TextBox txtNick;
+
+        /// <summary>
+        /// Control txtPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPass;
+
+        /// <summary>
+        /// Control dropUserType.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropUserType;
 
         /// <summary>
         /// Control btnSubmit.

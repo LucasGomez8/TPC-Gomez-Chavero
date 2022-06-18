@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="TPC_Gomez_Chavero.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Altas.AgregarCliente" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,12 +13,12 @@
               <div class="form-group mb-3">
                   <div class="row">
                       <div class="col-md-6">
-                          <label for="nombreUsuario">Nombre</label>
-                          <input class="form-control" type="text" name="nombre" id="nombreUsuario" placeholder="Nombre"/>
+                          <label for="nombreCliente">Nombre</label>
+                          <asp:TextBox ID="txtNombreCliente" CssClass="form-control" runat="server"></asp:TextBox>
                       </div>
                       <div class="col-md-6">
                          <label for="dni">DNI o CUIT</label>
-                         <input type="text" class="form-control" name="dni" id="dni" value="" placeholder="DNI o CUIT" />
+                          <asp:TextBox ID="txtDNIorCuit" cssClass="form-control" runat="server"></asp:TextBox>
                       </div>
                   </div>
               </div>
@@ -26,24 +26,27 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="fechaNac">Fecha de Nacimiento</label>
-                          <input type="date" id="fechaNac" class="form-control"name="fechaNac" value="" />
+                          <asp:TextBox ID="txtFechaNac" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
                       </div>
                       <div class="col-md-4">
                           <label for="email">Email</label>
-                          <input type="email" name="email" id="email" class="form-control" value="" />
+                          <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
                       </div>
                       <div class="col-md-4">
                           <label for="telefono">Telefono</label>
-                          <input type="text" name="telefono" id="telefono" class="form-control" value="" />
+                          <asp:TextBox ID="txtTelefono" CssClass="form-control" runat="server"></asp:TextBox>
                       </div>
                   </div>
                 </div>
                 <div class="form-group mb-5">
                     <input type="file" name="name" class="form-control" value=""/>
                 </div>
-    
-              <button type="submit" id="submit" class="btn btn-primary">Agregar</button>
             </form>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                <asp:Button ID="btnSubmit" cssClass="btn btn-primary" OnClick="btnSubmit_Click" runat="server" Text="Agregar" />
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

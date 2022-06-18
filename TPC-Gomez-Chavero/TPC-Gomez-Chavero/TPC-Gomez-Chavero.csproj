@@ -77,8 +77,9 @@
     <Content Include="Pages\Altas\AgregarCliente.aspx" />
     <Content Include="Pages\Altas\AgregarMarca.aspx" />
     <Content Include="Pages\Altas\AgregarTipoProducto.aspx" />
+    <Content Include="Pages\Altas\AgregarUsuario.aspx" />
     <Content Include="Pages\Altas\AgregarVendedor.aspx" />
-    <Content Include="Pages\Altas\AgregarProducto.aspx" />
+    <Content Include="Pages\Altas\Productos.aspx" />
     <Content Include="Pages\Bajas\BajaCliente.aspx" />
     <Content Include="Pages\Bajas\BajaProducto.aspx" />
     <Content Include="Pages\Bajas\BajaUsuario.aspx" />
@@ -126,6 +127,13 @@
     <Compile Include="Pages\Altas\AgregarTipoProducto.aspx.designer.cs">
       <DependentUpon>AgregarTipoProducto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Altas\AgregarUsuario.aspx.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarUsuario.aspx.designer.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Altas\AgregarVendedor.aspx.cs">
       <DependentUpon>AgregarVendedor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,12 +141,12 @@
     <Compile Include="Pages\Altas\AgregarVendedor.aspx.designer.cs">
       <DependentUpon>AgregarVendedor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Altas\AgregarProducto.aspx.cs">
-      <DependentUpon>AgregarProducto.aspx</DependentUpon>
+    <Compile Include="Pages\Altas\Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Altas\AgregarProducto.aspx.designer.cs">
-      <DependentUpon>AgregarProducto.aspx</DependentUpon>
+    <Compile Include="Pages\Altas\Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Bajas\BajaCliente.aspx.cs">
       <DependentUpon>BajaCliente.aspx</DependentUpon>
