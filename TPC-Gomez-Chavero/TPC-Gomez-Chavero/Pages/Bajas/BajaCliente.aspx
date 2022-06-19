@@ -3,19 +3,19 @@
     <div class="container">
         <div class="row mt-3 justify-content-center">
             <div class="col-md-8 text-center">
-                <h3>Baja Producto</h3>
+                <h3>Baja Cliente</h3>
             </div>
         </div>
         <div class="row mt-5 mb-5 justify-content-center">
             <form>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="deleteProduct">Selecciona el Cliente a Eliminar</label>
-                        <asp:DropDownList cssClass="form-control" ID="deleteProduct" runat="server"></asp:DropDownList>
+                        <label for="deleteClient">Selecciona el Cliente a Eliminar</label>
+                        <asp:DropDownList cssClass="form-control" ID="deleteClient" runat="server"></asp:DropDownList>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" runat="server" Text="Eliminar" />
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onClick="btnSubmit_Click" runat="server" Text="Eliminar" />
                 </div>
             </form>
         </div>

@@ -80,8 +80,12 @@
     <Content Include="Pages\Altas\AgregarTipoProducto.aspx" />
     <Content Include="Pages\Altas\AgregarUsuario.aspx" />
     <Content Include="Pages\Altas\Productos.aspx" />
+    <Content Include="Pages\Bajas\BajaCategoria.aspx" />
     <Content Include="Pages\Bajas\BajaCliente.aspx" />
+    <Content Include="Pages\Bajas\BajaMarca.aspx" />
     <Content Include="Pages\Bajas\BajaProducto.aspx" />
+    <Content Include="Pages\Bajas\BajaProveedor.aspx" />
+    <Content Include="Pages\Bajas\BajaTipoProducto.aspx" />
     <Content Include="Pages\Bajas\BajaUsuario.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\MisVentas.aspx" />
@@ -148,6 +152,13 @@
     <Compile Include="Pages\Altas\Productos.aspx.designer.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Bajas\BajaCategoria.aspx.cs">
+      <DependentUpon>BajaCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaCategoria.aspx.designer.cs">
+      <DependentUpon>BajaCategoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Bajas\BajaCliente.aspx.cs">
       <DependentUpon>BajaCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -155,12 +166,33 @@
     <Compile Include="Pages\Bajas\BajaCliente.aspx.designer.cs">
       <DependentUpon>BajaCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Bajas\BajaMarca.aspx.cs">
+      <DependentUpon>BajaMarca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaMarca.aspx.designer.cs">
+      <DependentUpon>BajaMarca.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Bajas\BajaProducto.aspx.cs">
       <DependentUpon>BajaProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Bajas\BajaProducto.aspx.designer.cs">
       <DependentUpon>BajaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaProveedor.aspx.cs">
+      <DependentUpon>BajaProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaProveedor.aspx.designer.cs">
+      <DependentUpon>BajaProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaTipoProducto.aspx.cs">
+      <DependentUpon>BajaTipoProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Bajas\BajaTipoProducto.aspx.designer.cs">
+      <DependentUpon>BajaTipoProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Bajas\BajaUsuario.aspx.cs">
       <DependentUpon>BajaUsuario.aspx</DependentUpon>

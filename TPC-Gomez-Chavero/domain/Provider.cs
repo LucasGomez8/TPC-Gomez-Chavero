@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace domain
 {
-    public class Client
+    public class Provider
     {
         public long Id { get; set; }
-
         public string Nombre { get; set; }
-        public string CuitOrDni { get; set; }
-        public DateTime fechaNac { get; set; }
-        public string Telefono { get; set; }
-        public string Email { get; set; }
     }
 }

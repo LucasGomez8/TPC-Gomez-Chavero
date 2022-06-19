@@ -15,13 +15,13 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
     {
 
         /// <summary>
-        /// Control deleteProduct.
+        /// Control deleteClient.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList deleteProduct;
+        protected global::System.Web.UI.WebControls.DropDownList deleteClient;
 
         /// <summary>
         /// Control btnSubmit.

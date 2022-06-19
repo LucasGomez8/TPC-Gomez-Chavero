@@ -11,17 +11,17 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 {
 
 
-    public partial class BajaUsuario
+    public partial class BajaMarca
     {
 
         /// <summary>
-        /// Control deleteProduct.
+        /// Control deleteMarca.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList deleteProduct;
+        protected global::System.Web.UI.WebControls.DropDownList deleteMarca;
 
         /// <summary>
         /// Control btnSubmit.

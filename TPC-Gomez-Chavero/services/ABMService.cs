@@ -269,6 +269,76 @@ namespace services
             }
         }
 
+        public List<Client> getClients()
+        {
+            DataAccess da = new DataAccess();
+            List<Client> clientList = new List<Client>();
+
+            try
+            {
+                da.setConsulta("Select IDCliente, Nombre, cuitOrDni, fechaNac, telefono, email from Clientes");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Client response = new Client();
+
+                    response.Id = (long)da.dataReader["IDCliente"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.CuitOrDni = (string)da.dataReader["cuitOrDni"];
+                    response.fechaNac = (DateTime)da.dataReader["fechaNac"];
+                    response.Telefono = (string)da.dataReader["telefono"];
+                    response.Email = (string)da.dataReader["email"];
+
+                    clientList.Add(response);
+                }
+                return clientList;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
+
+        public List<Provider> getProvider()
+        {
+            DataAccess da = new DataAccess();
+            List<Provider> provList = new List<Provider>();
+
+            try
+            {
+                da.setConsulta("Select IDProveedor, Nombre from Proveedores");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Provider response = new Provider();
+
+                    response.Id = (long)da.dataReader["IDProveedor"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+
+                    provList.Add(response);
+                }
+                return provList;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
+
 
         //Deleters
         public int deleteProduct(long id)
@@ -294,5 +364,139 @@ namespace services
             }
         }
 
+        public int deleteClient(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("delete from Clientes where IDCliente = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int deleteCategory(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("delete from Categorias where IDCategoria = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int deleteBranch(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("delete from Marcas where IDMarca = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+        public int deleteProvider(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("delete from Proveedores where IDProveedor = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+        public int deleteTipo(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("delete from TipoProducto where IDTipoProducto = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+        public int deleteUsuarios(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("delete from Usuarios where IDUsuario = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
     }
 }
