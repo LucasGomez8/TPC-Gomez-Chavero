@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using services;
+using domain;
+
 
 namespace TPC_Gomez_Chavero.Pages.Altas
 {
@@ -12,6 +15,14 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            ABMService abm = new ABMService();
+            string nombre = txtNombre.Text;
+
+            abm.addProvider(nombre);
         }
     }
 }

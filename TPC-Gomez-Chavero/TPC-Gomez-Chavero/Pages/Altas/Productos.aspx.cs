@@ -54,7 +54,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             int idtipo = dropProducto.SelectedIndex+1;
             int stock = int.Parse(txtStock.Text);
             int stockmin = int.Parse(txtStockMinimo.Text);
-            int porc = int.Parse(txtPorcentajeVenta.Text);
+            short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
             abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stock, stockmin, porc);
         }

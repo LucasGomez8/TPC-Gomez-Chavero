@@ -76,9 +76,9 @@
     <Content Include="Pages\Altas\AgregarCategoria.aspx" />
     <Content Include="Pages\Altas\AgregarCliente.aspx" />
     <Content Include="Pages\Altas\AgregarMarca.aspx" />
+    <Content Include="Pages\Altas\AgregarProveedor.aspx" />
     <Content Include="Pages\Altas\AgregarTipoProducto.aspx" />
     <Content Include="Pages\Altas\AgregarUsuario.aspx" />
-    <Content Include="Pages\Altas\AgregarVendedor.aspx" />
     <Content Include="Pages\Altas\Productos.aspx" />
     <Content Include="Pages\Bajas\BajaCliente.aspx" />
     <Content Include="Pages\Bajas\BajaProducto.aspx" />
@@ -120,6 +120,13 @@
     <Compile Include="Pages\Altas\AgregarMarca.aspx.designer.cs">
       <DependentUpon>AgregarMarca.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Altas\AgregarProveedor.aspx.cs">
+      <DependentUpon>AgregarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Altas\AgregarProveedor.aspx.designer.cs">
+      <DependentUpon>AgregarProveedor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Altas\AgregarTipoProducto.aspx.cs">
       <DependentUpon>AgregarTipoProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,13 +140,6 @@
     </Compile>
     <Compile Include="Pages\Altas\AgregarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Altas\AgregarVendedor.aspx.cs">
-      <DependentUpon>AgregarVendedor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Altas\AgregarVendedor.aspx.designer.cs">
-      <DependentUpon>AgregarVendedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Altas\Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>

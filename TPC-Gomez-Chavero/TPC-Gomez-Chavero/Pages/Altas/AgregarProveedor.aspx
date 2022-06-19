@@ -17,7 +17,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-4 text-center">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Agregar" OnClick="btnSubmit_Click"  CssClass="btn btn-primary" />
+                    <asp:Button ID="btnSubmit" runat="server" Text="Agregar" onClick="btnSubmit_Click"  CssClass="btn btn-primary" />
                     </div>
                 </div>
             </form>

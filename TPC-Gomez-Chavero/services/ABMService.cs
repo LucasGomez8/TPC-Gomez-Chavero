@@ -8,6 +8,8 @@ namespace services
 {
     public class ABMService
     {
+
+        //Adders
         public int createTypes(string descripcion, string tabla)
         {
             DataAccess da = new DataAccess();
@@ -59,7 +61,7 @@ namespace services
             }
         }
 
-        public int addProduct(string nombre, string descripcion,long idcategoria, long idmarca, long idtipoproducto, int stock, int stockminimo, int porcentaje )
+        public int addProduct(string nombre, string descripcion,long idcategoria, long idmarca, long idtipoproducto, int stock, int stockminimo, short porcentaje )
         {
             DataAccess da = new DataAccess();
 
@@ -89,6 +91,31 @@ namespace services
             }
         }
 
+        public int addProvider(string nombre)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("insert into Proveedores(Nombre) values(@nombre)");
+                da.setConsultaWhitParameters("@nombre", nombre);
+                da.executeAction();
+
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+
+        //Getters
         public List<ProductBranch> getBranch()
         {
             List<ProductBranch> branchList = new List<ProductBranch>();
@@ -158,6 +185,7 @@ namespace services
 
         }
 
+
         public List<ProductType> getProductType()
         {
             List<ProductType> typeList = new List<ProductType>();
@@ -191,5 +219,80 @@ namespace services
             }
 
         }
+
+        public List<Product> getProducts()
+        {
+            DataAccess da = new DataAccess();
+            List<Product> productlist = new List<Product>();
+
+            try
+            {
+                da.setConsulta("select Productos.IDProducto, Productos.Nombre, Productos.Descripcion, Productos.IDCategoria as CID, Productos.IDMarca as MID, Productos.IDTipoProducto as TID, Productos.Stock,"+
+                                " Productos.StockMinimo, Productos.porcentajeVenta, Marcas.Descripcion as Mdes, Categorias.Descripcion as CDes, TipoProducto.Descripcion as TDes from Productos"+
+                                " inner join Marcas on Marcas.IDMarca = Productos.IDMarca" +
+                                " inner join Categorias on Categorias.IDCategoria = Productos.IDCategoria"+
+                                " inner join TipoProducto on TipoProducto.IDTipoProducto = Productos.IDTipoProducto");
+
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Product response = new Product();
+
+                    response.Id = (long)da.dataReader["IDProducto"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.Descripcion = (string)da.dataReader["Descripcion"];
+                    response.Marca = new ProductBranch();
+                    response.Marca.Id = (long)da.dataReader["MID"];
+                    response.Marca.Descripcion = (string)da.dataReader["Mdes"];
+                    response.Categoria = new ProductCategory();
+                    response.Categoria.Id = (long)da.dataReader["CID"];
+                    response.Categoria.Descripcion = (string)da.dataReader["CDes"];
+                    response.Tipo = new ProductType();
+                    response.Tipo.Id = (long)da.dataReader["TID"];
+                    response.Tipo.Descripcion = (string)da.dataReader["TDes"];
+                    response.Stock = (int)da.dataReader["Stock"];
+                    response.StockMinimo = (int)da.dataReader["StockMinimo"];
+                    response.PorcentajeVenta = (short)da.dataReader["porcentajeVenta"];
+
+                    productlist.Add(response);
+                }
+                return productlist;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+
+        //Deleters
+        public int deleteProduct(long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Delete from Productos where IDProducto = @id");
+                da.setConsultaWhitParameters("@id", id);
+                
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
     }
 }
