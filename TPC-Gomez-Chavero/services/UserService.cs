@@ -52,6 +52,47 @@ namespace services
             }
         }
 
+        public List<User> getUser()
+        {
+            List<User> userList = new List<User>();
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, " +
+                    "T.descripcion as descripcionTipo, T.idTipoUsuario " +
+                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    User response = new User();
+                    response.ID = (long)da.dataReader["id"];
+                    response.Nombre = (string)da.dataReader["nombre"];
+                    response.Apellido = (string)da.dataReader["apellido"];
+                    response.DNI = (string)da.dataReader["dni"];
+                    response.Nick = (string)da.dataReader["nick"];
+                    response.type = new UserType();
+                    response.type.Description = (string)da.dataReader["descripcionTipo"];
+                    response.type.ID = (long)da.dataReader["idTipoUsuario"];
+
+                    userList.Add(response);
+                }
+
+                return userList;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al conectar con la base de datos ." + ex.Message);
+                throw;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+
+        }
         public List<UserType> getTypes()
         {
             List<UserType> typelist = new List<UserType>();
@@ -116,6 +157,28 @@ namespace services
                 da.closeConnection();
             }
 
+        }
+
+        public int delete(long id)
+        {
+            DataAccess da = new DataAccess();
+            try
+            {
+                da.setConsulta("Delete from Productos where IDProducto = @id");
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
         }
     }
 }

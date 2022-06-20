@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarUsuario.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Altas.AgregarUsuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="container">
+            <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
+     <div class="container frmStyle">
         <div class="row mt-3">
             <div class="col-md-12 text-center">
                 <h3>Usuarios</h3>

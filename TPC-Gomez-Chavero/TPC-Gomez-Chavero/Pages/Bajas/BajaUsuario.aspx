@@ -11,12 +11,12 @@
             <form>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="deleteProduct">Selecciona el Cliente a Eliminar</label>
-                        <asp:DropDownList cssClass="form-control" ID="deleteProduct" runat="server"></asp:DropDownList>
+                        <label for="deleteUser">Selecciona el usuario a eliminar</label>
+                        <asp:DropDownList cssClass="form-control" ID="deleteUser" runat="server"></asp:DropDownList>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" runat="server" Text="Eliminar" />
+                    <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" runat="server" Text="Eliminar" />
                 </div>
             </form>
         </div>
