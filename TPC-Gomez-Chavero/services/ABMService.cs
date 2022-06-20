@@ -498,5 +498,38 @@ namespace services
                 da.closeConnection();
             }
         }
+
+        //Modifiers
+        public int editProduct(long id, string nombre, string descripcion, long idcategoria, long idmarca, long idtipoproducto, int stock, int stockminimo, short porcentaje)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update Productos set Nombre = @nombre, Descripcion = @descripcion, idcategoria = @idcat, idmarca = @idmar, idTipoProducto = @idtipo, Stock = @stock, StockMinimo = @stockminimo, porcentajeVenta = @porcentaje where IDProducto = @id");
+                da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@nombre", nombre);
+                da.setConsultaWhitParameters("@descripcion", descripcion);
+                da.setConsultaWhitParameters("@idcat", idcategoria);
+                da.setConsultaWhitParameters("@idmar", idmarca);
+                da.setConsultaWhitParameters("@idtipo", idtipoproducto);
+                da.setConsultaWhitParameters("@stock", stock);
+                da.setConsultaWhitParameters("@stockminimo", stockminimo);
+                da.setConsultaWhitParameters("@porcentaje", porcentaje);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
     }
 }
