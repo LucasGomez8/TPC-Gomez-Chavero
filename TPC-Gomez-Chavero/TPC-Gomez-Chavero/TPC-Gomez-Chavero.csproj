@@ -89,6 +89,12 @@
     <Content Include="Pages\Bajas\BajaUsuario.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\MisVentas.aspx" />
+    <Content Include="Pages\Modificaciones\EditarCategoria.aspx" />
+    <Content Include="Pages\Modificaciones\EditarCliente.aspx" />
+    <Content Include="Pages\Modificaciones\EditarMarca.aspx" />
+    <Content Include="Pages\Modificaciones\EditarProveedor.aspx" />
+    <Content Include="Pages\Modificaciones\EditarTipoProducto.aspx" />
+    <Content Include="Pages\Modificaciones\EditarUsuario.aspx" />
     <Content Include="Pages\Modificaciones\EditProduct.aspx" />
     <Content Include="Web.config" />
     <Content Include="Pages\MisCompras.aspx" />
@@ -215,6 +221,48 @@
     </Compile>
     <Compile Include="Pages\MisVentas.aspx.designer.cs">
       <DependentUpon>MisVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarCategoria.aspx.cs">
+      <DependentUpon>EditarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarCategoria.aspx.designer.cs">
+      <DependentUpon>EditarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarCliente.aspx.cs">
+      <DependentUpon>EditarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarCliente.aspx.designer.cs">
+      <DependentUpon>EditarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarMarca.aspx.cs">
+      <DependentUpon>EditarMarca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarMarca.aspx.designer.cs">
+      <DependentUpon>EditarMarca.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarProveedor.aspx.cs">
+      <DependentUpon>EditarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarProveedor.aspx.designer.cs">
+      <DependentUpon>EditarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarTipoProducto.aspx.cs">
+      <DependentUpon>EditarTipoProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarTipoProducto.aspx.designer.cs">
+      <DependentUpon>EditarTipoProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarUsuario.aspx.cs">
+      <DependentUpon>EditarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Modificaciones\EditarUsuario.aspx.designer.cs">
+      <DependentUpon>EditarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Modificaciones\EditProduct.aspx.cs">
       <DependentUpon>EditProduct.aspx</DependentUpon>

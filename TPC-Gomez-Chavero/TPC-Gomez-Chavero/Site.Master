@@ -59,6 +59,8 @@
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarCategoria.aspx">Categoria</a></li>  
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarTipoProducto.aspx">Tipo de Producto</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/Pages/Altas/AgregarProveedor.aspx">Proveedor</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/Pages/Altas/AgregarUsuario.aspx">Usuario</a></li>
                       </ul>
@@ -72,9 +74,37 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/Pages/Bajas/BajaCliente.aspx">Clientes</a></li>
                             <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaMarca.aspx">Marca</a></li>  
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaCategoria.aspx">Categoria</a></li>  
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaTipoProducto.aspx">Tipo de Producto</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Bajas/BajaProveedor.aspx">Proveedor</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/Pages/Bajas/BajaUsuario.aspx">Usuarios</a></li>
                         </ul>
                         
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Modificaciones
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditProduct.aspx">Producto</a></li>  
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarCliente.aspx">Cliente</a></li>  
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarMarca.aspx">Marca</a></li>  
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarCategoria.aspx">Categoria</a></li>  
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarTipoProducto.aspx">Tipo de Producto</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarProveedor.aspx">Proveedor</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarUsuario.aspx">Usuario</a></li>  
+                        </ul>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" runat="server" id="aLogin" href="/Pages/Login.aspx">Log in</a>

@@ -529,5 +529,104 @@ namespace services
             }
         }
 
+        public int editCategory(long id, string desc)
+        {
+            DataAccess da = new DataAccess();
+            
+            try
+            {
+                da.setConsulta("Update Categorias set Descripcion = @descripcion where IDCategoria = @id");
+                da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@descripcion", desc);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int editBranch(long id, string desc)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update Marcas set Descripcion = @descripcion where IDMarca = @id");
+                da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@descripcion", desc);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int editType(long id, string desc)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update TipoProducto set Descripcion = @descripcion where IDTipoProducto = @id");
+                da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@descripcion", desc);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+        public int editClient(long id, string nombre, string cod, string fecha, string tele, string email)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update Clientes set Nombre = @nombre, cuitOrDni = @cod, fechaNac = @fecha, telefono = @tele, email = @email where IDCliente = @id");
+                da.setConsultaWhitParameters("@id",id);
+                da.setConsultaWhitParameters("@cod", cod);
+                da.setConsultaWhitParameters("@fecha", fecha);
+                da.setConsultaWhitParameters("@tele", tele);
+                da.setConsultaWhitParameters("@email", email);
+                da.setConsultaWhitParameters("@nombre",nombre);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
     }
 }
