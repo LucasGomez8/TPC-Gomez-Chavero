@@ -13,6 +13,7 @@
                     <div class="form-group">
                         <label for="deleteProvider">Selecciona el proveedor a eliminar</label>
                         <asp:DropDownList cssClass="form-control" ID="deleteProvider" runat="server"></asp:DropDownList>
+                        <asp:Label runat="server" ID="lblSuccess" />
                     </div>
                 </div>
                 <div class="col-md-4">

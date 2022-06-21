@@ -34,21 +34,6 @@ namespace TPC_Gomez_Chavero.Pages
             {
                 lblError.Text = "Usuario o Contraseña Incorrecta";
             }
-
-
-            /*
-            if (user != null)
-            {
-                Session["user"] = user;
-                lblError.Text = "Hola " + user.Nick + " eres " + user.type.Description;
-                lblError.Visible = true;
-
-            }
-            else
-            {
-                lblError.Text = "Ha ocurrido un error";
-                lblError.Visible = true;
-            }*/
         }
     }
 }

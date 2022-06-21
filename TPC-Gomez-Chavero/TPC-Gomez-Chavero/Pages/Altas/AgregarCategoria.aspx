@@ -13,11 +13,13 @@
                     <div class="form-group mb-3">
                         <label for="txtNombre">Nombre de Categoria</label>
                         <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:Label ID="lblSuccess" runat="server" />
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-4 text-center">
                     <asp:Button ID="btnSubmit" runat="server" Text="Agregar" OnClick="btnSubmit_Click" CssClass="btn btn-primary" />
+                    <asp:Button ID="btnReload" runat="server" Text="Continuar" CssClass="btn btn-primary" OnClick="btnReload_Click" />
                     </div>
                 </div>
             </form>

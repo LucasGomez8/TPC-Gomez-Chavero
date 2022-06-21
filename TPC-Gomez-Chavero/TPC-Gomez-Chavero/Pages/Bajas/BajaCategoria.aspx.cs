@@ -1,50 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using domain;
 using services;
+using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Bajas
 {
-    public partial class BajaCategoria : System.Web.UI.Page
+    public partial class BajaCategoria : Page
     {
         List<ProductCategory> categoryList;
         protected void Page_Load(object sender, EventArgs e)
         {
-            dropLoader();
+            lblSuccess.Visible = false;
+            if (!IsPostBack)
+            {
+                dropLoader();
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            long idSelected = long.Parse(deleteCategoria.SelectedValue);
+
+            if (idSelected == 0)
+            {
+                lblSuccess.Text = "Por favor seleccione una opcion";
+                lblSuccess.Visible = true;
+                return;
+            }
+
             ABMService abm = new ABMService();
-            int whatCategory = deleteCategoria.SelectedIndex;
 
-            long x = findIt(whatCategory);
-
-            abm.deleteCategory(x);
+            if (abm.deleteCategory(idSelected) == 1)
+            {
+                lblSuccess.Text = "Categoria eliminada con exito";
+                lblSuccess.Visible = true;
+            }
+            else
+            {
+                lblSuccess.Text = "Ocurrio un error al eliminar la categoria";
+                lblSuccess.Visible = true;
+            }
+            dropLoader();
         }
 
         public void dropLoader()
         {
             ABMService abm = new ABMService();
-
             categoryList = abm.getCategory();
+
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
 
             foreach (ProductCategory item in categoryList)
             {
-                deleteCategoria.Items.Add(item.Descripcion);
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Descripcion);
+                data.Rows.Add(row);
             }
-        }
 
-        public long findIt(int id)
-        {
-            ProductCategory thisis = new ProductCategory();
-            thisis = categoryList[id];
-
-            return thisis.Id;
+            deleteCategoria.DataSource = new DataView(data);
+            deleteCategoria.DataTextField = "description";
+            deleteCategoria.DataValueField = "id";
+            deleteCategoria.DataBind();
         }
     }
 }

@@ -1,28 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using services;
-using domain;
 
 
 namespace TPC_Gomez_Chavero.Pages.Altas
 {
-    public partial class AgregarProveedor : System.Web.UI.Page
+    public partial class AgregarProveedor : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            btnReload.Visible = false;
+            lblSuccess.Visible = false;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            string nombre = txtNombre.Text;
+            string descripcion = txtNombre.Text;
+            if (descripcion.Length == 0)
+            {
+                lblSuccess.Text = "Por favor, ingrese informacion correcta";
+                lblSuccess.Visible = true;
+                return;
+            }
 
-            abm.addProvider(nombre);
+            ABMService abm = new ABMService();
+
+            if (abm.addProvider(descripcion.ToLower()) == 1)
+            {
+                lblSuccess.Text = "Proveedor cargado con exito";
+                lblSuccess.Visible = true;
+                btnReload.Visible = true;
+                btnSubmit.Visible = false;
+            }
+            else
+            {
+                lblSuccess.Text = "Hubo un error al cargar el proveedor, o bien, este ya existe.";
+                lblSuccess.Visible = true;
+            }
+        }
+
+        protected void btnReload_Click(object sender, EventArgs e)
+        {
+            btnReload.Visible = false;
+            lblSuccess.Visible = false;
+            txtNombre.Text = "";
+            btnSubmit.Visible = true;
         }
     }
 }

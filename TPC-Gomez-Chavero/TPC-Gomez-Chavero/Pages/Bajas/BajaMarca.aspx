@@ -12,6 +12,7 @@
                     <div class="form-group">
                         <label for="deleteMarca">Selecciona la marca a eliminar</label>
                         <asp:DropDownList cssClass="form-control" ID="deleteMarca" runat="server"></asp:DropDownList>
+                        <asp:Label runat="server" ID="lblSuccess" />
                     </div>
                 </div>
                 <div class="col-md-4">
