@@ -628,5 +628,29 @@ namespace services
             }
         }
 
+        public int editProvider(long id, string nombre)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update Proveedores set Nombre = @nombre where IDProveedor = @id");
+                da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@nombre", nombre);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
     }
 }
