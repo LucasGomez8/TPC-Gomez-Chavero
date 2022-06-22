@@ -22,12 +22,12 @@
                     <hr style="width: 98%"/>
                 </div>
                 <div class="row">
-                      <div class="form-group mb-3">
-                <label for="txtNTipo">Nombre de Categoria</label>
-                 <asp:TextBox ID="txtNTipo" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
-              </div>
+                    <div class="form-group mb-3">
+                        <label for="txtNTipo">Nombre de Categoria</label>
+                        <asp:TextBox ID="txtNTipo" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
             </form>
-        </div>
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">
                 <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />

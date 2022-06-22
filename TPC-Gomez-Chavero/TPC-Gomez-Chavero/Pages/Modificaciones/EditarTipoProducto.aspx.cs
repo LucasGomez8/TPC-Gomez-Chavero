@@ -41,7 +41,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             string des = txtNTipo.Text;
 
 
-            abm.editType(Selected.Id, des);
+            //abm.editType(Selected.Id, des);
 
         }
 

@@ -76,13 +76,5 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
             deleteMarca.DataValueField = "id";
             deleteMarca.DataBind();
         }
-
-        public long findIt(int id)
-        {
-            ProductBranch thisis = new ProductBranch();
-            thisis = branchList[id];
-
-            return thisis.Id;
-        }
     }
 }

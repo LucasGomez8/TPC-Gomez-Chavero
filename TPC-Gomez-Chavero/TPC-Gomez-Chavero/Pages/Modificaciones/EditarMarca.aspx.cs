@@ -1,66 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using domain;
+using helpers;
 using services;
 
 
 
 namespace TPC_Gomez_Chavero.Pages.Modificaciones
 {
-    public partial class EditarMarca : System.Web.UI.Page
+    public partial class EditarMarca : Page
     {
         public List<ProductBranch> branchList;
-        public ProductBranch Selected;
-
+        private ABMService abm;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            branchList = abm.getBranch();
-
-            dropLoader();
-        }
-
-        protected void btnSelect_Click(object sender, EventArgs e)
-        {
-            int id = dropMarca.SelectedIndex;
-            Selected = findIt(id);
-
-
-            txtNMarca.Enabled = true;
-            txtNMarca.Text = Selected.Descripcion;
-
-        }
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            ABMService abm = new ABMService();
-            int id = dropMarca.SelectedIndex;
-            Selected = findIt(id);
-            string des = txtNMarca.Text;
-
-
-            abm.editBranch(Selected.Id, des);
-
+            abm = new ABMService();
+            if (!IsPostBack)
+            {
+                dropLoader();
+            }
         }
 
         public void dropLoader()
         {
+            branchList = abm.getBranch();
+
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
+
             foreach (ProductBranch item in branchList)
             {
-                dropMarca.Items.Add(item.Descripcion);
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Descripcion);
+                data.Rows.Add(row);
             }
+
+            dropMarca.DataSource = new DataView(data);
+            dropMarca.DataTextField = "description";
+            dropMarca.DataValueField = "id";
+            dropMarca.DataBind();
         }
 
-        public ProductBranch findIt(int id)
+        protected void btnSelect_Click(object sender, EventArgs e)
         {
-            ProductBranch thisis = new ProductBranch();
-            thisis = branchList[id];
+            txtNMarca.Enabled = true;
+            txtNMarca.Text = dropMarca.SelectedItem.Text;
+        }
 
-            return thisis;
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            long idSelected = long.Parse(dropMarca.SelectedValue);
+            string des = txtNMarca.Text;
+
+            if (abm.editBranch(idSelected, des) == 1)
+            {
+                lblSuccess.Text = "Marca modificada con exito";
+                lblSuccess.Visible = true;
+            }
+            else
+            {
+                lblSuccess.Text = "Hubo un error al modificar la Marca";
+                lblSuccess.Visible = false;
+            }
+            dropLoader();
+        }
+
+        protected void dropMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtNMarca.Enabled = true;
+            txtNMarca.Text = dropMarca.SelectedItem.Text;
+            btnSubmit.Enabled = false;
+            lblSuccess.Visible = false;
+        }
+
+        protected void txtNMarca_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNMarca.Text != dropMarca.SelectedItem.Text && txtNMarca.Text.Length != 0)
+                btnSubmit.Enabled = true;
+            else
+                btnSubmit.Enabled = false;
         }
     }
 }
