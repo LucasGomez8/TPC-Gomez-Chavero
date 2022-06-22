@@ -42,7 +42,8 @@
                       </div>
                       <div class="col-md-4">
                           <label for="tipoProducto">Tipo Producto</label>
-                          <asp:DropDownList CssClass="form-control" Enabled="false" ID="dropProducto" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" Enabled="false" ID="dropTipoProducto" runat="server"></asp:DropDownList>
+
                       </div>
                   </div>
                 </div>
@@ -64,6 +65,7 @@
                   </div>
                 </div>
             </form>
+            <asp:Label ID="lblSuccess" runat="server" Visible="false"></asp:Label>
         </div>
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">

@@ -69,13 +69,13 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         protected global::System.Web.UI.WebControls.DropDownList dropMarca;
 
         /// <summary>
-        /// Control dropProducto.
+        /// Control dropTipoProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropProducto;
+        protected global::System.Web.UI.WebControls.DropDownList dropTipoProducto;
 
         /// <summary>
         /// Control txtStock.
@@ -103,6 +103,15 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorcentajeVenta;
+
+        /// <summary>
+        /// Control lblSuccess.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
 
         /// <summary>
         /// Control btnSubmit.

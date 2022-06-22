@@ -54,6 +54,7 @@
                       </div>
                 </div>
             </form>
+                                    <asp:Label ID="lblSuccess" runat="server" Visible="false" />
         </div>
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">

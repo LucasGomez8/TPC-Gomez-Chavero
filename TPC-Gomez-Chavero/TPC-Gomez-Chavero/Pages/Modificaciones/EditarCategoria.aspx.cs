@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using helpers;
 using domain;
 using services;
 
@@ -12,40 +14,61 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
     public partial class EditarCategoria : System.Web.UI.Page
     {
 
+        private ABMService abm;
         public List<ProductCategory> categoryList;
         public ProductCategory Selected;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
+            abm = new ABMService();
 
-            categoryList = abm.getCategory();
-
-
-            dropLoader();
+            if (!IsPostBack)
+            {
+                dropLoader();
+            }
         }
         public void dropLoader()
         {
+            categoryList = abm.getCategory(); ;
+
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
+
             foreach (ProductCategory item in categoryList)
             {
-                dropCategorias.Items.Add(item.Descripcion);
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Descripcion);
+                data.Rows.Add(row);
             }
+
+            dropCategorias.DataSource = new DataView(data);
+            dropCategorias.DataTextField = "description";
+            dropCategorias.DataValueField = "id";
+            dropCategorias.DataBind();
         }
 
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-            int id = dropCategorias.SelectedIndex;
+            long id = Int64.Parse(dropCategorias.SelectedItem.Value);
             Selected = findIt(id);
 
             txtNCategoria.Enabled = true;
+            txtNCategoria.Text = Selected.Descripcion;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
             ABMService abm = new ABMService();
-            int ids = dropCategorias.SelectedIndex;
+            long ids = Int64.Parse(dropCategorias.SelectedValue);
             Selected = findIt(ids);
 
             string des = txtNCategoria.Text;
@@ -54,12 +77,17 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         }
 
-        public ProductCategory findIt(int id)
+        public ProductCategory findIt(long id)
         {
-            ProductCategory thisis = new ProductCategory();
-            thisis = categoryList[id];
+            foreach (ProductCategory item in categoryList)
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
 
-            return thisis;
+            return null;
         }
     }
 }
