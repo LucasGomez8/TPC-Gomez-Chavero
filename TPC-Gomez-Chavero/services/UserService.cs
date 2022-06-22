@@ -59,7 +59,7 @@ namespace services
 
             try
             {
-                da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, " +
+                da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, U.contraseña, U.fechaNac," +
                     "T.descripcion as descripcionTipo, T.idTipoUsuario " +
                     "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario");
                 da.execute();
@@ -72,6 +72,9 @@ namespace services
                     response.Apellido = (string)da.dataReader["apellido"];
                     response.DNI = (string)da.dataReader["dni"];
                     response.Nick = (string)da.dataReader["nick"];
+                    response.Pass = (string)da.dataReader["contraseña"];
+                    response.FechaNacimiento = new DateTime();
+                    response.FechaNacimiento = (DateTime)da.dataReader["fechaNac"];
                     response.type = new UserType();
                     response.type.Description = (string)da.dataReader["descripcionTipo"];
                     response.type.ID = (long)da.dataReader["idTipoUsuario"];
@@ -174,6 +177,36 @@ namespace services
             {
 
                 throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int editUser(long id, string nom, string ape, string dni, string fec, string nick, string pass, long idtipo)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update Usuarios set Nombre = @nom, Apellido = @ape, dni=@dni, IDTipoUsuario = @idtipo, contraseña=@pass, nick=@nick, fechaNac = @fec where idUsuario = @id");
+                da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@nom",nom);
+                da.setConsultaWhitParameters("@ape",ape);
+                da.setConsultaWhitParameters("@dni",dni);
+                da.setConsultaWhitParameters("@fec",fec);
+                da.setConsultaWhitParameters("@nick",nick);
+                da.setConsultaWhitParameters("@pass",pass);
+                da.setConsultaWhitParameters("@idtipo",idtipo);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex; 
             }
             finally
             {

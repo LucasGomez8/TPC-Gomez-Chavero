@@ -14,5 +14,8 @@ namespace domain
         public string DNI { get; set; }
         public UserType type { get; set; }
         public string Nick { get; set; }
+        public string Pass { get; set; }
+
+        public DateTime FechaNacimiento { get; set; }
     }
 }
