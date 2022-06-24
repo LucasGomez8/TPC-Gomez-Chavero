@@ -337,6 +337,39 @@ namespace services
 
         }
 
+        public List<TipoFactura> getTFacturas()
+        {
+            DataAccess da = new DataAccess();
+            List<TipoFactura> list = new List<TipoFactura>();
+
+            try
+            {
+                da.setConsulta("Select idTipoFactura, descripcion from TipoDeFactura");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    TipoFactura response = new TipoFactura();
+
+                    response.IdTipo = (long)da.dataReader["idTipoFactura"];
+                    response.Descripcion = (string)da.dataReader["descripcion"];
+
+                    list.Add(response);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
+
 
         //Deleters
         public int deleteProduct(long id)

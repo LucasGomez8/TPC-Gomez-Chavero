@@ -193,3 +193,5 @@ C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chav
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.csproj.CopyComplete
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.dll
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\obj\Debug\TPC-Gomez-Chavero.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.pdb

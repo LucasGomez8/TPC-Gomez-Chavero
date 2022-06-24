@@ -70,6 +70,7 @@
     <Content Include="Assets\img\adrUsuarioContent.jpg" />
     <Content Include="css\AñadirProducto.css" />
     <Content Include="css\AñadirUsuarios.css" />
+    <Content Include="css\Compras.css" />
     <Content Include="css\Default.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -302,6 +303,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <Project>{fbf49ae5-0b2c-49cd-85b9-c36c2ae79caa}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\domain\domain.csproj">
       <Project>{3b5fffeb-4c8a-46cf-9828-10de71ca7449}</Project>
       <Name>domain</Name>

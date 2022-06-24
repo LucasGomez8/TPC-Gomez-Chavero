@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "domain\domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "helpers", "helpers\helpers.csproj", "{FF1861F9-BAF8-49BD-AC3B-C4B01C427874}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers", "Controllers\Controllers.csproj", "{FBF49AE5-0B2C-49CD-85B9-C36C2AE79CAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FF1861F9-BAF8-49BD-AC3B-C4B01C427874}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF1861F9-BAF8-49BD-AC3B-C4B01C427874}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF1861F9-BAF8-49BD-AC3B-C4B01C427874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF49AE5-0B2C-49CD-85B9-C36C2AE79CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF49AE5-0B2C-49CD-85B9-C36C2AE79CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF49AE5-0B2C-49CD-85B9-C36C2AE79CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF49AE5-0B2C-49CD-85B9-C36C2AE79CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

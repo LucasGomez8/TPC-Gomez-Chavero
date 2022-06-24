@@ -1,0 +1,14 @@
+﻿body {
+    background-image: linear-gradient( 115deg, rgba(34, 230, 93, 0.8), rgba(34, 230, 181, 0.7) ), url("../Assets/img/compras.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.comStyle {
+    background-color: #fff;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 10px;
+    box-shadow: 3px 2px 5px 0px black;
+}

@@ -96,6 +96,47 @@ namespace services
 
 
         }
+
+        public List<User> getAdmins()
+        {
+            DataAccess da = new DataAccess();
+            List<User> list = new List<User>();
+
+
+            try
+            {
+                da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, U.contraseña, U.fechaNac," +
+                    "T.descripcion as descripcionTipo, T.idTipoUsuario " +
+                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario where T.idTipoUsuario = 1");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    User response = new User();
+                    response.ID = (long)da.dataReader["id"];
+                    response.Nombre = (string)da.dataReader["nombre"];
+                    response.Apellido = (string)da.dataReader["apellido"];
+                    response.DNI = (string)da.dataReader["dni"];
+                    response.Nick = (string)da.dataReader["nick"];
+                    response.Pass = (string)da.dataReader["contraseña"];
+                    response.FechaNacimiento = new DateTime();
+                    response.FechaNacimiento = (DateTime)da.dataReader["fechaNac"];
+                    response.type = new UserType();
+                    response.type.Description = (string)da.dataReader["descripcionTipo"];
+                    response.type.ID = (long)da.dataReader["idTipoUsuario"];
+
+                    list.Add(response);
+
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public List<UserType> getTypes()
         {
             List<UserType> typelist = new List<UserType>();
