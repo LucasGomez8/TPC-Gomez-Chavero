@@ -85,11 +85,28 @@ namespace Controllers
             }
         }
 
-        public int register(long numFac, long tipoFac, long idProv, long idAdmn, string fecha, decimal montototal, string detalle, long idprod, long cantidad, decimal pu)
+        public bool register(long numFac, long tipoFac, long idProv, long idAdmn, string fecha, decimal montototal, string detalle, long idprod, long cantidad, decimal pu)
         {
+            ABMService abm = new ABMService();
 
-            return 1;
 
+            if (abm.añadirCompra(numFac, tipoFac, idProv, idAdmn, fecha, montototal, detalle) == 1)
+            {
+                long idregistro = abm.getLasID();
+                if (abm.crossProductoCompra(idregistro, idprod, cantidad, pu) == 1)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+            return false;
+           
         }
+
+
     }
 }

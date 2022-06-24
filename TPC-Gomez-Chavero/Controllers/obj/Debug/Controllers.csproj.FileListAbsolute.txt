@@ -11,3 +11,16 @@ C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\C
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.csproj.CopyComplete
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.dll
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\Controllers.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\Controllers.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\domain.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\helpers.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\services.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\domain.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\helpers.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\bin\Debug\services.pdb
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.csproj.AssemblyReference.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.csproj.CopyComplete
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.dll
+C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\Controllers\obj\Debug\Controllers.pdb

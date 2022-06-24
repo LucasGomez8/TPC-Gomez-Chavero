@@ -13,7 +13,7 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("insert into "+ tabla +" (descripcion) values(@descripcion)");
+                da.setConsulta("insert into " + tabla + " (descripcion) values(@descripcion)");
                 da.setConsultaWhitParameters("@descripcion", descripcion);
 
                 da.executeAction();
@@ -59,7 +59,7 @@ namespace services
             }
         }
 
-        public int addProduct(string nombre, string descripcion,long idcategoria, long idmarca, long idtipoproducto, int stock, int stockminimo, short porcentaje )
+        public int addProduct(string nombre, string descripcion, long idcategoria, long idmarca, long idtipoproducto, int stock, int stockminimo, short porcentaje)
         {
             DataAccess da = new DataAccess();
 
@@ -113,7 +113,101 @@ namespace services
         }
 
 
+        public int añadirCompra(long numeroFactura, long idtipo, long idprov, long idadm, string fecha, decimal money, string detalle)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Insert into Compras(NumeroFactura, TipoFactura, IDProveedor, IDAdministrador, Fecha, MontoTotal, detalle) values(@numeroFactura, @idtipo, @idprov, @idadm,  @fecha, @money, @detalle)");
+                da.setConsultaWhitParameters("@numeroFactura", numeroFactura);
+                da.setConsultaWhitParameters("@idtipo", idtipo);
+                da.setConsultaWhitParameters("@idprov", idprov);
+                da.setConsultaWhitParameters("@idadm", idadm);
+                da.setConsultaWhitParameters("@fecha", fecha);
+                da.setConsultaWhitParameters("@money", money);
+                da.setConsultaWhitParameters("@detalle", detalle);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int crossProductoCompra(long idregistro, long idproducto, long cantidad, decimal preciounitario)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("insert into ProductoXCompra(IDRegistro, IDProducto, Cantidad, precioCompra) values(@idregistro, @idproducto, @cantidad, @preciounitario)");
+                da.setConsultaWhitParameters("@idregistro", idregistro);
+                da.setConsultaWhitParameters("@idproducto",idproducto);
+                da.setConsultaWhitParameters("@cantidad", cantidad);
+                da.setConsultaWhitParameters("@preciounitario", preciounitario);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                da.executeAction();
+            }
+
+
+        }
+
+
+
+
         //Getters
+
+
+        public long getLasID()
+        {
+            DataAccess da = new DataAccess();
+            long id = 0;
+
+            try
+            {
+
+                da.setConsulta("Select @@identity");
+                da.execute();
+
+                if (da.dataReader.Read())
+                {
+                    id = (long)da.dataReader["@@identity"];
+                }
+
+                return id;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
+
+
         public List<ProductBranch> getBranch()
         {
             List<ProductBranch> branchList = new List<ProductBranch>();

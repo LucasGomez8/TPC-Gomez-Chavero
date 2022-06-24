@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="txtMontoTotal">Monto Total de Compra</label>
-                            <asp:TextBox ID="txtMontoTotal" runat="server" TextMode="number" enabled="false" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtMontoTotal" runat="server" TextMode="number" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -81,9 +81,14 @@
                     <textarea maxlength="250" id="txtDetalleCompra" runat="server" class="form-control"></textarea>
                 </div>
             </form>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-3">
                 <div class="col-md-4 text-center">
               <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="btn btn-primary" Text="Agregar" />
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                    <asp:Label ID="lblSuccess" runat="server"></asp:Label>
                 </div>
             </div>
         </div>

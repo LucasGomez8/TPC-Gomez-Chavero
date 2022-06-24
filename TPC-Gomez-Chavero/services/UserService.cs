@@ -135,6 +135,10 @@ namespace services
 
                 throw ex;
             }
+            finally
+            {
+                da.closeConnection();
+            }
         }
 
         public List<UserType> getTypes()

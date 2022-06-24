@@ -84,9 +84,9 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             ABMService abm = new ABMService();
             string nombre = txtNombre.Text;
             string des = descripcion.Value;
-            int idcategoria = dropCategoria.SelectedIndex+1;
-            int idmarca = dropMarca.SelectedIndex+1;
-            int idtipo = dropProducto.SelectedIndex+1;
+            long idcategoria = Int64.Parse(dropCategoria.SelectedItem.Value);
+            long idmarca = Int64.Parse(dropMarca.SelectedItem.Value);
+            long idtipo = Int64.Parse(dropProducto.SelectedItem.Value);
             int stock = int.Parse(txtStock.Text);
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);

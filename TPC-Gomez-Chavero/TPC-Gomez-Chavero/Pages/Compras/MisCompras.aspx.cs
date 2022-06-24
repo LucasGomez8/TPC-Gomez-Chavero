@@ -132,10 +132,10 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 data.Rows.Add(row);
             }
 
-            dropTipoFactura.DataSource = new DataView(data);
-            dropTipoFactura.DataTextField = "nombre";
-            dropTipoFactura.DataValueField = "id";
-            dropTipoFactura.DataBind();
+            dropProveedor.DataSource = new DataView(data);
+            dropProveedor.DataTextField = "nombre";
+            dropProveedor.DataValueField = "id";
+            dropProveedor.DataBind();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -152,7 +152,18 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             long cantidad = Int64.Parse(txtCantidadComprada.Text);
             decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
 
-            cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, idProducto, cantidad, precioUnitario);
+
+            if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, idProducto, cantidad, precioUnitario))
+            {
+                lblSuccess.Visible = true;
+                lblSuccess.Text = "Compra cargada de forma exitosa";
+            }
+            else
+            {
+                lblSuccess.Visible = true;
+                lblSuccess.Text = "Error al cargar compra";
+            }
+
             
         }
 
@@ -162,8 +173,11 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             long cantidad = Int64.Parse(txtCantidadComprada.Text);
 
             decimal res = cantidad * precioUnitario;
+            lblSuccess.Visible = true;
 
-            txtMontoTotal.Text = res.ToString();
+            lblSuccess.Text = res.ToString();
+
+            //txtMontoTotal.Text = res.ToString();
         }
     }
 }
