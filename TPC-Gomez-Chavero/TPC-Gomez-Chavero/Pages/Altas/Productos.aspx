@@ -21,16 +21,30 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="categoria">Categoria</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropCategoria" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" ID="dropCategoria" runat="server" OnSelectedIndexChanged="dropCategoriaChanged" AutoPostBack="true" />
                       </div>
                       <div class="col-md-4">
                           <label for="marca">Marca</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropMarca" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" ID="dropMarca" runat="server" OnSelectedIndexChanged="dropMarcaChanged"  AutoPostBack="true" />
                       </div>
                       <div class="col-md-4">
                           <label for="tipoProducto">Tipo Producto</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropProducto" runat="server"></asp:DropDownList>
+                          <asp:DropDownList CssClass="form-control" ID="dropProducto" runat="server" OnSelectedIndexChanged="dropProductoChanged"  AutoPostBack="true" />
                       </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <asp:TextBox ID="addCategoryTxt" runat="server" Visible="false" CssClass="form-control" />
+                        <asp:Button ID="addCategoryBtn" runat="server" Visible="false" Text="Agregar..." CssClass="btn-outline-dark"/>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:TextBox ID="addBranchTxt" runat="server" Visible="false" CssClass="form-control" />
+                        <asp:Button ID="addBranchBtn" runat="server" Visible="false" Text="Agregar..." CssClass="btn-outline-dark"/>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:TextBox ID="addTypeTxt" runat="server" Visible="false" CssClass="form-control" />
+                        <asp:Button ID="addTypeBtn" runat="server" Visible="false" Text="Agregar..." CssClass="btn-outline-dark"/>
+                    </div>
                   </div>
                 </div>
                   <div class="form-group mb-5">
@@ -55,7 +69,7 @@
             </form>
             <div class="row justify-content-center">
                 <div class="col-md-4 text-center">
-              <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary"  onClick="btnSubmit_Click" Text="Agregar" />
+              <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Text="Agregar" />
                 </div>
             </div>
         </div>

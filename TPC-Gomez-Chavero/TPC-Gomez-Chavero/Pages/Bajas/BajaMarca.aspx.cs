@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using domain;
 using helpers;
 using services;
 
 namespace TPC_Gomez_Chavero.Pages.Bajas
 {
-    public partial class BajaMarca : System.Web.UI.Page
+    public partial class BajaMarca : Page
     {
         List<ProductBranch> branchList;
         protected void Page_Load(object sender, EventArgs e)
@@ -61,7 +58,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
             DataRow emptyData = data.NewRow();
             emptyData[0] = 0;
             emptyData[1] = "";
-            data.Rows.Add(emptyData);
+            data.Rows.Add(emptyData);            
 
             foreach (ProductBranch item in branchList)
             {

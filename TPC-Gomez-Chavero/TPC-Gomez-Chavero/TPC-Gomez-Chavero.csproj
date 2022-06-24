@@ -87,8 +87,8 @@
     <Content Include="Pages\Bajas\BajaProveedor.aspx" />
     <Content Include="Pages\Bajas\BajaTipoProducto.aspx" />
     <Content Include="Pages\Bajas\BajaUsuario.aspx" />
+    <Content Include="Pages\Compras\MisCompras.aspx" />
     <Content Include="Pages\Login.aspx" />
-    <Content Include="Pages\MisVentas.aspx" />
     <Content Include="Pages\Modificaciones\EditarCategoria.aspx" />
     <Content Include="Pages\Modificaciones\EditarCliente.aspx" />
     <Content Include="Pages\Modificaciones\EditarMarca.aspx" />
@@ -96,8 +96,8 @@
     <Content Include="Pages\Modificaciones\EditarTipoProducto.aspx" />
     <Content Include="Pages\Modificaciones\EditarUsuario.aspx" />
     <Content Include="Pages\Modificaciones\EditProduct.aspx" />
+    <Content Include="Pages\Ventas\MisVentas.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Pages\MisCompras.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
@@ -208,19 +208,19 @@
     <Compile Include="Pages\Bajas\BajaUsuario.aspx.designer.cs">
       <DependentUpon>BajaUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Compras\MisCompras.aspx.cs">
+      <DependentUpon>MisCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Compras\MisCompras.aspx.designer.cs">
+      <DependentUpon>MisCompras.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MisVentas.aspx.cs">
-      <DependentUpon>MisVentas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\MisVentas.aspx.designer.cs">
-      <DependentUpon>MisVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Modificaciones\EditarCategoria.aspx.cs">
       <DependentUpon>EditarCategoria.aspx</DependentUpon>
@@ -271,6 +271,13 @@
     <Compile Include="Pages\Modificaciones\EditProduct.aspx.designer.cs">
       <DependentUpon>EditProduct.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Ventas\MisVentas.aspx.cs">
+      <DependentUpon>MisVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Ventas\MisVentas.aspx.designer.cs">
+      <DependentUpon>MisVentas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -278,13 +285,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MisCompras.aspx.cs">
-      <DependentUpon>MisCompras.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\MisCompras.aspx.designer.cs">
-      <DependentUpon>MisCompras.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

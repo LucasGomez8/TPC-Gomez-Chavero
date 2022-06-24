@@ -40,10 +40,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link" href="/Pages/MisCompras.aspx">Mis Compras</a>
+                      <a class="nav-link" href="/Pages/Compras/MisCompras.aspx">Mis Compras</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/Pages/MisVentas.aspx">Mis Ventas</a>
+                      <a class="nav-link" href="/Pages/Ventas/MisVentas.aspx">Mis Ventas</a>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
