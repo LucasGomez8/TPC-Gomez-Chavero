@@ -77,6 +77,22 @@ namespace services
             }
         }
 
+        public long scalar()
+        {
+            command.Connection = connection;
+            long id = 0;
+            try
+            {
+                connection.Open();
+                return id = (Int64)command.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void executeAdder()
         {
             command.Connection = connection;

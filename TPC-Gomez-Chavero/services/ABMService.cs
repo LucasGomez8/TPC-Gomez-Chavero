@@ -113,13 +113,13 @@ namespace services
         }
 
 
-        public int añadirCompra(long numeroFactura, long idtipo, long idprov, long idadm, string fecha, decimal money, string detalle)
+        public long añadirCompra(long numeroFactura, long idtipo, long idprov, long idadm, string fecha, decimal money, string detalle)
         {
             DataAccess da = new DataAccess();
-
+            long id = 0;
             try
             {
-                da.setConsulta("Insert into Compras(NumeroFactura, TipoFactura, IDProveedor, IDAdministrador, Fecha, MontoTotal, detalle) values(@numeroFactura, @idtipo, @idprov, @idadm,  @fecha, @money, @detalle)");
+                da.setConsulta("Insert into Compras(NumeroFactura, TipoFactura, IDProveedor, IDAdministrador, Fecha, MontoTotal, detalle) OUTPUT Inserted.IDRegistro values(@numeroFactura, @idtipo, @idprov, @idadm,  @fecha, @money, @detalle)");
                 da.setConsultaWhitParameters("@numeroFactura", numeroFactura);
                 da.setConsultaWhitParameters("@idtipo", idtipo);
                 da.setConsultaWhitParameters("@idprov", idprov);
@@ -128,8 +128,9 @@ namespace services
                 da.setConsultaWhitParameters("@money", money);
                 da.setConsultaWhitParameters("@detalle", detalle);
 
-                da.executeAction();
-                return da.getLineCantAfected();
+                id = da.scalar();
+
+                return id;
             }
             catch (Exception ex)
             {
@@ -160,11 +161,11 @@ namespace services
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {
-                da.executeAction();
+                da.closeConnection();
             }
 
 
@@ -176,23 +177,13 @@ namespace services
         //Getters
 
 
-        public long getLasID()
+       /* public long getLasID()
         {
             DataAccess da = new DataAccess();
-            long id = 0;
 
             try
             {
-
-                da.setConsulta("Select @@identity");
-                da.execute();
-
-                if (da.dataReader.Read())
-                {
-                    id = (long)da.dataReader["@@identity"];
-                }
-
-                return id;
+                return da.scalar("Select SCOPE_IDENTITY()");
 
             }
             catch (Exception ex)
@@ -205,7 +196,7 @@ namespace services
                 da.closeConnection();
             }
 
-        }
+        }*/
 
 
         public List<ProductBranch> getBranch()

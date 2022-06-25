@@ -89,10 +89,10 @@ namespace Controllers
         {
             ABMService abm = new ABMService();
 
+            long idregistro = abm.añadirCompra(numFac, tipoFac, idProv, idAdmn, fecha, montototal, detalle);
 
-            if (abm.añadirCompra(numFac, tipoFac, idProv, idAdmn, fecha, montototal, detalle) == 1)
+            if ( idregistro != 0)
             {
-                long idregistro = abm.getLasID();
                 if (abm.crossProductoCompra(idregistro, idprod, cantidad, pu) == 1)
                 {
                     return true;
