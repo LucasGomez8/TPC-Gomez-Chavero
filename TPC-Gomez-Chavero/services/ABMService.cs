@@ -143,6 +143,36 @@ namespace services
             }
         }
 
+        public long añadirVenta(long numeroFactura, long idtipo, long idcliente, long iduser, string fecha, decimal money, string detalle)
+        {
+            DataAccess da = new DataAccess();
+            long id = 0;
+            try
+            {
+                da.setConsulta("Insert into Ventas(NumeroFactura, TipoFactura, idVendedor, idCliente, Fecha, MontoTotal, detalle) OUTPUT Inserted.IDRegistro values(@numeroFactura, @idtipo, @iduser, @idcliente,  @fecha, @money, @detalle)");
+                da.setConsultaWhitParameters("@numeroFactura", numeroFactura);
+                da.setConsultaWhitParameters("@idtipo", idtipo);
+                da.setConsultaWhitParameters("@iduser", idcliente);
+                da.setConsultaWhitParameters("@idcliente", idcliente);
+                da.setConsultaWhitParameters("@fecha", fecha);
+                da.setConsultaWhitParameters("@money", money);
+                da.setConsultaWhitParameters("@detalle", detalle);
+
+                id = da.scalar();
+
+                return id;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
         public int crossProductoCompra(long idregistro, long idproducto, long cantidad, decimal preciounitario)
         {
             DataAccess da = new DataAccess();
@@ -171,20 +201,20 @@ namespace services
 
         }
 
-
-
-
-        //Getters
-
-
-       /* public long getLasID()
+        public int crossProductoVenta(long idregistro, long idproducto, long cantidad, decimal preciounitario)
         {
             DataAccess da = new DataAccess();
 
             try
             {
-                return da.scalar("Select SCOPE_IDENTITY()");
+                da.setConsulta("insert into ProductoXVENTA(IDRegistro, IDProducto, Cantidad, precioCompra) values(@idregistro, @idproducto, @cantidad, @preciounitario)");
+                da.setConsultaWhitParameters("@idregistro", idregistro);
+                da.setConsultaWhitParameters("@idproducto", idproducto);
+                da.setConsultaWhitParameters("@cantidad", cantidad);
+                da.setConsultaWhitParameters("@preciounitario", preciounitario);
 
+                da.executeAction();
+                return da.getLineCantAfected();
             }
             catch (Exception ex)
             {
@@ -196,7 +226,35 @@ namespace services
                 da.closeConnection();
             }
 
-        }*/
+
+        }
+
+
+
+
+        //Getters
+
+
+        /* public long getLasID()
+         {
+             DataAccess da = new DataAccess();
+
+             try
+             {
+                 return da.scalar("Select SCOPE_IDENTITY()");
+
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+             finally
+             {
+                 da.closeConnection();
+             }
+
+         }*/
 
 
         public List<ProductBranch> getBranch()

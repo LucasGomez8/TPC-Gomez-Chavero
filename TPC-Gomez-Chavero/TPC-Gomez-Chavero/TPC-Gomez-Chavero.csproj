@@ -72,6 +72,7 @@
     <Content Include="css\AñadirUsuarios.css" />
     <Content Include="css\Compras.css" />
     <Content Include="css\Default.css" />
+    <Content Include="css\Ventas.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Altas\AgregarCategoria.aspx" />

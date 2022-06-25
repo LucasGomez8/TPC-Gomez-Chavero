@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using services;
 using domain;
+using helpers;
+using services;
+
 
 namespace Controllers
 {
-    public class ComprasController
+    public class VentasController
     {
-       
+        private ABMService abm;
+        private UserService us;
+
 
         public List<TipoFactura> getTipoFactura()
         {
-            ABMService abm = new ABMService();
+            abm = new ABMService();
 
             List<TipoFactura> list = new List<TipoFactura>();
             list = abm.getTFacturas();
@@ -30,14 +34,13 @@ namespace Controllers
 
         }
 
-
-        public List<User> getAdmins()
+        public List<User> getAllUsers()
         {
             List<User> list = new List<User>();
-            UserService us = new UserService();
+            us = new UserService();
 
 
-            list = us.getAdmins();
+            list = us.getUser();
 
             if (list != null)
             {
@@ -52,7 +55,7 @@ namespace Controllers
 
         public List<Product> filterProducts()
         {
-            ABMService abm = new ABMService();
+            abm = new ABMService();
             List<Product> list = new List<Product>();
 
 
@@ -68,12 +71,14 @@ namespace Controllers
             }
         }
 
-        public List<Provider> filterProvider()
-        {
-            ABMService abm = new ABMService();
-            List<Provider> list = new List<Provider>();
 
-            list = abm.getProvider();
+        public List<Client> getAllClients()
+        {
+            abm = new ABMService();
+
+            List<Client> list = new List<Client>();
+
+            list = abm.getClients();
 
             if (list != null)
             {
@@ -85,15 +90,15 @@ namespace Controllers
             }
         }
 
-        public bool register(long numFac, long tipoFac, long idProv, long idAdmn, string fecha, decimal montototal, string detalle, long idprod, long cantidad, decimal pu)
+
+        public bool register(long numeroFactura, long tipoFactura,long idCliente, long iduser,string fechaVenta,decimal montoTotal,string detalle, long idProducto,long cantidad, decimal precioUnitario)
         {
-            ABMService abm = new ABMService();
+            abm = new ABMService();
 
-            long idregistro = abm.añadirCompra(numFac, tipoFac, idProv, idAdmn, fecha, montototal, detalle);
-
-            if ( idregistro != 0)
+            long id = abm.añadirVenta(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle);
+            if (id != 0)
             {
-                if (abm.crossProductoCompra(idregistro, idprod, cantidad, pu) == 1)
+                if (abm.crossProductoVenta(id, idProducto, cantidad, precioUnitario) == 1)
                 {
                     return true;
                 }
@@ -102,11 +107,7 @@ namespace Controllers
             {
                 return false;
             }
-
             return false;
-           
         }
-
-
     }
 }
