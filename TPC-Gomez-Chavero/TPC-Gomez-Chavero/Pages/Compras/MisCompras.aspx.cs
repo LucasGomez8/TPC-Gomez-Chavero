@@ -11,7 +11,7 @@ using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Compras
 {
-    public partial class MisCompras : System.Web.UI.Page
+    public partial class MisCompras : Page
     {
         private ComprasController cc;
         public List<TipoFactura> tfacturaList;
@@ -24,11 +24,20 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
             if (!IsPostBack)
             {
+                setTicketNumber(1);
                 dropTipoFacturaLoader();
                 dropProductoLoader();
                 dropAdminLoader();
                 dropProveedorLoader();
             }
+            checkInputs();
+        }
+
+        private void setTicketNumber(long type)
+        {
+            long ticketNumber = cc.getTicketNumber(type);
+            txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber);
+            txtNumeroFactura.Enabled = false;
         }
 
         public void dropTipoFacturaLoader()
@@ -39,90 +48,62 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             data.Columns.Add("id");
             data.Columns.Add("description");
 
-            DataRow emptyData = data.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            data.Rows.Add(emptyData);
-
             foreach (TipoFactura item in tfacturaList)
             {
                 DataRow row = data.NewRow();
                 row[0] = item.IdTipo;
-                row[1] = StringHelper.upperStartChar(item.Descripcion);
+                row[1] = StringHelper.upperStartCharInAllWords(item.Descripcion, ' ', "de");
                 data.Rows.Add(row);
             }
 
-            dropTipoFactura.DataSource = new DataView(data);
-            dropTipoFactura.DataTextField = "description";
-            dropTipoFactura.DataValueField = "id";
-            dropTipoFactura.DataBind();
+            populateDropDown(data, dropTipoFactura);
+        }
+
+        protected void dropTypeTicketOnChange(object sender, EventArgs e)
+        {
+            long type = long.Parse(dropTipoFactura.SelectedValue);
+            setTicketNumber(type);
         }
 
         public void dropProductoLoader()
         {
             productList = cc.filterProducts();
 
-            DataTable data = new DataTable();
-            data.Columns.Add("id");
-            data.Columns.Add("description");
-
-            DataRow emptyData = data.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            data.Rows.Add(emptyData);
+            DataTable data = createEmptyDataTable();
 
             foreach (Product item in productList)
             {
                 DataRow row = data.NewRow();
                 row[0] = item.Id;
-                row[1] = StringHelper.upperStartChar(item.Nombre);
+                row[1] = StringHelper.upperStartCharInAllWords(item.Nombre, ' ', "de"); ;
                 data.Rows.Add(row);
             }
 
-            dropProductos.DataSource = new DataView(data);
-            dropProductos.DataTextField = "description";
-            dropProductos.DataValueField = "id";
-            dropProductos.DataBind();
+            populateDropDown(data, dropProductos);
         }
+        
         public void dropAdminLoader()
         {
             adminList = cc.getAdmins();
 
-            DataTable data = new DataTable();
-            data.Columns.Add("id");
-            data.Columns.Add("nombre");
-
-            DataRow emptyData = data.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            data.Rows.Add(emptyData);
+            DataTable data = createEmptyDataTable();
 
             foreach (User item in adminList)
             {
                 DataRow row = data.NewRow();
                 row[0] = item.ID;
-                row[1] = StringHelper.upperStartChar(item.Nombre);
+                row[1] = StringHelper.upperStartCharInAllWords(item.Nombre, ' ', "de");
                 data.Rows.Add(row);
             }
 
-            dropAdministrador.DataSource = new DataView(data);
-            dropAdministrador.DataTextField = "nombre";
-            dropAdministrador.DataValueField = "id";
-            dropAdministrador.DataBind();
+            populateDropDown(data, dropAdministrador);
         }
 
         public void dropProveedorLoader()
         {
             providerList = cc.filterProvider();
 
-            DataTable data = new DataTable();
-            data.Columns.Add("id");
-            data.Columns.Add("nombre");
-
-            DataRow emptyData = data.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            data.Rows.Add(emptyData);
+            DataTable data = createEmptyDataTable();
 
             foreach (Provider item in providerList)
             {
@@ -132,22 +113,18 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 data.Rows.Add(row);
             }
 
-            dropProveedor.DataSource = new DataView(data);
-            dropProveedor.DataTextField = "nombre";
-            dropProveedor.DataValueField = "id";
-            dropProveedor.DataBind();
+            populateDropDown(data, dropProveedor);
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            long numeroFactura = Int64.Parse(txtNumeroFactura.Text);
+            long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
             long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
             long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
             long idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
             string fechaCompra = txtFechaCompra.Text;
             decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
             string detalle = txtDetalleCompra.Value;
-
             long idProducto = Int64.Parse(dropProductos.SelectedItem.Value);
             long cantidad = Int64.Parse(txtCantidadComprada.Text);
             decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
@@ -163,21 +140,58 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 lblSuccess.Visible = true;
                 lblSuccess.Text = "Error al cargar compra";
             }
-
-            
         }
 
-        protected void txtPrecioUnitario_TextChanged(object sender, EventArgs e)
+        protected void onPriceAndUnityChanges(object sender, EventArgs e)
         {
-            decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
-            long cantidad = Int64.Parse(txtCantidadComprada.Text);
+            decimal precioUnitario = 0;
+            if (txtPrecioUnitario.Text.Length != 0) 
+                precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
+            long cantidad = 0;
+            if (txtCantidadComprada.Text.Length != 0)
+                cantidad = Int64.Parse(txtCantidadComprada.Text);
 
             decimal res = cantidad * precioUnitario;
-            lblSuccess.Visible = true;
 
-            lblSuccess.Text = res.ToString();
-
-            //txtMontoTotal.Text = res.ToString();
+            txtMontoTotal.Text = res.ToString();
         }
+
+        protected void checkInputs()
+        {
+            if (txtNumeroFactura.Text.Length == 0) return;
+            if (long.Parse(dropProveedor.SelectedItem.Value) == 0) return;
+            if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
+            if (txtFechaCompra.Text.Length == 0) return;
+            if (Decimal.Parse(txtMontoTotal.Text) == 0) return;
+            if (long.Parse(dropProductos.SelectedItem.Value) == 0) return;
+            if (long.Parse(txtCantidadComprada.Text) == 0) return;
+            if (Decimal.Parse(txtPrecioUnitario.Text) == 0)  return;
+
+            btnSubmit.Enabled = true;
+        }
+
+        private DataTable createEmptyDataTable()
+        {
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
+
+            return data;
+        }
+
+        private void populateDropDown(DataTable dataTable, DropDownList dropDown)
+        {
+            dropDown.DataSource = new DataView(dataTable);
+            dropDown.DataTextField = "description";
+            dropDown.DataValueField = "id";
+            dropDown.DataBind();
+        }
+
     }
+
 }

@@ -112,7 +112,6 @@ namespace services
             }
         }
 
-
         public long añadirCompra(long numeroFactura, long idtipo, long idprov, long idadm, string fecha, decimal money, string detalle)
         {
             DataAccess da = new DataAccess();
@@ -142,7 +141,7 @@ namespace services
                 da.closeConnection();
             }
         }
-
+        
         public long añadirVenta(long numeroFactura, long idtipo, long idcliente, long iduser, string fecha, decimal money, string detalle)
         {
             DataAccess da = new DataAccess();
@@ -229,13 +228,9 @@ namespace services
 
         }
 
-
-
-
         //Getters
 
-
-        /* public long getLasID()
+        /*public long getLasID()
          {
              DataAccess da = new DataAccess();
 
@@ -256,6 +251,34 @@ namespace services
 
          }*/
 
+        public long getNumberTicketBuy(long type)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("select top 1 NumeroFactura from compras where TipoFactura = @type order by NumeroFactura desc");
+                da.setConsultaWhitParameters("@type", type);
+                da.execute();
+
+                if (da.dataReader.Read())
+                {
+                    return (long)da.dataReader["NumeroFactura"];
+                }
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
 
         public List<ProductBranch> getBranch()
         {

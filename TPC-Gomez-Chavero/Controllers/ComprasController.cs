@@ -11,6 +11,12 @@ namespace Controllers
     public class ComprasController
     {
        
+        public long getTicketNumber(long type)
+        {
+            ABMService abm = new ABMService();
+
+            return abm.getNumberTicketBuy(type) + 1;
+        }
 
         public List<TipoFactura> getTipoFactura()
         {

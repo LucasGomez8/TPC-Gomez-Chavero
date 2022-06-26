@@ -150,16 +150,17 @@ namespace TPC_Gomez_Chavero
             long cantidad = Int64.Parse(txtCantidadVendida.Text);
             decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
 
-            if (vc.register(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle, idProducto, cantidad, precioUnitario))
-            {
-                lblSuccess.Text = "Registro Exitoso";
-                lblSuccess.Visible = true;
-            }
-            else
-            {
-                lblSuccess.Text = "Error al cargar registro";
-                lblSuccess.Visible = true;
-            }
+        
+         if (vc.register(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle, idProducto, cantidad, precioUnitario))
+         {
+             lblSuccess.Text = "Registro Exitoso";
+             lblSuccess.Visible = true;
+         }
+         else
+         {
+             lblSuccess.Text = "Error al cargar registro";
+             lblSuccess.Visible = true;
+         }
 
         }
     }

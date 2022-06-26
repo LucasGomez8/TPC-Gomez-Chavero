@@ -29,3 +29,4 @@ C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\De
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.csproj.CoreCompileInputs.cache
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.dll
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.pdb
+C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\helpers\obj\Debug\helpers.csproj.AssemblyReference.cache

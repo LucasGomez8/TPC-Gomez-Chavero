@@ -168,5 +168,56 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 addTypeTxt.Visible = false;
             }
         }
+
+        protected void onCreateBranchClicked(object sender, EventArgs e)
+        {
+            string descripcion = addBranchTxt.Text;
+            if (descripcion.Length == 0)
+            {
+                return;
+            }
+
+            if (abm.createTypes(descripcion.ToLower(), "Marcas") == 1)
+            {
+                dropBranch();
+                dropMarca.SelectedIndex = branchList.Count + 1;
+                addBranchBtn.Visible = false;
+                addBranchTxt.Visible = false;
+            }
+        }
+    
+        protected void onCreateTypeClicked(object sender, EventArgs e)
+        {
+            string descripcion = addTypeTxt.Text;
+            if (descripcion.Length == 0)
+            {
+                return;
+            }
+
+            if (abm.createTypes(descripcion.ToLower(), "TipoProducto") == 1)
+            {
+                dropProductType();
+                dropProducto.SelectedIndex = typeList.Count + 1;
+                addTypeBtn.Visible = false;
+                addTypeTxt.Visible = false;
+            }
+        }
+    
+        protected void onCreateCategoryClicked(object sender, EventArgs e)
+        {
+            string descripcion = addCategoryTxt.Text;
+            if (descripcion.Length == 0)
+            {
+                return;
+            }
+
+            if (abm.createTypes(descripcion.ToLower(), "Categorias") == 1)
+            {
+                dropCategory();
+                dropCategoria.SelectedIndex= categoryList.Count + 1;
+                addCategoryBtn.Visible = false;
+                addCategoryTxt.Visible = false;
+            }
+        }
     }
 }

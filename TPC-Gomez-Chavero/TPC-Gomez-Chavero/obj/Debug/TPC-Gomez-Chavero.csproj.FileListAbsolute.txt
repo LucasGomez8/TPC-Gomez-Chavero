@@ -197,3 +197,5 @@ C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\C
 C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.pdb
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.dll
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.pdb
+C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.dll
+C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\TPC-Gomez-Chavero\bin\Controllers.pdb

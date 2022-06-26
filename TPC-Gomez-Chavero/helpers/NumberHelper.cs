@@ -34,13 +34,23 @@ namespace helpers
             }
 
             // only allow two decimals number
-           int idxPoint = txtBox.Text.IndexOf(",");
+            int idxPoint = txtBox.Text.IndexOf(",");
             if (idxPoint != -1 && !(e.KeyChar == (char)Keys.Back))
             {
                 if (txtBox.Text.Length - idxPoint >= 3)
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        public static void inputOnlyNumbers(object sender, KeyPressEventArgs e)
+        { 
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar)
+                )
+            {
+                e.Handled = true;
             }
         }
     }

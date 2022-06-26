@@ -34,16 +34,16 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4" style="display: flex; height: 40px;">
-                        <asp:TextBox ID="addCategoryTxt" style="width: 75%;" runat="server" Visible="false" CssClass="form-control" />
-                        <asp:Button ID="addCategoryBtn" style="margin-left: 10px;" runat="server" Visible="false" Text="Agregar..." CssClass="btn btn-secondary"/>
+                        <asp:TextBox ID="addCategoryTxt" style="width: 75%;" runat="server" Visible="false" CssClass="form-control" Placeholder="Ingrese la nueva categoria..."/>
+                        <asp:Button ID="addCategoryBtn" style="margin-left: 10px;" runat="server" Visible="false" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onCreateCategoryClicked"/>
                     </div>
                     <div class="col-md-4" style="display: flex; height: 40px;">
-                        <asp:TextBox ID="addBranchTxt" style="width: 75%;" runat="server" Visible="false" CssClass="form-control" />
-                        <asp:Button ID="addBranchBtn" style="margin-left: 10px;" runat="server" Visible="false" Text="Agregar..." CssClass="btn btn-secondary"/>
+                        <asp:TextBox ID="addBranchTxt" style="width: 75%;" runat="server" Visible="false" CssClass="form-control" Placeholder="Ingrese la nueva marca..." />
+                        <asp:Button ID="addBranchBtn" style="margin-left: 10px;" runat="server" Visible="false" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onCreateBranchClicked"/>
                     </div>
                     <div class="col-md-4" style="display: flex; height: 40px;">
-                        <asp:TextBox ID="addTypeTxt" style="width: 75%;" runat="server" Visible="false" CssClass="form-control" />
-                        <asp:Button ID="addTypeBtn" style="margin-left: 10px;" runat="server" Visible="false" Text="Agregar..." CssClass="btn btn-secondary"/>
+                        <asp:TextBox ID="addTypeTxt" style="width: 75%;" runat="server" Visible="false" CssClass="form-control" Placeholder="Ingrese el nuevo tipo..."/>
+                        <asp:Button ID="addTypeBtn" style="margin-left: 10px;" runat="server" Visible="false" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onCreateTypeClicked" />
                     </div>
                   </div>
                 </div>

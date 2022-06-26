@@ -89,16 +89,15 @@ namespace Controllers
                 return null;
             }
         }
-
-
-        public bool register(long numeroFactura, long tipoFactura,long idCliente, long iduser,string fechaVenta,decimal montoTotal,string detalle, long idProducto,long cantidad, decimal precioUnitario)
+        public bool register(long numeroFactura, long tipoFactura, long idCliente, long iduser, string fechaVenta, decimal montoTotal, string detalle, long idProducto, long cantidad, decimal precioUnitario)
         {
             abm = new ABMService();
 
             long id = abm.añadirVenta(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle);
+
             if (id != 0)
             {
-                if (abm.crossProductoVenta(id, idProducto, cantidad, precioUnitario) == 1)
+                if (abm.crossProductoVenta(id, idProducto, cantidad,precioUnitario) == 1)
                 {
                     return true;
                 }
