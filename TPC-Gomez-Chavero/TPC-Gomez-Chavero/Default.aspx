@@ -3,10 +3,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="/css/Default.css" type="text/css" rel="stylesheet" />
-    <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-anchor-placement="center-center">
         <div class="row">
             <div class="col-md-12 text-center mt-5">
-                <h3>Bienvenido a tu centro de Control de ventas</h3>
+                <h3 class="titulo">Bienvenido a tu App Web</h3>
             </div>
         </div>
         <div class="col-md-12 mt-5 text-center">

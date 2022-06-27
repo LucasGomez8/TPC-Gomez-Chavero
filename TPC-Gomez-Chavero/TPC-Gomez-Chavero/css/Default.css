@@ -1,6 +1,14 @@
 ﻿body {
+    background-image: url("../Assets/img/home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.titulo{
+    color: white;
+    text-shadow: 3px 2px black;
+
+}
 
 .item{
     height: 300px;

@@ -15,7 +15,7 @@ namespace Controllers
         {
             ABMService abm = new ABMService();
 
-            return abm.getNumberTicketBuy(type) + 1;
+            return abm.getNumberTicketBuy(type, "compras") + 1;
         }
 
         public List<TipoFactura> getTipoFactura()
@@ -25,8 +25,16 @@ namespace Controllers
             List<TipoFactura> list = new List<TipoFactura>();
             list = abm.getTFacturas();
 
+
             if (list != null)
             {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].IdTipo == 3)
+                    {
+                        list.Remove(list[i]);
+                    }
+                }
                 return list;
             }
             else
@@ -42,7 +50,6 @@ namespace Controllers
             List<User> list = new List<User>();
             UserService us = new UserService();
 
-
             list = us.getAdmins();
 
             if (list != null)
@@ -53,7 +60,6 @@ namespace Controllers
             {
                 return null;
             }
-
         }
 
         public List<Product> filterProducts()

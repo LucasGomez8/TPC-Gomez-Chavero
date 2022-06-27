@@ -22,6 +22,8 @@ namespace TPC_Gomez_Chavero
         {
 
             vc = new VentasController();
+
+            setTicketNumber(1);
             if (!IsPostBack)
             {
                 dropTipoFacturaLoader();
@@ -30,6 +32,14 @@ namespace TPC_Gomez_Chavero
                 dropProductoLoader();
             }
         }
+
+        private void setTicketNumber(long type)
+        {
+            long ticketNumber = vc.getTicketNumber(type);
+            txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber);
+            txtNumeroFactura.Enabled = false;
+        }
+
         public void dropTipoFacturaLoader()
         {
             tfacturaList = vc.getTipoFactura();

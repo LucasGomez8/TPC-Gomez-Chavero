@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BajaCliente.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Bajas.BajaCliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+
+    <link href="../../css/Bajas.css" rel="stylesheet" type="text/css" />
+    <div class="container bajStyle">
         <div class="row mt-3 justify-content-center">
             <div class="col-md-8 text-center">
                 <h3>Baja Cliente</h3>
@@ -14,7 +16,7 @@
                         <asp:DropDownList cssClass="form-control" ID="deleteClient" runat="server"></asp:DropDownList>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-4">
                     <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onClick="btnSubmit_Click" runat="server" Text="Eliminar" />
                 </div>
             </form>

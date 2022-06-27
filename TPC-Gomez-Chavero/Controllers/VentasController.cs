@@ -15,6 +15,12 @@ namespace Controllers
         private ABMService abm;
         private UserService us;
 
+        public long getTicketNumber(long type)
+        {
+            ABMService abm = new ABMService();
+
+            return abm.getNumberTicketBuy(type, "ventas") + 1;
+        }
 
         public List<TipoFactura> getTipoFactura()
         {
@@ -25,6 +31,13 @@ namespace Controllers
 
             if (list != null)
             {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].IdTipo == 2)
+                    {
+                        list.Remove(list[i]);
+                    }
+                }
                 return list;
             }
             else

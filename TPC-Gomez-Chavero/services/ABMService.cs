@@ -251,13 +251,13 @@ namespace services
 
          }*/
 
-        public long getNumberTicketBuy(long type)
+        public long getNumberTicketBuy(long type, string table)
         {
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("select top 1 NumeroFactura from compras where TipoFactura = @type order by NumeroFactura desc");
+                da.setConsulta("select top 1 NumeroFactura from " + table + " where TipoFactura = @type order by NumeroFactura desc");
                 da.setConsultaWhitParameters("@type", type);
                 da.execute();
 

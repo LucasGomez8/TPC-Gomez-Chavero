@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditarTipoProducto.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Modificaciones.EditarTipoProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-         <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
-    <div class="container mb-4 frmStyle">
+             <link href="../../css/Modificacion.css" rel="stylesheet" type="text/css"/>
+    <div class="container mb-4 modifStyle">
          <div class="row mt-3 justify-content-center">
             <div class="col-md-8  text-center">
                 <h3>Modificacion de datos de Tipo de Producto</h3>
@@ -33,5 +33,6 @@
                 <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
             </div>
         </div>
+    </div>
     </div>
 </asp:Content>

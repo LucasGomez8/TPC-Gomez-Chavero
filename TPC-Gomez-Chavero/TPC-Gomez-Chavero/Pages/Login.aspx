@@ -2,13 +2,14 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <link href="../../css/Login.css" rel="stylesheet" />
+    <div class="container loginStyle">
         <div class="row mt-2">
             <div class="col-md-12 text-center mt-2">
               <h1>Iniciar Sesion</h1>
             </div>
               <div class="mb-3 row justify-content-center mb-3 mt-5">
-                <label for="txtNick" class="col-sm-2 col-form-label">Nickname</label>
+                <label for="txtNick" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-6 text-center">
                     <asp:TextBox ID="txtNick" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>

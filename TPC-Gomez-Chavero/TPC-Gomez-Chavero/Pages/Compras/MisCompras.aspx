@@ -30,7 +30,8 @@
                       </div>
                       <div class="col-md-4">
                           <label for="tipoProducto">Administrador que realiza el registro</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropAdministrador" runat="server"  AutoPostBack="true" />
+                          <asp:DropDownList CssClass="form-control" ID="dropAdministrador" Visible="false" runat="server"  AutoPostBack="true" />
+                          <asp:TextBox ID="txtUsuarioSession" Enabled="false" runat="server" Visible="false" CssClass="form-control" />
                       </div>
                   </div>
                   <div class="row">

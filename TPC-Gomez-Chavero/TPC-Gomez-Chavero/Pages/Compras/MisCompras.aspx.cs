@@ -17,17 +17,34 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         public List<TipoFactura> tfacturaList;
         public List<Provider> providerList;
         public List<User> adminList;
+        public User sessionUser;
         public List<Product> productList;
         protected void Page_Load(object sender, EventArgs e)
         {
             cc = new ComprasController();
-
+            sessionUser = (User)Session["user"];
             if (!IsPostBack)
             {
                 setTicketNumber(1);
                 dropTipoFacturaLoader();
                 dropProductoLoader();
-                dropAdminLoader();
+                if (sessionUser != null)
+                {
+                    if (sessionUser.type.ID == 1)
+                    {
+                        dropAdminLoader();
+                        dropAdministrador.Visible = true;
+                    }
+                    else
+                    {
+                        txtUsuarioSession.Text = sessionUser.Nick;
+                        txtUsuarioSession.Visible = true;
+                    }
+                }
+                else
+                {
+                    dropAdminLoader();
+                }
                 dropProveedorLoader();
             }
             checkInputs();
@@ -118,10 +135,20 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            long idadmin = 0;
+
+
             long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
             long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
             long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
-            long idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
+            if (sessionUser.type.ID == 1)
+            {
+                idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
+            }
+            else
+            {
+                idadmin = sessionUser.ID;
+            }
             string fechaCompra = txtFechaCompra.Text;
             decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
             string detalle = txtDetalleCompra.Value;
@@ -160,7 +187,14 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         {
             if (txtNumeroFactura.Text.Length == 0) return;
             if (long.Parse(dropProveedor.SelectedItem.Value) == 0) return;
-            if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
+            if (sessionUser.type.ID==1)
+            {
+                if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
+            }
+            else
+            {
+                if (txtUsuarioSession.Text.Length == 0) return;
+            }
             if (txtFechaCompra.Text.Length == 0) return;
             if (Decimal.Parse(txtMontoTotal.Text) == 0) return;
             if (long.Parse(dropProductos.SelectedItem.Value) == 0) return;

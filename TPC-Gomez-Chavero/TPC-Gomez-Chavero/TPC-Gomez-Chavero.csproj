@@ -68,10 +68,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\img\adrUsuarioContent.jpg" />
+    <Content Include="Assets\img\baja.jpg" />
+    <Content Include="Assets\img\home.jpg" />
+    <Content Include="Assets\img\login.jpg" />
+    <Content Include="Assets\img\modificacion.jpg" />
     <Content Include="css\AñadirProducto.css" />
     <Content Include="css\AñadirUsuarios.css" />
+    <Content Include="css\Bajas.css" />
     <Content Include="css\Compras.css" />
     <Content Include="css\Default.css" />
+    <Content Include="css\Login.css" />
+    <Content Include="css\Modificacion.css" />
     <Content Include="css\Ventas.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />

@@ -51,6 +51,15 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected global::System.Web.UI.WebControls.DropDownList dropAdministrador;
 
         /// <summary>
+        /// Control txtUsuarioSession.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUsuarioSession;
+
+        /// <summary>
         /// Control addCategoryTxt.
         /// </summary>
         /// <remarks>
