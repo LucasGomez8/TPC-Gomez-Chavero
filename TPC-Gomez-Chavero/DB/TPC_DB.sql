@@ -121,12 +121,22 @@ go
 
 insert into TipoUsuario (descripcion)
 values('Administrador'),('Vendedor')
+go
 
 insert into Usuarios(nombre,apellido,dni, IDTipoUsuario, contraseña, nick, fechaNac)
 values ('Admin','Admin','1111','1','Admin','Admin',GETDATE())
+go
 
 insert into TipoDeFactura(Descripcion)
 values('Nota de Credito'), ('Factura Original'), ('Factura Duplicada')
+go
 
+Create Procedure sp_VistaVentas AS
+Select ventas.IDRegistro, ventas.NumeroFactura, TipoDeFactura.descripcion, Usuarios.nick, Clientes.nombre, Productos.Nombre AS NombreProducto, pxv.Cantidad, pxv.precioVenta ,ventas.Fecha, ventas.MontoTotal, Ventas.detalle from ventas
+inner join TipoDeFactura on TipoDeFactura.idTipoFactura = Ventas.TipoFactura
+inner join Usuarios on Usuarios.idUsuario = Ventas.idVendedor
+inner join Clientes on Clientes.idCliente = Ventas.idCliente
+inner join ProductoxVenta pxv on pxv.IDRegistro = Ventas.IDRegistro
+inner join Productos on Productos.IDProducto = pxv.IDProducto
 
-
+exec sp_VistaVentas

@@ -36,7 +36,7 @@
                 <div class="form-group mb-3">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="email">Nick</label>
+                            <label for="email">Username</label>
                             <asp:TextBox ID="txtNick" CssClass="form-control" runat="server"></asp:TextBox>
                         </div>
                         <div class="col-md-4">

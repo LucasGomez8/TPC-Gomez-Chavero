@@ -33,7 +33,7 @@ namespace Controllers
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (list[i].IdTipo == 2)
+                    if (i == 1)
                     {
                         list.Remove(list[i]);
                     }

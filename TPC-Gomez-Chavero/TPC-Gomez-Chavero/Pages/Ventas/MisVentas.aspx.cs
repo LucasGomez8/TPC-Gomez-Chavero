@@ -148,7 +148,7 @@ namespace TPC_Gomez_Chavero
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            long numeroFactura = Int64.Parse(txtNumeroFactura.Text);
+            long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
             long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
             long idCliente = Int64.Parse(dropCliente.SelectedItem.Value);
             long iduser = Int64.Parse(dropUsuario.SelectedItem.Value);

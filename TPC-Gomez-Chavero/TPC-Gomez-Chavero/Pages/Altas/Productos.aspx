@@ -63,13 +63,10 @@
                           </div>
                       </div>
                   </div>
-                <div class="form-group mb-5">
-                    <input type="file" name="name" class="form-control" value="" placeholder="+"/>
-                </div>
             </form>
             <div class="row justify-content-center">
                 <div class="col-md-4 text-center">
-              <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Text="Agregar" />
+                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Text="Agregar" />
                 </div>
             </div>
         <%--</div>--%>

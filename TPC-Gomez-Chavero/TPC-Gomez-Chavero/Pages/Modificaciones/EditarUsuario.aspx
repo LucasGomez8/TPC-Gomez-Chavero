@@ -47,7 +47,7 @@
                                   <asp:DropDownList CssClass="form-control" Enabled="false" ID="dropTipoUsuario" runat="server"></asp:DropDownList>
                               </div>
                               <div class="col-md-4">
-                                <label for="txtNick">Nick</label>
+                                <label for="txtNick">Username</label>
                                 <asp:TextBox ID="txtNick" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                               </div>
                               <div class="col-md-4">

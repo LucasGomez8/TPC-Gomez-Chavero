@@ -30,6 +30,12 @@ namespace services
             
         }
 
+        public void setProcedimientoAlmacenado(string sp)
+        {
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.CommandText = sp;
+        }
+
         public void execute()
         {
             command.Connection = connection;

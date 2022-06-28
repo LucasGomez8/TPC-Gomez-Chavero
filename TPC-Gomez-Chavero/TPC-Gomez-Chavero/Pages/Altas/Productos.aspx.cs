@@ -20,6 +20,8 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected void Page_Load(object sender, EventArgs e)
         {
             abm = new ABMService();
+
+
             if (!IsPostBack)
             {
                 dropBranch();

@@ -54,8 +54,8 @@
                               <asp:DropDownList CssClass="form-control" ID="dropProductos" runat="server"  AutoPostBack="true" />
                           </div>
                           <div class="col-md-4">
-                              <label for="txtCantidadComprada">Cantidad Vendida</label>
-                              <asp:TextBox ID="txtCantidadComprada" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <label for="txtCantidadVendida">Cantidad Vendida</label>
+                              <asp:TextBox ID="txtCantidadVendida" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
                           <div class="col-md-4">
                               <label for="txtPrecioUnitario">Precio Venta</label>

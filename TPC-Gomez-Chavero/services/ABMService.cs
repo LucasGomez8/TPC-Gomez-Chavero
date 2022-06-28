@@ -206,7 +206,7 @@ namespace services
 
             try
             {
-                da.setConsulta("insert into ProductoXVENTA(IDRegistro, IDProducto, Cantidad, precioCompra) values(@idregistro, @idproducto, @cantidad, @preciounitario)");
+                da.setConsulta("insert into ProductoXVENTA(IDRegistro, IDProducto, Cantidad, precioVenta) values(@idregistro, @idproducto, @cantidad, @preciounitario)");
                 da.setConsultaWhitParameters("@idregistro", idregistro);
                 da.setConsultaWhitParameters("@idproducto", idproducto);
                 da.setConsultaWhitParameters("@cantidad", cantidad);
@@ -257,7 +257,7 @@ namespace services
 
             try
             {
-                da.setConsulta("select top 1 NumeroFactura from " + table + " where TipoFactura = @type order by NumeroFactura desc");
+                da.setConsulta("select top 1 NumeroFactura from " + table + " order by NumeroFactura desc");
                 da.setConsultaWhitParameters("@type", type);
                 da.execute();
 
