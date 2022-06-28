@@ -9,19 +9,19 @@ go
 
 create table Categorias(
 	IDCategoria bigint primary key identity(1,1),
-	Descripcion varchar(50) not null
+	Descripcion varchar(50) not null unique
 )
 go
 
 create table TipoProducto(
 	IDTipoProducto bigint primary key identity(1,1),
-	Descripcion varchar(50) not null
+	Descripcion varchar(50) not null unique 
 )
 go
 
 create table Marcas(
 	IDMarca bigint primary key identity(1,1),
-	Descripcion varchar(40) not null
+	Descripcion varchar(40) not null unique
 )
 go
 
@@ -57,7 +57,7 @@ create table Usuarios(
 	dni varchar(10) not null unique,
 	IDTipoUsuario bigint foreign key references TipoUsuario(IDTipoUsuario),
 	contraseña varchar(20) not null,
-	nick varchar(25) not null,
+	nick varchar(25) not null unique,
 	fechaNac date not null,
 )
 go
@@ -117,3 +117,16 @@ create table ProductoXVenta(
 	precioVenta money not null,
 )
 go
+
+
+insert into TipoUsuario (descripcion)
+values('Administrador'),('Vendedor')
+
+insert into Usuarios(nombre,apellido,dni, IDTipoUsuario, contraseña, nick, fechaNac)
+values ('Admin','Admin','1111','1','Admin','Admin',GETDATE())
+
+insert into TipoDeFactura(Descripcion)
+values('Nota de Credito'), ('Factura Original'), ('Factura Duplicada')
+
+
+
