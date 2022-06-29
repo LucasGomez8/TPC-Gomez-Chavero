@@ -19,10 +19,17 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         public List<User> adminList;
         public User sessionUser;
         public List<Product> productList;
+
+        public int itemsSaved { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             cc = new ComprasController();
             sessionUser = (User)Session["user"];
+            itemsSaved = Session["itemsSaved"] != null
+                ? (int)Session["itemsSaved"]
+                : 1;
+
             if (!IsPostBack)
             {
                 setTicketNumber(1);
@@ -207,6 +214,11 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             dropDown.DataTextField = "description";
             dropDown.DataValueField = "id";
             dropDown.DataBind();
+        }
+
+        protected void onAddProductClicked(object sender, EventArgs e)
+        {
+            Session["itemsSaved"] = itemsSaved + 1;
         }
 
         protected void onDropProductoChanges(object sender, EventArgs e)
