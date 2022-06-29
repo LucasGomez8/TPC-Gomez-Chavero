@@ -26,7 +26,7 @@
                       </div>
                       <div class="col-md-4">
                           <label for="marca">Proveedor</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropProveedor" runat="server"  AutoPostBack="true" />
+                          <asp:DropDownList CssClass="form-control" ID="dropProveedor" OnSelectedIndexChanged="dropProveedor_SelectedIndexChanged" runat="server"  AutoPostBack="true" />
                       </div>
                       <div class="col-md-4">
                           <label for="tipoProducto">Administrador que realiza el registro</label>
@@ -34,26 +34,12 @@
                           <asp:TextBox ID="txtUsuarioSession" Enabled="false" runat="server" Visible="false" CssClass="form-control" />
                       </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                        <asp:TextBox ID="addCategoryTxt" runat="server" Visible="false" CssClass="form-control" />
-                        <asp:Button ID="addCategoryBtn" runat="server" Visible="false" Text="Agregar..." CssClass="btn-outline-dark"/>
-                    </div>
-                    <div class="col-md-4">
-                        <asp:TextBox ID="addBranchTxt" runat="server" Visible="false" CssClass="form-control" />
-                        <asp:Button ID="addBranchBtn" runat="server" Visible="false" Text="Agregar..." CssClass="btn-outline-dark"/>
-                    </div>
-                    <div class="col-md-4">
-                        <asp:TextBox ID="addTypeTxt" runat="server" Visible="false" CssClass="form-control" />
-                        <asp:Button ID="addTypeBtn" runat="server" Visible="false" Text="Agregar..." CssClass="btn-outline-dark"/>
-                    </div>
-                  </div>
                 </div>
                   <div class="form-group mb-3">
                       <div class="row ">
                           <div class="col-md-4">
                               <label for="dropProductos">Producto</label>
-                              <asp:DropDownList CssClass="form-control" ID="dropProductos" runat="server"  AutoPostBack="true" />
+                              <asp:DropDownList CssClass="form-control" ID="dropProductos"  OnSelectedIndexChanged="onDropProductoChanges" runat="server"  AutoPostBack="true" />
                           </div>
                           <div class="col-md-4">
                               <label for="txtCantidadComprada">Cantidad Comprada</label>
@@ -94,5 +80,6 @@
             </div>
         </div>
     </div>
+
 
 </asp:Content>

@@ -151,7 +151,7 @@ namespace services
                 da.setConsulta("Insert into Ventas(NumeroFactura, TipoFactura, idVendedor, idCliente, Fecha, MontoTotal, detalle) OUTPUT Inserted.IDRegistro values(@numeroFactura, @idtipo, @iduser, @idcliente,  @fecha, @money, @detalle)");
                 da.setConsultaWhitParameters("@numeroFactura", numeroFactura);
                 da.setConsultaWhitParameters("@idtipo", idtipo);
-                da.setConsultaWhitParameters("@iduser", idcliente);
+                da.setConsultaWhitParameters("@iduser", iduser);
                 da.setConsultaWhitParameters("@idcliente", idcliente);
                 da.setConsultaWhitParameters("@fecha", fecha);
                 da.setConsultaWhitParameters("@money", money);

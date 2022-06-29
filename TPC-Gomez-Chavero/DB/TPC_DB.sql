@@ -138,5 +138,8 @@ inner join Usuarios on Usuarios.idUsuario = Ventas.idVendedor
 inner join Clientes on Clientes.idCliente = Ventas.idCliente
 inner join ProductoxVenta pxv on pxv.IDRegistro = Ventas.IDRegistro
 inner join Productos on Productos.IDProducto = pxv.IDProducto
+go
 
-exec sp_VistaVentas
+Create Procedure sp_Clientes AS
+select idCliente, nombre, cuitOrDni, fechaNac, telefono, email from Clientes
+

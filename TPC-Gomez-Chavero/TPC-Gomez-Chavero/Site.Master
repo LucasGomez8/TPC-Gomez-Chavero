@@ -114,6 +114,15 @@
                             <li><a class="dropdown-item" href="/Pages/Modificaciones/EditarUsuario.aspx">Usuario</a></li>  
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ver
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                            <li><a class="dropdown-item" href="/Pages/Ver/VerVentas.aspx">Ventas</a></li>
+                            <li><a class="dropdown-item" href="/Pages/Ver/VerClientes.aspx">Clientes</a></li>
+                        </ul>
+                    </li>
                     <li class="navbar-item">
                         <a class="nav-link" runat="server" id="aLogin" href="/Pages/Login.aspx">Log in</a>
                     </li>

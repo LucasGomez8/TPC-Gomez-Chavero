@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Altas.Productos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
         <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
-    <div class="container frmStyle mb-4 ">
+    <div class="container frmStyle mb-4" data-aos="fade-up">
         <div class="row mt-3 mb-5 text-center ">
             <div class="col-md-12">
                 <h3>Productos</h3>
@@ -17,7 +18,7 @@
                 <label for="descripcion">Descripcion</label>
                 <textarea maxlength="250" id="descripcion" runat="server" class="form-control"></textarea>
               </div>
-              <div class="form-group mb-3">
+              <div class="form-group mb-2">
                   <div class="row mb-2">
                       <div class="col-md-4">
                           <label for="categoria">Categoria</label>
@@ -67,8 +68,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-4 text-center">
                     <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Text="Agregar" />
+                    <asp:Button ID="btnContinue" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Visible="false" Text="Continuar" />
+                    <asp:Button ID="btnRetorno" runat="server" CssClass="btn btn-primary" onClick="btnRetorno_Click" Text="Agregar y Volver" Visible="false" />
                 </div>
             </div>
-        <%--</div>--%>
+        </div>
     </div>
 </asp:Content>

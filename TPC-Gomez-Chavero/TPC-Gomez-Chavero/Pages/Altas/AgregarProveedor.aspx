@@ -20,6 +20,7 @@
                     <div class="col-md-4 text-center">
                     <asp:Button ID="btnReload" runat="server" Text="Continuar" CssClass="btn btn-primary" OnClick="btnReload_Click" />
                     <asp:Button ID="btnSubmit" runat="server" Text="Agregar" onClick="btnSubmit_Click"  CssClass="btn btn-primary" />
+                    <asp:Button ID="btnReturn" runat="server" Text="Agregar" OnClick="btnReturn_Click" Visible="false" CssClass="btn btn-primary" />
                     </div>
                 </div>
             </form>

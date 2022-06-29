@@ -35,7 +35,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
             foreach (Product item in productList)
             {
-                deleteProduct.Items.Add(item.Descripcion);
+                deleteProduct.Items.Add(item.Nombre);
             }
         }
 

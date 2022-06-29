@@ -39,13 +39,11 @@
                       </div>
                   </div>
                 </div>
-                <div class="form-group mb-5">
-                    <input type="file" name="name" class="form-control" value=""/>
-                </div>
             </form>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mt-3">
                 <div class="col-md-4 text-center">
                 <asp:Button ID="btnSubmit" cssClass="btn btn-primary" OnClick="btnSubmit_Click" runat="server" Text="Agregar" />
+                <asp:Button ID="btnReturn" cssClass="btn btn-primary" OnClick="btnReturn_Click" runat="server" Visible="false" Text="Agregar y Volver" />
                 </div>
             </div>
         </div>

@@ -133,6 +133,11 @@ namespace TPC_Gomez_Chavero
             emptyData[1] = "";
             data.Rows.Add(emptyData);
 
+            DataRow newdata = data.NewRow();
+            newdata[0] = -1;
+            newdata[1] = "Nuevo...";
+            data.Rows.Add(newdata);
+
             foreach (Client item in clientList)
             {
                 DataRow row = data.NewRow();
@@ -172,6 +177,36 @@ namespace TPC_Gomez_Chavero
              lblSuccess.Visible = true;
          }
 
+        }
+
+        protected void onPriceAndUnityChanges(object sender, EventArgs e)
+        {
+            decimal precioUnitario = 0;
+            if (txtPrecioUnitario.Text.Length != 0)
+                precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
+            long cantidad = 0;
+            if (txtCantidadVendida.Text.Length != 0)
+                cantidad = Int64.Parse(txtCantidadVendida.Text);
+
+            decimal res = cantidad * precioUnitario;
+
+            txtVenta.Text = res.ToString();
+        }
+
+        protected void onDropProductoChanges(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void dropCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long idselected = Int64.Parse(dropCliente.SelectedValue);
+
+            if (idselected == -1)
+            {
+                Session["Vendiendo"] = true;
+                Response.Redirect("~/Pages/Altas/AgregarCliente.aspx");
+            }
         }
     }
 }

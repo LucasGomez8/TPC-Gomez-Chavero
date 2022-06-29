@@ -27,6 +27,13 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 dropBranch();
                 dropCategory();
                 dropProductType();
+
+                if(Session["Comprando"] != null)
+                {
+                    btnSubmit.Visible = false;
+                    btnRetorno.Visible = true;
+                    Session.Remove("Comprando");
+                }
             }
         }
 
@@ -219,6 +226,24 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 dropCategoria.SelectedIndex= categoryList.Count + 1;
                 addCategoryBtn.Visible = false;
                 addCategoryTxt.Visible = false;
+            }
+        }
+
+        protected void btnRetorno_Click(object sender, EventArgs e)
+        {
+            ABMService abm = new ABMService();
+            string nombre = txtNombre.Text;
+            string des = descripcion.Value;
+            long idcategoria = Int64.Parse(dropCategoria.SelectedItem.Value);
+            long idmarca = Int64.Parse(dropMarca.SelectedItem.Value);
+            long idtipo = Int64.Parse(dropProducto.SelectedItem.Value);
+            int stock = int.Parse(txtStock.Text);
+            int stockmin = int.Parse(txtStockMinimo.Text);
+            short porc = Int16.Parse(txtPorcentajeVenta.Text);
+
+            if (abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stock, stockmin, porc) == 1)
+            {
+                Response.Redirect("~/Pages/Compras/MisCompras.aspx");
             }
         }
     }

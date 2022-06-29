@@ -58,5 +58,42 @@ namespace services
 
         }
 
+        public List<Client> listarCliente()
+        {
+            DataAccess da = new DataAccess();
+            List<Client> list = new List<Client>();
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_Clientes");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Client response = new Client();
+
+                    response.Id = (long)da.dataReader["idCliente"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.CuitOrDni = (string)da.dataReader["cuitOrDni"];
+                    response.fechaNac = (DateTime)da.dataReader["fechaNac"];
+                    response.Email = (string)da.dataReader["email"];
+                    response.Telefono = (string)da.dataReader["Telefono"];
+
+                    list.Add(response);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
     }
 }

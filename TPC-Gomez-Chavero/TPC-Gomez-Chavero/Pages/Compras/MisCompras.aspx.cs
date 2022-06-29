@@ -28,23 +28,8 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 setTicketNumber(1);
                 dropTipoFacturaLoader();
                 dropProductoLoader();
-                if (sessionUser != null)
-                {
-                    if (sessionUser.type.ID == 1)
-                    {
-                        dropAdminLoader();
-                        dropAdministrador.Visible = true;
-                    }
-                    else
-                    {
-                        txtUsuarioSession.Text = sessionUser.Nick;
-                        txtUsuarioSession.Visible = true;
-                    }
-                }
-                else
-                {
-                    dropAdminLoader();
-                }
+                dropAdministrador.Visible = true;
+                dropAdminLoader();
                 dropProveedorLoader();
             }
             checkInputs();
@@ -187,14 +172,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         {
             if (txtNumeroFactura.Text.Length == 0) return;
             if (long.Parse(dropProveedor.SelectedItem.Value) == 0) return;
-            if (sessionUser.type.ID==1)
-            {
-                if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
-            }
-            else
-            {
-                if (txtUsuarioSession.Text.Length == 0) return;
-            }
+            if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
             if (txtFechaCompra.Text.Length == 0) return;
             if (Decimal.Parse(txtMontoTotal.Text) == 0) return;
             if (long.Parse(dropProductos.SelectedItem.Value) == 0) return;
@@ -215,6 +193,11 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             emptyData[1] = "";
             data.Rows.Add(emptyData);
 
+            DataRow newData = data.NewRow();
+            newData[0] = -1;
+            newData[1] = "Nuevo...";
+            data.Rows.Add(newData);
+
             return data;
         }
 
@@ -226,6 +209,27 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             dropDown.DataBind();
         }
 
+        protected void onDropProductoChanges(object sender, EventArgs e)
+        {
+            long idSelected = long.Parse(dropProductos.SelectedValue);
+
+            if (idSelected == -1)
+            {
+                Session["Comprando"] = true;
+                Response.Redirect("~/Pages/Altas/Productos.aspx");
+            }
+        }
+
+        protected void dropProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long idSelected = long.Parse(dropProveedor.SelectedValue);
+
+            if (idSelected == -1)
+            {
+                Session["Comprando"] = true;
+                Response.Redirect("~/Pages/Altas/AgregarProveedor.aspx");
+            }
+        }
     }
 
 }

@@ -25,7 +25,7 @@
                       </div>
                       <div class="col-md-4">
                           <label for="dropCliente">Cliente</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropCliente" runat="server"  AutoPostBack="true" />
+                          <asp:DropDownList CssClass="form-control" ID="dropCliente" OnSelectedIndexChanged="dropCliente_SelectedIndexChanged" runat="server"  AutoPostBack="true" />
                       </div>
                       <div class="col-md-4">
                           <label for="dropUsuario">Usuario que realiza la venta</label>
@@ -55,11 +55,11 @@
                           </div>
                           <div class="col-md-4">
                               <label for="txtCantidadVendida">Cantidad Vendida</label>
-                              <asp:TextBox ID="txtCantidadVendida" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtCantidadVendida" runat="server" TextMode="Number" CssClass="form-control" OnTextChanged="onPriceAndUnityChanges" AutoPostBack="true"></asp:TextBox>
                           </div>
                           <div class="col-md-4">
                               <label for="txtPrecioUnitario">Precio Venta</label>
-                              <asp:TextBox ID="txtPrecioUnitario" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtPrecioUnitario" runat="server" TextMode="Number" CssClass="form-control" OnTextChanged="onPriceAndUnityChanges" AutoPostBack="true"></asp:TextBox>
                           </div>
                       </div>
                   </div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="txtVenta">Monto Total de Venta</label>
-                            <asp:TextBox ID="txtVenta" runat="server" TextMode="number" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtVenta" runat="server" TextMode="number" Enabled="false" CssClass="form-control" AutoPostBack="true"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -92,4 +92,12 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 </asp:Content>

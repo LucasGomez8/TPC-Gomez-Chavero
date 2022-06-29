@@ -11,6 +11,12 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         {
             btnReload.Visible = false;
             lblSuccess.Visible = false;
+            if(Session["Comprando"] != null)
+            {
+                btnSubmit.Visible = false;
+                btnReturn.Visible = true;
+                Session.Remove("Comprando");
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -45,6 +51,24 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             lblSuccess.Visible = false;
             txtNombre.Text = "";
             btnSubmit.Visible = true;
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            string descripcion = txtNombre.Text;
+            if (descripcion.Length == 0)
+            {
+                lblSuccess.Text = "Por favor, ingrese informacion correcta";
+                lblSuccess.Visible = true;
+                return;
+            }
+
+            ABMService abm = new ABMService();
+
+            if (abm.addProvider(descripcion.ToLower()) == 1)
+            {
+                Response.Redirect("~/Pages/Compras/MisCompras.aspx");
+            }
         }
     }
 }
