@@ -18,6 +18,7 @@
                 </div>
                 <div class="col-md-4 mt-4">
                     <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" runat="server" Text="Eliminar" />
+                    <asp:Button ID="btnContinuar" CssClass="btn btn-primary" onclick="btnContinuar_Click" Visible="false" runat="server" Text="Continuar" />
                 </div>
             </form>
         </div>

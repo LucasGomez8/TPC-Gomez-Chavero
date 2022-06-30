@@ -95,5 +95,51 @@ namespace services
             }
         }
 
+        public List<Compras> listarCompras()
+        {
+            DataAccess da = new DataAccess();
+            List<Compras> list = new List<Compras>();
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_VistaCompras");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Compras response = new Compras();
+
+                    response.ID = (long)da.dataReader["IDRegistro"];
+                    response.NumeroFactura = (long)da.dataReader["NumeroFactura"];
+                    response.TiposFactura = new TipoFactura();
+                    response.TiposFactura.Descripcion = (string)da.dataReader["descripcion"];
+                    response.Usuario = new User();
+                    response.Usuario.Nick = (string)da.dataReader["nick"];
+                    response.Proveedor = new Provider();
+                    response.Proveedor.Nombre = (string)da.dataReader["nombre"];
+                    response.Producto = new Product();
+                    response.Producto.Nombre = (string)da.dataReader["NombreProducto"];
+                    response.CantidadComprada = (long)da.dataReader["cantidad"];
+                    response.PrecioUnitario = (decimal)da.dataReader["precioCompra"];
+                    response.MontoTotal = (decimal)da.dataReader["MontoTotal"];
+                    response.FechaVenta = (DateTime)da.dataReader["Fecha"];
+                    response.Detalle = (string)da.dataReader["detalle"];
+
+
+                    list.Add(response);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
     }
 }

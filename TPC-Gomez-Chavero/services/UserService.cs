@@ -17,7 +17,7 @@ namespace services
                 da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, " +
                     "T.descripcion as descripcionTipo, T.idTipoUsuario " +
                     "from Usuarios as U left join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario " +
-                    "where U.nick = @nick and U.contraseña = @pass COLLATE SQL_Latin1_General_CP1_CS_AS");
+                    "where U.Estado = 1 And U.nick = @nick and U.contraseña = @pass COLLATE SQL_Latin1_General_CP1_CS_AS");
                 da.setConsultaWhitParameters("@nick", nick);
                 da.setConsultaWhitParameters("@pass", pass);
                 da.execute();
@@ -61,7 +61,7 @@ namespace services
             {
                 da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, U.contraseña, U.fechaNac," +
                     "T.descripcion as descripcionTipo, T.idTipoUsuario " +
-                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario");
+                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario Where U.Estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -107,7 +107,7 @@ namespace services
             {
                 da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, U.contraseña, U.fechaNac," +
                     "T.descripcion as descripcionTipo, T.idTipoUsuario " +
-                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario where T.idTipoUsuario = 1");
+                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario where T.idTipoUsuario = 1 And U.Estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -182,7 +182,7 @@ namespace services
 
             try
             {
-                da.setConsulta("insert into Usuarios(Nombre, Apellido, DNI, IdTipoUsuario, nick, contraseña, fechaNac) values(@nombre, @apellido, @dni, @idtipo, @nick, @pass, @date)");
+                da.setConsulta("insert into Usuarios(Nombre, Apellido, DNI, IdTipoUsuario, nick, contraseña, fechaNac, Estado) values(@nombre, @apellido, @dni, @idtipo, @nick, @pass, @date, 1)");
                 da.setConsultaWhitParameters("@nombre", nombre);
                 da.setConsultaWhitParameters("@apellido", apellido);
                 da.setConsultaWhitParameters("@dni", dni);
@@ -212,7 +212,7 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Delete from Productos where IDProducto = @id");
+                da.setConsulta("Update Usuarios Set estado = 0 where IDUSUARIO = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();

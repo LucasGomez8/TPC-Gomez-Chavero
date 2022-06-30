@@ -65,7 +65,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             string tele = txtTelefono.Text;
             string mail = txtEmail.Text;
 
-            if (abm.editClient(Selected.Id, nombre, cod, fec, tele, mail) == 1)
+            if (abm.editClient(id, nombre, cod, fec, tele, mail) == 1)
             {
                 lblSuccess.Visible = true;
                 lblSuccess.Text = "Modificacion exitosa";

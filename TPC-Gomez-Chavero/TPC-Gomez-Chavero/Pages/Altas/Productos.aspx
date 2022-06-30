@@ -3,12 +3,25 @@
 
         <link href="../../css/AñadirProducto.css" rel="stylesheet" type="text/css"/>
     <div class="container frmStyle mb-4" data-aos="fade-up">
-        <div class="row mt-3 mb-5 text-center ">
+        
+        <div class="row mt-3 mb-5 text-center">
             <div class="col-md-12">
-                <h3>Productos</h3>
+                <h3>Alta de Productos</h3>
             </div>
         </div>
-        <div class="row mt-5 mb-5 ">
+
+        <div class="row justify-content-center" runat="server" id="menu">
+            <div class="col-md-6 text-center">
+                <asp:Button ID="btnNuevo" OnClick="btnNuevo_Click" CssClass="btn btn-primary"  runat="server" Text="Nuevo" />
+            </div>
+            <div class="col-md-6 text-center">
+                <asp:Button ID="btnExistente" CssClass="btn btn-primary" OnClick="btnExistente_Click" runat="server" Text="Dado de Baja" />
+            </div>
+        </div>
+
+
+
+        <div class="row mt-5 mb-5" id="Nuevo" runat="server" visible="false"> 
             <form class="frmStyle">
               <div class="form-group mb-3">
                 <label for="txtNombre">Nombre</label>
@@ -50,15 +63,11 @@
                 </div>
                   <div class="form-group mb-5">
                       <div class="row ">
-                          <div class="col-md-4">
-                              <label for="txtStock">Stock Actual</label>
-                              <asp:TextBox ID="txtStock" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
-                          </div>
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                               <label for="txtStockMinimo">Stock Minimo</label>
                               <asp:TextBox ID="txtStockMinimo" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                               <label for="porcentajeVenta">Porcentaje de Venta</label>
                               <asp:TextBox ID="txtPorcentajeVenta" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
@@ -68,10 +77,40 @@
             <div class="row justify-content-center">
                 <div class="col-md-4 text-center">
                     <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Text="Agregar" />
-                    <asp:Button ID="btnContinue" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Visible="false" Text="Continuar" />
+                    <asp:Button ID="btnContinue" runat="server" CssClass="btn btn-primary" onClick="btnContinue_Click" Visible="false" Text="Continuar" />
+                    <asp:Button ID="btnVolver" runat="server" CssClass="btn btn-primary" onClick="btnContinue_Click" Visible="false" Text="Volver" />
                     <asp:Button ID="btnRetorno" runat="server" CssClass="btn btn-primary" onClick="btnRetorno_Click" Text="Agregar y Volver" Visible="false" />
                 </div>
             </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                   <asp:Label ID="lblSuccess" runat="server" Visible="false"></asp:Label>
+                </div>
+            </div>
         </div>
+
+
+        <div class="row justify-content-center" runat="server" visible="false" id="debaja">
+               <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="deleteType">Selecciona el Producto a volver a dar el alta</label>
+                        <asp:DropDownList cssClass="form-control" ID="dropElimnacionFisica" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                     <asp:Button ID="btnOk" CssClass="btn btn-primary" onclick="btnOk_Click" runat="server" Text="Dar de Alta" />
+                </div>
+              <div class="row justify-content-center mt-4">
+                  <div class="col-md-12 text-center">
+                    <asp:Label ID="lblSucessBaja" runat="server" Visible="false"></asp:Label>
+                  </div>
+              </div>
+                <div class="col-md-4 mt-4 text-center">
+                    <asp:Button ID="btnContinuarBaja" runat="server" CssClass="btn btn-primary" onClick="btnContinuarBaja_Click" Visible="false" Text="Continuar" />
+                    <asp:Button ID="btnVolverBaja" runat="server" CssClass="btn btn-primary" onClick="btnVolverBaja_Click" Visible="false" Text="Volver" />
+                </div>
+        </div>
+
+
     </div>
 </asp:Content>

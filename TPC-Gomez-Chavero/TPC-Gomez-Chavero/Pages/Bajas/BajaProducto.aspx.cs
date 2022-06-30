@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using domain;
 using services;
+using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Bajas
 {
@@ -13,38 +15,67 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
     {
 
         public List<Product> productList;
+        public ABMService abm;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            dropLoader();
+            abm = new ABMService();
+            if (!IsPostBack)
+            {
+                dropLoader();
+            }
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            int whatProduct = deleteProduct.SelectedIndex;
 
-            long x = findIt(whatProduct);
+            long idSelected = Int64.Parse(deleteProduct.SelectedItem.Value);
 
-            abm.deleteProduct(x);
+            if (abm.deleteProduct(idSelected) == 1)
+            {
+                lblSuccess.Text = "Producto Eliminado con Exito!";
+                lblSuccess.Visible = true;
+
+                btnSubmit.Visible = false;
+                btnContinue.Visible = true;
+            }
+
         }
 
         public void dropLoader()
         {
-            ABMService abm = new ABMService();
-            productList = abm.getProducts();
+            productList = abm.getProducts(1);
+
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
 
             foreach (Product item in productList)
             {
-                deleteProduct.Items.Add(item.Nombre);
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Nombre);
+                data.Rows.Add(row);
             }
+
+            deleteProduct.DataSource = new DataView(data);
+            deleteProduct.DataTextField = "description";
+            deleteProduct.DataValueField = "id";
+            deleteProduct.DataBind();
         }
 
-        public long findIt(int id)
+        protected void btnContinue_Click(object sender, EventArgs e)
         {
-            Product thisis = new Product();
-            thisis = productList[id];
+            lblSuccess.Visible = false;
 
-            return thisis.Id;
+            btnContinue.Visible = false;
+            btnSubmit.Visible = true;
+            dropLoader();
         }
     }
 }

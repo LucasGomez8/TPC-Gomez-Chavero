@@ -68,7 +68,7 @@ namespace Controllers
             List<Product> list = new List<Product>();
 
 
-            list = abm.getProducts();
+            list = abm.getProducts(1);
 
             if (list != null)
             {

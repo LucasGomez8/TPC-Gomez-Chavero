@@ -17,8 +17,15 @@
                 </div>
                 <div class="col-md-4 mt-4">
                     <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" runat="server" Text="Eliminar" />
+                     <asp:Button ID="btnContinue" CssClass="btn btn-primary" onclick="btnContinue_Click" runat="server" Text="Continuar" visible="false" />
                 </div>
             </form>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                    <asp:Label ID="lblSuccess" runat="server" visible="false"></asp:Label>
+            </div>
+        </div>
     </div>
+
 </asp:Content>

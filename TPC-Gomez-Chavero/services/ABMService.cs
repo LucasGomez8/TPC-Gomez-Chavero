@@ -13,7 +13,7 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("insert into " + tabla + " (descripcion) values(@descripcion)");
+                da.setConsulta("insert into " + tabla + " (descripcion, Estado) values(@descripcion, 1)");
                 da.setConsultaWhitParameters("@descripcion", descripcion);
 
                 da.executeAction();
@@ -37,7 +37,7 @@ namespace services
 
             try
             {
-                da.setConsulta("insert into Clientes(Nombre, CuitOrDni, FechaNac, Telefono, Email) values(@nombre, @cod, @date, @telefono, @email)");
+                da.setConsulta("insert into Clientes(Nombre, CuitOrDni, FechaNac, Telefono, Email, Estado) values(@nombre, @cod, @date, @telefono, @email, 1)");
                 da.setConsultaWhitParameters("@nombre", nombre);
                 da.setConsultaWhitParameters("@cod", cod);
                 da.setConsultaWhitParameters("@date", date);
@@ -59,19 +59,18 @@ namespace services
             }
         }
 
-        public int addProduct(string nombre, string descripcion, long idcategoria, long idmarca, long idtipoproducto, int stock, int stockminimo, short porcentaje)
+        public int addProduct(string nombre, string descripcion, long idcategoria, long idmarca, long idtipoproducto, int stockminimo, short porcentaje)
         {
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("insert into Productos(Nombre, Descripcion, IDCATEGORIA, IDMARCA, IDTIPOPRODUCTO, STOCK, STOCKMINIMO, PORCENTAJEVENTA) values(@nombre, @descripcion, @idcategoria, @idmarca, @idtipoproducto, @stock, @stockminimo, @porcentaje)");
+                da.setConsulta("insert into Productos(Nombre, Descripcion, IDCATEGORIA, IDMARCA, IDTIPOPRODUCTO, STOCK, STOCKMINIMO, PORCENTAJEVENTA, Estado) values(@nombre, @descripcion, @idcategoria, @idmarca, @idtipoproducto, 0, @stockminimo, @porcentaje, 1)");
                 da.setConsultaWhitParameters("@nombre", nombre);
                 da.setConsultaWhitParameters("@descripcion", descripcion);
                 da.setConsultaWhitParameters("@idcategoria", idcategoria);
                 da.setConsultaWhitParameters("@idmarca", idmarca);
                 da.setConsultaWhitParameters("@idtipoproducto", idtipoproducto);
-                da.setConsultaWhitParameters("@stock", stock);
                 da.setConsultaWhitParameters("@stockminimo", stockminimo);
                 da.setConsultaWhitParameters("@porcentaje", porcentaje);
 
@@ -95,7 +94,7 @@ namespace services
 
             try
             {
-                da.setConsulta("insert into Proveedores(Nombre) values(@nombre)");
+                da.setConsulta("insert into Proveedores(Nombre, Estado) values(@nombre, 1)");
                 da.setConsultaWhitParameters("@nombre", nombre);
                 da.executeAction();
 
@@ -287,7 +286,7 @@ namespace services
 
             try
             {
-                da.setConsulta("select Idmarca, Descripcion from Marcas");
+                da.setConsulta("select Idmarca, Descripcion from Marcas Where Estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -295,7 +294,6 @@ namespace services
                     ProductBranch branch = new ProductBranch();
                     branch.Id = (long)da.dataReader["Idmarca"];
                     branch.Descripcion = (string)da.dataReader["Descripcion"];
-
 
                     branchList.Add(branch);
                 }
@@ -322,7 +320,7 @@ namespace services
 
             try
             {
-                da.setConsulta("select Idcategoria, Descripcion from Categorias");
+                da.setConsulta("select Idcategoria, Descripcion from Categorias Where Estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -357,7 +355,7 @@ namespace services
 
             try
             {
-                da.setConsulta("select IdTipoProducto, Descripcion from TipoProducto");
+                da.setConsulta("select IdTipoProducto, Descripcion from TipoProducto Where Estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -384,7 +382,7 @@ namespace services
 
         }
 
-        public List<Product> getProducts()
+        public List<Product> getProducts(int status)
         {
             DataAccess da = new DataAccess();
             List<Product> productlist = new List<Product>();
@@ -395,7 +393,8 @@ namespace services
                                 " Productos.StockMinimo, Productos.porcentajeVenta, Marcas.Descripcion as Mdes, Categorias.Descripcion as CDes, TipoProducto.Descripcion as TDes from Productos"+
                                 " inner join Marcas on Marcas.IDMarca = Productos.IDMarca" +
                                 " inner join Categorias on Categorias.IDCategoria = Productos.IDCategoria"+
-                                " inner join TipoProducto on TipoProducto.IDTipoProducto = Productos.IDTipoProducto");
+                                " inner join TipoProducto on TipoProducto.IDTipoProducto = Productos.IDTipoProducto Where Productos.Estado = @status");
+                da.setConsultaWhitParameters("@status", status);
 
                 da.execute();
 
@@ -440,7 +439,7 @@ namespace services
 
             try
             {
-                da.setConsulta("Select IDCliente, Nombre, cuitOrDni, fechaNac, telefono, email from Clientes");
+                da.setConsulta("Select IDCliente, Nombre, cuitOrDni, fechaNac, telefono, email from Clientes where estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -477,7 +476,7 @@ namespace services
 
             try
             {
-                da.setConsulta("Select IDProveedor, Nombre from Proveedores");
+                da.setConsulta("Select IDProveedor, Nombre from Proveedores where estado = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -544,7 +543,7 @@ namespace services
 
             try
             {
-                da.setConsulta("Delete from Productos where IDProducto = @id");
+                da.setConsulta("Update Productos set Estado = 0 where IDProducto = @id");
                 da.setConsultaWhitParameters("@id", id);
                 
                 da.executeAction();
@@ -567,7 +566,7 @@ namespace services
 
             try
             {
-                da.setConsulta("delete from Clientes where IDCliente = @id");
+                da.setConsulta("Update Clientes set Estado = 0 where IDCliente = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
@@ -590,7 +589,7 @@ namespace services
 
             try
             {
-                da.setConsulta("delete from Categorias where IDCategoria = @id");
+                da.setConsulta("Update Categorias set Estado = 0 where IDCategoria = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
@@ -613,7 +612,7 @@ namespace services
 
             try
             {
-                da.setConsulta("delete from Marcas where IDMarca = @id");
+                da.setConsulta("Update Marcas set Estado = 0 where IDMarca = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
@@ -635,7 +634,7 @@ namespace services
 
             try
             {
-                da.setConsulta("delete from Proveedores where IDProveedor = @id");
+                da.setConsulta("Update Proveedores set Estado = 0 where IDProveedor = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
@@ -657,7 +656,7 @@ namespace services
 
             try
             {
-                da.setConsulta("delete from TipoProducto where IDTipoProducto = @id");
+                da.setConsulta("Update TipoProducto set Estado = 0 where IDTipoProducto = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
@@ -679,7 +678,7 @@ namespace services
 
             try
             {
-                da.setConsulta("delete from Usuarios where IDUsuario = @id");
+                da.setConsulta("Update Usuarios set Estado = 0 where IDUsuario = @id");
                 da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
@@ -713,6 +712,30 @@ namespace services
                 da.setConsultaWhitParameters("@stock", stock);
                 da.setConsultaWhitParameters("@stockminimo", stockminimo);
                 da.setConsultaWhitParameters("@porcentaje", porcentaje);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public int changeStatus(string table, int status,long id)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update "+table+" Set Estado = @status where IDProducto = @id");
+                da.setConsultaWhitParameters("@status", status);
+                da.setConsultaWhitParameters("@id", id);
 
                 da.executeAction();
                 return da.getLineCantAfected();

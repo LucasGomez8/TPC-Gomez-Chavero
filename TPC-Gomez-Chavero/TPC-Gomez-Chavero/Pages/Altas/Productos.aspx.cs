@@ -16,6 +16,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         private List<ProductBranch> branchList;
         private List<ProductType> typeList;
         private List<ProductCategory> categoryList;
+        private List<Product> dadosBaja;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -96,11 +97,17 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             long idcategoria = Int64.Parse(dropCategoria.SelectedItem.Value);
             long idmarca = Int64.Parse(dropMarca.SelectedItem.Value);
             long idtipo = Int64.Parse(dropProducto.SelectedItem.Value);
-            int stock = int.Parse(txtStock.Text);
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
-            abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stock, stockmin, porc);
+            if (abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+            {
+                lblSuccess.Text = "Producto cargado de forma exitosa!";
+                lblSuccess.Visible = true;
+                btnSubmit.Visible = false;
+                btnContinue.Visible = true;
+            }
+
         }
 
         private DataTable createEmptyDataTable()
@@ -237,14 +244,93 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             long idcategoria = Int64.Parse(dropCategoria.SelectedItem.Value);
             long idmarca = Int64.Parse(dropMarca.SelectedItem.Value);
             long idtipo = Int64.Parse(dropProducto.SelectedItem.Value);
-            int stock = int.Parse(txtStock.Text);
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
-            if (abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stock, stockmin, porc) == 1)
+            if (abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stockmin, porc) == 1)
             {
                 Response.Redirect("~/Pages/Compras/MisCompras.aspx");
             }
+        }
+
+        protected void btnContinue_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtStockMinimo.Text = "";
+            txtPorcentajeVenta.Text = "";
+            descripcion.Value = "";
+
+            btnContinue.Visible = false;
+            btnSubmit.Visible = true;
+            lblSuccess.Visible = false;
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Nuevo.Visible = true;
+            btnNuevo.Visible = false;
+            btnExistente.Visible = false;
+        }
+
+        public void dropDadosBaja()
+        {
+             dadosBaja= abm.getProducts(0);
+
+            DataTable data = createEmptyDataTable();
+
+            foreach (Product item in dadosBaja)
+            {
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Nombre);
+                data.Rows.Add(row);
+            }
+
+            populateDropDown(data, dropElimnacionFisica);
+        }
+
+        protected void btnExistente_Click(object sender, EventArgs e)
+        {
+            dropDadosBaja();
+
+            debaja.Visible = true;
+            menu.Visible = false;
+        }
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
+            ABMService abm = new ABMService();
+
+            if (abm.changeStatus("Productos", 1, id)==1)
+            {
+                lblSucessBaja.Visible = true;
+                lblSucessBaja.Text = "El producto Vuelve a estar de alta";
+
+                
+
+                btnContinuarBaja.Visible = true;
+                btnVolverBaja.Visible = true;
+            }
+           
+        }
+
+        protected void btnContinuarBaja_Click(object sender, EventArgs e)
+        {
+            dropDadosBaja();
+
+            btnOk.Visible = true;
+
+            btnContinuarBaja.Visible = false;
+            btnVolverBaja.Visible = false;
+            lblSucessBaja.Visible = false;
+        }
+
+        protected void btnVolverBaja_Click(object sender, EventArgs e)
+        {
+            debaja.Visible = false;
+            menu.Visible = true;
+
         }
     }
 }

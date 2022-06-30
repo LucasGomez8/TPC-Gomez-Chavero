@@ -4,14 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using domain;
+using services;
+using helpers;
+using Controllers;
 
 namespace TPC_Gomez_Chavero.Pages.Ver
 {
     public partial class VerProductos : System.Web.UI.Page
     {
+        public ABMService abm;
         protected void Page_Load(object sender, EventArgs e)
         {
+            abm = new ABMService();
 
+            dgvProductos.DataSource = abm.getProducts(1);
+            dgvProductos.DataBind();
         }
     }
 }

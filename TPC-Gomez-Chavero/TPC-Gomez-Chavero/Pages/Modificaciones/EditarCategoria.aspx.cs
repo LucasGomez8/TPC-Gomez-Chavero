@@ -29,7 +29,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         }
         public void dropLoader()
         {
-            categoryList = abm.getCategory(); ;
+            categoryList = abm.getCategory();
 
             DataTable data = new DataTable();
             data.Columns.Add("id");
@@ -62,6 +62,8 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
             txtNCategoria.Enabled = true;
             txtNCategoria.Text = Selected.Descripcion;
+
+            btnSubmit.Enabled = true;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -79,6 +81,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public ProductCategory findIt(long id)
         {
+            categoryList = abm.getCategory();
             foreach (ProductCategory item in categoryList)
             {
                 if (item.Id == id)

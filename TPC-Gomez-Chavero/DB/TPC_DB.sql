@@ -9,25 +9,29 @@ go
 
 create table Categorias(
 	IDCategoria bigint primary key identity(1,1),
-	Descripcion varchar(50) not null unique
+	Descripcion varchar(50) not null unique,
+	Estado bit not null
 )
 go
 
 create table TipoProducto(
 	IDTipoProducto bigint primary key identity(1,1),
-	Descripcion varchar(50) not null unique 
+	Descripcion varchar(50) not null unique,
+	Estado bit not null
 )
 go
 
 create table Marcas(
 	IDMarca bigint primary key identity(1,1),
-	Descripcion varchar(40) not null unique
+	Descripcion varchar(40) not null unique,
+	Estado bit not null
 )
 go
 
 create table Proveedores(
 	IDProveedor bigint primary key not null identity(1,1),
-	Nombre varchar(40) not null
+	Nombre varchar(40) not null,
+	Estado bit not null
 )
 go
 
@@ -41,6 +45,8 @@ create table Productos(
 	Stock int not null,
 	StockMinimo int not null,
 	porcentajeVenta smallint not null,
+	Estado bit not null
+
 )
 go
 
@@ -59,6 +65,7 @@ create table Usuarios(
 	contraseña varchar(20) not null,
 	nick varchar(25) not null unique,
 	fechaNac date not null,
+	Estado bit not null
 )
 go
 
@@ -69,6 +76,7 @@ create table Clientes(
 	fechaNac date not null,
 	telefono varchar(20) unique null,
 	email varchar(100) unique null,
+	Estado bit not null
 )
 go
 
@@ -123,8 +131,8 @@ insert into TipoUsuario (descripcion)
 values('Administrador'),('Vendedor')
 go
 
-insert into Usuarios(nombre,apellido,dni, IDTipoUsuario, contraseña, nick, fechaNac)
-values ('Admin','Admin','1111','1','Admin','Admin',GETDATE())
+insert into Usuarios(nombre,apellido,dni, IDTipoUsuario, contraseña, nick, fechaNac, Estado)
+values ('Admin','Admin','1111','1','Admin','Admin',GETDATE(), 1)
 go
 
 insert into TipoDeFactura(Descripcion)
@@ -140,6 +148,28 @@ inner join ProductoxVenta pxv on pxv.IDRegistro = Ventas.IDRegistro
 inner join Productos on Productos.IDProducto = pxv.IDProducto
 go
 
+Create Procedure sp_VistaCompras AS
+Select Compras.IDRegistro, Compras.NumeroFactura, TipoDeFactura.descripcion, Usuarios.nick, Proveedores.Nombre, Productos.Nombre as NombreProducto, ProductoXCompra.Cantidad, ProductoXCompra.precioCompra, Compras.Fecha, Compras.MontoTotal, Compras.detalle
+from Compras
+inner join TipoDeFactura on TipoDeFactura.idTipoFactura = Compras.TipoFactura
+inner join Usuarios on Usuarios.idUsuario = Compras.IDAdministrador
+inner join Proveedores on Proveedores.IDProveedor = Compras.IDProveedor
+inner join ProductoXCompra on ProductoXCompra.IDRegistro = Compras.IDRegistro
+inner join Productos on Productos.IDProducto = ProductoXCompra.IDProducto
+go
+
+Create Procedure sp_VistaProductos As
+Select Productos.IDProducto, Productos.Nombre, Productos.Descripcion, Categorias.Descripcion as Categoria, TipoProducto.Descripcion as TipoProducto,
+Marcas.Descripcion as Marca, Productos.Stock, Productos.StockMinimo, Productos.porcentajeVenta from Productos
+inner join Categorias on Categorias.IDCategoria = Productos.IDCategoria
+inner join TipoProducto on TipoProducto.IDTipoProducto = Productos.IDTipoProducto
+inner join Marcas on Marcas.IDMarca = Productos.IDMarca
+go
+
+
 Create Procedure sp_Clientes AS
 select idCliente, nombre, cuitOrDni, fechaNac, telefono, email from Clientes
+go
 
+
+update Productos set Estado = 0 where Productos.IDProducto = 1

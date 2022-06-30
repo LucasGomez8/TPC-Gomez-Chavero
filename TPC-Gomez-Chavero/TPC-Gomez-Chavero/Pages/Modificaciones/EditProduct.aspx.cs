@@ -34,7 +34,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropLoader()
         {
-            productList = abm.getProducts();
+            productList = abm.getProducts(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");
@@ -171,6 +171,8 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public Product findIt(long id)
         {
+            productList = abm.getProducts(1);
+
             foreach (Product item in productList)
             {
                 if (item.Id == id)
@@ -186,7 +188,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         {
 
             ABMService abm = new ABMService();
-            int ids = dropProductList.SelectedIndex;
+            long ids = Int64.Parse(dropProductList.SelectedItem.Value);
             Selected = findIt(ids);
 
 

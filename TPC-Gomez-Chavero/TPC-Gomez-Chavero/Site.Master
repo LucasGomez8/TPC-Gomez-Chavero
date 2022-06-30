@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TPC</title>
+    <title>App Web</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
 <body>
     <form id="form1" runat="server" style="">
         <div>
-            <nav class="navbar navbar-expand-lg navbar-dark" style="box-shadow: 2px 1px 6px 2px black; background-color: #393D3F">
+            <nav class="navbar navbar-expand-sm navbar-dark" style="box-shadow: 2px 1px 6px 2px black; background-color: #393D3F">
               <div class="container-fluid" style="margin-left: 30px;">
                 <a class="navbar-brand" runat="server" href="~/">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,7 +120,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
                             <li><a class="dropdown-item" href="/Pages/Ver/VerVentas.aspx">Ventas</a></li>
+                            <li><a class="dropdown-item" href="/Pages/Ver/VerCompras.aspx">Compras</a></li>
+                            <li><a class="dropdown-item" href="/Pages/Ver/VerProductos.aspx">Productos</a></li>
                             <li><a class="dropdown-item" href="/Pages/Ver/VerClientes.aspx">Clientes</a></li>
+                            <li><a class="dropdown-item" href="/Pages/Ver/VerProveedores.aspx">Proveedores</a></li>
+                            <li><a class="dropdown-item" href="/Pages/Ver/VerUsuarios.aspx">Usuarios</a></li>
                         </ul>
                     </li>
                     <li class="navbar-item">

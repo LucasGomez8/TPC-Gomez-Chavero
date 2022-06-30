@@ -31,6 +31,7 @@
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">
                 <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
+                <asp:Button ID="Button1" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
             </div>
         </div>
     </div>

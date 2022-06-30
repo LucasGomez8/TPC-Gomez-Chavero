@@ -34,10 +34,13 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
             ABMService abm = new ABMService();
 
-            if (abm.deleteCategory(idSelected) == 1)
+            if (abm.deleteProvider(idSelected) == 1)
             {
                 lblSuccess.Text = "Proveedor eliminado con exito";
                 lblSuccess.Visible = true;
+
+                btnContinuar.Visible = true;
+                btnSubmit.Visible = false;
             }
             else
             {
@@ -72,6 +75,15 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
             deleteProvider.DataTextField = "description";
             deleteProvider.DataValueField = "id";
             deleteProvider.DataBind();
+        }
+
+        protected void btnContinuar_Click(object sender, EventArgs e)
+        {
+            lblSuccess.Visible = false;
+            btnContinuar.Visible = false;
+            btnSubmit.Visible = true;
+
+            dropLoader();
         }
     }
 }
