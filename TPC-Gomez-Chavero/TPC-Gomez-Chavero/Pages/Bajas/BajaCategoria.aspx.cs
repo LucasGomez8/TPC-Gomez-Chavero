@@ -49,7 +49,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
         public void dropLoader()
         {
             ABMService abm = new ABMService();
-            categoryList = abm.getCategory();
+            categoryList = abm.getCategory(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");

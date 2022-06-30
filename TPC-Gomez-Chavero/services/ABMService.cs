@@ -279,14 +279,15 @@ namespace services
 
         }
 
-        public List<ProductBranch> getBranch()
+        public List<ProductBranch> getBranch(int status)
         {
             List<ProductBranch> branchList = new List<ProductBranch>();
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("select Idmarca, Descripcion from Marcas Where Estado = 1");
+                da.setConsulta("select Idmarca, Descripcion from Marcas Where Estado = @status");
+                da.setConsultaWhitParameters("@status", status);
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -313,14 +314,15 @@ namespace services
         }
 
 
-        public List<ProductCategory> getCategory()
+        public List<ProductCategory> getCategory(int status)
         {
             List<ProductCategory> categoryList = new List<ProductCategory>();
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("select Idcategoria, Descripcion from Categorias Where Estado = 1");
+                da.setConsulta("select Idcategoria, Descripcion from Categorias Where Estado = @status");
+                da.setConsultaWhitParameters("@status", status);
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -469,14 +471,15 @@ namespace services
 
         }
 
-        public List<Provider> getProvider()
+        public List<Provider> getProvider(int status)
         {
             DataAccess da = new DataAccess();
             List<Provider> provList = new List<Provider>();
 
             try
             {
-                da.setConsulta("Select IDProveedor, Nombre from Proveedores where estado = 1");
+                da.setConsulta("Select IDProveedor, Nombre from Proveedores where estado = @status");
+                da.setConsultaWhitParameters("@status", status);
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -727,13 +730,13 @@ namespace services
             }
         }
 
-        public int changeStatus(string table, int status,long id)
+        public int changeStatus(string table, string column, int status,long id)
         {
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("Update "+table+" Set Estado = @status where IDProducto = @id");
+                da.setConsulta("Update "+table+" Set Estado = @status where "+column+ "= @id");
                 da.setConsultaWhitParameters("@status", status);
                 da.setConsultaWhitParameters("@id", id);
 

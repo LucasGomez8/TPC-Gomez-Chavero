@@ -29,7 +29,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         }
         public void dropLoader()
         {
-            categoryList = abm.getCategory();
+            categoryList = abm.getCategory(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");
@@ -81,7 +81,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public ProductCategory findIt(long id)
         {
-            categoryList = abm.getCategory();
+            categoryList = abm.getCategory(1);
             foreach (ProductCategory item in categoryList)
             {
                 if (item.Id == id)

@@ -127,8 +127,8 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            long idadmin = 0;
 
+            long idadmin = 0;
 
             long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
             long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
@@ -141,13 +141,13 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             {
                 idadmin = sessionUser.ID;
             }
+
             string fechaCompra = txtFechaCompra.Text;
             decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
             string detalle = txtDetalleCompra.Value;
             long idProducto = Int64.Parse(dropProductos.SelectedItem.Value);
             long cantidad = Int64.Parse(txtCantidadComprada.Text);
             decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
-
 
             if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, idProducto, cantidad, precioUnitario))
             {

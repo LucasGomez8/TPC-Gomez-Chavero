@@ -17,7 +17,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         {
             abm = new ABMService();
 
-            dgvProveedores.DataSource = abm.getProvider();
+            dgvProveedores.DataSource = abm.getProvider(1);
             dgvProveedores.DataBind();
         }
     }

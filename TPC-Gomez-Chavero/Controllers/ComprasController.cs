@@ -85,7 +85,7 @@ namespace Controllers
             ABMService abm = new ABMService();
             List<Provider> list = new List<Provider>();
 
-            list = abm.getProvider();
+            list = abm.getProvider(1);
 
             if (list != null)
             {

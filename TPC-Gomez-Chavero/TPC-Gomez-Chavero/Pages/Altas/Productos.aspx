@@ -76,9 +76,9 @@
             </form>
             <div class="row justify-content-center">
                 <div class="col-md-4 text-center">
+                    <asp:Button ID="btnVolver" runat="server" CssClass="btn btn-secondary" onClick="btnVolver_Click" Text="Volver" />
                     <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" onClick="btnSubmit_Click" Text="Agregar" />
                     <asp:Button ID="btnContinue" runat="server" CssClass="btn btn-primary" onClick="btnContinue_Click" Visible="false" Text="Continuar" />
-                    <asp:Button ID="btnVolver" runat="server" CssClass="btn btn-primary" onClick="btnContinue_Click" Visible="false" Text="Volver" />
                     <asp:Button ID="btnRetorno" runat="server" CssClass="btn btn-primary" onClick="btnRetorno_Click" Text="Agregar y Volver" Visible="false" />
                 </div>
             </div>
@@ -102,12 +102,12 @@
                 </div>
               <div class="row justify-content-center mt-4">
                   <div class="col-md-12 text-center">
-                    <asp:Label ID="lblSucessBaja" runat="server" Visible="false"></asp:Label>
+                    <asp:Label ID="lblSucessBaja" runat="server" CssClass="text-success" Visible="false"></asp:Label>
                   </div>
               </div>
                 <div class="col-md-4 mt-4 text-center">
-                    <asp:Button ID="btnContinuarBaja" runat="server" CssClass="btn btn-primary" onClick="btnContinuarBaja_Click" Visible="false" Text="Continuar" />
-                    <asp:Button ID="btnVolverBaja" runat="server" CssClass="btn btn-primary" onClick="btnVolverBaja_Click" Visible="false" Text="Volver" />
+                    <asp:Button ID="btnVolverBaja" runat="server" CssClass="btn btn-secondary" onClick="btnVolverBaja_Click" Enabled="true" Text="Volver" />
+                    <asp:Button ID="btnContinuarBaja" runat="server" CssClass="btn btn-primary" onClick="btnContinuarBaja_Click" Enabled="false" Text="Continuar" />
                 </div>
         </div>
 

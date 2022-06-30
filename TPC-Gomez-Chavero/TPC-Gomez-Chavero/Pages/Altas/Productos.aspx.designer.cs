@@ -168,6 +168,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.TextBox txtPorcentajeVenta;
 
         /// <summary>
+        /// Control btnVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolver;
+
+        /// <summary>
         /// Control btnSubmit.
         /// </summary>
         /// <remarks>
@@ -184,15 +193,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnContinue;
-
-        /// <summary>
-        /// Control btnVolver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
         /// Control btnRetorno.
@@ -249,15 +249,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.Label lblSucessBaja;
 
         /// <summary>
-        /// Control btnContinuarBaja.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnContinuarBaja;
-
-        /// <summary>
         /// Control btnVolverBaja.
         /// </summary>
         /// <remarks>
@@ -265,5 +256,14 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVolverBaja;
+
+        /// <summary>
+        /// Control btnContinuarBaja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContinuarBaja;
     }
 }

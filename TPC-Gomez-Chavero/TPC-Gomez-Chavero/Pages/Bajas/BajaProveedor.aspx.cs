@@ -53,7 +53,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
         public void dropLoader()
         {
             ABMService abm = new ABMService();
-            provList = abm.getProvider();
+            provList = abm.getProvider(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");

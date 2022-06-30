@@ -102,7 +102,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-4 text-center">
-                    <asp:Label ID="lblSuccess" runat="server"></asp:Label>
+                    <asp:Label ID="lblSuccess" CssClass="text-success" runat="server"></asp:Label>
                 </div>
             </div>
         </div>

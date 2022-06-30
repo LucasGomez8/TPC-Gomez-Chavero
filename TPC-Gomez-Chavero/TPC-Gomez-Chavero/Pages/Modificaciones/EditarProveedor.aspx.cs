@@ -28,7 +28,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropLoader()
         {
-            provList = abm.getProvider();
+            provList = abm.getProvider(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");

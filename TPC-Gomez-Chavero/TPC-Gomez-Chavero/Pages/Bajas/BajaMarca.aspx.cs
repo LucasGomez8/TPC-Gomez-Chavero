@@ -33,7 +33,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
             ABMService abm = new ABMService();
 
-            if (abm.deleteCategory(idSelected) == 1)
+            if (abm.changeStatus("Marcas","IDMarca",0, idSelected) == 1)
             {
                 lblSuccess.Text = "Marca eliminada con exito";
                 lblSuccess.Visible = true;
@@ -49,7 +49,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
         public void dropLoader()
         {
             ABMService abm = new ABMService();
-            branchList = abm.getBranch();
+            branchList = abm.getBranch(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");

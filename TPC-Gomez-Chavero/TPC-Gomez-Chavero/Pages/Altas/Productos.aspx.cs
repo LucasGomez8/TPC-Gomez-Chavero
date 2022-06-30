@@ -40,7 +40,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         public void dropBranch()
         {
-            branchList = abm.getBranch();
+            branchList = abm.getBranch(1);
 
             DataTable data = createEmptyDataTable();
 
@@ -74,7 +74,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         
         public void dropCategory()
         {
-            categoryList = abm.getCategory();
+            categoryList = abm.getCategory(1);
 
             DataTable data = createEmptyDataTable();
 
@@ -268,8 +268,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             Nuevo.Visible = true;
-            btnNuevo.Visible = false;
-            btnExistente.Visible = false;
+            menu.Visible = false;
         }
 
         public void dropDadosBaja()
@@ -302,15 +301,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
             ABMService abm = new ABMService();
 
-            if (abm.changeStatus("Productos", 1, id)==1)
+            if (abm.changeStatus("Productos", "IDProducto", 1, id)==1)
             {
                 lblSucessBaja.Visible = true;
                 lblSucessBaja.Text = "El producto Vuelve a estar de alta";
 
                 
 
-                btnContinuarBaja.Visible = true;
-                btnVolverBaja.Visible = true;
+                btnContinuarBaja.Enabled = true;
+                btnOk.Enabled = false;
             }
            
         }
@@ -321,15 +320,29 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
             btnOk.Visible = true;
 
-            btnContinuarBaja.Visible = false;
-            btnVolverBaja.Visible = false;
+            btnContinuarBaja.Enabled = false;
             lblSucessBaja.Visible = false;
+            btnOk.Enabled = true;
+            btnVolver.Enabled = true;
         }
 
         protected void btnVolverBaja_Click(object sender, EventArgs e)
         {
             debaja.Visible = false;
+            btnOk.Enabled = true;
+            btnVolver.Enabled = true;
+            btnContinuarBaja.Enabled = false;
+            lblSucessBaja.Visible = false;
+
             menu.Visible = true;
+
+        }
+        
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            menu.Visible = true;
+            Nuevo.Visible = false;
+
 
         }
     }

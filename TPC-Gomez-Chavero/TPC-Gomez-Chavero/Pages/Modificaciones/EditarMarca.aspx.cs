@@ -26,7 +26,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropLoader()
         {
-            branchList = abm.getBranch();
+            branchList = abm.getBranch(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");
