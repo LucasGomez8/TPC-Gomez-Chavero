@@ -28,6 +28,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 lblSuccess.Visible = true;
                 return;
             }
+            Label asd;
 
             ABMService abm = new ABMService();
 
@@ -63,11 +64,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             emptyData[0] = 0;
             emptyData[1] = "";
             data.Rows.Add(emptyData);
-
-            DataRow newData = data.NewRow();
-            newData[0] = -1;
-            newData[1] = "Nuevo...";
-            data.Rows.Add(newData);
 
             return data;
         }
@@ -115,14 +111,26 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
+            long id = long.Parse(dropElimnacionFisica.SelectedItem.Value);
+
+            if (id==0)
+            {
+                lblSucessBaja.Text = "Por favor seleccione una opcion!";
+                lblSucessBaja.Visible = true;
+                return;
+            }
             ABMService abm = new ABMService();
 
             if (abm.changeStatus("Categorias", "IDCategoria", 1, id) == 1)
             {
                 lblSucessBaja.Text = "Categoria dada de alta nuevamente!";
                 lblSucessBaja.Visible = true;
-
+                btnContinuarBaja.Enabled = true;
+            }
+            else
+            {
+                lblSucessBaja.Text = "Hubo un error al dar de alta nuevamente la categoria!";
+                lblSucessBaja.Visible = true;
                 btnContinuarBaja.Enabled = true;
             }
 
@@ -131,7 +139,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected void btnVolverBaja_Click(object sender, EventArgs e)
         {
             lblSucessBaja.Visible = false;
-
             debaja.Visible = false;
             menu.Visible = true;
         }
@@ -141,7 +148,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             dropDadosBaja();
 
             btnOk.Visible = true;
-
             btnContinuarBaja.Enabled = false;
             lblSucessBaja.Visible = false;
             btnOk.Enabled = true;

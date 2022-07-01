@@ -29,6 +29,7 @@
               </div>
               <div class="form-group mb-3">
                 <label for="descripcion">Descripcion</label>
+                  <input type="date" id="asd" runat="server" />
                 <textarea maxlength="250" id="descripcion" runat="server" class="form-control"></textarea>
               </div>
               <div class="form-group mb-2">
