@@ -27,7 +27,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
         public void dropLoader()
         {
             us = new UserService();
-            userList = us.getUser();
+            userList = us.getUser(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");
@@ -58,7 +58,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
             long idSelected = Int64.Parse(deleteUser.SelectedItem.Value);
 
-            if (us.delete(idSelected) == 1)
+            if (us.changeStatus(idSelected,0) == 1)
             {
                 lblSuccess.Text = "Usuario eliminado con exito!";
                 lblSuccess.Visible = true;

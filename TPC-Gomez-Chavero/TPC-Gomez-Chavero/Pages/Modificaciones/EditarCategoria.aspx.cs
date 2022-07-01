@@ -75,7 +75,13 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
             string des = txtNCategoria.Text;
 
-            abm.editCategory(Selected.Id, des);
+            if (abm.changeStatus("Categorias","idCategoria",0,ids)==1)
+            {
+                if (abm.createTypes(des.ToLower(), "Categorias")==1)
+                {
+                    lblSuccess.Text = "Categoria Modificada con exito!";
+                }
+            }
 
         }
 
@@ -91,6 +97,11 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             }
 
             return null;
+        }
+
+        protected void btnContinue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditarCategoria.aspx");
         }
     }
 }

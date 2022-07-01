@@ -53,7 +53,7 @@ namespace Controllers
             us = new UserService();
 
 
-            list = us.getUser();
+            list = us.getUser(1);
 
             if (list != null)
             {

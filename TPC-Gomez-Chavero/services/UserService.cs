@@ -52,7 +52,7 @@ namespace services
             }
         }
 
-        public List<User> getUser()
+        public List<User> getUser(int status)
         {
             List<User> userList = new List<User>();
             DataAccess da = new DataAccess();
@@ -61,7 +61,9 @@ namespace services
             {
                 da.setConsulta("select U.idUsuario as id, U.nombre, U.apellido, U.dni, U.nick, U.contraseña, U.fechaNac," +
                     "T.descripcion as descripcionTipo, T.idTipoUsuario " +
-                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario Where U.Estado = 1");
+                    "from Usuarios as U inner join TipoUsuario as T on U.IDTipoUsuario = T.idTipoUsuario Where U.Estado = @status");
+
+                da.setConsultaWhitParameters("@status", status);
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -207,13 +209,14 @@ namespace services
 
         }
 
-        public int delete(long id)
+        public int changeStatus(long id, int status)
         {
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Update Usuarios Set estado = 0 where IDUSUARIO = @id");
+                da.setConsulta("Update Usuarios Set estado = @status where idUsuario = @id");
                 da.setConsultaWhitParameters("@id", id);
+                da.setConsultaWhitParameters("@status", status);
 
                 da.executeAction();
                 return da.getLineCantAfected();

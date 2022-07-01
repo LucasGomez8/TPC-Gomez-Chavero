@@ -88,7 +88,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropTypeLoader()
         {
-            typeList = abm.getProductType();
+            typeList = abm.getProductType(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");

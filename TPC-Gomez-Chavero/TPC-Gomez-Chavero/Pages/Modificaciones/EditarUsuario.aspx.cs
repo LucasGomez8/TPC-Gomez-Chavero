@@ -30,7 +30,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropUserLoader()
         {
-            userList = us.getUser();
+            userList = us.getUser(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");
@@ -86,7 +86,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public User find(long id)
         {
-            userList = us.getUser();
+            userList = us.getUser(1);
             foreach (User item in userList)
             {
                 if (item.ID == id)

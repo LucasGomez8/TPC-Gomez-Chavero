@@ -350,14 +350,15 @@ namespace services
         }
 
 
-        public List<ProductType> getProductType()
+        public List<ProductType> getProductType(int status)
         {
             List<ProductType> typeList = new List<ProductType>();
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("select IdTipoProducto, Descripcion from TipoProducto Where Estado = 1");
+                da.setConsulta("select IdTipoProducto, Descripcion from TipoProducto Where Estado = @status");
+                da.setConsultaWhitParameters("@status", status);
                 da.execute();
 
                 while (da.dataReader.Read())

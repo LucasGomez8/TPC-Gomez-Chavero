@@ -29,10 +29,12 @@
               </div>
               </div>
             </form>
+            <asp:Label ID="lblSuccess" runat="server" Visible="false" CssClass="text-success"></asp:Label>
         </div>
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">
                 <asp:Button ID="btnSubmit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
+                <asp:Button ID="btnContinue" CssClass="btn btn-primary" OnClick="btnContinue_Click" visible="true" runat="server" Text="Continuar" />
             </div>
         </div>
     </div>

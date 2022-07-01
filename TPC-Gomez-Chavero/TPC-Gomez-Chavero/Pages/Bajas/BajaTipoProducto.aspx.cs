@@ -34,7 +34,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
             ABMService abm = new ABMService();
 
-            if (abm.deleteCategory(idSelected) == 1)
+            if (abm.changeStatus("TipoProducto","idTipoProducto",0,idSelected)==1)
             {
                 lblSuccess.Text = "Tipo de producto eliminado con exito";
                 lblSuccess.Visible = true;
@@ -50,7 +50,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
         public void dropLoader()
         {
             ABMService abm = new ABMService();
-            typeList = abm.getProductType();
+            typeList = abm.getProductType(1);
 
             DataTable data = new DataTable();
             data.Columns.Add("id");

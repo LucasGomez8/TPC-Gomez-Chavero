@@ -20,7 +20,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         {
             ABMService abm = new ABMService();
 
-            typeList = abm.getProductType();
+            typeList = abm.getProductType(1);
 
             dropLoader();
         }
@@ -51,7 +51,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         public void dropLoader()
         {
             ABMService abm = new ABMService();
-            typeList = abm.getProductType();
+            typeList = abm.getProductType(1);
             DataTable data = new DataTable();
             data.Columns.Add("id");
             data.Columns.Add("nombre");
@@ -78,7 +78,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         public ProductType findIt(long id)
         {
             ABMService abm = new ABMService();
-            typeList = abm.getProductType();
+            typeList = abm.getProductType(1);
             foreach (ProductType item in typeList)
             {
                 if (item.Id == id)

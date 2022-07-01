@@ -17,7 +17,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         {
             us = new UserService();
 
-            dgvUsuarios.DataSource = us.getUser();
+            dgvUsuarios.DataSource = us.getUser(1);
             dgvUsuarios.DataBind();
         }
     }

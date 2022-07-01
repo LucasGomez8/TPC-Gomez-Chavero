@@ -57,7 +57,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         public void dropProductType()
         {
-            typeList = abm.getProductType();
+            typeList = abm.getProductType(1);
 
             DataTable data = createEmptyDataTable();
 
