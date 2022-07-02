@@ -149,14 +149,8 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             long id = Int64.Parse(dropProductList.SelectedItem.Value);
             Selected = findIt(id);
 
-            txtNombre.Enabled = true;
             txtNombre.Text = Selected.Nombre;
-            descripcion.Disabled = false;
             descripcion.InnerText = Selected.Descripcion;
-            dropCategoria.Enabled = true;
-            dropMarca.Enabled = true;
-            dropTipoProducto.Enabled = true;
-
             txtStock.Enabled = true;
             txtStock.Text = Selected.Stock.ToString();
 
@@ -167,6 +161,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             txtPorcentajeVenta.Text = Selected.PorcentajeVenta.ToString();
 
             btnSubmit.Enabled = true;
+            btnCancelar.Enabled = true;
         }
 
         public Product findIt(long id)
@@ -206,6 +201,9 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             {
                 lblSuccess.Visible = true;
                 lblSuccess.Text = "Modificacion exitosa";
+                btnCancelar.Visible = false;
+                btnSubmit.Visible = false;
+                btnContinue.Visible = true;
             }
             else
             {
@@ -216,5 +214,15 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         }
 
+        protected void btnContinue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditProduct.aspx");
+            lblSuccess.Visible = false;
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditProduct.aspx");
+        }
     }
 }

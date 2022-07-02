@@ -35,13 +35,10 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             long id = Int64.Parse(dropClientes.SelectedItem.Value);
             Selected = findIt(id);
 
-            txtNombre.Enabled = true;
             txtNombre.Text = Selected.Nombre;
 
-            txtDNIoCuit.Enabled = true;
             txtDNIoCuit.Text = Selected.CuitOrDni;
 
-            txtFechNac.Enabled = true;
             txtFechNac.Text = Selected.fechaNac.ToString();
 
             txtEmail.Enabled = true;
@@ -51,6 +48,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             txtTelefono.Text = Selected.Telefono;
 
             btnSubmit.Enabled = true;
+            btnCancelar.Enabled = true;
 
         }
 
@@ -69,6 +67,9 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             {
                 lblSuccess.Visible = true;
                 lblSuccess.Text = "Modificacion exitosa";
+                btnCancelar.Visible = false;
+                btnSubmit.Visible = false;
+                btnContinuar.Visible = true;
             }
             else
             {
@@ -116,6 +117,16 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             }
 
             return null;
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditarCliente.aspx");
+        }
+
+        protected void btnContinuar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditarCliente.aspx");
         }
     }
 }

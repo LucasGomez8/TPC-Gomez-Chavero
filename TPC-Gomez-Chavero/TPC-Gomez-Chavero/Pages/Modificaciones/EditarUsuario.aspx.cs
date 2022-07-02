@@ -60,20 +60,16 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             dropTypeUserLoader();
             User x = find(Int64.Parse(dropUsuarios.SelectedItem.Value));
 
-
-            txtNombre.Enabled = true;
             txtNombre.Text = x.Nombre;
 
-            txtApellido.Enabled = true;
             txtApellido.Text = x.Apellido;
 
-            txtDni.Enabled = true;
             txtDni.Text = x.DNI;
-
-            dropTipoUsuario.Enabled = true;
 
             txtNick.Enabled = true;
             txtNick.Text = x.Nick;
+
+            dropTipoUsuario.Enabled = true;
 
             txtPass.Enabled = true;
             txtPass.Text = x.Pass;
@@ -82,6 +78,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             txtFechaNac.Text = x.FechaNacimiento.ToString("dd-MM-yyyy");
 
             btnSubmit.Enabled = true;
+            btnCancelar.Enabled = true;
         }
 
         public User find(long id)
@@ -139,7 +136,31 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             string pass = txtPass.Text;
             long idt = Int64.Parse(dropTipoUsuario.SelectedItem.Value);
 
-            us.editUser(id, nombre, ape, dni, fec, nick, pass, idt);
+            if (us.editUser(id, nombre, ape, dni, fec, nick, pass, idt) > 0)
+            {
+                lblSuccess.Text = "Usuario Modificado con exito";
+                lblSuccess.Visible = true;
+
+                btnSubmit.Visible = false;
+                btnCancelar.Visible = false;
+                btnContinue.Visible = true;
+            }
+            else
+            {
+                lblError.Text = "Ocurrrio un error al modificar el Usuario";
+                lblError.Visible = true;
+            }
+            
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditarUsuario.aspx");
+        }
+
+        protected void btnContinue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Modificaciones/EditarUsuario.aspx");
         }
     }
 }

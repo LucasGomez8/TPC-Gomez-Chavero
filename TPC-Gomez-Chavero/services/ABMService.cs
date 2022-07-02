@@ -48,7 +48,7 @@ namespace services
                 return da.getLineCantAfected();
 
             }
-            catch (Exception ex)
+            catch
             {
                 return -2;
             }
@@ -705,13 +705,10 @@ namespace services
 
             try
             {
-                da.setConsulta("Update Productos set Nombre = @nombre, Descripcion = @descripcion, idcategoria = @idcat, idmarca = @idmar, idTipoProducto = @idtipo, Stock = @stock, StockMinimo = @stockminimo, porcentajeVenta = @porcentaje where IDProducto = @id");
+                da.setConsulta("Update Productos set Nombre = @nombre, Descripcion = @descripcion, Stock = @stock, StockMinimo = @stockminimo, porcentajeVenta = @porcentaje where IDProducto = @id");
                 da.setConsultaWhitParameters("@id", id);
                 da.setConsultaWhitParameters("@nombre", nombre);
                 da.setConsultaWhitParameters("@descripcion", descripcion);
-                da.setConsultaWhitParameters("@idcat", idcategoria);
-                da.setConsultaWhitParameters("@idmar", idmarca);
-                da.setConsultaWhitParameters("@idtipo", idtipoproducto);
                 da.setConsultaWhitParameters("@stock", stock);
                 da.setConsultaWhitParameters("@stockminimo", stockminimo);
                 da.setConsultaWhitParameters("@porcentaje", porcentaje);
@@ -841,10 +838,10 @@ namespace services
                 da.executeAction();
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch
             {
 
-                throw ex;
+                return -2;
             }
             finally
             {

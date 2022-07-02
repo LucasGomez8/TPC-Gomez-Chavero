@@ -69,7 +69,9 @@
         </div>
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">
+                <asp:Button ID="btnCancelar" CssClass="btn btn-secondary" onclick="btnCancelar_Click" Enabled="false" runat="server" Text="Cancelar" />
                 <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
+                <asp:Button ID="btnContinue" CssClass="btn btn-primary" onclick="btnContinue_Click" visible="false" runat="server" Text="Continuar" />
             </div>
         </div>
     </div>
