@@ -57,7 +57,7 @@
                           <div class="col-md-4">
                               <asp:TextBox ID="txtPrecioUnitario" runat="server" TextMode="Number" CssClass="form-control" AutoPostBack="true" />
                           </div>
-                          <div class="col-md-4" style="display: flex; height: 40px; justify-content:flex-end">
+                          <div class="col-md-4">
                                <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onAddProductClicked" />
                           </div>
                       </div>

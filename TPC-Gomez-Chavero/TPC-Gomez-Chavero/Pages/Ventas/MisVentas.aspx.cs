@@ -16,7 +16,7 @@ namespace TPC_Gomez_Chavero
         public List<Client> clientList;
         public List<User> sellerList;
         public List<Product> productList;
-
+        public List<Product> productosAgregados;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -161,12 +161,11 @@ namespace TPC_Gomez_Chavero
             decimal montoTotal = Decimal.Parse(txtVenta.Text);
             string detalle = txtDetalleCompra.Value;
 
-            long idProducto = Int64.Parse(dropProductos.SelectedItem.Value);
-            long cantidad = Int64.Parse(txtCantidadVendida.Text);
-            decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
+
+            productosAgregados = (List<Product>)Session["VAgregando"];
 
         
-         if (vc.register(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle, idProducto, cantidad, precioUnitario))
+         if (vc.register(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle, productosAgregados))
          {
              lblSuccess.Text = "Registro Exitoso";
              lblSuccess.Visible = true;
@@ -207,6 +206,33 @@ namespace TPC_Gomez_Chavero
                 Session["Vendiendo"] = true;
                 Response.Redirect("~/Pages/Altas/AgregarCliente.aspx");
             }
+        }
+
+        protected void addProduct_Click(object sender, EventArgs e)
+        {
+            decimal res = 0;
+
+            productosAgregados = Session["VAgregando"] != null ? (List<Product>)Session["VAgregando"] : new List<Product>();
+            Product añadir = new Product();
+            añadir.Id = Int64.Parse(dropProductos.SelectedValue);
+            añadir.Nombre = dropProductos.SelectedItem.Text;
+            añadir.Cantidad = int.Parse(txtCantidadVendida.Text);
+            añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
+
+
+            productosAgregados.Add(añadir);
+
+            Session.Add("VAgregando", productosAgregados);
+
+            foreach (Product item in productosAgregados)
+            {
+                res += item.PU * item.Cantidad;
+            }
+
+            txtCantidadVendida.Text = "";
+            txtPrecioUnitario.Text = "";
+
+            txtVenta.Text = res.ToString();
         }
     }
 }

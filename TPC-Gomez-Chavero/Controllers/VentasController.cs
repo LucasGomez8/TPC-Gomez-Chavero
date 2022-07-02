@@ -102,7 +102,7 @@ namespace Controllers
                 return null;
             }
         }
-        public bool register(long numeroFactura, long tipoFactura, long idCliente, long iduser, string fechaVenta, decimal montoTotal, string detalle, long idProducto, long cantidad, decimal precioUnitario)
+        public bool register(long numeroFactura, long tipoFactura, long idCliente, long iduser, string fechaVenta, decimal montoTotal, string detalle, List<Product> cross)
         {
             abm = new ABMService();
 
@@ -110,10 +110,14 @@ namespace Controllers
 
             if (id != 0)
             {
-                if (abm.crossProductoVenta(id, idProducto, cantidad,precioUnitario) == 1)
+                foreach (Product item in cross)
                 {
-                    return true;
+                    if (abm.crossProductoVenta(id, item.Id, item.Cantidad, item.PU)<0)
+                    {
+                        return false;
+                    }
                 }
+                return true;
             }
             else
             {

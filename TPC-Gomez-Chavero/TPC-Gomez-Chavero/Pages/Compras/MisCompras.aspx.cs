@@ -161,6 +161,8 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             {
                 lblSuccess.Visible = true;
                 lblSuccess.Text = "Compra cargada de forma exitosa";
+
+                Session.Remove("Agregando");
             }
             else
             {

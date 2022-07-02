@@ -51,60 +51,6 @@ namespace TPC_Gomez_Chavero
         protected global::System.Web.UI.WebControls.DropDownList dropUsuario;
 
         /// <summary>
-        /// Control addCategoryTxt.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox addCategoryTxt;
-
-        /// <summary>
-        /// Control addCategoryBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addCategoryBtn;
-
-        /// <summary>
-        /// Control addBranchTxt.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox addBranchTxt;
-
-        /// <summary>
-        /// Control addBranchBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addBranchBtn;
-
-        /// <summary>
-        /// Control addTypeTxt.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox addTypeTxt;
-
-        /// <summary>
-        /// Control addTypeBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addTypeBtn;
-
-        /// <summary>
         /// Control dropProductos.
         /// </summary>
         /// <remarks>
@@ -130,6 +76,15 @@ namespace TPC_Gomez_Chavero
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrecioUnitario;
+
+        /// <summary>
+        /// Control addProduct.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addProduct;
 
         /// <summary>
         /// Control txtFechaVenta.
