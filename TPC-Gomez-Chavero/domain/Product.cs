@@ -17,5 +17,11 @@ namespace domain
         public int Stock { get; set; }
         public int StockMinimo { get; set; }
         public short PorcentajeVenta { get; set; }
+
+        //SOLO PARA VENTAS/Compras
+
+        public int Cantidad { get; set; }
+        public decimal PU { get; set; }
+
     }
 }

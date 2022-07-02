@@ -19,13 +19,20 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         public List<User> adminList;
         public User sessionUser;
         public List<Product> productList;
+        public List<Product> productosAgregados;
 
         public int itemsSaved { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+            productosAgregados = new List<Product>();
             cc = new ComprasController();
+            if (Session["user"] != null)
+            {
             sessionUser = (User)Session["user"];
+            }
             itemsSaved = Session["itemsSaved"] != null
                 ? (int)Session["itemsSaved"]
                 : 1;
@@ -130,6 +137,9 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
             long idadmin = 0;
 
+            productosAgregados = (List<Product>)Session["Agregando"];
+
+
             long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
             long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
             long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
@@ -145,11 +155,9 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             string fechaCompra = txtFechaCompra.Text;
             decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
             string detalle = txtDetalleCompra.Value;
-            long idProducto = Int64.Parse(dropProductos.SelectedItem.Value);
-            long cantidad = Int64.Parse(txtCantidadComprada.Text);
-            decimal precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
 
-            if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, idProducto, cantidad, precioUnitario))
+
+            if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, productosAgregados))
             {
                 lblSuccess.Visible = true;
                 lblSuccess.Text = "Compra cargada de forma exitosa";
@@ -163,14 +171,22 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void onPriceAndUnityChanges(object sender, EventArgs e)
         {
-            decimal precioUnitario = 0;
-            if (txtPrecioUnitario.Text.Length != 0) 
-                precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
-            long cantidad = 0;
-            if (txtCantidadComprada.Text.Length != 0)
-                cantidad = Int64.Parse(txtCantidadComprada.Text);
+            productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
+            decimal res = 0;
 
-            decimal res = cantidad * precioUnitario;
+            foreach (Product item in productosAgregados)
+            {
+                res = res + item.PU;
+            }
+
+            //decimal precioUnitario = 0;
+            //if (txtPrecioUnitario.Text.Length != 0) 
+            //    precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
+            //long cantidad = 0;
+            //if (txtCantidadComprada.Text.Length != 0)
+            //    cantidad = Int64.Parse(txtCantidadComprada.Text);
+
+            //decimal res = cantidad * precioUnitario;
 
             txtMontoTotal.Text = res.ToString();
         }
@@ -182,9 +198,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
             if (txtFechaCompra.Text.Length == 0) return;
             if (Decimal.Parse(txtMontoTotal.Text) == 0) return;
-            if (long.Parse(dropProductos.SelectedItem.Value) == 0) return;
-            if (long.Parse(txtCantidadComprada.Text) == 0) return;
-            if (Decimal.Parse(txtPrecioUnitario.Text) == 0)  return;
 
             btnSubmit.Enabled = true;
         }
@@ -218,7 +231,30 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void onAddProductClicked(object sender, EventArgs e)
         {
-            Session["itemsSaved"] = itemsSaved + 1;
+            decimal res = 0;
+
+            productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
+            Product añadir = new Product();
+            añadir.Id = Int64.Parse(dropProductos.SelectedValue);
+            añadir.Nombre = dropProductos.SelectedItem.Text;
+            añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
+            añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
+
+
+            productosAgregados.Add(añadir);
+
+            Session.Add("Agregando", productosAgregados);
+
+            foreach (Product item in productosAgregados)
+            {
+                res += item.PU*item.Cantidad;
+            }
+
+            txtCantidadComprada.Text = "";
+            txtPrecioUnitario.Text = "";
+
+            txtMontoTotal.Text = res.ToString();
+
         }
 
         protected void onDropProductoChanges(object sender, EventArgs e)

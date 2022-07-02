@@ -35,7 +35,7 @@
                       </div>
                   </div>
                 </div>
-                  <div class="form-group mb-3">
+                  <div class="form-group">
                       <div class="row ">
                           <div class="col-md-4">
                               <label for="dropProductos">Producto</label>
@@ -47,22 +47,6 @@
                               <label for="txtPrecioUnitario">Precio Unitario</label>
                           </div>
                       </div>
-                    <%
-                        for (int i = 0; i < itemsSaved; i++)
-                        {
-                    %>
-                      <div class="row ">
-                          <div class="col-md-4">
-                              <asp:TextBox runat="server" CssClass="form-control" Enabled="false"/>
-                          </div>
-                          <div class="col-md-4">
-                              <asp:TextBox runat="server" CssClass="form-control" Enabled="false"/>
-                          </div>
-                          <div class="col-md-4">
-                              <asp:TextBox runat="server" CssClass="form-control" Enabled="false" />
-                          </div>
-                      </div>
-                    <%  } %>
                       <div class="row ">
                           <div class="col-md-4">
                               <asp:DropDownList CssClass="form-control" ID="dropProductos"  OnSelectedIndexChanged="onDropProductoChanges" runat="server"  AutoPostBack="true" />
@@ -71,13 +55,23 @@
                               <asp:TextBox ID="txtCantidadComprada" runat="server" TextMode="Number" CssClass="form-control" OnTextChanged="onPriceAndUnityChanges" AutoPostBack="true"/>
                           </div>
                           <div class="col-md-4">
-                              <asp:TextBox ID="txtPrecioUnitario" runat="server" OnTextChanged="onPriceAndUnityChanges" TextMode="Number" CssClass="form-control" AutoPostBack="true" />
+                              <asp:TextBox ID="txtPrecioUnitario" runat="server" TextMode="Number" CssClass="form-control" AutoPostBack="true" />
+                          </div>
+                          <div class="col-md-4" style="display: flex; height: 40px; justify-content:flex-end">
+                               <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onAddProductClicked" />
                           </div>
                       </div>
+                      <div class="row mt-4">
+                          <label class="mb-3">Productos Agregados: </label>
+                      <% if(productosAgregados != null) foreach(domain.Product item in productosAgregados) {%>
+                          <div class="col-sm-2">
+                            <label class="btn btn-warning"><%=item.Nombre %></label>
+                          </div>
+                      <% } %>
+                      </div>
+                      </div>
                   </div>
-                <div class="col-md-4" style="display: flex; height: 40px; justify-content:flex-end">
-                    <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onAddProductClicked" />
-                </div>
+
                 <div class="form-group mb-4">
                     <div class="row">
                         <div class="col-md-6">

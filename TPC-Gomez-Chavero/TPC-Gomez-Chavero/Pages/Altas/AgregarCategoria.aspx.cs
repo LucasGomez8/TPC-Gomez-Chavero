@@ -28,7 +28,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 lblSuccess.Visible = true;
                 return;
             }
-            Label asd;
 
             ABMService abm = new ABMService();
 
