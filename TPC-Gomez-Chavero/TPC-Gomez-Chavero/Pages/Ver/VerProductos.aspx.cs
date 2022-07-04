@@ -21,5 +21,12 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvProductos.DataSource = abm.getProducts(1);
             dgvProductos.DataBind();
         }
+
+        protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvProductos.SelectedRow.Cells[0].Text;
+
+            Response.Redirect("~/Pages/Modificaciones/EditProduct.aspx?id=" + id);
+        }
     }
 }

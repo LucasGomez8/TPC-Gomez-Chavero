@@ -70,6 +70,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             txtNick.Text = x.Nick;
 
             dropTipoUsuario.Enabled = true;
+            dropTipoUsuario.SelectedValue = x.type.ID.ToString();
 
             txtPass.Enabled = true;
             txtPass.Text = x.Pass;

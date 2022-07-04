@@ -30,15 +30,56 @@ namespace TPC_Gomez_Chavero
                 dropClientLoader();
                 dropSellersLoader();
                 dropProductoLoader();
+                if (Session["Vendiendo"] != null)
+                {
+                    recargarDatosAnteriores();
+                }
+
             }
         }
 
-        private void setTicketNumber(long type)
+        public void recargarDatosAnteriores()
         {
+
+
+            if (Session["TipoFactura"] != null)
+            {
+                dropTipoFactura.SelectedValue = (string)Session["TipoFactura"];
+                Session.Remove("TipoFactura");
+            }
+            if (Session["Cliente"] != null)
+            {
+                dropCliente.SelectedValue = (string)Session["Cliente"];
+                Session.Remove("Cliente");
+            }
+            if (Session["FechaVenta"] != null)
+            {
+                txtFechaVenta.Text = (string)Session["FechaVenta"];
+                Session.Remove("FechaVenta");
+            }
+            if (Session["MontoTotal"] != null)
+            {
+                txtVenta.Text = (string)Session["MontoTotal"];
+                Session.Remove("MontoTotal");
+            }
+            if (Session["Detalle"] != null)
+            {
+                txtDetalleCompra.Value = (string)Session["Detalle"];
+                Session.Remove("Detalle");
+            }
+            if (Session["VAgregando"] != null)
+            {
+                productosAgregados = (List<Product>)Session["VAgregando"];
+            }
+        }
+
+
+            private void setTicketNumber(long type)
+            {
             long ticketNumber = vc.getTicketNumber(type);
             txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber);
             txtNumeroFactura.Enabled = false;
-        }
+            }
 
         public void dropTipoFacturaLoader()
         {
@@ -169,6 +210,7 @@ namespace TPC_Gomez_Chavero
          {
              lblSuccess.Text = "Registro Exitoso";
              lblSuccess.Visible = true;
+             Session.Remove("VAgregando");
          }
          else
          {
@@ -197,6 +239,30 @@ namespace TPC_Gomez_Chavero
             
         }
 
+        public void guardarEnSession()
+        {
+            if (int.Parse(dropTipoFactura.SelectedValue) > 0)
+            {
+                Session["TipoFactura"] = dropTipoFactura.SelectedValue;
+            }
+            if (int.Parse(dropCliente.SelectedValue) > 0)
+            {
+                Session["Cliente"] = dropCliente.SelectedValue;
+            }
+            if (txtFechaVenta.Text.Length > 0)
+            {
+                Session["FechaVenta"] = txtFechaVenta.Text;
+            }
+            if (txtVenta.Text.Length > 0)
+            {
+                Session["MontoTotal"] = txtVenta.Text;
+            }
+            if (txtDetalleCompra.Value.Length > 0)
+            {
+                Session["Detalle"] = txtDetalleCompra.Value;
+            }
+        }
+
         protected void dropCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             long idselected = Int64.Parse(dropCliente.SelectedValue);
@@ -204,6 +270,7 @@ namespace TPC_Gomez_Chavero
             if (idselected == -1)
             {
                 Session["Vendiendo"] = true;
+                guardarEnSession();
                 Response.Redirect("~/Pages/Altas/AgregarCliente.aspx");
             }
         }

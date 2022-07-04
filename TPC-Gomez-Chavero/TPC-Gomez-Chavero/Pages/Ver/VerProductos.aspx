@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-               <asp:GridView ID="dgvProductos" runat="server" CssClass="table border-0" AutoGenerateColumns="false">
+               <asp:GridView ID="dgvProductos" runat="server" CssClass="table border-0" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -19,8 +19,7 @@
                        <asp:BoundField HeaderText="Stock" DataField="Stock" />
                        <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
                        <asp:BoundField HeaderText="Porcentaje de Venta" DataField="PorcentajeVenta" />
-                       <asp:HyperLinkField text="Eliminar" />
-                       <asp:HyperLinkField text="Editar" />
+                       <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
                    </Columns>
                </asp:GridView>
                             </div>

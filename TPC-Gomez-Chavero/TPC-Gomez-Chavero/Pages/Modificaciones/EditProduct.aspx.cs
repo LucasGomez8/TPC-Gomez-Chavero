@@ -30,6 +30,42 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             {
                 dropLoader();
             }
+            if (Request.QueryString["id"] != null)
+            {
+                long id = Int64.Parse(Request.QueryString["id"].ToString());
+                preLoad(id);
+            }
+
+        }
+
+        public void preLoad(long id)
+        {
+            dropProductList.Enabled = false;
+            btnSelect.Enabled = false;
+
+            dropBranchLoader();
+            dropCategoryLoader();
+            dropTypeLoader();
+            Selected = findIt(id);
+
+            txtNombre.Text = Selected.Nombre;
+            descripcion.InnerText = Selected.Descripcion;
+            txtStock.Enabled = true;
+            txtStock.Text = Selected.Stock.ToString();
+
+            dropCategoria.SelectedValue = Selected.Categoria.Id.ToString();
+            dropTipoProducto.SelectedValue = Selected.Tipo.Id.ToString();
+            dropMarca.SelectedValue = Selected.Marca.Id.ToString();
+
+
+            txtStockMinimo.Enabled = true;
+            txtStockMinimo.Text = Selected.StockMinimo.ToString();
+
+            txtPorcentajeVenta.Enabled = true;
+            txtPorcentajeVenta.Text = Selected.PorcentajeVenta.ToString();
+
+            btnSubmit.Enabled = true;
+            btnCancelar.Enabled = true;
         }
 
         public void dropLoader()
@@ -153,6 +189,11 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             descripcion.InnerText = Selected.Descripcion;
             txtStock.Enabled = true;
             txtStock.Text = Selected.Stock.ToString();
+
+            dropCategoria.SelectedValue = Selected.Categoria.Id.ToString();
+            dropTipoProducto.SelectedValue = Selected.Tipo.Id.ToString();
+            dropMarca.SelectedValue = Selected.Marca.Id.ToString();
+
 
             txtStockMinimo.Enabled = true;
             txtStockMinimo.Text = Selected.StockMinimo.ToString();

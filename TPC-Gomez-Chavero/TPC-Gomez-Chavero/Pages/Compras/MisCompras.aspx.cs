@@ -37,6 +37,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 ? (int)Session["itemsSaved"]
                 : 1;
 
+
             if (!IsPostBack)
             {
                 setTicketNumber(1);
@@ -45,8 +46,53 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 dropAdministrador.Visible = true;
                 dropAdminLoader();
                 dropProveedorLoader();
+                txtFechaCompra.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+                if (Session["Comprando"] != null)
+                {
+
+                    recargarDatosAnteriores();
+                }
+
             }
             checkInputs();
+        }
+
+
+        public void recargarDatosAnteriores()
+        {
+
+
+            if (Session["TipoFactura"] != null)
+            {
+                dropTipoFactura.SelectedValue = (string)Session["TipoFactura"];
+                Session.Remove("TipoFactura");
+            }
+            if (Session["Proveedor"] != null)
+            {
+                dropProveedor.SelectedValue = (string)Session["Proveedor"];
+                Session.Remove("Proveedor");
+            }
+            if (Session["FechaCompra"] != null)
+            {
+                txtFechaCompra.Text = (string)Session["FechaCompra"];
+                Session.Remove("FechaCompra");
+            }
+            if (Session["MontoTotal"] != null)
+            {
+                txtMontoTotal.Text = (string)Session["MontoTotal"];
+                Session.Remove("MontoTotal");
+            }
+            if (Session["Detalle"] != null)
+            {
+                txtDetalleCompra.Value = (string)Session["Detalle"];
+                Session.Remove("Detalle");
+            }
+            if(Session["Agregando"] != null)
+            {
+                productosAgregados = (List<Product>)Session["Agregando"];
+            }
+
         }
 
         private void setTicketNumber(long type)
@@ -135,7 +181,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            long idadmin = 0;
 
             productosAgregados = (List<Product>)Session["Agregando"];
 
@@ -143,15 +188,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
             long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
             long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
-            if (sessionUser.type.ID == 1)
-            {
-                idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
-            }
-            else
-            {
-                idadmin = sessionUser.ID;
-            }
-
+            long idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
             string fechaCompra = txtFechaCompra.Text;
             decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
             string detalle = txtDetalleCompra.Value;
@@ -259,6 +296,30 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         }
 
+        public void guardarEnSession()
+        {
+            if (int.Parse(dropTipoFactura.SelectedValue) > 0)
+            {
+                Session["TipoFactura"] = dropTipoFactura.SelectedValue;
+            }
+            if (int.Parse(dropProveedor.SelectedValue) > 0)
+            {
+                Session["Proveedor"] = dropProveedor.SelectedValue;
+            }
+            if (txtFechaCompra.Text.Length > 0 )
+            {
+                Session["FechaCompra"] = txtFechaCompra.Text;
+            }
+            if (txtMontoTotal.Text.Length > 0 )
+            {
+                Session["MontoTotal"] = txtMontoTotal.Text;
+            }
+            if (txtDetalleCompra.Value.Length > 0 )
+            {
+                Session["Detalle"] = txtDetalleCompra.Value;
+            }
+        }
+
         protected void onDropProductoChanges(object sender, EventArgs e)
         {
             long idSelected = long.Parse(dropProductos.SelectedValue);
@@ -266,6 +327,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             if (idSelected == -1)
             {
                 Session["Comprando"] = true;
+                guardarEnSession();
                 Response.Redirect("~/Pages/Altas/Productos.aspx");
             }
         }
@@ -277,6 +339,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             if (idSelected == -1)
             {
                 Session["Comprando"] = true;
+                guardarEnSession();
                 Response.Redirect("~/Pages/Altas/AgregarProveedor.aspx");
             }
         }

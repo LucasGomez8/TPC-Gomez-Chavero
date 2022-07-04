@@ -32,7 +32,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 {
                     btnSubmit.Visible = false;
                     btnRetorno.Visible = true;
-                    Session.Remove("Comprando");
                 }
             }
         }
