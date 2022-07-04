@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-               <asp:GridView ID="dgvClientes" runat="server" CssClass="table border-0" AutoGenerateColumns="false">
+               <asp:GridView ID="dgvClientes" runat="server" CssClass="table border-0" OnSelectedIndexChanged="dgvClientes_SelectedIndexChanged" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -17,8 +17,8 @@
                        <asp:BoundField HeaderText="Fecha Nacimiento" DataField="fechaNac" />
                        <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
                        <asp:BoundField HeaderText="Email" DataField="Email" />
-                       <asp:HyperLinkField text="Eliminar" />
-                       <asp:HyperLinkField text="Editar" />
+                       <asp:CheckBoxField HeaderText="Activo" DataField="Estado" />
+                       <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
                    </Columns>
                </asp:GridView>
                             </div>

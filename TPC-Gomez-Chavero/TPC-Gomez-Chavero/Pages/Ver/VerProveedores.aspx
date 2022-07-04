@@ -10,12 +10,12 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-               <asp:GridView ID="dgvProveedores" runat="server" CssClass="table border-0" AutoGenerateColumns="false">
+               <asp:GridView ID="dgvProveedores" runat="server" OnSelectedIndexChanged="dgvProveedores_SelectedIndexChanged" CssClass="table border-0" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                       <asp:HyperLinkField text="Eliminar" />
-                       <asp:HyperLinkField text="Editar" />
+                       <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
+                       <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
                    </Columns>
                </asp:GridView>
                             </div>

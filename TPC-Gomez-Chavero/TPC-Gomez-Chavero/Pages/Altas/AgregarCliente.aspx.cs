@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Linq;
+using System.Data;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using helpers;
 using services;
+using domain;
 
 namespace TPC_Gomez_Chavero.Pages.Altas
 {
     public partial class AgregarCliente : Page
     {
 
-        ABMService abm;
+        public ABMService abm;
+        public List<Client> dadosBaja;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +25,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             {
                 btnSubmit.Visible = false;
                 btnReturn.Visible = true;
+
             }
             checkInputs();
         }
@@ -61,6 +66,51 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             btnSubmit.Visible = true;
             lblSuccess.Visible = false;
         }
+
+
+        private DataTable createEmptyDataTable()
+        {
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
+
+            return data;
+        }
+
+        public void dropDadosBaja()
+        {
+            ABMService abm = new ABMService();
+            dadosBaja = abm.getClients(0);
+
+            DataTable data = createEmptyDataTable();
+
+            foreach (Client item in dadosBaja)
+            {
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Nombre);
+                data.Rows.Add(row);
+            }
+
+            populateDropDown(data, dropElimnacionFisica);
+        }
+
+        private void populateDropDown(DataTable dataTable, DropDownList dropDown)
+        {
+            dropDown.DataSource = new DataView(dataTable);
+            dropDown.DataTextField = "description";
+            dropDown.DataValueField = "id";
+            dropDown.DataBind();
+        }
+
+
+
+
 
         protected void btnReturn_Click(object sender, EventArgs e)
         {
@@ -125,6 +175,53 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             if (txt.ID == txtDNIorCuit.ID) FormHelper.validateInputDniOrCuit(txtDNIorCuit.Text, errorDNIorCuit);
             if (txt.ID == txtEmail.ID) FormHelper.validateInputEmail(txtEmail.Text, errorEmail);
             if (txt.ID == txtTelefono.ID) FormHelper.validateInputPhone(txtTelefono.Text, errorTelefono);
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            debaja.Visible = false;
+            menu.Visible = true;
+            lblSucessBaja.Visible = false;
+        }
+
+        protected void btnContinue_Click(object sender, EventArgs e)
+        {
+            lblSucessBaja.Visible = false;
+            btnContinuarBaja.Enabled = false;
+            dropElimnacionFisica.SelectedValue = 0.ToString();
+        }
+
+        protected void btnNuevoCliente_Click(object sender, EventArgs e)
+        {
+            menu.Visible = false;
+            NuevoCliente.Visible = true;
+        }
+
+        protected void btnViejoCliente_Click(object sender, EventArgs e)
+        {
+            menu.Visible = false;
+            debaja.Visible = true;
+            dropDadosBaja();
+        }
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+            ABMService abm = new ABMService();
+            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
+
+            if (abm.changeStatus("Clientes", "IDCliente", 1, id) == 1)
+            {
+                lblSucessBaja.Text = "Cliente dada de alta nuevamente!";
+                lblSucessBaja.Visible = true;
+
+                btnContinuarBaja.Enabled = true;
+            }
+        }
+
+        protected void btnVolver2_Click(object sender, EventArgs e)
+        {
+            NuevoCliente.Visible = false;
+            menu.Visible = true;
         }
     }
 }

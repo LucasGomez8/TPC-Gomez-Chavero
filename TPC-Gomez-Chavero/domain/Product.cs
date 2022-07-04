@@ -17,6 +17,7 @@ namespace domain
         public int Stock { get; set; }
         public int StockMinimo { get; set; }
         public short PorcentajeVenta { get; set; }
+        public bool Estado { get; set; }
 
         //SOLO PARA VENTAS/Compras
 

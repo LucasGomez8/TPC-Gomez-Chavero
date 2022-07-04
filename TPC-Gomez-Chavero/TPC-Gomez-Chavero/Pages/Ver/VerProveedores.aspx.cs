@@ -13,12 +13,43 @@ namespace TPC_Gomez_Chavero.Pages.Ver
     {
 
         private ABMService abm;
+        private Filters fil;
         protected void Page_Load(object sender, EventArgs e)
         {
-            abm = new ABMService();
+            fil = new Filters();
 
-            dgvProveedores.DataSource = abm.getProvider(1);
+            dgvProveedores.DataSource = fil.listarProveedores();
             dgvProveedores.DataBind();
+        }
+
+        public bool isActive(long id)
+        {
+            abm = new ABMService();
+            List<Provider> list = abm.getProvider(0);
+
+            foreach (Provider item in list)
+            {
+                if (item.Id == id)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        protected void dgvProveedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvProveedores.SelectedRow.Cells[0].Text;
+            if (isActive(Int64.Parse(id)))
+            {
+                Response.Redirect("~/Pages/Modificaciones/EditarProveedor.aspx?id=" + id);
+            }
+            else
+            {
+                Response.Write("<script>alert('El Proveedor se encuentra dado de baja')</script>");
+            }
+
         }
     }
 }

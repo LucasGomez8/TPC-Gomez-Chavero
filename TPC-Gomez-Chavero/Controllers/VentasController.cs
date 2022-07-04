@@ -91,7 +91,7 @@ namespace Controllers
 
             List<Client> list = new List<Client>();
 
-            list = abm.getClients();
+            list = abm.getClients(1);
 
             if (list != null)
             {

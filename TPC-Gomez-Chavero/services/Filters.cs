@@ -11,6 +11,121 @@ namespace services
     public class Filters
     {
 
+        public List<Product> getStoresProducts()
+        {
+            DataAccess da = new DataAccess();
+            List<Product> list = new List<Product>();
+
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_VistaProductos");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Product response = new Product();
+
+                    response.Id = (long)da.dataReader["IDProducto"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.Descripcion = (string)da.dataReader["Descripcion"];
+                    response.Categoria = new ProductCategory();
+                    response.Categoria.Descripcion = (string)da.dataReader["Categoria"];
+                    response.Tipo = new ProductType();
+                    response.Tipo.Descripcion = (string)da.dataReader["TipoProducto"];
+                    response.Marca = new ProductBranch();
+                    response.Marca.Descripcion = (string)da.dataReader["Marca"];
+                    response.Stock = (int)da.dataReader["Stock"];
+                    response.StockMinimo = (int)da.dataReader["StockMinimo"];
+                    response.PorcentajeVenta = (short)da.dataReader["PorcentajeVenta"];
+                    response.Estado = (bool)da.dataReader["Activo"];
+
+                    list.Add(response);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
+        public List<Provider> listarProveedores()
+        {
+            DataAccess da = new DataAccess();
+            List<Provider> list = new List<Provider>();
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_Proveedores");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Provider response = new Provider();
+
+                    response.Id = (long)da.dataReader["IDProveedor"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.Estado = (bool)da.dataReader["Estado"];
+
+
+                    list.Add(response);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        
+        public List<User> listarUsuarios()
+        {
+            DataAccess da = new DataAccess();
+            List<User> list = new List<User>();
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_Usuarios");
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    User response = new User();
+
+                    response.ID = (long)da.dataReader["idUsuario"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.Apellido = (string)da.dataReader["Apellido"];
+                    response.DNI = (string)da.dataReader["DNI"];
+                    response.type = new UserType();
+                    response.type.Description = (string)da.dataReader["descripcion"];
+                    response.Nick = (string)da.dataReader["Nick"];
+                    response.Estado = (bool)da.dataReader["Estado"];
+
+                    list.Add(response);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
         public List<Ventas> listarVentas()
         {
             DataAccess da = new DataAccess();
@@ -78,6 +193,7 @@ namespace services
                     response.fechaNac = (DateTime)da.dataReader["fechaNac"];
                     response.Email = (string)da.dataReader["email"];
                     response.Telefono = (string)da.dataReader["Telefono"];
+                    response.Estado = (bool)da.dataReader["Activo"];
 
                     list.Add(response);
                 }

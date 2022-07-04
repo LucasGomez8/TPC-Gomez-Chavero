@@ -16,6 +16,7 @@ namespace domain
         public string Nick { get; set; }
         public string Pass { get; set; }
 
+        public bool Estado { get; set; }
         public DateTime FechaNacimiento { get; set; }
     }
 }

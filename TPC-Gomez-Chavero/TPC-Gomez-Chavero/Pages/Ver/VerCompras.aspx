@@ -24,8 +24,6 @@
                        <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" />
                        <asp:BoundField HeaderText="Fecha de Venta" DataField="FechaVenta" />
                        <asp:BoundField HeaderText="Detalle de la Venta" DataField="Detalle" />
-                       <asp:HyperLinkField text="Eliminar" />
-                       <asp:HyperLinkField text="Editar" />
                    </Columns>
                </asp:GridView>
            </div>

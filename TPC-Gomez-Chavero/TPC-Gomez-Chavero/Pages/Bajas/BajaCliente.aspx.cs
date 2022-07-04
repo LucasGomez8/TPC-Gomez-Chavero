@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using domain;
 using services;
+using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Bajas
 {
@@ -13,41 +15,71 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
     {
 
         List<Client> clist = new List<Client>();
+        Client selected;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            dropLoader();
+            if (!IsPostBack)
+            {
+                dropLoader();
+            }
         }
 
 
         public void dropLoader()
         {
             ABMService abm = new ABMService();
+            clist = abm.getClients(1);
 
-            clist = abm.getClients();
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
 
             foreach (Client item in clist)
             {
-                deleteClient.Items.Add(item.Nombre);
+                DataRow row = data.NewRow();
+                row[0] = item.Id;
+                row[1] = StringHelper.upperStartChar(item.Nombre);
+                data.Rows.Add(row);
             }
+
+            deleteClient.DataSource = new DataView(data);
+            deleteClient.DataTextField = "description";
+            deleteClient.DataValueField = "id";
+            deleteClient.DataBind();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             ABMService abm = new ABMService();
 
-            int whatClient = deleteClient.SelectedIndex;
+            long whatClient = Int64.Parse(deleteClient.SelectedValue);
 
-            long x = findIt(whatClient);
+            selected = findIt(whatClient);
 
-            abm.deleteClient(x);
+            abm.deleteClient(selected.Id);
         }
 
-        public long findIt(int id)
+        public Client findIt(long id)
         {
-            Client thisis = new Client();
-            thisis = clist[id];
+            ABMService abm = new ABMService();
+            List<Client> list = abm.getClients(1);
 
-            return thisis.Id;
+            foreach (Client item in list)
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+
         }
     }
 }

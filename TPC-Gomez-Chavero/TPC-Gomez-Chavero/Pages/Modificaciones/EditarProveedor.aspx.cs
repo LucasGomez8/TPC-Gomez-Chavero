@@ -24,6 +24,38 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             {
                 dropLoader();
             }
+
+            if (Request.QueryString["id"] != null)
+            {
+                long id = Int64.Parse(Request.QueryString["id"]);
+                cargarDatos(id);
+            }
+        }
+
+        public void cargarDatos(long id)
+        {
+            Provider selected = new Provider();
+
+            selected = findIt(id);
+            txtPNombre.Text = selected.Nombre;
+
+            btnSubmit.Enabled = true;
+            txtPNombre.Enabled = true;
+        }
+
+
+        public Provider findIt(long id)
+        {
+            provList = abm.getProvider(1);
+            foreach (Provider item in provList)
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         public void dropLoader()
@@ -65,11 +97,16 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            Provider prov = new Provider();
+
             long id = Int64.Parse(dropProveedor.SelectedValue);
+
+            prov = findIt(id);
+            
             string nom = txtPNombre.Text;
 
 
-            if (abm.editProvider(id, nom) == 1)
+            if (abm.editProvider(prov.Id, nom) == 1)
             {
                 lblSuccess.Text = "Proveedor Modificado con exito";
                 lblSuccess.Visible = true;

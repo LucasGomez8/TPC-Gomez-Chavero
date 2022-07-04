@@ -392,7 +392,7 @@ namespace services
             try
             {
                 da.setConsulta("select Productos.IDProducto, Productos.Nombre, Productos.Descripcion, Productos.IDCategoria as CID, Productos.IDMarca as MID, Productos.IDTipoProducto as TID, Productos.Stock,"+
-                                " Productos.StockMinimo, Productos.porcentajeVenta, Marcas.Descripcion as Mdes, Categorias.Descripcion as CDes, TipoProducto.Descripcion as TDes from Productos"+
+                                " Productos.StockMinimo, Productos.porcentajeVenta, Marcas.Descripcion as Mdes, Categorias.Descripcion as CDes, TipoProducto.Descripcion as TDes, Productos.Estado as Activo from Productos"+
                                 " inner join Marcas on Marcas.IDMarca = Productos.IDMarca" +
                                 " inner join Categorias on Categorias.IDCategoria = Productos.IDCategoria"+
                                 " inner join TipoProducto on TipoProducto.IDTipoProducto = Productos.IDTipoProducto Where Productos.Estado = @status");
@@ -419,6 +419,7 @@ namespace services
                     response.Stock = (int)da.dataReader["Stock"];
                     response.StockMinimo = (int)da.dataReader["StockMinimo"];
                     response.PorcentajeVenta = (short)da.dataReader["porcentajeVenta"];
+                    response.Estado = (bool)da.dataReader["Activo"];
 
                     productlist.Add(response);
                 }
@@ -434,14 +435,15 @@ namespace services
             }
         }
 
-        public List<Client> getClients()
+        public List<Client> getClients(int status)
         {
             DataAccess da = new DataAccess();
             List<Client> clientList = new List<Client>();
 
             try
             {
-                da.setConsulta("Select IDCliente, Nombre, cuitOrDni, fechaNac, telefono, email from Clientes where estado = 1");
+                da.setConsulta("Select IDCliente, Nombre, cuitOrDni, fechaNac, telefono, email from Clientes where estado = @status");
+                da.setConsultaWhitParameters("@status", status);
                 da.execute();
 
                 while (da.dataReader.Read())

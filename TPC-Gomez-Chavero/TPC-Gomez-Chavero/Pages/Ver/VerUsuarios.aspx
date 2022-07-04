@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-               <asp:GridView ID="dgvUsuarios" runat="server" CssClass="table border-0" AutoGenerateColumns="false">
+               <asp:GridView ID="dgvUsuarios" runat="server" CssClass="table border-0" OnSelectedIndexChanged="dgvUsuarios_SelectedIndexChanged" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -18,8 +18,8 @@
                        <asp:BoundField HeaderText="Dni" DataField="DNI" />
                        <asp:BoundField HeaderText="Tipo de Usuario" DataField="Type.Description" />
                        <asp:BoundField HeaderText="Username" DataField="Nick" />
-                       <asp:HyperLinkField text="Eliminar" />
-                       <asp:HyperLinkField text="Editar" />
+                       <asp:CheckBoxField HeaderText="Activo" DataField="Estado" />
+                       <asp:CommandField HeaderText="Acciones" SelectText="📝" ShowSelectButton="true" />
                    </Columns>
                </asp:GridView>
                             </div>

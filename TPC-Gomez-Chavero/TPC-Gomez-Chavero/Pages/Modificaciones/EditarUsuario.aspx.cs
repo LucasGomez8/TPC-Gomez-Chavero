@@ -26,6 +26,42 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             {
                 dropUserLoader();
             }
+
+            if (Request.QueryString["id"] != null)
+            {
+                long id = Int64.Parse(Request.QueryString["id"].ToString());
+                cargarDatos(id);
+            }
+        }
+        
+        public void cargarDatos(long id)
+        {
+            dropTypeUserLoader();
+            User selected = find(id);
+
+            btnSelect.Enabled = false;
+            dropUsuarios.Enabled=false;
+
+            txtNombre.Text = selected.Nombre;
+
+            txtApellido.Text = selected.Apellido;
+
+            txtDni.Text = selected.DNI;
+
+            txtNick.Enabled = true;
+            txtNick.Text = selected.Nick;
+
+            dropTipoUsuario.Enabled = true;
+            dropTipoUsuario.SelectedValue = selected.type.ID.ToString();
+
+            txtPass.Enabled = true;
+            txtPass.Text = selected.Pass;
+
+            txtFechaNac.Enabled = true;
+            txtFechaNac.Text = selected.FechaNacimiento.ToString("dd-MM-yyyy");
+
+            btnSubmit.Enabled = true;
+            btnCancelar.Enabled = true;
         }
 
         public void dropUserLoader()

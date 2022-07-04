@@ -28,6 +28,37 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             {
                 dropLoader();
             }
+            if (Request.QueryString["id"] != null)
+            {
+                long id = Int64.Parse(Request.QueryString["id"].ToString());
+                preLoad(id);
+            }
+        }
+
+        public void preLoad(long id)
+        {
+            dropClientes.Enabled = false;
+            btnSelect.Enabled = false;
+
+            Selected = findIt(id);
+
+            txtNombre.Text = Selected.Nombre;
+            txtDNIoCuit.Text = Selected.CuitOrDni;
+
+            txtFechNac.Enabled = true;
+            txtFechNac.Text = Selected.fechaNac.ToString("yyyy-MM-dd");
+
+            txtEmail.Enabled = true;
+            txtEmail.Text = Selected.Email;
+
+
+            txtTelefono.Enabled = true;
+            txtTelefono.Text = Selected.Telefono;
+
+
+            
+            btnSubmit.Enabled = true;
+            btnCancelar.Enabled = true;
         }
 
         protected void btnSelect_Click(object sender, EventArgs e)
@@ -39,7 +70,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
             txtDNIoCuit.Text = Selected.CuitOrDni;
 
-            txtFechNac.Text = Selected.fechaNac.ToString();
+            txtFechNac.Text = Selected.fechaNac.ToString("yyyy-MM-dd");
 
             txtEmail.Enabled = true;
             txtEmail.Text = Selected.Email;
@@ -81,7 +112,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropLoader()
         {
-            clientList = abm.getClients();
+            clientList = abm.getClients(1);
             DataTable data = new DataTable();
             data.Columns.Add("id");
             data.Columns.Add("nombre");
@@ -107,7 +138,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public Client findIt(long id)
         {
-            clientList = abm.getClients();
+            clientList = abm.getClients(1);
             foreach (Client item in clientList)
             {
                 if (item.Id == id)

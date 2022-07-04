@@ -19,10 +19,11 @@
                        <asp:BoundField HeaderText="Stock" DataField="Stock" />
                        <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
                        <asp:BoundField HeaderText="Porcentaje de Venta" DataField="PorcentajeVenta" />
+                       <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
                        <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
                    </Columns>
                </asp:GridView>
-                            </div>
-            </div>
+           </div>
+       </div>
     </div>
 </asp:Content>

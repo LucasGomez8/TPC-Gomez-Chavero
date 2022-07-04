@@ -160,7 +160,7 @@ go
 
 Create Procedure sp_VistaProductos As
 Select Productos.IDProducto, Productos.Nombre, Productos.Descripcion, Categorias.Descripcion as Categoria, TipoProducto.Descripcion as TipoProducto,
-Marcas.Descripcion as Marca, Productos.Stock, Productos.StockMinimo, Productos.porcentajeVenta from Productos
+Marcas.Descripcion as Marca, Productos.Stock, Productos.StockMinimo, Productos.porcentajeVenta, Productos.Estado as Activo from Productos
 inner join Categorias on Categorias.IDCategoria = Productos.IDCategoria
 inner join TipoProducto on TipoProducto.IDTipoProducto = Productos.IDTipoProducto
 inner join Marcas on Marcas.IDMarca = Productos.IDMarca
@@ -168,8 +168,15 @@ go
 
 
 Create Procedure sp_Clientes AS
-select idCliente, nombre, cuitOrDni, fechaNac, telefono, email from Clientes
+select idCliente, nombre, cuitOrDni, fechaNac, telefono, email, Estado as Activo from Clientes
 go
 
+Create Procedure sp_Proveedores as
+select Proveedores.IDProveedor, Proveedores.Nombre, Proveedores.Estado from Proveedores
+go
 
-update Productos set Estado = 0 where Productos.IDProducto = 1
+Create Procedure sp_Usuarios as
+Select Usuarios.idUsuario, Usuarios.apellido, Usuarios.nombre, Usuarios.dni, TipoUsuario.descripcion, Usuarios.nick, Usuarios.Estado from Usuarios
+inner join TipoUsuario on TipoUsuario.idTipoUsuario = Usuarios.IDTipoUsuario
+go
+
