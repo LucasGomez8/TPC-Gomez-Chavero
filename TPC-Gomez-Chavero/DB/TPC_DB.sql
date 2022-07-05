@@ -183,9 +183,35 @@ go
 create procedure sp_UltimoCosto
 @id bigint
 as
-Select top 1 ProductoXCompra.precioCompra from ProductoXCompra
+Select top 1 ProductoXCompra.precioCompra, Productos.porcentajeVenta from ProductoXCompra
 inner join Productos on ProductoXCompra.IDProducto = Productos.IDProducto
 where Productos.IDProducto = @id
 order by ProductoXCompra.IDRegistro desc
 go
 
+
+create procedure sp_ReportePersonas
+@id bigint
+as
+Select Ventas.IDRegistro, Ventas.NumeroFactura, Ventas.Fecha, Ventas.MontoTotal, Clientes.nombre as ClienteNombre, Clientes.cuitOrDni as ClienteDni, 
+Clientes.telefono as ClienteTelefono, Clientes.email as ClienteEmail
+,Usuarios.apellido as UsuarioApellido, Usuarios.nombre as UsuarioNombre, TipoUsuario.descripcion as Cargo from Ventas
+inner join Usuarios on Ventas.idVendedor = Usuarios.idUsuario
+inner join Clientes on Clientes.idCliente = Ventas.idCliente
+inner join TipoUsuario on TipoUsuario.idTipoUsuario = Usuarios.IDTipoUsuario
+where Ventas.IDRegistro = @id
+go
+
+create procedure sp_ProductoVentaxID
+@id bigint
+as
+Select Productos.Nombre, ProductoXVenta.Cantidad, ProductoXVenta.precioVenta from ProductoXVenta
+inner join Productos on Productos.IDProducto = ProductoXVenta.IDProducto
+where ProductoXVenta.IDRegistro = 2
+go
+
+
+select ventas.IDRegistro from ventas
+order by Ventas.IDRegistro desc
+
+Select Ventas.IDRegristro from Ventas order by Ventas.IDRegistro desc

@@ -89,6 +89,7 @@
                 <div class="col-md-4 text-center">
               <asp:Button ID="btnSubmit" runat="server"  onclick="btnSubmit_Click"  CssClass="btn btn-primary" Text="Agregar" />
                     <asp:Button ID="btnSeguirVendiendo" runat="server" visible="false" onclick="btnSeguirVendiendo_Click"  CssClass="btn btn-primary" Text="Continuar Vendiendo" />
+                    <asp:Button ID="btnVerReporte" runat="server" visible="false" onclick="btnVerReporte_Click"  CssClass="btn btn-success" Text="Ver Reporte" />
                 </div>
             </div>
             <div class="row justify-content-center">

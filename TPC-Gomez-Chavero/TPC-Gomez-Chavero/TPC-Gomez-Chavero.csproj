@@ -105,6 +105,7 @@
     <Content Include="Pages\Modificaciones\EditarTipoProducto.aspx" />
     <Content Include="Pages\Modificaciones\EditarUsuario.aspx" />
     <Content Include="Pages\Modificaciones\EditProduct.aspx" />
+    <Content Include="Pages\Reportes\Reporte.aspx" />
     <Content Include="Pages\Ventas\MisVentas.aspx" />
     <Content Include="Pages\Ver\VerClientes.aspx" />
     <Content Include="Pages\Ver\VerCompras.aspx" />
@@ -285,6 +286,13 @@
     </Compile>
     <Compile Include="Pages\Modificaciones\EditProduct.aspx.designer.cs">
       <DependentUpon>EditProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reportes\Reporte.aspx.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reportes\Reporte.aspx.designer.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Ventas\MisVentas.aspx.cs">
       <DependentUpon>MisVentas.aspx</DependentUpon>

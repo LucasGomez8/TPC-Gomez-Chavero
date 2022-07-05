@@ -228,6 +228,10 @@ namespace TPC_Gomez_Chavero
                     lblError.Visible = false;
                     lblSuccess.Text = "Registro Exitoso";
                     lblSuccess.Visible = true;
+
+                    btnSubmit.Visible = false;
+                    btnSeguirVendiendo.Visible = true;
+                    btnVerReporte.Visible = true;
                     Session.Remove("VAgregando");
                 }
                 else
@@ -304,39 +308,44 @@ namespace TPC_Gomez_Chavero
         protected void addProduct_Click(object sender, EventArgs e)
         {
             decimal res = 0;
-
-            Product añadir = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
-            añadir.Cantidad = int.Parse(txtCantidadVendida.Text);
-            añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
-
-
-            if (stockCheck(añadir.Cantidad, añadir.StockMinimo, añadir.Stock))
+            if (int.Parse(txtCantidadVendida.Text) > 0 && int.Parse(dropProductos.SelectedValue) > 0)
             {
-                lblErrorCantidad.Visible = false;
-                errocantidad.Visible = false;
-                productosAgregados = Session["VAgregando"] != null ? (List<Product>)Session["VAgregando"] : new List<Product>();
-                productosAgregados.Add(añadir);
 
-                Session.Add("VAgregando", productosAgregados);
+                Product añadir = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
+                añadir.Cantidad = int.Parse(txtCantidadVendida.Text);
+                añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
 
-                foreach (Product item in productosAgregados)
+
+                if (stockCheck(añadir.Cantidad, añadir.StockMinimo, añadir.Stock))
                 {
-                    res += item.PU * item.Cantidad;
+                    lblErrorCantidad.Visible = false;
+                    errocantidad.Visible = false;
+                    productosAgregados = Session["VAgregando"] != null ? (List<Product>)Session["VAgregando"] : new List<Product>();
+                    productosAgregados.Add(añadir);
+
+                    Session.Add("VAgregando", productosAgregados);
+
+                    foreach (Product item in productosAgregados)
+                    {
+                        res += item.PU * item.Cantidad;
+                    }
+
+                    txtCantidadVendida.Text = "";
+                    txtPrecioUnitario.Text = "";
+
+                    txtVenta.Text = res.ToString();
+                }
+                else
+                {
+                    errocantidad.Visible = true;
+                    lblErrorCantidad.Text = "Cantidad Vendida menor a la que se tiene, por favor revise el producto";
+                    lblErrorCantidad.Visible = true;
                 }
 
-                txtCantidadVendida.Text = "";
-                txtPrecioUnitario.Text = "";
 
-                txtVenta.Text = res.ToString();
-            }
-            else
-            {
-                errocantidad.Visible = true;
-                lblErrorCantidad.Text = "Cantidad Vendida menor a la que se tiene, por favor revise el producto";
-                lblErrorCantidad.Visible = true;
             }
 
-            
+
         }
 
         protected bool stockCheck(int cantidadquesevende, int stockMinimo, int stockActual )
@@ -353,7 +362,7 @@ namespace TPC_Gomez_Chavero
 
         protected void btnSeguirVendiendo_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Pages/Ventas/MisVentas.aspx");
         }
 
         protected void txtCantidadVendida_TextChanged(object sender, EventArgs e)
@@ -367,13 +376,18 @@ namespace TPC_Gomez_Chavero
             if (txtCantidadVendida.Text.Length != 0) cantidad = Int64.Parse(txtCantidadVendida.Text);
 
 
-            decimal result = cantidad * (costo.Costo + ((costo.Costo * costo.PorcentajeVenta)/100));
+            decimal result = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta)/100));
 
 
             if (txtPrecioUnitario.Text.Length == 0) txtPrecioUnitario.Text = result.ToString();
 
             result = 0;
 
+        }
+
+        protected void btnVerReporte_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Reportes/Reporte.aspx");
         }
     }
 }

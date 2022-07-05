@@ -23,6 +23,7 @@ namespace domain
 
         public decimal Costo { get; set; }
         public int Cantidad { get; set; }
+        public long CantidadVenta { get; set; }
         public decimal PU { get; set; }
 
     }

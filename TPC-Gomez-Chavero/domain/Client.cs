@@ -15,6 +15,8 @@ namespace domain
         public DateTime fechaNac { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+
+        //Para Funcionalidad
         public bool Estado { get; set; }
     }
 }
