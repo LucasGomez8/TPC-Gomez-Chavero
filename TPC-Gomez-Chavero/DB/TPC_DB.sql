@@ -167,16 +167,25 @@ inner join Marcas on Marcas.IDMarca = Productos.IDMarca
 go
 
 
-Create Procedure sp_Clientes AS
+create Procedure sp_Clientes AS
 select idCliente, nombre, cuitOrDni, fechaNac, telefono, email, Estado as Activo from Clientes
 go
 
-Create Procedure sp_Proveedores as
+create Procedure sp_Proveedores as
 select Proveedores.IDProveedor, Proveedores.Nombre, Proveedores.Estado from Proveedores
 go
 
-Create Procedure sp_Usuarios as
+create Procedure sp_Usuarios as
 Select Usuarios.idUsuario, Usuarios.apellido, Usuarios.nombre, Usuarios.dni, TipoUsuario.descripcion, Usuarios.nick, Usuarios.Estado from Usuarios
 inner join TipoUsuario on TipoUsuario.idTipoUsuario = Usuarios.IDTipoUsuario
+go
+
+create procedure sp_UltimoCosto
+@id bigint
+as
+Select top 1 ProductoXCompra.precioCompra from ProductoXCompra
+inner join Productos on ProductoXCompra.IDProducto = Productos.IDProducto
+where Productos.IDProducto = @id
+order by ProductoXCompra.IDRegistro desc
 go
 

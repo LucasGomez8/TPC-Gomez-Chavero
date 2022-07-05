@@ -173,6 +173,37 @@ namespace services
 
         }
 
+        public decimal getUltimoCosto(long id)
+        {
+            DataAccess da = new DataAccess();
+            decimal resul = 0;
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_UltimoCosto");
+                da.setConsultaWhitParameters("@id", id);
+
+
+                da.execute();
+
+                if (da.dataReader.Read())
+                {
+                    resul = (decimal)da.dataReader["precioCompra"];
+                }
+                return resul;
+            }
+            catch
+            {
+
+                return -2;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
+
         public List<Client> listarCliente()
         {
             DataAccess da = new DataAccess();

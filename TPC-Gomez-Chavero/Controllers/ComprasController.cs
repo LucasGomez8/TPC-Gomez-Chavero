@@ -11,6 +11,23 @@ namespace Controllers
     public class ComprasController
     {
        
+
+        public Product findIt(long id)
+        {
+            ABMService abm = new ABMService();
+            List<Product> list = abm.getProducts(1);
+
+            foreach (Product item in list)
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+        
         public long getTicketNumber(long type)
         {
             ABMService abm = new ABMService();
@@ -107,23 +124,28 @@ namespace Controllers
             {
                 foreach (Product item in cross)
                 {
-                    if (abm.crossProductoCompra(idregistro, item.Id, item.Cantidad, item.PU)<0)
+                    if (abm.crossProductoCompra(idregistro, item.Id, item.Cantidad, item.PU) > 0)
+                    {
+                        int newStock = item.Stock + item.Cantidad;
+
+                        if (abm.stockAction(item.Id, newStock) < 0)
+                        {
+                            return false;
+                        }
+
+                    }
+                    else
                     {
                         return false;
                     }
+
                 }
                 return true;
-                //if (abm.crossProductoCompra(idregistro, idprod, cantidad, pu) == 1)
-                //{
-                //    return true;
-                //}
             }
             else
             {
                 return false;
             }
-
-            return false;
            
         }
 

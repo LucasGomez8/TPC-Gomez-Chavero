@@ -17,6 +17,7 @@ namespace TPC_Gomez_Chavero
         public List<User> sellerList;
         public List<Product> productList;
         public List<Product> productosAgregados;
+        public Filters fil;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,6 +38,20 @@ namespace TPC_Gomez_Chavero
 
             }
         }
+
+
+        protected bool checkInputs()
+        {
+
+            if (txtNumeroFactura.Text.Length == 0) return false;
+            if (long.Parse(dropCliente.SelectedItem.Value) == 0) return false;
+            if (long.Parse(dropUsuario.SelectedItem.Value) == 0) return false;
+            if (txtFechaVenta.Text.Length == 0) return false;
+            if (Decimal.Parse(txtVenta.Text) == 0) return false;
+
+            return true;
+        }
+
 
         public void recargarDatosAnteriores()
         {
@@ -194,29 +209,40 @@ namespace TPC_Gomez_Chavero
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
-            long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
-            long idCliente = Int64.Parse(dropCliente.SelectedItem.Value);
-            long iduser = Int64.Parse(dropUsuario.SelectedItem.Value);
-            string fechaVenta = txtFechaVenta.Text;
-            decimal montoTotal = Decimal.Parse(txtVenta.Text);
-            string detalle = txtDetalleCompra.Value;
+            if (checkInputs())
+            {
+                long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
+                long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
+                long idCliente = Int64.Parse(dropCliente.SelectedItem.Value);
+                long iduser = Int64.Parse(dropUsuario.SelectedItem.Value);
+                string fechaVenta = txtFechaVenta.Text;
+                decimal montoTotal = Decimal.Parse(txtVenta.Text);
+                string detalle = txtDetalleCompra.Value;
 
 
-            productosAgregados = (List<Product>)Session["VAgregando"];
+                productosAgregados = (List<Product>)Session["VAgregando"];
 
-        
-         if (vc.register(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle, productosAgregados))
-         {
-             lblSuccess.Text = "Registro Exitoso";
-             lblSuccess.Visible = true;
-             Session.Remove("VAgregando");
-         }
-         else
-         {
-             lblSuccess.Text = "Error al cargar registro";
-             lblSuccess.Visible = true;
-         }
+
+                if (vc.register(numeroFactura, tipoFactura, idCliente, iduser, fechaVenta, montoTotal, detalle, productosAgregados))
+                {
+                    lblError.Visible = false;
+                    lblSuccess.Text = "Registro Exitoso";
+                    lblSuccess.Visible = true;
+                    Session.Remove("VAgregando");
+                }
+                else
+                {
+                    lblError.Text = "Error al cargar registro";
+                    lblError.Visible = true;
+                }
+            }
+            else
+            {
+                lblError.Text = "Faltan Cargar datos, por favor, llene todos los campos";
+                lblError.Visible = true;
+            }
+
+            
 
         }
 
@@ -279,27 +305,71 @@ namespace TPC_Gomez_Chavero
         {
             decimal res = 0;
 
-            productosAgregados = Session["VAgregando"] != null ? (List<Product>)Session["VAgregando"] : new List<Product>();
-            Product añadir = new Product();
-            añadir.Id = Int64.Parse(dropProductos.SelectedValue);
-            añadir.Nombre = dropProductos.SelectedItem.Text;
+            Product añadir = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
             añadir.Cantidad = int.Parse(txtCantidadVendida.Text);
             añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
 
 
-            productosAgregados.Add(añadir);
-
-            Session.Add("VAgregando", productosAgregados);
-
-            foreach (Product item in productosAgregados)
+            if (stockCheck(añadir.Cantidad, añadir.StockMinimo, añadir.Stock))
             {
-                res += item.PU * item.Cantidad;
+                lblErrorCantidad.Visible = false;
+                errocantidad.Visible = false;
+                productosAgregados = Session["VAgregando"] != null ? (List<Product>)Session["VAgregando"] : new List<Product>();
+                productosAgregados.Add(añadir);
+
+                Session.Add("VAgregando", productosAgregados);
+
+                foreach (Product item in productosAgregados)
+                {
+                    res += item.PU * item.Cantidad;
+                }
+
+                txtCantidadVendida.Text = "";
+                txtPrecioUnitario.Text = "";
+
+                txtVenta.Text = res.ToString();
+            }
+            else
+            {
+                errocantidad.Visible = true;
+                lblErrorCantidad.Text = "Cantidad Vendida menor a la que se tiene, por favor revise el producto";
+                lblErrorCantidad.Visible = true;
             }
 
-            txtCantidadVendida.Text = "";
-            txtPrecioUnitario.Text = "";
+            
+        }
 
-            txtVenta.Text = res.ToString();
+        protected bool stockCheck(int cantidadquesevende, int stockMinimo, int stockActual )
+        {
+            int resultado = stockActual - cantidadquesevende;
+
+            if (resultado < 0 && resultado < stockMinimo )
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected void btnSeguirVendiendo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txtCantidadVendida_TextChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            Product cual = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
+            cual.Costo = fil.getUltimoCosto(cual.Id);
+
+            long cantidad = 0;
+
+            if (txtCantidadVendida.Text.Length!=0) cantidad = Int64.Parse(txtCantidadVendida.Text);
+            
+            decimal result = (cantidad * cual.Costo);
+
+           if(txtPrecioUnitario.Text.Length != 0) txtPrecioUnitario.Text = result.ToString();
+            
         }
     }
 }

@@ -729,6 +729,29 @@ namespace services
             }
         }
 
+        public int stockAction(long id, int cantidad)
+        {
+            DataAccess da = new DataAccess();
+
+            try
+            {
+                da.setConsulta("Update Productos set Stock = @stock where IDProducto = @id");
+                da.setConsultaWhitParameters("@stock", cantidad);
+                da.setConsultaWhitParameters("@id", id);
+
+                da.executeAction();
+                return da.getLineCantAfected();
+            }
+            catch
+            {
+                return -2;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+        }
+
         public int changeStatus(string table, string column, int status,long id)
         {
             DataAccess da = new DataAccess();

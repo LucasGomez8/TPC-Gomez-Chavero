@@ -15,6 +15,24 @@ namespace Controllers
         private ABMService abm;
         private UserService us;
 
+        public Product findIt(long id)
+        {
+            abm = new ABMService();
+            List<Product> list = abm.getProducts(1);
+
+            foreach (Product item in list)
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
+
+
         public long getTicketNumber(long type)
         {
             ABMService abm = new ABMService();
@@ -112,9 +130,14 @@ namespace Controllers
             {
                 foreach (Product item in cross)
                 {
-                    if (abm.crossProductoVenta(id, item.Id, item.Cantidad, item.PU)<0)
+                    if (abm.crossProductoVenta(id, item.Id, item.Cantidad, item.PU) > 0)
                     {
-                        return false;
+                        int newStock = item.Stock - item.Cantidad;
+
+                        if (abm.stockAction(item.Id, newStock) < 0)
+                        {
+                            return false;
+                        }
                     }
                 }
                 return true;

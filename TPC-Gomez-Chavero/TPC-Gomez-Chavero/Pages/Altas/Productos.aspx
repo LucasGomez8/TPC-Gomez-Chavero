@@ -68,7 +68,7 @@
                               <asp:TextBox ID="txtStockMinimo" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
                           <div class="col-md-6">
-                              <label for="porcentajeVenta">Porcentaje de Venta</label>
+                              <label for="porcentajeVenta">Porcentaje de Ganancia</label>
                               <asp:TextBox ID="txtPorcentajeVenta" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
                       </div>

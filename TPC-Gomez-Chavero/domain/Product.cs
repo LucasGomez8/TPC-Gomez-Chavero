@@ -21,6 +21,7 @@ namespace domain
 
         //SOLO PARA VENTAS/Compras
 
+        public decimal Costo { get; set; }
         public int Cantidad { get; set; }
         public decimal PU { get; set; }
 

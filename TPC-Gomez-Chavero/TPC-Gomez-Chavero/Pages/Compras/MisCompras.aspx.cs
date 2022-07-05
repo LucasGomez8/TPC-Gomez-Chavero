@@ -55,7 +55,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 }
 
             }
-            checkInputs();
         }
 
 
@@ -181,64 +180,53 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-
-            productosAgregados = (List<Product>)Session["Agregando"];
-
-
-            long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
-            long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
-            long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
-            long idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
-            string fechaCompra = txtFechaCompra.Text;
-            decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
-            string detalle = txtDetalleCompra.Value;
-
-
-            if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, productosAgregados))
+            if (checkInputs())
             {
-                lblSuccess.Visible = true;
-                lblSuccess.Text = "Compra cargada de forma exitosa";
+                productosAgregados = (List<Product>)Session["Agregando"];
 
-                Session.Remove("Agregando");
+
+                long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
+                long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
+                long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
+                long idadmin = Int64.Parse(dropAdministrador.SelectedItem.Value);
+                string fechaCompra = txtFechaCompra.Text;
+                decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
+                string detalle = txtDetalleCompra.Value;
+
+
+                if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, productosAgregados))
+                {
+                    lblError.Visible = false;
+                    lblSuccess.Visible = true;
+                    lblSuccess.Text = "Compra cargada de forma exitosa";
+                    btnSubmit.Visible = false;
+                    btnContinuar.Visible = true;
+                    Session.Remove("Agregando");
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Error al cargar compra";
+                }
             }
             else
             {
-                lblSuccess.Visible = true;
-                lblSuccess.Text = "Error al cargar compra";
+                lblError.Text = "Faltan Completar Datos, Por Favor, Complete Todos Los Datos";
+                lblError.Visible = true;
             }
+           
         }
 
-        protected void onPriceAndUnityChanges(object sender, EventArgs e)
+        protected bool checkInputs()
         {
-            productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
-            decimal res = 0;
 
-            foreach (Product item in productosAgregados)
-            {
-                res = res + item.PU;
-            }
+            if (txtNumeroFactura.Text.Length == 0) return false;
+            if (long.Parse(dropProveedor.SelectedItem.Value) == 0) return false;
+            if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return false;
+            if (txtFechaCompra.Text.Length == 0) return false;
+            if (Decimal.Parse(txtMontoTotal.Text) == 0) return false;
 
-            //decimal precioUnitario = 0;
-            //if (txtPrecioUnitario.Text.Length != 0) 
-            //    precioUnitario = Decimal.Parse(txtPrecioUnitario.Text);
-            //long cantidad = 0;
-            //if (txtCantidadComprada.Text.Length != 0)
-            //    cantidad = Int64.Parse(txtCantidadComprada.Text);
-
-            //decimal res = cantidad * precioUnitario;
-
-            txtMontoTotal.Text = res.ToString();
-        }
-
-        protected void checkInputs()
-        {
-            if (txtNumeroFactura.Text.Length == 0) return;
-            if (long.Parse(dropProveedor.SelectedItem.Value) == 0) return;
-            if (long.Parse(dropAdministrador.SelectedItem.Value) == 0) return;
-            if (txtFechaCompra.Text.Length == 0) return;
-            if (Decimal.Parse(txtMontoTotal.Text) == 0) return;
-
-            btnSubmit.Enabled = true;
+            return true;
         }
 
         private DataTable createEmptyDataTable()
@@ -273,9 +261,9 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             decimal res = 0;
 
             productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
-            Product añadir = new Product();
-            añadir.Id = Int64.Parse(dropProductos.SelectedValue);
-            añadir.Nombre = dropProductos.SelectedItem.Text;
+
+            Product añadir = cc.findIt(Int64.Parse(dropProductos.SelectedValue));
+
             añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
             añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
 
@@ -342,6 +330,11 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 guardarEnSession();
                 Response.Redirect("~/Pages/Altas/AgregarProveedor.aspx");
             }
+        }
+
+        protected void btnContinuar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Compras/MisCompras.aspx");
         }
     }
 

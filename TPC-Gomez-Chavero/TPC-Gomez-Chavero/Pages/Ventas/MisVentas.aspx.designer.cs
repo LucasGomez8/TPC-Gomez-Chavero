@@ -87,6 +87,24 @@ namespace TPC_Gomez_Chavero
         protected global::System.Web.UI.WebControls.Button addProduct;
 
         /// <summary>
+        /// Control errocantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errocantidad;
+
+        /// <summary>
+        /// Control lblErrorCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorCantidad;
+
+        /// <summary>
         /// Control txtFechaVenta.
         /// </summary>
         /// <remarks>
@@ -123,6 +141,15 @@ namespace TPC_Gomez_Chavero
         protected global::System.Web.UI.WebControls.Button btnSubmit;
 
         /// <summary>
+        /// Control btnSeguirVendiendo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSeguirVendiendo;
+
+        /// <summary>
         /// Control lblSuccess.
         /// </summary>
         /// <remarks>
@@ -130,5 +157,14 @@ namespace TPC_Gomez_Chavero
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuccess;
+
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

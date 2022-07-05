@@ -132,6 +132,15 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected global::System.Web.UI.WebControls.Button btnSubmit;
 
         /// <summary>
+        /// Control btnContinuar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContinuar;
+
+        /// <summary>
         /// Control lblSuccess.
         /// </summary>
         /// <remarks>
@@ -139,5 +148,14 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuccess;
+
+        /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }
