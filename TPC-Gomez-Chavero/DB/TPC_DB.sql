@@ -207,11 +207,6 @@ create procedure sp_ProductoVentaxID
 as
 Select Productos.Nombre, ProductoXVenta.Cantidad, ProductoXVenta.precioVenta from ProductoXVenta
 inner join Productos on Productos.IDProducto = ProductoXVenta.IDProducto
-where ProductoXVenta.IDRegistro = 2
+where ProductoXVenta.IDRegistro = @id
 go
 
-
-select ventas.IDRegistro from ventas
-order by Ventas.IDRegistro desc
-
-Select Ventas.IDRegristro from Ventas order by Ventas.IDRegistro desc

@@ -58,35 +58,32 @@
             <div class="col-md-6">
                 <label>Producto</label>
                 <%foreach (domain.Product item in   lista) { %> 
-                <div class="row">
-                                        <label><%=item.Nombre %></label>
-                </div>
+                  <div class="row">
+                        <label><%=item.Nombre %></label>
+                  </div>
 
                 <% }%>
             </div>
             <div class="col-md-2">
                 <label>Cantidad</label>
                    <%foreach (domain.Product item in lista) { %> 
-                <div class="row">
-                    <label><%=item.CantidadVenta %></label>
-                </div>
-                    
+                    <div class="row">
+                        <label><%=item.CantidadVenta %></label>
+                    </div>     
                 <% }%>
             </div>
             <div class="col-md-2">
                 <label>Precio Unitario</label>
                    <%foreach (domain.Product item in lista) { %> 
-                <div class="row">
-                                        <label><%=item.PU %></label>
-                </div>
-
+                    <div class="row">
+                        <label><%=item.PU %></label>
+                    </div>
                 <% }%>
             </div>
             <div class="col-md-2">
                 <label>Total</label>
                    <%foreach (domain.Product item in lista) { %> 
                 <div class="row">
-
                     <label><%=item.PU * item.CantidadVenta %></label>
                 </div>
                 <% }%>
