@@ -78,6 +78,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.DropDownList dropCategoria;
 
         /// <summary>
+        /// Control errorCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorCategoria;
+
+        /// <summary>
         /// Control dropMarca.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.DropDownList dropMarca;
 
         /// <summary>
+        /// Control errorMarca.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorMarca;
+
+        /// <summary>
         /// Control dropProducto.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropProducto;
+
+        /// <summary>
+        /// Control errorTipoProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorTipoProducto;
 
         /// <summary>
         /// Control addCategoryTxt.
@@ -159,6 +186,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.TextBox txtStockMinimo;
 
         /// <summary>
+        /// Control errorStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorStock;
+
+        /// <summary>
         /// Control txtPorcentajeVenta.
         /// </summary>
         /// <remarks>
@@ -166,6 +202,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorcentajeVenta;
+
+        /// <summary>
+        /// Control errorPorcentaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorPorcentaje;
 
         /// <summary>
         /// Control btnVolver.

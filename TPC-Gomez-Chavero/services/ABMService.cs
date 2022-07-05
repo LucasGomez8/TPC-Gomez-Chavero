@@ -79,7 +79,7 @@ namespace services
             catch (Exception ex)
             {
                 Console.WriteLine("Error al conectar con la base de datos." + ex.Message);
-                throw;
+                return -2;
             }
             finally
             {

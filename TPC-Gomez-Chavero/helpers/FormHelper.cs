@@ -28,9 +28,9 @@ namespace helpers
                 lblError.Visible = true;
                 return false;
             }
-            if (dni.Length < 7)
+            if (dni.Length < 7 || dni.Length > 10)
             {
-                lblError.Text = "Tiene que tener minimo 7 digitos...";
+                lblError.Text = "Tiene que tener entre 7 y 10 caracteres...";
                 lblError.Visible = true;
                 return false;
             }
@@ -55,6 +55,37 @@ namespace helpers
             lblError.Visible = false;
             return true;
         }
+
+        public static bool validateInputPassword(string pass, Label lblError)
+        {
+            if (pass.Length < 8)
+            {
+                lblError.Text = "Tiene que tener minimo 8 caracteres...";
+                lblError.Visible = true;
+                return false;
+            }
+            lblError.Visible = false;
+            return true;
+        }
+
+        public static bool validateInputPositiveNumber(string number, Label lblError)
+        {
+            if (!number.All(char.IsDigit))
+            {
+                lblError.Text = "Solo puede contener numeros...";
+                lblError.Visible = true;
+                return false;
+            }
+            if (long.Parse(number) <= 0)
+            {
+                lblError.Text = "Solo se pueden ingresar valores positivos...";
+                lblError.Visible = true;
+                return false;
+            }
+            lblError.Visible = false;
+            return true;
+        }
+
 
     }
 }

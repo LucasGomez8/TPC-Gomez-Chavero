@@ -20,3 +20,4 @@ C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Deb
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.CoreCompileInputs.cache
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.dll
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.pdb
+C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.AssemblyReference.cache

@@ -11,8 +11,8 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 {
     public partial class AgregarCategoria : Page
     {
-
         public List<ProductCategory> dadosBaja;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             btnReload.Visible = false;
@@ -40,7 +40,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             }
             else
             {
-                lblSuccess.Text = "Hubo un error al cargar la categoria, o bien, esta ya existe.";
+                lblSuccess.Text = "Hubo un error al cargar la categoria, o bien esta ya existe.";
                 lblSuccess.Visible = true;
             }
         }

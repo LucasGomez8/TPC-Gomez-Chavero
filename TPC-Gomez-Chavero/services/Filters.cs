@@ -45,9 +45,8 @@ namespace services
 
                 return list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 throw;
             }
             finally

@@ -69,28 +69,26 @@
                 </div>
             </div>
         </div>
-
                 
         <div class="row justify-content-center" runat="server" visible="false" id="debaja">
-               <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="deleteType">Selecciona el Cliente a volver a dar el alta</label>
-                        <asp:DropDownList cssClass="form-control" ID="dropElimnacionFisica" runat="server"></asp:DropDownList>
-                    </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="deleteType">Selecciona el Cliente a volver a dar el alta</label>
+                    <asp:DropDownList cssClass="form-control" ID="dropElimnacionFisica" runat="server"></asp:DropDownList>
                 </div>
-                <div class="col-md-4 mt-4">
-                     <asp:Button ID="btnOk" CssClass="btn btn-primary" onclick="btnOk_Click" runat="server" Text="Dar de Alta" />
-                </div>
-              <div class="row justify-content-center mt-4">
-                  <div class="col-md-12 text-center">
+            </div>
+            <div class="col-md-4 mt-4">
+                    <asp:Button ID="btnOk" CssClass="btn btn-primary" onclick="btnOk_Click" runat="server" Text="Dar de Alta" />
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-12 text-center">
                     <asp:Label ID="lblSucessBaja" runat="server" CssClass="text-success" Visible="false"></asp:Label>
-                  </div>
-              </div>
-              <div class="col-md-4 mt-4 text-center">
-                    <asp:Button ID="btnVolverBaja" runat="server" CssClass="btn btn-secondary" onClick="btnVolver_Click" Enabled="true" Text="Volver" />
-                    <asp:Button ID="btnContinuarBaja" runat="server" CssClass="btn btn-primary" onClick="btnContinue_Click" Enabled="false" Text="Continuar" />
-              </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-4 text-center">
+                <asp:Button ID="btnVolverBaja" runat="server" CssClass="btn btn-secondary" onClick="btnVolver_Click" Enabled="true" Text="Volver" />
+                <asp:Button ID="btnContinuarBaja" runat="server" CssClass="btn btn-primary" onClick="btnContinue_Click" Enabled="false" Text="Continuar" />
+            </div>
         </div>
-
     </div>
 </asp:Content>

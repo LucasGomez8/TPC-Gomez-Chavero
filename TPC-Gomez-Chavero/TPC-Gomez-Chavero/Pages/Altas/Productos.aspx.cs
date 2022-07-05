@@ -34,6 +34,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                     btnRetorno.Visible = true;
                 }
             }
+            checkInputs();
         }
 
         public void dropBranch()
@@ -89,21 +90,27 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
             string nombre = txtNombre.Text;
             string des = descripcion.Value;
-            long idcategoria = Int64.Parse(dropCategoria.SelectedItem.Value);
-            long idmarca = Int64.Parse(dropMarca.SelectedItem.Value);
-            long idtipo = Int64.Parse(dropProducto.SelectedItem.Value);
+            long idcategoria = long.Parse(dropCategoria.SelectedItem.Value);
+            long idmarca = long.Parse(dropMarca.SelectedItem.Value);
+            long idtipo = long.Parse(dropProducto.SelectedItem.Value);
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
-            if (abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+            if (abm.addProduct(nombre.ToLower(), des.ToLower(), idcategoria, idmarca, idtipo, stockmin, porc) == 1)
             {
                 lblSuccess.Text = "Producto cargado de forma exitosa!";
                 lblSuccess.Visible = true;
                 btnSubmit.Visible = false;
                 btnContinue.Visible = true;
+            }
+            else
+            {
+                lblSuccess.Text = "Hubo un error al cargar el producto";
+                lblSuccess.Visible = true;
+                btnSubmit.Visible = true;
+                btnContinue.Visible = false;
             }
 
         }
@@ -147,6 +154,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             else
             {
                 addCategoryBtn.Visible = false;
+                addCategoryBtn.Enabled = false;
                 addCategoryTxt.Visible = false;
             }
         }
@@ -163,6 +171,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             else
             {
                 addBranchBtn.Visible = false;
+                addBranchBtn.Enabled = false;
                 addBranchTxt.Visible = false;
             }
         }
@@ -179,6 +188,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             else
             {
                 addTypeBtn.Visible = false;
+                addTypeBtn.Enabled = false;
                 addTypeTxt.Visible = false;
             }
         }
@@ -188,6 +198,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             string descripcion = addBranchTxt.Text;
             if (descripcion.Length == 0)
             {
+                errorMarca.Text = "Por favor ingrese informacion valida.";
                 return;
             }
 
@@ -195,6 +206,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             {
                 dropBranch();
                 dropMarca.SelectedIndex = branchList.Count + 1;
+                errorMarca.Visible = false;
+                addBranchBtn.Visible = false;
+                addBranchTxt.Visible = false;
+            }
+            else 
+            {
+                dropBranch();
+                errorMarca.Text = "Hubo un error al crear la marca";
+                errorMarca.Visible = true;
                 addBranchBtn.Visible = false;
                 addBranchTxt.Visible = false;
             }
@@ -205,6 +225,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             string descripcion = addTypeTxt.Text;
             if (descripcion.Length == 0)
             {
+                errorTipoProducto.Text = "Por favor ingrese informacion valida.";
                 return;
             }
 
@@ -212,6 +233,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             {
                 dropProductType();
                 dropProducto.SelectedIndex = typeList.Count + 1;
+                errorTipoProducto.Visible = false;
+                addTypeBtn.Visible = false;
+                addTypeTxt.Visible = false;
+            }
+            else
+            {
+                dropProductType();
+                errorTipoProducto.Text = "Hubo un error al crear el Tipo de Producto";
+                errorTipoProducto.Visible = true;
                 addTypeBtn.Visible = false;
                 addTypeTxt.Visible = false;
             }
@@ -222,13 +252,23 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             string descripcion = addCategoryTxt.Text;
             if (descripcion.Length == 0)
             {
+                errorCategoria.Text = "Por favor ingrese informacion valida.";
                 return;
             }
 
             if (abm.createTypes(descripcion.ToLower(), "Categorias") == 1)
             {
                 dropCategory();
-                dropCategoria.SelectedIndex= categoryList.Count + 1;
+                dropCategoria.SelectedIndex = categoryList.Count+1;
+                errorCategoria.Visible = false;
+                addCategoryBtn.Visible = false;
+                addCategoryTxt.Visible = false;
+            }
+            else
+            {
+                dropCategory();
+                errorCategoria.Text = "Hubo un error al crear la Categoria.";
+                errorCategoria.Visible = true;
                 addCategoryBtn.Visible = false;
                 addCategoryTxt.Visible = false;
             }
@@ -236,18 +276,24 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnRetorno_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
             string nombre = txtNombre.Text;
             string des = descripcion.Value;
-            long idcategoria = Int64.Parse(dropCategoria.SelectedItem.Value);
-            long idmarca = Int64.Parse(dropMarca.SelectedItem.Value);
-            long idtipo = Int64.Parse(dropProducto.SelectedItem.Value);
+            long idcategoria = long.Parse(dropCategoria.SelectedItem.Value);
+            long idmarca = long.Parse(dropMarca.SelectedItem.Value);
+            long idtipo = long.Parse(dropProducto.SelectedItem.Value);
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
-            if (abm.addProduct(nombre, des, idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+            if (abm.addProduct(nombre.ToLower(), des.ToLower(), idcategoria, idmarca, idtipo, stockmin, porc) == 1)
             {
                 Response.Redirect("~/Pages/Compras/MisCompras.aspx");
+            }
+            else
+            {
+                lblSuccess.Text = "Hubo un error al cargar el producto";
+                lblSuccess.Visible = true;
+                btnSubmit.Visible = true;
+                btnContinue.Visible = false;
             }
         }
 
@@ -257,7 +303,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             txtStockMinimo.Text = "";
             txtPorcentajeVenta.Text = "";
             descripcion.Value = "";
-
             btnContinue.Visible = false;
             btnSubmit.Visible = true;
             lblSuccess.Visible = false;
@@ -271,9 +316,16 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         public void dropDadosBaja()
         {
-             dadosBaja= abm.getProducts(0);
+            dadosBaja = abm.getProducts(0);
 
-            DataTable data = createEmptyDataTable();
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
+
+            DataRow emptyData = data.NewRow();
+            emptyData[0] = 0;
+            emptyData[1] = "";
+            data.Rows.Add(emptyData);
 
             foreach (Product item in dadosBaja)
             {
@@ -296,18 +348,25 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
-            ABMService abm = new ABMService();
+            long id = long.Parse(dropElimnacionFisica.SelectedItem.Value);
+            if (id == 0)
+            {
+                lblSucessBaja.Visible = true;
+                lblSucessBaja.Text = "Por favor ingrese una opcion valida";
+                return;
+            }
 
-            if (abm.changeStatus("Productos", "IDProducto", 1, id)==1)
+            if (abm.changeStatus("Productos", "IDProducto", 1, id) == 1)
             {
                 lblSucessBaja.Visible = true;
                 lblSucessBaja.Text = "El producto Vuelve a estar de alta";
-
-                
-
                 btnContinuarBaja.Enabled = true;
                 btnOk.Enabled = false;
+            }
+            else
+            {
+                lblSucessBaja.Visible = true;
+                lblSucessBaja.Text = "Hubo un erro al dar de alta el producto";
             }
            
         }
@@ -340,8 +399,47 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         {
             menu.Visible = true;
             Nuevo.Visible = false;
+        }
+
+        private void checkInputs()
+        {
+            if (txtNombre.Text.Length == 0) return;
+
+            if (long.Parse(dropCategoria.SelectedValue) == 0) return;
+
+            if (long.Parse(dropMarca.SelectedValue) == 0) return;
+
+            if (long.Parse(dropProducto.SelectedValue) == 0) return;
+
+            if (txtPorcentajeVenta.Text.Length == 0 || 
+                !FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje)) return;
+
+            if (txtStockMinimo.Text.Length == 0 || 
+                !FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock)) return;
+
+            btnSubmit.Enabled = true;
+            btnRetorno.Enabled = true;
+        }
 
 
+        protected void onTextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+
+            if (txt.ID == txtStockMinimo.ID) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock);
+            if (txt.ID == txtPorcentajeVenta.ID) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje);
+            if (txt.ID == addCategoryTxt.ID)
+            {
+                if (txt.Text.Length != 0) addCategoryBtn.Enabled = true;
+            } 
+            if (txt.ID == addBranchTxt.ID)
+            {
+                if (txt.Text.Length != 0) addBranchBtn.Enabled = true;
+            } 
+            if (txt.ID == addTypeTxt.ID)
+            {
+                if (txt.Text.Length != 0) addTypeBtn.Enabled = true;
+            }
         }
     }
 }

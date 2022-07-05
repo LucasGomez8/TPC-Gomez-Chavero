@@ -84,11 +84,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             emptyData[1] = "";
             data.Rows.Add(emptyData);
 
-            DataRow newData = data.NewRow();
-            newData[0] = -1;
-            newData[1] = "Nuevo...";
-            data.Rows.Add(newData);
-
             return data;
         }
 
@@ -116,17 +111,28 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
+            long id = long.Parse(dropElimnacionFisica.SelectedItem.Value);
 
-            if (abm.changeStatus("TipoProducto","idTipoProducto",1,id)==1)
+            if (id == 0)
             {
-                lblSucessBaja.Text = "Tipo de producto seleccionado vuelve a estar de alta";
+                lblSucessBaja.Text = "Por favor seleccione una opcion!";
+                lblSucessBaja.Visible = true;
+                return;
+            }
+            ABMService abm = new ABMService();
+
+            if (abm.changeStatus("TipoProducto", "idTipoProducto", 1, id) == 1)
+            {
+                lblSucessBaja.Text = "Tipo de producto seleccionado dado de alta nuevamente";
                 btnOk.Enabled = false;
                 btnContinuarBaja.Enabled = true;
             }
-
-
+            else
+            {
+                lblSucessBaja.Text = "Hubo un error al dar de alta nuevamente el Tipo de producto!";
+                lblSucessBaja.Visible = true;
+                btnContinuarBaja.Enabled = true;
+            }
         }
 
         protected void btnVolverBaja_Click(object sender, EventArgs e)

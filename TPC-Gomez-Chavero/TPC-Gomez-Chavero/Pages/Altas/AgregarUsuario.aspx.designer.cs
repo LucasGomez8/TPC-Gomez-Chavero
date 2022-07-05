@@ -75,7 +75,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaNac;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFechaNac;
 
         /// <summary>
         /// Control txtDni.
@@ -85,6 +85,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDni;
+
+        /// <summary>
+        /// Control errorDNI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorDNI;
 
         /// <summary>
         /// Control txtNick.
@@ -105,6 +114,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.TextBox txtPass;
 
         /// <summary>
+        /// Control errorPasswd.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorPasswd;
+
+        /// <summary>
         /// Control dropUserType.
         /// </summary>
         /// <remarks>
@@ -114,6 +132,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         protected global::System.Web.UI.WebControls.DropDownList dropUserType;
 
         /// <summary>
+        /// Control lblSuccess.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
+
+        /// <summary>
         /// Control btnSubmit.
         /// </summary>
         /// <remarks>
@@ -121,6 +148,24 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+
+        /// <summary>
+        /// Control btnVolver2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolver2;
+
+        /// <summary>
+        /// Control btnReload.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReload;
 
         /// <summary>
         /// Control debaja.

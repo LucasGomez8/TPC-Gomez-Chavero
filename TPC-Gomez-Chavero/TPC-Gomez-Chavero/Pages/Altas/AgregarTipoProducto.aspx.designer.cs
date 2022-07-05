@@ -6,13 +6,14 @@
 //     se vuelve a generar el código. 
 // </generado automáticamente>
 //------------------------------------------------------------------------------
+
 namespace TPC_Gomez_Chavero.Pages.Altas
 {
 
 
     public partial class AgregarTipoProducto
     {
-        
+
         /// <summary>
         /// Control menu.
         /// </summary>
@@ -66,15 +67,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuccess;
-
-        /// <summary>
-        /// Control btnVolver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
         /// Control btnSubmit.

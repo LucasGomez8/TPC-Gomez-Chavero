@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Data;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using helpers;
@@ -108,10 +106,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             dropDown.DataBind();
         }
 
-
-
-
-
         protected void btnReturn_Click(object sender, EventArgs e)
         {
             string nombreCliente = txtNombreCliente.Text;
@@ -147,25 +141,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             
             btnSubmit.Enabled = true;
             btnReturn.Enabled = true;
-        }
-
-        protected bool onPhoneChanged()
-        {
-            string data = txtTelefono.Text.Trim();
-            if (!data.All(char.IsDigit))
-            {
-                errorTelefono.Text = "Solo puede contener numeros...";
-                errorTelefono.Visible = true;
-                return true;
-            }
-            if (data.Length < 8)
-            {
-                errorTelefono.Text = "Tiene que tener minimo 8 digitos...";
-                errorTelefono.Visible = true;
-                return true;
-            }
-            errorTelefono.Visible = false;
-            return false;
         }
 
         protected void onTextChanged(object sender, EventArgs e)
@@ -206,8 +181,13 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
+            long id = long.Parse(dropElimnacionFisica.SelectedItem.Value);
+            if (id == 0)
+            {
+                lblSucessBaja.Text = "Seleccione una opcion valida!";
+                lblSucessBaja.Visible = true;
+                return;
+            }
 
             if (abm.changeStatus("Clientes", "IDCliente", 1, id) == 1)
             {
@@ -215,6 +195,11 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 lblSucessBaja.Visible = true;
 
                 btnContinuarBaja.Enabled = true;
+            }
+            else
+            {
+                lblSucessBaja.Text = "Hubo un error al dar de alta nuevamente el Cliente!";
+                lblSucessBaja.Visible = true;
             }
         }
 

@@ -89,7 +89,7 @@ namespace services
             catch (Exception ex)
             {
                 Console.WriteLine("Error al conectar con la base de datos ." + ex.Message);
-                throw;
+                return null;
             }
             finally
             {
@@ -197,10 +197,9 @@ namespace services
 
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                return -2;
             }
             finally
             {
@@ -221,10 +220,9 @@ namespace services
                 da.executeAction();
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                return -2;
             }
             finally
             {

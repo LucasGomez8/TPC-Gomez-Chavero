@@ -75,6 +75,11 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             {
                 Response.Redirect("~/Pages/Compras/MisCompras.aspx");
             }
+            else
+            {
+                lblSuccess.Text = "Hubo un error al cargar el proveedor, o bien este ya existe.";
+                lblSuccess.Visible = true;
+            }
         }
 
         private DataTable createEmptyDataTable()
@@ -87,11 +92,6 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             emptyData[0] = 0;
             emptyData[1] = "";
             data.Rows.Add(emptyData);
-
-            DataRow newData = data.NewRow();
-            newData[0] = -1;
-            newData[1] = "Nuevo...";
-            data.Rows.Add(newData);
 
             return data;
         }
@@ -125,17 +125,28 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            long id = Int64.Parse(dropElimnacionFisica.SelectedItem.Value);
+            long id = long.Parse(dropElimnacionFisica.SelectedItem.Value);
 
-            if (abm.changeStatus("Proveedores","IDProveedor",1,id)==1)
+            if (id == 0)
             {
-                lblSucessBaja.Text = "Categoria dada de alta nuevamente!";
+                lblSucessBaja.Text = "Por favor seleccione una opcion!";
                 lblSucessBaja.Visible = true;
-
-                btnContinuarBaja.Enabled = true;
+                return;
             }
 
+            ABMService abm = new ABMService();
+            if (abm.changeStatus("Proveedores","IDProveedor",1,id)==1)
+            {
+                lblSucessBaja.Text = "Proveedor dado de alta nuevamente!";
+                lblSucessBaja.Visible = true;
+                btnContinuarBaja.Enabled = true;
+            }
+            else
+            {
+                lblSucessBaja.Text = "Hubo un error al dar de alta nuevamente al Proveedor!";
+                lblSucessBaja.Visible = true;
+                btnContinuarBaja.Enabled = true;
+            }
         }
 
         protected void btnVolverBaja_Click(object sender, EventArgs e)
