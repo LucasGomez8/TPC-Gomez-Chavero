@@ -173,13 +173,15 @@ namespace services
 
         }
 
-        public decimal getUltimoCosto(long id)
+        public Product getUltimoCosto(long id)
         {
             DataAccess da = new DataAccess();
             decimal resul = 0;
 
             try
             {
+                Product costo = new Product();
+
                 da.setProcedimientoAlmacenado("sp_UltimoCosto");
                 da.setConsultaWhitParameters("@id", id);
 
@@ -188,14 +190,20 @@ namespace services
 
                 if (da.dataReader.Read())
                 {
-                    resul = (decimal)da.dataReader["precioCompra"];
+                    costo.Costo = (decimal)da.dataReader["precioCompra"];
+                    costo.PorcentajeVenta = (short)da.dataReader["porcentajeVenta"];
                 }
-                return resul;
+                if (costo.Costo>0)
+                {
+                    return costo;
+                }
+
+                return null;
             }
             catch
             {
 
-                return -2;
+                return null;
             }
             finally
             {

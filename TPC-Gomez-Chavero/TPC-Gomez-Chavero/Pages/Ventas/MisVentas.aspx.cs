@@ -358,18 +358,22 @@ namespace TPC_Gomez_Chavero
 
         protected void txtCantidadVendida_TextChanged(object sender, EventArgs e)
         {
+            txtPrecioUnitario.Text = "";
             fil = new Filters();
-            Product cual = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
-            cual.Costo = fil.getUltimoCosto(cual.Id);
+            Product costo = fil.getUltimoCosto(Int64.Parse(dropProductos.SelectedValue));
 
             long cantidad = 0;
 
-            if (txtCantidadVendida.Text.Length!=0) cantidad = Int64.Parse(txtCantidadVendida.Text);
-            
-            decimal result = (cantidad * cual.Costo);
+            if (txtCantidadVendida.Text.Length != 0) cantidad = Int64.Parse(txtCantidadVendida.Text);
 
-           if(txtPrecioUnitario.Text.Length != 0) txtPrecioUnitario.Text = result.ToString();
-            
+
+            decimal result = cantidad * (costo.Costo + ((costo.Costo * costo.PorcentajeVenta)/100));
+
+
+            if (txtPrecioUnitario.Text.Length == 0) txtPrecioUnitario.Text = result.ToString();
+
+            result = 0;
+
         }
     }
 }

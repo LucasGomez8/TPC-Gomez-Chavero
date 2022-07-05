@@ -21,11 +21,11 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="dropTipoFactura">Tipo de Factura</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura" AutoPostBack="true"  runat="server"/>
+                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura"   runat="server"/>
                       </div>
                       <div class="col-md-4">
                           <label for="dropCliente">Cliente</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropCliente" OnSelectedIndexChanged="dropCliente_SelectedIndexChanged" AutoPostBack="true" runat="server" />
+                          <asp:DropDownList CssClass="form-control" ID="dropCliente" OnSelectedIndexChanged="dropCliente_SelectedIndexChanged"  runat="server" />
                       </div>
                       <div class="col-md-4">
                           <label for="dropUsuario">Usuario que realiza la venta</label>
@@ -45,10 +45,10 @@
                           </div>
                           <div class="col-md-4">
                               <label for="txtPrecioUnitario">Precio Venta</label>
-                              <asp:TextBox ID="txtPrecioUnitario" Enabled="false" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtPrecioUnitario" Enabled="false" runat="server" CssClass="form-control"></asp:TextBox>
                           </div>
                           <div class="col-md-4">
-                               <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary" AutoPostBack="true"  OnClick="addProduct_Click" />
+                               <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary"   OnClick="addProduct_Click" />
                           </div>
                       </div>
                   </div>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="txtVenta">Monto Total de Venta</label>
-                            <asp:TextBox ID="txtVenta" runat="server" TextMode="number" Enabled="false" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtVenta" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -87,8 +87,8 @@
             </form>
             <div class="row justify-content-center mb-3">
                 <div class="col-md-4 text-center">
-              <asp:Button ID="btnSubmit" runat="server"  onclick="btnSubmit_Click" AutoPostBack="true" CssClass="btn btn-primary" Text="Agregar" />
-                    <asp:Button ID="btnSeguirVendiendo" runat="server" visible="false" onclick="btnSeguirVendiendo_Click" AutoPostBack="true" CssClass="btn btn-primary" Text="Continuar Vendiendo" />
+              <asp:Button ID="btnSubmit" runat="server"  onclick="btnSubmit_Click"  CssClass="btn btn-primary" Text="Agregar" />
+                    <asp:Button ID="btnSeguirVendiendo" runat="server" visible="false" onclick="btnSeguirVendiendo_Click"  CssClass="btn btn-primary" Text="Continuar Vendiendo" />
                 </div>
             </div>
             <div class="row justify-content-center">
