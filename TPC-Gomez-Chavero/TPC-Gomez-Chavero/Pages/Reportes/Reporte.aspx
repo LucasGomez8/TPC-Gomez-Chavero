@@ -68,7 +68,7 @@
                 <label>Cantidad</label>
                    <%foreach (domain.Product item in lista) { %> 
                 <div class="row">
-
+                    <label><%=item.CantidadVenta %></label>
                 </div>
                     
                 <% }%>
@@ -87,7 +87,7 @@
                    <%foreach (domain.Product item in lista) { %> 
                 <div class="row">
 
-                    <label><%=item.PU * item.Cantidad %></label>
+                    <label><%=item.PU * item.CantidadVenta %></label>
                 </div>
                 <% }%>
             </div>

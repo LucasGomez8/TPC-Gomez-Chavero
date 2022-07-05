@@ -24,5 +24,11 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvVentas.DataSource = filtros.listarVentas();
             dgvVentas.DataBind();
         }
+
+        protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long id = Int64.Parse(dgvVentas.SelectedRow.Cells[0].Text);
+            Response.Redirect("~/Pages/Reportes/Reporte.aspx?id=" + id);
+        }
     }
 }
