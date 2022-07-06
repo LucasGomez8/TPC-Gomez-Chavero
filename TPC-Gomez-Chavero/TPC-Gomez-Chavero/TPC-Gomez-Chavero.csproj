@@ -72,6 +72,7 @@
     <Content Include="Assets\img\home.jpg" />
     <Content Include="Assets\img\login.jpg" />
     <Content Include="Assets\img\modificacion.jpg" />
+    <Content Include="Assets\img\productos.jpg" />
     <Content Include="css\AñadirProducto.css" />
     <Content Include="css\AñadirUsuarios.css" />
     <Content Include="css\Bajas.css" />

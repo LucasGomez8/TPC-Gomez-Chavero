@@ -308,7 +308,7 @@ namespace TPC_Gomez_Chavero
         protected void addProduct_Click(object sender, EventArgs e)
         {
             decimal res = 0;
-            if (int.Parse(txtCantidadVendida.Text) > 0 && int.Parse(dropProductos.SelectedValue) > 0)
+            if ( txtCantidadVendida.Text.Length > 0 && int.Parse(dropProductos.SelectedValue) > 0)
             {
 
                 Product añadir = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
@@ -343,6 +343,12 @@ namespace TPC_Gomez_Chavero
                 }
 
 
+            }
+            else
+            {
+                errocantidad.Visible = true;
+                lblErrorCantidad.Text = "Seleccione un producto o ingrese una cantidad ventida";
+                lblErrorCantidad.Visible = true;
             }
 
 

@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-               <asp:GridView ID="dgvVentas" runat="server" CssClass="table border-0" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged" AutoGenerateColumns="false">
+               <asp:GridView ID="dgvVentas" runat="server" CssClass="table border-0" OnPageIndexChanging="dgvVentas_PageIndexChanging" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Numero Factura" DataField="NumeroFactura" />

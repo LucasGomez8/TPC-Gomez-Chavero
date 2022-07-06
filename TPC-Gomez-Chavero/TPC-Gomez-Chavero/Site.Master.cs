@@ -9,7 +9,14 @@ namespace TPC_Gomez_Chavero
             if (Session["user"] != null)
             {
                 aLogin.Visible = false;
+                btnLogOut.Visible = true;
             }
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Session.Remove("user");
+            Response.Redirect("~/");
         }
     }
 }

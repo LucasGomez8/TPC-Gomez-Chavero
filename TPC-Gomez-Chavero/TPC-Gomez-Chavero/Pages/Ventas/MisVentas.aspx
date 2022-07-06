@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="txtVenta">Monto Total de Venta</label>
-                            <asp:TextBox ID="txtVenta" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtVenta" runat="server" Enabled="false" CssClass="form-control" Text="0"></asp:TextBox>
                         </div>
                     </div>
                 </div>

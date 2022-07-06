@@ -19,6 +19,7 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblSuccess.Visible = false;
             if (!IsPostBack)
             {
                 dropLoader();
@@ -56,13 +57,27 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            lblSuccess.Visible = false;
             ABMService abm = new ABMService();
+            if (int.Parse(deleteClient.SelectedValue) > 0)
+            {
+                long whatClient = Int64.Parse(deleteClient.SelectedValue);
 
-            long whatClient = Int64.Parse(deleteClient.SelectedValue);
+                selected = findIt(whatClient);
 
-            selected = findIt(whatClient);
+                if (abm.deleteClient(selected.Id) == 1)
+                {
+                    lblSuccess.Text = "Cliente dado de baja de forma exitosa!";
+                    lblSuccess.Visible = true;
+                    deleteClient.SelectedValue = 0.ToString();
+                }
+            }
+            else
+            {
+                lblSuccess.Text = "Por favor, seleccione una opcion valida";
+                lblSuccess.Visible = true;
+            }
 
-            abm.deleteClient(selected.Id);
         }
 
         public Client findIt(long id)

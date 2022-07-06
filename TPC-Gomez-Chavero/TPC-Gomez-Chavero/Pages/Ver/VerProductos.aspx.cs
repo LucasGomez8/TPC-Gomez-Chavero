@@ -17,6 +17,11 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         public Filters fil;
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoadGridData();
+        }
+
+        public void LoadGridData()
+        {
             fil = new Filters();
 
             dgvProductos.DataSource = fil.getStoresProducts();
@@ -51,6 +56,13 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             {
                 Response.Write("<script>alert('El Producto se encuentra dado de baja')</script>");
             }
+        }
+
+        protected void dgvProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvProductos.PageIndex = e.NewPageIndex;
+            LoadGridData();
+            dgvProductos.DataBind();
         }
     }
 }

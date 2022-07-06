@@ -14,6 +14,7 @@
                     <div class="form-group">
                         <label for="deleteClient">Selecciona el Cliente a Eliminar</label>
                         <asp:DropDownList cssClass="form-control" ID="deleteClient" runat="server"></asp:DropDownList>
+                        <asp:Label runat="server" ID="lblSuccess" />
                     </div>
                 </div>
                 <div class="col-md-4 mt-4">

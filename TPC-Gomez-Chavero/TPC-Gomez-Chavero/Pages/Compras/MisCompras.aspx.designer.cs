@@ -96,6 +96,24 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected global::System.Web.UI.WebControls.Button addProduct;
 
         /// <summary>
+        /// Control errocantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errocantidad;
+
+        /// <summary>
+        /// Control lblErrorCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorCantidad;
+
+        /// <summary>
         /// Control txtFechaCompra.
         /// </summary>
         /// <remarks>

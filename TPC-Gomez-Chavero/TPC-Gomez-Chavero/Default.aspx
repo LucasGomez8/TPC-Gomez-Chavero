@@ -13,26 +13,26 @@
             <asp:Label ID="lblBienvenida" runat="server"></asp:Label>
         </div>
         <div class="row mt-5" id="adminSession" runat="server">
-            <div class="col-md-3 item">
-                <a href="/Pages/MisCompras.aspx">
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/compras.jpg'); background-size:cover;">
+                <a href="/Pages/MisCompras.aspx" class="itemContent">
                 <h3>Gestiona Tus Compras</h3>
                     <p>Aqui podras gestionar tus compras</p>
                 </a>
             </div>
-            <div class="col-md-3 item">
-                <a href="/Pages/MisVentas.aspx">
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/ventas.jpg'); background-size:cover;">
+                <a href="/Pages/MisVentas.aspx" class="itemContent">
                 <h3>Gestiona Tus Ventas</h3>
                     <p>Aqui podras gestionar tus ventas</p>
                 </a>
             </div>
-            <div class="col-md-3 item">
-                <a href="/Pages/Altas/AgregarVendedor.aspx">
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/adrUsuarioContent.jpg'); background-size: cover;">
+                <a href="/Pages/Altas/AgregarVendedor.aspx" class="itemContent">
                 <h3>Dar de Alta un usuario</h3>
                     <p>Aqui podras dar de alta a los usuarios correspondientes</p>
                 </a>
             </div>
-            <div class="col-md-3 item">
-                <a href="/Pages/Altas/Productos.aspx">
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/productos.jpg'); background-size:cover;">
+                <a href="/Pages/Altas/Productos.aspx" class="itemContent">
                 <h3>Dar de Alta un Producto</h3>
                     <p>Aqui podras dar de alta a los Productos correspondientes</p>
                 </a>

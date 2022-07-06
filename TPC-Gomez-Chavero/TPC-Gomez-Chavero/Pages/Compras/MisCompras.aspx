@@ -70,6 +70,13 @@
                       <% } %>
                       </div>
                       </div>
+
+                     <div class="row mt-2 mb-4 justify-content-center" runat="server" id="errocantidad" visible="false">
+                        <div class="text-center">
+                            <asp:Label ID="lblErrorCantidad" CssClass="text-danger" Visible="false" runat="server"></asp:Label>
+                        </div>
+                      </div>
+
                   </div>
 
                 <div class="form-group mb-4">

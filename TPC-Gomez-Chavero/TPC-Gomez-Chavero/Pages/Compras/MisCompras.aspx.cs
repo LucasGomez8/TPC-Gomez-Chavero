@@ -259,28 +259,39 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected void onAddProductClicked(object sender, EventArgs e)
         {
             decimal res = 0;
-
-            productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
-
-            Product añadir = cc.findIt(Int64.Parse(dropProductos.SelectedValue));
-
-            añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
-            añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
-
-
-            productosAgregados.Add(añadir);
-
-            Session.Add("Agregando", productosAgregados);
-
-            foreach (Product item in productosAgregados)
+            if (txtCantidadComprada.Text.Length > 0 && int.Parse(dropProductos.SelectedValue)>0)
             {
-                res += item.PU*item.Cantidad;
+                lblErrorCantidad.Visible = false;
+                errocantidad.Visible = false;
+                productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
+
+                Product añadir = cc.findIt(Int64.Parse(dropProductos.SelectedValue));
+
+                añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
+                añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
+
+
+                productosAgregados.Add(añadir);
+
+                Session.Add("Agregando", productosAgregados);
+
+                foreach (Product item in productosAgregados)
+                {
+                    res += item.PU * item.Cantidad;
+                }
+
+                txtCantidadComprada.Text = "";
+                txtPrecioUnitario.Text = "";
+
+                txtMontoTotal.Text = res.ToString();
+
             }
-
-            txtCantidadComprada.Text = "";
-            txtPrecioUnitario.Text = "";
-
-            txtMontoTotal.Text = res.ToString();
+            else
+            {
+                errocantidad.Visible = true;
+                lblErrorCantidad.Text = "Seleccione un producto o ingrese una cantidad comprada";
+                lblErrorCantidad.Visible = true;
+            }
 
         }
 

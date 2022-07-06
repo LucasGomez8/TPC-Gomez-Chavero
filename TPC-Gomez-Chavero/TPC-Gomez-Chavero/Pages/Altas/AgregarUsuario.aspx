@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
-                    <asp:Button ID="btnSubmit" cssClass="btn btn-primary" OnClick="btnSubmit_Click" runat="server" Enabled="false" Text="Agregar" />
                     <asp:Button ID="btnVolver2" runat="server" CssClass="btn btn-secondary" onClick="btnVolver2_Click" Enabled="true" Text="Volver" />
+                    <asp:Button ID="btnSubmit" cssClass="btn btn-primary" OnClick="btnSubmit_Click" runat="server" Enabled="false" Text="Agregar" />
                     <asp:Button ID="btnReload" cssClass="btn btn-primary" OnClick="btnReload_Click" runat="server" Text="Continuar" Visible="false" />
                 </div>
             </div>

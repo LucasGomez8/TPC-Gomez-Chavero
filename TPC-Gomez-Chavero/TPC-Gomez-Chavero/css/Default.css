@@ -21,3 +21,22 @@
     align-content:center;
     background-color: #fff;
 }
+
+.item:hover{
+    transform:scale(1.07);
+    transition: 1s ease;
+}
+
+.itemContent {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 2px 1px 2px black;
+    margin: auto 0;
+}
+
+    .itemContent:hover {
+        font-size: 20px;
+        transition: 2s ease;
+        color: #c9f299;
+    }
