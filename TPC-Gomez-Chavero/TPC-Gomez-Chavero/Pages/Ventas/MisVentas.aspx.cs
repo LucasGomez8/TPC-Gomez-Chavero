@@ -358,7 +358,7 @@ namespace TPC_Gomez_Chavero
         {
             int resultado = stockActual - cantidadquesevende;
 
-            if (resultado < 0 && resultado < stockMinimo )
+            if (resultado < 0 || resultado < stockMinimo )
             {
                 return false;
             }

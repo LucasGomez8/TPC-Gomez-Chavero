@@ -21,11 +21,11 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="dropTipoFactura">Tipo de Factura</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura"   runat="server"/>
+                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura" runat="server"/>
                       </div>
                       <div class="col-md-4">
                           <label for="dropCliente">Cliente</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropCliente" OnSelectedIndexChanged="dropCliente_SelectedIndexChanged"  runat="server" />
+                          <asp:DropDownList CssClass="form-control" ID="dropCliente" OnSelectedIndexChanged="dropCliente_SelectedIndexChanged" AutoPostBack="true" runat="server" />
                       </div>
                       <div class="col-md-4">
                           <label for="dropUsuario">Usuario que realiza la venta</label>

@@ -49,7 +49,7 @@
                       </div>
                       <div class="row ">
                           <div class="col-md-4">
-                              <asp:DropDownList CssClass="form-control" ID="dropProductos"  OnSelectedIndexChanged="onDropProductoChanges" runat="server"  />
+                              <asp:DropDownList CssClass="form-control" ID="dropProductos"  AutoPostBack="true" OnSelectedIndexChanged="onDropProductoChanges" runat="server"  />
                           </div>
                           <div class="col-md-4">
                               <asp:TextBox ID="txtCantidadComprada" runat="server" TextMode="Number" CssClass="form-control"/>

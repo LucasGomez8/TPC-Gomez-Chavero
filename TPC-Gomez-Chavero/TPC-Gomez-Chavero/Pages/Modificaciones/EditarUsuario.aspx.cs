@@ -58,7 +58,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             txtPass.Text = selected.Pass;
 
             txtFechaNac.Enabled = true;
-            txtFechaNac.Text = selected.FechaNacimiento.ToString("dd-MM-yyyy");
+            txtFechaNac.Text = selected.FechaNacimiento.ToString("yyyy-MM-dd");
 
             btnSubmit.Enabled = true;
             btnCancelar.Enabled = true;
