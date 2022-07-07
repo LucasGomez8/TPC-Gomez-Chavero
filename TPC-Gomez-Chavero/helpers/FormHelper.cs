@@ -70,15 +70,15 @@ namespace helpers
 
         public static bool validateInputPositiveNumber(string number, Label lblError)
         {
-            if (!number.All(char.IsDigit))
-            {
-                lblError.Text = "Solo puede contener numeros...";
-                lblError.Visible = true;
-                return false;
-            }
             if (long.Parse(number) <= 0)
             {
                 lblError.Text = "Solo se pueden ingresar valores positivos...";
+                lblError.Visible = true;
+                return false;
+            }
+            if (!number.All(char.IsDigit))
+            {
+                lblError.Text = "Solo puede contener numeros...";
                 lblError.Visible = true;
                 return false;
             }

@@ -30,7 +30,7 @@ go
 
 create table Proveedores(
 	IDProveedor bigint primary key not null identity(1,1),
-	Nombre varchar(40) not null,
+	Nombre varchar(40) not null unique,
 	Estado bit not null
 )
 go
@@ -42,9 +42,9 @@ create table Productos(
 	IDCategoria bigint foreign key references Categorias(IDCategoria),
 	IDMarca bigint foreign key references Marcas(IDMarca),
 	IDTipoProducto bigint foreign key references TipoProducto(IDTipoProducto),
-	Stock int not null,
-	StockMinimo int not null,
-	porcentajeVenta smallint not null,
+	Stock int not null check (Stock >= 0),
+	StockMinimo int not null check (StockMinimo >= 0),
+	porcentajeVenta smallint not null check (porcentajeVenta >= 0),
 	Estado bit not null
 
 )
@@ -60,7 +60,7 @@ create table Usuarios(
 	idUsuario bigint primary key identity (1,1),
 	nombre varchar(100) not null,
 	apellido varchar(100) not null,
-	dni varchar(10) not null unique,
+	dni varchar(11) not null unique,
 	IDTipoUsuario bigint foreign key references TipoUsuario(IDTipoUsuario),
 	contraseña varchar(20) not null,
 	nick varchar(25) not null unique,

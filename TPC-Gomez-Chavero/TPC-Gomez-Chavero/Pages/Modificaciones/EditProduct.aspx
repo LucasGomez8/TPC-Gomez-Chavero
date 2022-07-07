@@ -51,15 +51,18 @@
                       <div class="row">
                           <div class="col-md-4">
                               <label for="txtStock">Stock Actual</label>
-                              <asp:TextBox ID="txtStock" runat="server" Enabled="false" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtStock" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:Label ID="errorCurrentStock" CssClass="text-danger" runat="server" />
                           </div>
                           <div class="col-md-4">
                               <label for="txtStockMinimo">Stock Minimo</label>
-                              <asp:TextBox ID="txtStockMinimo" runat="server" Enabled="false" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtStockMinimo" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:Label ID="errorMinStock" CssClass="text-danger" runat="server" />
                           </div>
                           <div class="col-md-4">
                               <label for="porcentajeVenta">Porcentaje de Venta</label>
-                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" Enabled="false" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:Label ID="errorSellPercent" CssClass="text-danger" runat="server" />
                           </div>
                       </div>
                   </div>

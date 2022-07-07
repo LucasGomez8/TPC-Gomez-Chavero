@@ -425,9 +425,9 @@ namespace services
                 }
                 return productlist;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return productlist;
             }
             finally
             {
@@ -718,10 +718,10 @@ namespace services
                 da.executeAction();
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                return -2;
             }
             finally
             {
@@ -765,7 +765,7 @@ namespace services
                 da.executeAction();
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return -2;
             }
@@ -836,10 +836,9 @@ namespace services
                 da.executeAction();
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                return -2;
             }
             finally
             {
@@ -865,7 +864,6 @@ namespace services
             }
             catch
             {
-
                 return -2;
             }
             finally

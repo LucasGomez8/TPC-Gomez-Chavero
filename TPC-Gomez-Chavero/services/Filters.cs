@@ -175,7 +175,6 @@ namespace services
         public Product getUltimoCosto(long id)
         {
             DataAccess da = new DataAccess();
-            decimal resul = 0;
 
             try
             {

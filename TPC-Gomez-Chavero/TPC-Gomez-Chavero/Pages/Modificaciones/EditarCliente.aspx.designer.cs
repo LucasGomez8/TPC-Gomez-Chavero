@@ -51,13 +51,13 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         protected global::System.Web.UI.WebControls.TextBox txtDNIoCuit;
 
         /// <summary>
-        /// Control txtFechNac.
+        /// Control txtFechaNac.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechNac;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFechaNac;
 
         /// <summary>
         /// Control txtTelefono.
@@ -69,6 +69,15 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
 
         /// <summary>
+        /// Control errorPhone.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorPhone;
+
+        /// <summary>
         /// Control txtEmail.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
+
+        /// <summary>
+        /// Control errorEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorEmail;
 
         /// <summary>
         /// Control lblSuccess.

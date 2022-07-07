@@ -36,7 +36,7 @@
                       </div>
                       <div class="col-md-6">
                           <label for="txtFechaNac">Fecha de Nacimiento</label>
-                          <asp:TextBox ID="txtFechNac" TextMode="Date" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                          <input type="date" id="txtFechaNac" runat="server" class="form-control" disabled />
                       </div>
                 </div>
                 </div>
@@ -44,11 +44,13 @@
                           <div class="row">
                               <div class="col-md-6">
                                   <label for="txtTelefono">Telefono</label>
-                                  <asp:TextBox ID="txtTelefono" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                                  <asp:TextBox ID="txtTelefono" runat="server" Enabled="false" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                                  <asp:Label ID="errorPhone" CssClass="text-danger" runat="server" />
                               </div>
                               <div class="col-md-6">
                                   <label for="txtEmail">Email</label>
-                                  <asp:TextBox ID="txtEmail" runat="server" Enabled="false" TextMode="Email" CssClass="form-control"></asp:TextBox>
+                                  <asp:TextBox ID="txtEmail" runat="server" Enabled="false" TextMode="Email" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                                  <asp:Label ID="errorEmail" CssClass="text-danger" runat="server" />   
                               </div>
                           </div>
                       </div>
