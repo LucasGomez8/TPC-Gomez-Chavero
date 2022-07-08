@@ -51,5 +51,11 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             }
 
         }
+
+        protected void dgvProveedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvProveedores.PageIndex = e.NewPageIndex;
+            dgvProveedores.DataBind();
+        }
     }
 }

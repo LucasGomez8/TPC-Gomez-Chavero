@@ -2,21 +2,24 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <div class="container-xxl mt-4" data-aos="fade-up">
+
+    <link href="../../css/Vistas.css" rel="stylesheet" type="text/css" />
+        <div class="container-xxl mt-4 viewStyle" data-aos="flip-up">
         <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center mt-4">
                 <h2>Proveedores</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-               <asp:GridView ID="dgvProveedores" runat="server" OnSelectedIndexChanged="dgvProveedores_SelectedIndexChanged" CssClass="table border-0" AutoGenerateColumns="false">
+        <div class="row mt-3 mb-5">
+            <div class="col-md-12 mb-5">
+               <asp:GridView ID="dgvProveedores" runat="server" AllowPaging="true" OnPageIndexChanging="dgvProveedores_PageIndexChanging" OnSelectedIndexChanged="dgvProveedores_SelectedIndexChanged" CssClass="table border-0" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                        <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
                        <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
                    </Columns>
+                   <PagerStyle CssClass="pagination" />
                </asp:GridView>
                             </div>
             </div>

@@ -308,7 +308,7 @@ namespace TPC_Gomez_Chavero
         protected void addProduct_Click(object sender, EventArgs e)
         {
             decimal res = 0;
-            if ( txtCantidadVendida.Text.Length > 0 && int.Parse(dropProductos.SelectedValue) > 0)
+            if ( txtCantidadVendida.Text.Length > 0 && int.Parse(dropProductos.SelectedValue) > 0 && int.Parse(txtCantidadVendida.Text) > 0)
             {
 
                 Product añadir = vc.findIt(Int64.Parse(dropProductos.SelectedValue));
@@ -374,18 +374,25 @@ namespace TPC_Gomez_Chavero
         protected void txtCantidadVendida_TextChanged(object sender, EventArgs e)
         {
             txtPrecioUnitario.Text = "";
+            errocantidad.Visible = false;
             fil = new Filters();
+            decimal result = 0;
             Product costo = fil.getUltimoCosto(Int64.Parse(dropProductos.SelectedValue));
 
-            long cantidad = 0;
+            if (int.Parse(txtCantidadVendida.Text) > 0 && costo != null )
+            {
+                long cantidad = 0;
+                if (txtCantidadVendida.Text.Length != 0) cantidad = Int64.Parse(txtCantidadVendida.Text);
+                result = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
+                if (txtPrecioUnitario.Text.Length == 0) txtPrecioUnitario.Text = result.ToString();
+            }
+            else
+            {
+                errocantidad.Visible = true;
+                lblError.Text = "Ingrese una cantidad vendida valida o bien, revise si el producto fue compado independientemente del alta correspondiente";
+                lblError.Visible = true;
+            }
 
-            if (txtCantidadVendida.Text.Length != 0) cantidad = Int64.Parse(txtCantidadVendida.Text);
-
-
-            decimal result = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta)/100));
-
-
-            if (txtPrecioUnitario.Text.Length == 0) txtPrecioUnitario.Text = result.ToString();
 
             result = 0;
 

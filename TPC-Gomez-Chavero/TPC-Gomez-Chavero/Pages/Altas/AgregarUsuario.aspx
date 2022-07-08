@@ -4,7 +4,7 @@
     <div class="container frmStyle">
         <div class="row mt-3">
             <div class="col-md-12 text-center">
-                <h3>Usuarios</h3>
+                <h3>Alta Usuarios</h3>
             </div>
         </div>
 

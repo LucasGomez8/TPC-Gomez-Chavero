@@ -13,7 +13,7 @@
                 <asp:Button ID="btnNuevo" OnClick="btnNuevo_Click" CssClass="btn btn-primary"  runat="server" Text="Nuevo" />
             </div>
             <div class="col-md-6 text-center">
-                <asp:Button ID="btnExistente" CssClass="btn btn-primary" OnClick="btnExistente_Click" runat="server" Text="Dado de Baja" />
+                <asp:Button ID="btnExistente" CssClass="btn btn-warning" OnClick="btnExistente_Click" runat="server" Text="Dado de Baja" />
             </div>
         </div>
 

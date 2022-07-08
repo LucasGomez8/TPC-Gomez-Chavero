@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
      <link href="../../css/Ventas.css" rel="stylesheet" type="text/css" />
-        <div class="container venStyle mb-4 ">
+        <div class="container venStyle mb-4 " data-aos="fade-left">
         <div class="row mt-3 mb-5 text-center ">
             <div class="col-md-12">
                 <h3>Registrar Venta</h3>

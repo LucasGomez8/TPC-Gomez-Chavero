@@ -21,5 +21,17 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvCompras.DataSource = filtro.listarCompras();
             dgvCompras.DataBind();
         }
+
+        protected void dgvCompras_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvCompras.PageIndex = e.NewPageIndex;
+            dgvCompras.DataBind();
+        }
+
+        protected void dgvCompras_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        {
+            dgvCompras.PageIndex = e.NewPageIndex;
+            dgvCompras.DataBind();
+        }
     }
 }

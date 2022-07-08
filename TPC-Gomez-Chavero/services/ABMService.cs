@@ -99,10 +99,9 @@ namespace services
 
                 return da.getLineCantAfected();
             }
-            catch (Exception ex)
+            catch
             {
-
-                throw ex;
+                return -2;
             }
             finally
             {

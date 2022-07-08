@@ -32,14 +32,22 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
 
             long idSelected = Int64.Parse(deleteProduct.SelectedItem.Value);
 
-            if (abm.deleteProduct(idSelected) == 1)
+            if (abm.changeStatus("Productos", "IDProducto", 0, idSelected) == 1)
             {
+                lblError.Visible = false;
                 lblSuccess.Text = "Producto Eliminado con Exito!";
                 lblSuccess.Visible = true;
 
                 btnSubmit.Visible = false;
                 btnContinue.Visible = true;
             }
+            else
+            {
+                lblError.Text = "Error al eliminar el producto";
+                lblError.Visible = true;
+                lblSuccess.Visible = false;
+            }
+
 
         }
 

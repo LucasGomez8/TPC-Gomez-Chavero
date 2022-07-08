@@ -33,7 +33,8 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
         protected void dgvVentas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            dgvVentas.PageIndex = e.NewPageIndex;
+            dgvVentas.DataBind();
         }
     }
 }

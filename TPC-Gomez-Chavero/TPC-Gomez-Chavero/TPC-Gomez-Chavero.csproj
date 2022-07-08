@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Assets\img\adrUsuarioContent.jpg" />
     <Content Include="Assets\img\baja.jpg" />
+    <Content Include="Assets\img\config.png" />
     <Content Include="Assets\img\home.jpg" />
     <Content Include="Assets\img\login.jpg" />
     <Content Include="Assets\img\modificacion.jpg" />
@@ -81,6 +82,7 @@
     <Content Include="css\Login.css" />
     <Content Include="css\Modificacion.css" />
     <Content Include="css\Ventas.css" />
+    <Content Include="css\Vistas.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Altas\AgregarCategoria.aspx" />

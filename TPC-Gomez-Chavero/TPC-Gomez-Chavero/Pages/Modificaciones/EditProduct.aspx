@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditProduct.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Modificaciones.EditProduct" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../css/Modificacion.css" rel="stylesheet" type="text/css"/>
-    <div class="container mb-4 modifStyle">
+    <div class="container mb-4 modifStyle" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500">
          <div class="row mt-3 justify-content-center">
             <div class="col-md-8  text-center">
                 <h3>Modificacion de datos de Productos</h3>
@@ -56,12 +58,12 @@
                           </div>
                           <div class="col-md-4">
                               <label for="txtStockMinimo">Stock Minimo</label>
-                              <asp:TextBox ID="txtStockMinimo" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:TextBox ID="txtStockMinimo" runat="server" Enabled="false" TextMode="Number" min="1" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
                               <asp:Label ID="errorMinStock" CssClass="text-danger" runat="server" />
                           </div>
                           <div class="col-md-4">
-                              <label for="porcentajeVenta">Porcentaje de Venta</label>
-                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <label for="porcentajeVenta">Porcentaje de Ganancia</label>
+                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" Enabled="false" TextMode="Number" min="1" max="100" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
                               <asp:Label ID="errorSellPercent" CssClass="text-danger" runat="server" />
                           </div>
                       </div>

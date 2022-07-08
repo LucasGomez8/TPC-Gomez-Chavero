@@ -1,0 +1,38 @@
+﻿body {
+    background: url('../Assets/img/config.png') #a1c6ea;
+}
+
+.viewStyle{
+    background-color: #fff;
+    border-radius: 17px;
+    box-shadow: 2px 1px 3px 1px black;
+}
+
+.pagination{
+    border: none #fff;
+    margin-top: 10px;
+}
+
+.pagination span {
+    padding: 10px;
+    border: 1px solid black;
+    margin: 0 10px;
+    box-shadow: 1px 1px 1px 0px black;
+    border-radius: 5px;
+    background-color: #339989;
+    color:white;
+}
+
+.pagination a,
+.pagination a:visited {
+     text-decoration: none;
+     padding: 10px;
+     white-space: nowrap;
+     border: 1px solid black;
+     color: black;
+     border-radius: 5px;
+}
+
+.pagination a:hover, .pagination a:active {
+    background-color: #a1c6ea;
+}

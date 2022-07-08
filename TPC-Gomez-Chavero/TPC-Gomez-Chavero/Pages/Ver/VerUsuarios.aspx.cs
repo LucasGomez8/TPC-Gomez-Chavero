@@ -51,5 +51,11 @@ namespace TPC_Gomez_Chavero.Pages.Ver
                 Response.Write("<script>alert('El Usuario se encuentra dado de baja')</script>");
             }
         }
+
+        protected void dgvUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvUsuarios.PageIndex = e.NewPageIndex;
+            dgvUsuarios.DataBind();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BajaProducto.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Bajas.BajaProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <link href="../../css/Bajas.css" rel="stylesheet" type="text/css" />
-      <div class="container bajStyle">
+      <div class="container bajStyle" data-aos="flip-down">
         <div class="row mt-3 justify-content-center">
             <div class="col-md-8 text-center">
                 <h3>Baja Producto</h3>
@@ -23,7 +23,8 @@
         </div>
        <div class="row justify-content-center mt-3 mb-4">
            <div class="col-md-12 text-center">
-               <asp:Label ID="lblSuccess" runat="server" visible="false"></asp:Label>
+               <asp:Label ID="lblSuccess" runat="server" CssClass="text-success" visible="false"></asp:Label>
+               <asp:Label ID="lblError" runat="server" Visible="false" CssClass="text-danger"></asp:Label>
            </div>
        </div>
     </div>

@@ -251,23 +251,23 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         {
             TextBox txt = (TextBox)sender;
 
-            if (txt.ID == txtStock.ID) FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock);
-            if (txt.ID == txtStockMinimo.ID) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorMinStock);
-            if (txt.ID == txtPorcentajeVenta.ID) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorSellPercent);
+            if (txt.ID == txtStock.ID && txtStock.Text.Length != 0) FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock);
+            if (txt.ID == txtStockMinimo.ID && txtStockMinimo.Text.Length != 0) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorMinStock);
+            if (txt.ID == txtPorcentajeVenta.ID && txtPorcentajeVenta.Text.Length != 0) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorSellPercent);
         }
 
         private void checkInputs()
         {
             btnSubmit.Enabled = false;
 
-            if (txtStock.Text.Length == 0 || 
-                !FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock)) return;
+            if (txtStock.Text.Length == 0) return;
+            if(!FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock)) return;
 
-            if (txtStockMinimo.Text.Length == 0 || 
-                !FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorMinStock)) return;
+            if (txtStockMinimo.Text.Length == 0) return;
+            if(!FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorMinStock)) return;
 
-            if (txtPorcentajeVenta.Text.Length == 0 ||
-                !FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorSellPercent)) return;
+            if (txtPorcentajeVenta.Text.Length == 0) return;
+            if(!FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorSellPercent)) return;
 
             btnSubmit.Enabled = true;
 

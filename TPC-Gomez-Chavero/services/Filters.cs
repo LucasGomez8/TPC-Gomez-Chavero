@@ -172,6 +172,7 @@ namespace services
 
         }
 
+
         public Product getUltimoCosto(long id)
         {
             DataAccess da = new DataAccess();
