@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="form-group mb-3">
                         <label for="txtNombre">Nombre de Proveedor</label>
-                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" onkeydown="return (event.keyCode != 13);"></asp:TextBox>
                         <asp:Label ID="lblSuccess" runat="server" />
                     </div>
                 </div>

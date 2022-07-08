@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="form-group mb-3">
                         <label for="txtNMarca">Nombre de Categoria</label>
-                        <asp:TextBox ID="txtNMarca" runat="server" Enabled="false" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtNMarca_TextChanged" />
+                        <asp:TextBox ID="txtNMarca" runat="server" Enabled="false" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtNMarca_TextChanged" onkeydown="return (event.keyCode != 13);" />
                         <asp:Label ID="lblSuccess" runat="server" Visible="false" />
                     </div>
                 </div>

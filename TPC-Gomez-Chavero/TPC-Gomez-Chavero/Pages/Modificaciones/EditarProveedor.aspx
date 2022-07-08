@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="form-group mb-3">
                         <label for="txtPNombre">Nombre de Proveedor</label>
-                        <asp:TextBox ID="txtPNombre" runat="server" Enabled="false" CssClass="form-control" AutoPostBack="true" />
+                        <asp:TextBox ID="txtPNombre" runat="server" Enabled="false" CssClass="form-control" onkeydown="return (event.keyCode != 13);" AutoPostBack="true" />
                         <asp:Label ID="lblSuccess" runat="server" Visible="false" />
                     </div>
                 </div>

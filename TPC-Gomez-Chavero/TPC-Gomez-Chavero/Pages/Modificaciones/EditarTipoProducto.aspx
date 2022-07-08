@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="form-group mb-3">
                         <label for="txtNTipo">Nombre de Categoria</label>
-                        <asp:TextBox ID="txtNTipo" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtNTipo" runat="server" Enabled="false" CssClass="form-control" onkeydown="return (event.keyCode != 13);"></asp:TextBox>
                     </div>
                 </div>
             </form>
