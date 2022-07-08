@@ -15,13 +15,47 @@ namespace TPC_Gomez_Chavero.Pages.Ver
     public partial class VerClientes : System.Web.UI.Page
     {
         private Filters filtros;
+        public User whoIs;
         protected void Page_Load(object sender, EventArgs e)
         {
-            filtros = new Filters();
-                dgvClientes.DataSource = filtros.listarCliente();
-                dgvClientes.DataBind();
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description == "Administrador")
+                {
+                    LoadGridData();
+                    dgvClientes.Visible = true;
+                    dgvClientesEmployee.Visible = false;
+                }
+                else
+                {
+                    LoadGridEmployeeData();
+                    dgvClientes.Visible = false;
+                    dgvClientesEmployee.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
+
+            
         }
 
+        public void LoadGridData()
+        {
+            filtros = new Filters();
+            dgvClientes.DataSource = filtros.listarCliente();
+            dgvClientes.DataBind();
+        }
+
+        public void LoadGridEmployeeData()
+        {
+            filtros = new Filters();
+            dgvClientesEmployee.DataSource = filtros.listarCliente();
+            dgvClientesEmployee.DataBind();
+        }
 
         public bool isActive(long id)
         {
@@ -56,6 +90,14 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         protected void dgvClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvClientes.PageIndex = e.NewPageIndex;
+            LoadGridData();
+            dgvClientes.DataBind();
+        }
+
+        protected void dgvClientesEmployee_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvClientesEmployee.PageIndex = e.NewPageIndex;
+            LoadGridEmployeeData();
             dgvClientes.DataBind();
         }
     }

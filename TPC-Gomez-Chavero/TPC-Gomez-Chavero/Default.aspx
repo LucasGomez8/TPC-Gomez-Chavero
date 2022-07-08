@@ -12,21 +12,23 @@
         <div class="col-md-12 mt-5 text-center">
             <asp:Label ID="lblBienvenida" runat="server"></asp:Label>
         </div>
+
+
         <div class="row mt-5" id="adminSession" runat="server">
             <div class="col-md-3 item" style="background-image: url('/Assets/img/compras.jpg'); background-size:cover;">
-                <a href="/Pages/MisCompras.aspx" class="itemContent">
+                <a href="/Pages/Compras/MisCompras.aspx" class="itemContent">
                 <h3>Gestiona Tus Compras</h3>
                     <p>Aqui podras gestionar tus compras</p>
                 </a>
             </div>
             <div class="col-md-3 item" style="background-image: url('/Assets/img/ventas.jpg'); background-size:cover;">
-                <a href="/Pages/MisVentas.aspx" class="itemContent">
+                <a href="/Pages/Ventas/MisVentas.aspx" class="itemContent">
                 <h3>Gestiona Tus Ventas</h3>
                     <p>Aqui podras gestionar tus ventas</p>
                 </a>
             </div>
             <div class="col-md-3 item" style="background-image: url('/Assets/img/adrUsuarioContent.jpg'); background-size: cover;">
-                <a href="/Pages/Altas/AgregarVendedor.aspx" class="itemContent">
+                <a href="/Pages/Altas/AgregarUsuario.aspx" class="itemContent">
                 <h3>Dar de Alta un usuario</h3>
                     <p>Aqui podras dar de alta a los usuarios correspondientes</p>
                 </a>

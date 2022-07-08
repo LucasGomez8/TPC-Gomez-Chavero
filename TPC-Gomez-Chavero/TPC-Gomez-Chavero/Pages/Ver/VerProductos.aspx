@@ -22,7 +22,23 @@
                        <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
                        <asp:BoundField HeaderText="Porcentaje de Ganancia" DataField="PorcentajeVenta" />
                        <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
+                       
                        <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
+                   </Columns>
+                  <PagerStyle CssClass="pagination" />
+               </asp:GridView>
+                <asp:GridView ID="dgvProductosEmployee" runat="server" AllowPaging="true" CssClass="table border-0" OnPageIndexChanging="dgvProductosEmployee_PageIndexChanging" AutoGenerateColumns="false">
+                   <Columns>
+                       <asp:BoundField HeaderText="ID" DataField="ID" />
+                       <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                       <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                       <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
+                       <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
+                       <asp:BoundField HeaderText="Tipo de Producto" DataField="Tipo.Descripcion" />
+                       <asp:BoundField HeaderText="Stock" DataField="Stock" />
+                       <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
+                       <asp:BoundField HeaderText="Porcentaje de Ganancia" DataField="PorcentajeVenta" />
+                       <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
                    </Columns>
                   <PagerStyle CssClass="pagination" />
                </asp:GridView>

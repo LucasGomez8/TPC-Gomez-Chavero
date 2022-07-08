@@ -12,9 +12,23 @@ namespace TPC_Gomez_Chavero.Pages.Altas
     public partial class AgregarMarca : Page
     {
         public List<ProductBranch> dadosBaja;
+        public User whoIs;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
             btnReload.Visible = false;
             lblSuccess.Visible = false;
         }

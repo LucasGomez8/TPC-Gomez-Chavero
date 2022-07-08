@@ -21,6 +21,11 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             vc = new VentasController();
             filtros = new Filters();
 
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/");
+            }
+
             dgvVentas.DataSource = filtros.listarVentas();
             dgvVentas.DataBind();
         }

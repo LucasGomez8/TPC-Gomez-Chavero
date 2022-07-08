@@ -15,9 +15,29 @@ namespace TPC_Gomez_Chavero.Pages.Ver
     {
         public ABMService abm;
         public Filters fil;
+        public User whoIs;
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadGridData();
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description == "Administrador")
+                {
+                    LoadGridData();
+                    dgvProductos.Visible = true;
+                    dgvProductosEmployee.Visible = false;
+                }
+                else
+                {
+                    LoadGridEmployeeData();
+                    dgvProductos.Visible = false;
+                    dgvProductosEmployee.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
         }
 
         public void LoadGridData()
@@ -26,6 +46,15 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
             dgvProductos.DataSource = fil.getStoresProducts();
             dgvProductos.DataBind();
+           
+        }
+
+       public void LoadGridEmployeeData()
+        {
+            fil = new Filters();
+
+            dgvProductosEmployee.DataSource = fil.getStoresProducts();
+            dgvProductosEmployee.DataBind();
         }
 
         public bool isActive(long id)
@@ -63,6 +92,13 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvProductos.PageIndex = e.NewPageIndex;
             LoadGridData();
             dgvProductos.DataBind();
+        }
+
+        protected void dgvProductosEmployee_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvProductosEmployee.PageIndex = e.NewPageIndex;
+            LoadGridEmployeeData();
+            dgvProductosEmployee.DataBind();
         }
     }
 }

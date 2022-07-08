@@ -16,8 +16,22 @@ namespace TPC_Gomez_Chavero.Pages.Bajas
     {
         public List<User> userList;
         private UserService us;
+        public User whoIs;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
             if (!IsPostBack)
             {
                 dropLoader();

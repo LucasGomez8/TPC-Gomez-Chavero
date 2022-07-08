@@ -16,9 +16,24 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public List<ProductType> typeList;
         public ProductType Selected;
+        public User whoIs;
         protected void Page_Load(object sender, EventArgs e)
         {
             ABMService abm = new ABMService();
+
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
 
             typeList = abm.getProductType(1);
 

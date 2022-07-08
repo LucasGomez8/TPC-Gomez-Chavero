@@ -14,7 +14,26 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
         private ABMService abm;
         private Filters fil;
+        public User whoIs;
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
+            LoadGridData();
+        }
+
+        public void LoadGridData()
         {
             fil = new Filters();
 

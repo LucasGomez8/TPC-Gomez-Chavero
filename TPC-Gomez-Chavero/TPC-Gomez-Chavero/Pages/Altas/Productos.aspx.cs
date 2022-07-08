@@ -17,11 +17,25 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         private List<ProductType> typeList;
         private List<ProductCategory> categoryList;
         private List<Product> dadosBaja;
+        public User whoIs;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             abm = new ABMService();
-            
+
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
             if (!IsPostBack)
             {
                 dropBranch();

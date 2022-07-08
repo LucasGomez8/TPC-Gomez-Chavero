@@ -14,10 +14,26 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
     {
         public List<ProductBranch> branchList;
         private ABMService abm;
+        public User whoIs;
         
         protected void Page_Load(object sender, EventArgs e)
         {
             abm = new ABMService();
+
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
+
             if (!IsPostBack)
             {
                 dropLoader();

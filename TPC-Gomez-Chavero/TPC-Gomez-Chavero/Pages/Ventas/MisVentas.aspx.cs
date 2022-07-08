@@ -24,13 +24,33 @@ namespace TPC_Gomez_Chavero
 
             vc = new VentasController();
 
+
+            if (!adminOrEmployee())
+            {
+                Response.Redirect("~/");
+            }
+
+            User whoIs = (User)Session["user"];
+
+
+
             setTicketNumber(1);
             if (!IsPostBack)
             {
                 dropTipoFacturaLoader();
                 dropClientLoader();
-                dropSellersLoader();
+                if (whoIs.type.Description == "Vendedor")
+                {
+                    dropSellersLoader();
+                    dropUsuario.Enabled = false;
+                    dropUsuario.SelectedValue = whoIs.ID.ToString();
+                }
+                else
+                {
+                    dropSellersLoader();
+                }
                 dropProductoLoader();
+
                 if (Session["Vendiendo"] != null)
                 {
                     recargarDatosAnteriores();
@@ -39,6 +59,14 @@ namespace TPC_Gomez_Chavero
             }
         }
 
+        public bool adminOrEmployee()
+        {
+            if (Session["user"] != null)
+            {
+                return true;
+            }
+            return false;
+        }
 
         protected bool checkInputs()
         {
@@ -166,7 +194,7 @@ namespace TPC_Gomez_Chavero
             {
                 DataRow row = data.NewRow();
                 row[0] = item.ID;
-                row[1] = StringHelper.upperStartChar(item.Nombre);
+                row[1] = StringHelper.upperStartChar(item.Nick);
                 data.Rows.Add(row);
             }
 

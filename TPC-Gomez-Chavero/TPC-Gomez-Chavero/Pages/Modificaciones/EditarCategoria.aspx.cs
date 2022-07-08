@@ -17,10 +17,24 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         private ABMService abm;
         public List<ProductCategory> categoryList;
         public ProductCategory Selected;
+        public User whoIs;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             abm = new ABMService();
+
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
 
             if (!IsPostBack)
             {

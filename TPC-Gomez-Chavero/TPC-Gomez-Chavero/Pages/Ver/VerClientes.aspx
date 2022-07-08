@@ -23,7 +23,20 @@
                    </Columns>
                    <PagerStyle CssClass="pagination" />
                </asp:GridView>
-                            </div>
+
+                 <asp:GridView ID="dgvClientesEmployee" runat="server" CssClass="table border-0" AllowPaging="true" OnPageIndexChanging="dgvClientesEmployee_PageIndexChanging" AutoGenerateColumns="false">
+                   <Columns>
+                       <asp:BoundField HeaderText="ID" DataField="ID" />
+                       <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                       <asp:BoundField HeaderText="Cuit o DNI" DataField="CuitOrDni" />
+                       <asp:BoundField HeaderText="Fecha Nacimiento" DataField="fechaNac" />
+                       <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+                       <asp:BoundField HeaderText="Email" DataField="Email" />
+                       <asp:CheckBoxField HeaderText="Activo" DataField="Estado" />
+                   </Columns>
+                   <PagerStyle CssClass="pagination" />
+               </asp:GridView>
+               </div>
             </div>
     </div>
 

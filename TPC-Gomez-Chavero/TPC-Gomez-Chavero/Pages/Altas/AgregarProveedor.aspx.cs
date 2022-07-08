@@ -14,8 +14,22 @@ namespace TPC_Gomez_Chavero.Pages.Altas
     {
 
         public List<Provider> dadosBaja;
+        public User whoIs;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
             btnReload.Visible = false;
             lblSuccess.Visible = false;
             if (Session["Comprando"] != null)

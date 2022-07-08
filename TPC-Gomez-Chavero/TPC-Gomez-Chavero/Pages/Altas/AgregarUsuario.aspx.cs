@@ -15,9 +15,23 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         public UserService us;
         public List<UserType> uTypeList;
         public List<User> dadosBaja;
+        public User whoIs;
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
             abm = new ABMService();
             us = new UserService();
             txtFechaNac.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");

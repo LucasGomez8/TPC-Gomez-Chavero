@@ -16,10 +16,26 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         public List<Client> clientList;
         public Client Selected;
         private ABMService abm;
+        public User whoIs;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             abm = new ABMService();
+
+            if (Session["user"] != null)
+            {
+                whoIs = (User)Session["user"];
+                if (whoIs.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
+
             txtFechaNac.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             txtFechaNac.Attributes["min"] = DateTime.MinValue.ToString("yyyy-MM-dd");
             if (!IsPostBack)

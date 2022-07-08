@@ -31,8 +31,17 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             cc = new ComprasController();
             if (Session["user"] != null)
             {
-            sessionUser = (User)Session["user"];
+                sessionUser = (User)Session["user"];
+                if (sessionUser.type.Description != "Administrador")
+                {
+                    Response.Redirect("~/");
+                }
             }
+            else
+            {
+                Response.Redirect("~/");
+            }
+
             itemsSaved = Session["itemsSaved"] != null
                 ? (int)Session["itemsSaved"]
                 : 1;
