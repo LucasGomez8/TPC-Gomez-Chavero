@@ -22,7 +22,7 @@
                 <asp:CheckBox ID="chkTipo" runat="server" AutoPostBack="true" text="Ordenar por Tipo Producto" OnCheckedChanged="chkTipo_CheckedChanged" />
             </div>
               <div class="col-md-3">
-                <asp:CheckBox ID="chkPorcentajeGanancia text-center" runat="server" AutoPostBack="true" text="Ordenar por Porcentaje Ganancia" OnCheckedChanged="chkPorcentajeGanancia_CheckedChanged" />
+                <asp:CheckBox ID="chkPorcentajeGanancia" runat="server" AutoPostBack="true" text="Ordenar por Porcentaje Ganancia" OnCheckedChanged="chkPorcentajeGanancia_CheckedChanged" />
             </div>
         </div>
         <div class="row mt-3">

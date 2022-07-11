@@ -10,12 +10,18 @@ namespace TPC_Gomez_Chavero
         {
 
             adminSession.Visible = false;
+            employeeSession.Visible = false;
             if (Session["user"] != null)
             {
-                ingreso = (User)Session["user"];
-                lblBienvenida.Visible = true;
-                lblBienvenida.Text = ingreso.Nombre.ToString() + " tu acceso fue exitoso!";
-                adminSession.Visible = true;
+                User ingreso = (User)Session["user"];
+                if (ingreso.type.Description == "Administrador")
+                {
+                    adminSession.Visible = true;
+                }
+                else
+                {
+                    employeeSession.Visible = true;
+                }
             }
         }
     }

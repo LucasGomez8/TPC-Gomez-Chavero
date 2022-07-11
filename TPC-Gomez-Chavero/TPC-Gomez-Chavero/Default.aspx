@@ -40,5 +40,32 @@
                 </a>
             </div>
         </div>
+
+         <div class="row mt-5" id="employeeSession" runat="server" visible="false">
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/productos.jpg'); background-size:cover;">
+                <a href="/Pages/Ver/VerProductos.aspx" class="itemContent">
+                <h3>Chequea tus productos</h3>
+                    <p>Aqui vas a poder visualizar la cantidad de productos que usted posee y los que se encuentran disponibles, ademas de si se encuentra activo o no</p>
+                </a>
+            </div>
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/ventas.jpg'); background-size:cover;">
+                <a href="/Pages/Ventas/MisVentas.aspx" class="itemContent">
+                <h3>Realiza ventas</h3>
+                    <p>En esta seccion podra realizar las ventas correspondientes</p>
+                </a>
+            </div>
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/adrUsuarioContent.jpg'); background-size: cover;">
+                <a href="/Pages/Altas/AgregarCliente.aspx" class="itemContent">
+                <h3>Ver Clientes</h3>
+                    <p>En esta seccion podras visualizar los clientes que se encuentran dados de alta en el sistema</p>
+                </a>
+            </div>
+            <div class="col-md-3 item" style="background-image: url('/Assets/img/verventas.jpg'); background-size:cover;">
+                <a href="/Pages/Ver/VerVentas.aspx" class="itemContent">
+                <h3>Ver Ventas</h3>
+                    <p>Aqui podras visualizar las ventas que se han realizado y ver sus correspondientes facturas</p>
+                </a>
+            </div>
+        </div>
     </div>
 </asp:Content>
