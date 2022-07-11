@@ -16,6 +16,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
     {
         private Filters filtros;
         public User whoIs;
+        public List<Client> paraOrdenar;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null)
@@ -99,6 +100,47 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvClientesEmployee.PageIndex = e.NewPageIndex;
             LoadGridEmployeeData();
             dgvClientes.DataBind();
+        }
+
+        protected void chkOrdenarNombre_CheckedChanged(object sender, EventArgs e)
+        {
+            filtros = new Filters();
+
+            paraOrdenar = filtros.listarCliente();
+            List<Client> nuevo = new List<Client>();
+
+            nuevo = paraOrdenar.OrderBy(x => x.Nombre).ToList();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvClientes.DataSource = nuevo;
+                dgvClientes.DataBind();
+            }
+            else
+            {
+                dgvClientesEmployee.DataSource = nuevo;
+                dgvClientesEmployee.DataBind();
+            }
+     
+
+        }
+
+        protected void chkCuitOrDni_CheckedChanged(object sender, EventArgs e)
+        {
+            filtros = new Filters();
+            paraOrdenar = filtros.listarCliente();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvClientes.DataSource = paraOrdenar.OrderBy(x => x.CuitOrDni).ToList();
+                dgvClientes.DataBind();
+            }
+            else
+            {
+                dgvClientesEmployee.DataSource = paraOrdenar.OrderBy(x => x.CuitOrDni).ToList();
+                dgvClientes.DataBind();
+            }
+
         }
     }
 }

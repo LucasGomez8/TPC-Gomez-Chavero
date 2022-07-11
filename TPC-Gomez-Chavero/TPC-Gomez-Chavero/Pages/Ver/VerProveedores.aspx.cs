@@ -15,6 +15,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         private ABMService abm;
         private Filters fil;
         public User whoIs;
+        public List<Provider> order;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null)
@@ -74,6 +75,15 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         protected void dgvProveedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvProveedores.PageIndex = e.NewPageIndex;
+            dgvProveedores.DataBind();
+        }
+
+        protected void chkNombre_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            order = fil.listarProveedores();
+
+            dgvProveedores.DataSource = order.OrderBy(x => x.Nombre).ToList();
             dgvProveedores.DataBind();
         }
     }

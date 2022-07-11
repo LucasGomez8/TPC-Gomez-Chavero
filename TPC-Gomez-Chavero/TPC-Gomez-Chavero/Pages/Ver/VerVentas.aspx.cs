@@ -15,6 +15,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
     {
         private VentasController vc;
         private Filters filtros;
+        public List<Ventas> order;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,6 +40,42 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         protected void dgvVentas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvVentas.PageIndex = e.NewPageIndex;
+            dgvVentas.DataBind();
+        }
+
+        protected void chkCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            filtros = new Filters();
+            order = filtros.listarVentas();
+
+            dgvVentas.DataSource = order.OrderBy(x => x.Cliente.Nombre).ToList();
+            dgvVentas.DataBind();
+        }
+
+        protected void chkVendedor_CheckedChanged(object sender, EventArgs e)
+        {
+            filtros = new Filters();
+            order = filtros.listarVentas();
+
+            dgvVentas.DataSource = order.OrderBy(x => x.Vendedor.Nick).ToList();
+            dgvVentas.DataBind();
+        }
+
+        protected void chkFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            filtros = new Filters();
+            order = filtros.listarVentas();
+
+            dgvVentas.DataSource = order.OrderBy(x => x.FechaVenta).ToList();
+            dgvVentas.DataBind();
+        }
+
+        protected void chkOrdenarFactura_CheckedChanged(object sender, EventArgs e)
+        {
+            filtros = new Filters();
+            order = filtros.listarVentas();
+
+            dgvVentas.DataSource = order.OrderBy(x => x.NumeroFactura).ToList();
             dgvVentas.DataBind();
         }
     }

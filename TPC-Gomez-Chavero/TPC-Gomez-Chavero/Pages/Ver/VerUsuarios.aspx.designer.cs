@@ -15,6 +15,42 @@ namespace TPC_Gomez_Chavero.Pages.Ver
     {
 
         /// <summary>
+        /// Control chkApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkApellido;
+
+        /// <summary>
+        /// Control chkDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDni;
+
+        /// <summary>
+        /// Control chkTipoUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkTipoUsuario;
+
+        /// <summary>
+        /// Control chkUsername.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkUsername;
+
+        /// <summary>
         /// Control dgvUsuarios.
         /// </summary>
         /// <remarks>

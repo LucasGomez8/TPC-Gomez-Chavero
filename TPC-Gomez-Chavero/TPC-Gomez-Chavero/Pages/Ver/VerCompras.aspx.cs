@@ -16,6 +16,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
         private Filters filtro;
         public User whoIs;
+        public List<domain.Compras> paraOrdenar;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null)
@@ -50,6 +51,38 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         protected void dgvCompras_PageIndexChanging1(object sender, GridViewPageEventArgs e)
         {
             dgvCompras.PageIndex = e.NewPageIndex;
+            dgvCompras.DataBind();
+        }
+
+        protected void chkOrdenarFactura_CheckedChanged(object sender, EventArgs e)
+        {
+            filtro = new Filters();
+            paraOrdenar = filtro.listarCompras();
+            dgvCompras.DataSource = paraOrdenar.OrderBy(x => x.NumeroFactura).ToList();
+            dgvCompras.DataBind();
+        }
+
+        protected void chkProveedor_CheckedChanged(object sender, EventArgs e)
+        {
+            filtro = new Filters();
+            paraOrdenar = filtro.listarCompras();
+            dgvCompras.DataSource = paraOrdenar.OrderBy(x => x.Proveedor.Nombre).ToList();
+            dgvCompras.DataBind();
+        }
+
+        protected void chkVendedor_CheckedChanged(object sender, EventArgs e)
+        {
+            filtro = new Filters();
+            paraOrdenar = filtro.listarCompras();
+            dgvCompras.DataSource = paraOrdenar.OrderBy(x => x.Usuario.Nick).ToList();
+            dgvCompras.DataBind();
+        }
+
+        protected void chkFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            filtro = new Filters();
+            paraOrdenar = filtro.listarCompras();
+            dgvCompras.DataSource = paraOrdenar.OrderBy(x => x.FechaVenta).ToList();
             dgvCompras.DataBind();
         }
     }

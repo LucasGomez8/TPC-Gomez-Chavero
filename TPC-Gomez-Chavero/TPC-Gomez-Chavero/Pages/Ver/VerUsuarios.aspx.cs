@@ -15,6 +15,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         private UserService us;
         private Filters fil;
         public User whoIs;
+        public List<User> order;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null)
@@ -76,6 +77,42 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         protected void dgvUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvUsuarios.PageIndex = e.NewPageIndex;
+            dgvUsuarios.DataBind();
+        }
+
+        protected void chkApellido_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            order = fil.listarUsuarios();
+
+            dgvUsuarios.DataSource = order.OrderBy(x => x.Apellido).ToList();
+            dgvUsuarios.DataBind();
+        }
+
+        protected void chkDni_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            order = fil.listarUsuarios();
+
+            dgvUsuarios.DataSource = order.OrderBy(x => x.DNI).ToList();
+            dgvUsuarios.DataBind();
+        }
+
+        protected void chkTipoUsuario_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            order = fil.listarUsuarios();
+
+            dgvUsuarios.DataSource = order.OrderBy(x => x.type.Description).ToList();
+            dgvUsuarios.DataBind();
+        }
+
+        protected void chkUsername_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            order = fil.listarUsuarios();
+
+            dgvUsuarios.DataSource = order.OrderBy(x => x.Nick).ToList();
             dgvUsuarios.DataBind();
         }
     }

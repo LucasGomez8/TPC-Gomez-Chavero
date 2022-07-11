@@ -8,6 +8,23 @@
                 <h2>Productos</h2>
             </div>
         </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-3">
+                <asp:CheckBox ID="chkNombre" runat="server" AutoPostBack="true" Text="Ordenar por Nombre" OnCheckedChanged="chkNombre_CheckedChanged" />
+            </div>
+            <div class="col-md-3">
+                <asp:CheckBox ID="chkCategoria" runat="server" AutoPostBack="true" Text="Ordenar por Categoria" OnCheckedChanged="chkCategoria_CheckedChanged" />
+            </div>
+            <div class="col-md-3">
+                <asp:CheckBox ID="chkMarca" runat="server" AutoPostBack="true" Text="Ordenar por Marca" OnCheckedChanged="chkMarca_CheckedChanged" />
+            </div>
+            <div class="col-md-3">
+                <asp:CheckBox ID="chkTipo" runat="server" AutoPostBack="true" text="Ordenar por Tipo Producto" OnCheckedChanged="chkTipo_CheckedChanged" />
+            </div>
+              <div class="col-md-3">
+                <asp:CheckBox ID="chkPorcentajeGanancia" runat="server" AutoPostBack="true" text="Ordenar por Porcentaje Ganancia" OnCheckedChanged="chkPorcentajeGanancia_CheckedChanged" />
+            </div>
+        </div>
         <div class="row mt-3 mb-5">
             <div class="col-md-12 mb-5">
                <asp:GridView ID="dgvProductos" runat="server" AllowPaging="true" CssClass="table border-0" OnPageIndexChanging="dgvProductos_PageIndexChanging" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" AutoGenerateColumns="false">

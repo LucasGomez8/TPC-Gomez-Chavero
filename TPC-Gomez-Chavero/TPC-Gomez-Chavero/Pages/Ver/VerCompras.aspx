@@ -10,6 +10,20 @@
                 <h2>Compras</h2>
             </div>
         </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-3">
+                <asp:CheckBox  ID="chkOrdenarFactura" runat="server" AutoPostBack="true" Text="Ordenar por Nro Factura" OnCheckedChanged="chkOrdenarFactura_CheckedChanged"/>
+            </div>
+            <div class="col-md-3">
+                <asp:CheckBox  ID="chkProveedor" runat="server" AutoPostBack="true" Text="Ordenar por Proveedor" OnCheckedChanged="chkProveedor_CheckedChanged"/>
+            </div>
+            <div class="col-md-3">
+                <asp:CheckBox  ID="chkVendedor" runat="server" AutoPostBack="true" Text="Ordenar por Vendedor" OnCheckedChanged="chkVendedor_CheckedChanged"/>
+            </div>
+            <div class="col-md-3">
+                <asp:CheckBox  ID="chkFecha" runat="server" AutoPostBack="true" Text="Ordenar por Fecha" OnCheckedChanged="chkFecha_CheckedChanged"/>
+            </div>
+        </div>
         <div class="row mb-5 mt-5">
             <div class="col-md-12">
                <asp:GridView ID="dgvCompras" AllowPaging="true" OnPageIndexChanging="dgvCompras_PageIndexChanging1" runat="server" CssClass="table border-0" AutoGenerateColumns="false">

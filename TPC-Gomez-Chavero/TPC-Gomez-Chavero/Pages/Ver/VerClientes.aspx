@@ -8,6 +8,15 @@
                 <h2>Clientes</h2>
             </div>
         </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-4">
+                <asp:CheckBox ID="chkOrdenarNombre" runat="server" text=" Ordenar por Nombre" AutoPostBack="true" OnCheckedChanged="chkOrdenarNombre_CheckedChanged" />
+            </div>
+            <div class="col-md-4">
+                <asp:CheckBox ID="chkCuitOrDni" runat="server" Text=" Ordenar por DNI/Cuit" AutoPostBack="true" OnCheckedChanged="chkCuitOrDni_CheckedChanged" />
+            </div>
+        </div>
+
         <div class="row mt-3 mb-5">
             <div class="col-md-12 mb-5">
                <asp:GridView ID="dgvClientes" runat="server" CssClass="table border-0" AllowPaging="true" OnPageIndexChanging="dgvClientes_PageIndexChanging" OnSelectedIndexChanged="dgvClientes_SelectedIndexChanged" AutoGenerateColumns="false">

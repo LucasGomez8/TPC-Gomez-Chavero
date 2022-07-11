@@ -10,6 +10,11 @@
                 <h2>Proveedores</h2>
             </div>
         </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+                <asp:CheckBox id="chkNombre" runat="server" AutoPostBack="true" Text="Ordenar por Nombre" OnCheckedChanged="chkNombre_CheckedChanged" />
+            </div>
+        </div>
         <div class="row mt-3 mb-5">
             <div class="col-md-12 mb-5">
                <asp:GridView ID="dgvProveedores" runat="server" AllowPaging="true" OnPageIndexChanging="dgvProveedores_PageIndexChanging" OnSelectedIndexChanged="dgvProveedores_SelectedIndexChanged" CssClass="table border-0" AutoGenerateColumns="false">

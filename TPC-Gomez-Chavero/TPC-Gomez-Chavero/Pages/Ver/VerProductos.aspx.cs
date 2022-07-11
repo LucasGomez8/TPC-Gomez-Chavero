@@ -16,6 +16,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         public ABMService abm;
         public Filters fil;
         public User whoIs;
+        public List<Product> paraOrdenar;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null)
@@ -99,6 +100,92 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvProductosEmployee.PageIndex = e.NewPageIndex;
             LoadGridEmployeeData();
             dgvProductosEmployee.DataBind();
+        }
+
+        protected void chkNombre_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            paraOrdenar = fil.getStoresProducts();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvProductos.DataSource = paraOrdenar.OrderBy(x => x.Nombre).ToList();
+                dgvProductos.DataBind();
+            }
+            else
+            {
+                dgvProductosEmployee.DataSource = paraOrdenar.OrderBy(x => x.Nombre).ToList();
+                dgvProductosEmployee.DataBind();
+            }
+        }
+
+        protected void chkCategoria_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            paraOrdenar = fil.getStoresProducts();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvProductos.DataSource = paraOrdenar.OrderBy(x => x.Categoria.Descripcion).ToList();
+                dgvProductos.DataBind();
+            }
+            else
+            {
+                dgvProductosEmployee.DataSource = paraOrdenar.OrderBy(x => x.Categoria.Descripcion).ToList();
+                dgvProductosEmployee.DataBind();
+            }
+        }
+    
+
+        protected void chkMarca_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            paraOrdenar = fil.getStoresProducts();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvProductos.DataSource = paraOrdenar.OrderBy(x => x.Marca.Descripcion).ToList();
+                dgvProductos.DataBind();
+            }
+            else
+            {
+                dgvProductosEmployee.DataSource = paraOrdenar.OrderBy(x => x.Marca.Descripcion).ToList();
+                dgvProductosEmployee.DataBind();
+            }
+        }
+
+        protected void chkTipo_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            paraOrdenar = fil.getStoresProducts();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvProductos.DataSource = paraOrdenar.OrderBy(x => x.Tipo.Descripcion).ToList();
+                dgvProductos.DataBind();
+            }
+            else
+            {
+                dgvProductosEmployee.DataSource = paraOrdenar.OrderBy(x => x.Tipo.Descripcion).ToList();
+                dgvProductosEmployee.DataBind();
+            }
+        }
+
+        protected void chkPorcentajeGanancia_CheckedChanged(object sender, EventArgs e)
+        {
+            fil = new Filters();
+            paraOrdenar = fil.getStoresProducts();
+
+            if (whoIs.type.Description == "Administrador")
+            {
+                dgvProductos.DataSource = paraOrdenar.OrderBy(x => x.PorcentajeVenta).ToList();
+                dgvProductos.DataBind();
+            }
+            else
+            {
+                dgvProductosEmployee.DataSource = paraOrdenar.OrderBy(x => x.PorcentajeVenta).ToList();
+                dgvProductosEmployee.DataBind();
+            }
         }
     }
 }
