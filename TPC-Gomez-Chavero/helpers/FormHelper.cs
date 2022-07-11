@@ -38,6 +38,18 @@ namespace helpers
             return true;
         }
 
+        public static bool validateNumber(string numeroFac, Label lblError)
+        {
+            if (!numeroFac.All(char.IsDigit))
+            {
+                lblError.Text = "Solo puede contener numeros...";
+                lblError.Visible = true;
+                return false;
+            }
+            lblError.Visible = true;
+            return true;
+        }
+
         public static bool validateInputPhone(string phone, Label lblError)
         {
             if (!phone.All(char.IsDigit))

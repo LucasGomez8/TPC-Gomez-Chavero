@@ -81,10 +81,29 @@ namespace TPC_Gomez_Chavero.Pages.Ver
         protected void chkNombre_CheckedChanged(object sender, EventArgs e)
         {
             fil = new Filters();
-            order = fil.listarProveedores();
 
-            dgvProveedores.DataSource = order.OrderBy(x => x.Nombre).ToList();
+            dgvProveedores.DataSource = fil.listarProveedores().OrderBy(x => x.Nombre).ToList();
             dgvProveedores.DataBind();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            colError.Visible = false;
+            if (txtBuscar.Text.Length >0)
+            {
+                string que = txtBuscar.Text;
+                fil = new Filters();
+                order = fil.listarProveedores();
+
+                dgvProveedores.DataSource = order.Where(x => x.Nombre == que).ToList();
+                dgvProveedores.DataBind();
+            }
+            else
+            {
+                colError.Visible = true;
+                lblErroBuscar.Text = "Por favor, Ingrese datos a la hora de buscar...";
+            }
+
         }
     }
 }

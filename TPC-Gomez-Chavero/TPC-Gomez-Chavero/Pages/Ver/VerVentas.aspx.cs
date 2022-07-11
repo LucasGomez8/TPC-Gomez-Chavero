@@ -61,6 +61,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvVentas.DataBind();
         }
 
+
         protected void chkFecha_CheckedChanged(object sender, EventArgs e)
         {
             filtros = new Filters();
@@ -77,6 +78,44 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
             dgvVentas.DataSource = order.OrderBy(x => x.NumeroFactura).ToList();
             dgvVentas.DataBind();
+        }
+
+        public bool checkNotLetters(string q, Label lblError)
+        {
+            if (!FormHelper.validateNumber(q, lblError))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            colError.Visible = false;
+            if (txtBuscar.Text.Length > 0)
+            {
+                if (checkNotLetters(txtBuscar.Text, lblErroBuscar))
+                {
+                    long nfac = Int64.Parse(txtBuscar.Text);
+                    filtros = new Filters();
+
+                    order = filtros.listarVentas();
+                    dgvVentas.DataSource = order.Where(x => x.NumeroFactura == nfac).ToList();
+                    dgvVentas.DataBind();
+                }
+                else
+                {
+                    colError.Visible = true;
+                }
+
+            }
+            else
+            {
+                colError.Visible = true;
+                lblErroBuscar.Text = "Por favor, Ingrese datos al buscar...";
+            }
+
         }
     }
 }

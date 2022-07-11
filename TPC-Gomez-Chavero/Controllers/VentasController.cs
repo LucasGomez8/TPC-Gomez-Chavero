@@ -147,7 +147,6 @@ namespace Controllers
             {
                 return false;
             }
-            return false;
         }
     }
 }

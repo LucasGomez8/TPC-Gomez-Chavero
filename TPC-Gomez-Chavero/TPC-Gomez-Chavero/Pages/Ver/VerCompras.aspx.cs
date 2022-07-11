@@ -85,5 +85,42 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             dgvCompras.DataSource = paraOrdenar.OrderBy(x => x.FechaVenta).ToList();
             dgvCompras.DataBind();
         }
+
+        public bool checkNotLetters(string q, Label lblError)
+        {
+            if (!FormHelper.validateNumber(q, lblError))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            colError.Visible = false;
+            if (txtBuscar.Text.Length > 0)
+            {
+
+                if (checkNotLetters(txtBuscar.Text,lblErroBuscar))
+                {
+                    long quer = Int64.Parse(txtBuscar.Text);
+                    filtro = new Filters();
+                    paraOrdenar = filtro.listarCompras();
+                    dgvCompras.DataSource = paraOrdenar.Where(x => x.NumeroFactura == quer).ToList();
+                    dgvCompras.DataBind();
+                }
+                else
+                {
+                    colError.Visible = true;
+                }
+            }
+            else
+            {
+                colError.Visible = true;
+                lblErroBuscar.Text = "Por favor, Ingrese datos al buscar";
+            }
+
+        }
     }
 }

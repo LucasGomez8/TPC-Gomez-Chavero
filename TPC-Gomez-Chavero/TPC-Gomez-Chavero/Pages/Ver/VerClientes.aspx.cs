@@ -142,5 +142,51 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             }
 
         }
+
+        public bool checkNotLetters(string q, Label lblError)
+        {
+            if (!FormHelper.validateInputDniOrCuit(q, lblError))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            colError.Visible = false;
+            if (txtBuscar.Text.Length>0)
+            {
+                string que = txtBuscar.Text;
+                if (checkNotLetters(que, lblErroBuscar))
+                {
+                    filtros = new Filters();
+                    paraOrdenar = filtros.listarCliente();
+
+                    if (whoIs.type.Description == "Administrador")
+                    {
+                        dgvClientes.DataSource = paraOrdenar.Where(x => x.CuitOrDni == que).ToList();
+                        dgvClientes.DataBind();
+                    }
+                    else
+                    {
+                        dgvClientesEmployee.DataSource = paraOrdenar.Where(x => x.CuitOrDni == que).ToList();
+                        dgvClientes.DataBind();
+                    }
+                }
+                else
+                {
+                    colError.Visible = true;
+                }
+
+            }
+            else
+            {
+                colError.Visible = true;
+                lblErroBuscar.Text = "Por favor, ingrese un valor al buscar";
+            }
+
+        }
     }
 }

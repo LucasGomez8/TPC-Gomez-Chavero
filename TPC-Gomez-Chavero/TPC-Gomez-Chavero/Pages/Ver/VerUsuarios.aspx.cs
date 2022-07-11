@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using services;
 using domain;
+using helpers;
 
 
 namespace TPC_Gomez_Chavero.Pages.Ver
@@ -114,6 +115,44 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
             dgvUsuarios.DataSource = order.OrderBy(x => x.Nick).ToList();
             dgvUsuarios.DataBind();
+        }
+
+        public bool checkNotLetters(string q, Label lblError)
+        {
+            if (!FormHelper.validateNumber(q, lblError))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            colError.Visible = false;
+            if (txtBuscar.Text.Length > 0)
+            {
+                string que = txtBuscar.Text;
+                if (checkNotLetters(que,lblErroBuscar))
+                {
+                    fil = new Filters();
+                    order = fil.listarUsuarios();
+
+                    dgvUsuarios.DataSource = order.Where(x => x.DNI == que).ToList();
+                    dgvUsuarios.DataBind();
+                }
+                else
+                {
+                    colError.Visible = true;
+                }
+
+            }
+            else
+            {
+                colError.Visible = true;
+                lblErroBuscar.Text = "Por favor, Ingrese un valor al buscar...";
+            }
+
         }
     }
 }

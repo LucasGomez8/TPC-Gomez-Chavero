@@ -187,5 +187,35 @@ namespace TPC_Gomez_Chavero.Pages.Ver
                 dgvProductosEmployee.DataBind();
             }
         }
+
+
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            colError.Visible = false;
+            if (txtBuscar.Text.Length>0)
+            {
+                string que = txtBuscar.Text;
+                fil = new Filters();
+                paraOrdenar = fil.getStoresProducts();
+
+                if (whoIs.type.Description == "Administrador")
+                {
+                    dgvProductos.DataSource = paraOrdenar.Where(x => x.Nombre == que).ToList();
+                    dgvProductos.DataBind();
+                }
+                else
+                {
+                    dgvProductosEmployee.DataSource = paraOrdenar.Where(x => x.Nombre == que).ToList();
+                    dgvProductosEmployee.DataBind();
+                }
+            }
+            else
+            {
+                colError.Visible = true;
+                lblErroBuscar.Text = "Por favor, Ingrese valores al buscar";
+
+            }
+        }
     }
 }

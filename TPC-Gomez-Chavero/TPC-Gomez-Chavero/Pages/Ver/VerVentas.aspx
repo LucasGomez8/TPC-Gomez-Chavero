@@ -11,17 +11,26 @@
             </div>
         </div>
         <div class="row justify-content-center mt-3">
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <asp:CheckBox  ID="chkOrdenarFactura" runat="server" AutoPostBack="true" Text="Ordenar por Nro Factura" OnCheckedChanged="chkOrdenarFactura_CheckedChanged"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <asp:CheckBox  ID="chkCliente" runat="server" AutoPostBack="true" Text="Ordenar por Cliente" OnCheckedChanged="chkCliente_CheckedChanged"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <asp:CheckBox  ID="chkVendedor" runat="server" AutoPostBack="true" Text="Ordenar por Vendedor" OnCheckedChanged="chkVendedor_CheckedChanged"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <asp:CheckBox  ID="chkFecha" runat="server" AutoPostBack="true" Text="Ordenar por Fecha" OnCheckedChanged="chkFecha_CheckedChanged"/>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4 ms-5" style="display:flex">
+                <asp:TextBox ID="txtBuscar" runat="server" Width="72%" placeholder="Buscar por Numero Factura..." onkeydown="return (event.keyCode != 13);" CssClass="form-control me-2"></asp:TextBox>
+                <asp:Button ID="btnBuscar" runat="server" Text="🔎" Width="25%" AutoPostBack="true" CssClass="btn btn-success" OnClick="btnBuscar_Click" />
+            </div>
+            <div class="col-md-6" id="colError" runat="server" visible="false">
+                <asp:Label ID="lblErroBuscar" runat="server" CssClass="text-danger"></asp:Label>
             </div>
         </div>
         <div class="row mt-4 mb-5">
