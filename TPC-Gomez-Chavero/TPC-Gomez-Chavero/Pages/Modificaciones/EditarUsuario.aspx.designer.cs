@@ -66,7 +66,7 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaNac;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFechaNac;
 
         /// <summary>
         /// Control dropTipoUsuario.
@@ -94,6 +94,15 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPass;
+
+        /// <summary>
+        /// Control errorPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorPass;
 
         /// <summary>
         /// Control lblSuccess.

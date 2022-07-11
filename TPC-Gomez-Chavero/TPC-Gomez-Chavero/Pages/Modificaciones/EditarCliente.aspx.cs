@@ -35,7 +35,6 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
                 Response.Redirect("~/");
             }
 
-
             txtFechaNac.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             txtFechaNac.Attributes["min"] = DateTime.MinValue.ToString("yyyy-MM-dd");
             if (!IsPostBack)

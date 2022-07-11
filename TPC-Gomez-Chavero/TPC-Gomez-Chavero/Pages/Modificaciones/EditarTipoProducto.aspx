@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="dropMarca">Selecciona la Marca</label>
-                        <asp:DropDownList cssClass="form-control" ID="dropTipo" runat="server"></asp:DropDownList>
+                        <asp:DropDownList cssClass="form-control" ID="dropTipo" runat="server" OnSelectedIndexChanged="dropTipo_SelectedIndexChanged" AutoPostBack="true" />
                     </div>
                 </div>
                 <div class="col-md-4 mt-4">
@@ -24,14 +24,14 @@
                 <div class="row">
                     <div class="form-group mb-3">
                         <label for="txtNTipo">Nombre de Categoria</label>
-                        <asp:TextBox ID="txtNTipo" runat="server" Enabled="false" CssClass="form-control" onkeydown="return (event.keyCode != 13);"></asp:TextBox>
+                        <asp:TextBox ID="txtNTipo" runat="server" Enabled="false" CssClass="form-control" onkeydown="return (event.keyCode != 13);" OnTextChanged="txtNTipo_TextChanged" AutoPostBack="true" />
+                        <asp:Label ID="lblSuccess" runat="server" Visible="false" />
                     </div>
                 </div>
             </form>
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 text-center">
                 <asp:Button ID="btnSubmit" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
-                <asp:Button ID="Button1" CssClass="btn btn-primary" onclick="btnSubmit_Click" Enabled="false" runat="server" Text="Editar" />
             </div>
         </div>
     </div>

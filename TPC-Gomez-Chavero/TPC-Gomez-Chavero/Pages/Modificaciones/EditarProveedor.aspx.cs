@@ -12,7 +12,7 @@ using services;
 
 namespace TPC_Gomez_Chavero.Pages.Modificaciones
 {
-    public partial class EditarProveedor : System.Web.UI.Page
+    public partial class EditarProveedor : Page
     {
 
         public List<Provider> provList;
@@ -33,7 +33,6 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
                 Response.Redirect("~/");
             }
 
-
             abm = new ABMService();
             if (!IsPostBack)
             {
@@ -42,18 +41,23 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
             if (Request.QueryString["id"] != null)
             {
-                long id = Int64.Parse(Request.QueryString["id"]);
+                long id = long.Parse(Request.QueryString["id"]);
                 cargarDatos(id);
             }
         }
 
         public void cargarDatos(long id)
         {
-            Provider selected = new Provider();
-
-            selected = findIt(id);
+            Provider selected = findIt(id);
+            if (selected == null)
+            {
+                lblSuccess.Text = "Error al cargar los datos";
+                btnSubmit.Enabled = false;
+                txtPNombre.Enabled = false;
+                txtPNombre.Text = "";
+                return;
+            }
             txtPNombre.Text = selected.Nombre;
-
             btnSubmit.Enabled = true;
             txtPNombre.Enabled = true;
         }
@@ -100,28 +104,45 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             dropProveedor.DataBind();
         }
 
-
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-
+            long id = long.Parse(dropProveedor.SelectedValue);
+            if (id == 0)
+            {
+                lblSuccess.Text = "Por favor seleccione una opcion";
+                txtPNombre.Text = "";
+                txtPNombre.Enabled = false;
+                lblSuccess.Visible = true;
+                return;
+            }
             txtPNombre.Enabled = true;
             txtPNombre.Text = dropProveedor.SelectedItem.Text;
+            btnSubmit.Enabled = false;
+        }
 
-            btnSubmit.Enabled = true;
+        protected void dropProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long idSelected = long.Parse(dropProveedor.SelectedValue);
+            if (idSelected == 0)
+            {
+                txtPNombre.Enabled = false;
+                txtPNombre.Text = "";
+                lblSuccess.Visible = false;
+                return;
+            }
+            txtPNombre.Enabled = true;
+            txtPNombre.Text = dropProveedor.SelectedItem.Text;
+            btnSubmit.Enabled = false;
+            lblSuccess.Visible = false;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            Provider prov = new Provider();
+            long id = long.Parse(dropProveedor.SelectedValue);
 
-            long id = Int64.Parse(dropProveedor.SelectedValue);
-
-            prov = findIt(id);
-            
             string nom = txtPNombre.Text;
 
-
-            if (abm.editProvider(prov.Id, nom) == 1)
+            if (abm.editProvider(id, nom) == 1)
             {
                 lblSuccess.Text = "Proveedor Modificado con exito";
                 lblSuccess.Visible = true;
@@ -132,6 +153,13 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
                 lblSuccess.Text = "Error al modificar";
             }
             dropLoader();
+        }
+        protected void txtNProveedor_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPNombre.Text != dropProveedor.SelectedItem.Text && txtPNombre.Text.Length != 0)
+                btnSubmit.Enabled = true;
+            else
+                btnSubmit.Enabled = false;
         }
     }
 }

@@ -12,7 +12,7 @@ using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Modificaciones
 {
-    public partial class EditarUsuario : System.Web.UI.Page
+    public partial class EditarUsuario : Page
     {
 
         public List<User> userList;
@@ -41,29 +41,40 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
                 dropUserLoader();
             }
 
+            txtFechaNac.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+            txtFechaNac.Attributes["min"] = DateTime.MinValue.ToString("yyyy-MM-dd");
             if (Request.QueryString["id"] != null)
             {
-                long id = Int64.Parse(Request.QueryString["id"].ToString());
+                long id = long.Parse(Request.QueryString["id"].ToString());
                 cargarDatos(id);
             }
+
+            checkInputs();
         }
         
         public void cargarDatos(long id)
         {
             dropTypeUserLoader();
             User selected = find(id);
+            if (selected == null)
+            {
+                Response.Write("<script>alert('Hubo un error al cargar la informacion del cliente')</script>");
+                dropUsuarios.Enabled = true;
+                btnSelect.Enabled = true;
+                return;
+            }
 
             btnSelect.Enabled = false;
-            dropUsuarios.Enabled=false;
+            dropUsuarios.Enabled = false;
 
-            txtNombre.Text = selected.Nombre;
+            txtNombre.Text = StringHelper.upperStartCharInAllWords(selected.Nombre, ' ', "de");
 
-            txtApellido.Text = selected.Apellido;
+            txtApellido.Text = StringHelper.upperStartCharInAllWords(selected.Apellido, ' ', "de");
 
             txtDni.Text = selected.DNI;
 
             txtNick.Enabled = true;
-            txtNick.Text = selected.Nick;
+            txtNick.Text = StringHelper.upperStartChar(selected.Nick);
 
             dropTipoUsuario.Enabled = true;
             dropTipoUsuario.SelectedValue = selected.type.ID.ToString();
@@ -71,8 +82,8 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             txtPass.Enabled = true;
             txtPass.Text = selected.Pass;
 
-            txtFechaNac.Enabled = true;
-            txtFechaNac.Text = selected.FechaNacimiento.ToString("yyyy-MM-dd");
+            txtFechaNac.Attributes.Remove("disabled");
+            txtFechaNac.Value = selected.FechaNacimiento.ToString("yyyy-MM-dd");
 
             btnSubmit.Enabled = true;
             btnCancelar.Enabled = true;
@@ -107,29 +118,15 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-            dropTypeUserLoader();
-            User x = find(Int64.Parse(dropUsuarios.SelectedItem.Value));
-
-            txtNombre.Text = x.Nombre;
-
-            txtApellido.Text = x.Apellido;
-
-            txtDni.Text = x.DNI;
-
-            txtNick.Enabled = true;
-            txtNick.Text = x.Nick;
-
-            dropTipoUsuario.Enabled = true;
-            dropTipoUsuario.SelectedValue = x.type.ID.ToString();
-
-            txtPass.Enabled = true;
-            txtPass.Text = x.Pass;
-
-            txtFechaNac.Enabled = true;
-            txtFechaNac.Text = x.FechaNacimiento.ToString("dd-MM-yyyy");
-
-            btnSubmit.Enabled = true;
-            btnCancelar.Enabled = true;
+            long id = long.Parse(dropUsuarios.SelectedItem.Value);
+            if (id == 0)
+            {
+                lblSuccess.Text = "Por favor seleccione una opcion";
+                lblSuccess.Visible = true;
+                return;
+            }
+            lblSuccess.Visible = false;
+            cargarDatos(id);
         }
 
         public User find(long id)
@@ -148,16 +145,11 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         public void dropTypeUserLoader()
         {
-            userTypeList = us.getTypes(); ;
+            userTypeList = us.getTypes();
 
             DataTable datatwo = new DataTable();
             datatwo.Columns.Add("id");
             datatwo.Columns.Add("descripcion");
-
-            DataRow emptyData = datatwo.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            datatwo.Rows.Add(emptyData);
 
             foreach (UserType item in userTypeList)
             {
@@ -167,31 +159,27 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
                 datatwo.Rows.Add(row);
             }
 
-
             dropTipoUsuario.DataSource = new DataView(datatwo);
             dropTipoUsuario.DataTextField = "descripcion";
             dropTipoUsuario.DataValueField = "id";
             dropTipoUsuario.DataBind();
         }
 
-
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            long id = Int64.Parse(dropUsuarios.SelectedItem.Value);
+            long id = long.Parse(dropUsuarios.SelectedItem.Value);
             string nombre = txtNombre.Text;
             string ape = txtApellido.Text;
             string dni = txtDni.Text;
-            string fec = txtFechaNac.Text;
+            string fec = txtFechaNac.Value;
             string nick = txtNick.Text;
             string pass = txtPass.Text;
-            long idt = Int64.Parse(dropTipoUsuario.SelectedItem.Value);
+            long idt = long.Parse(dropTipoUsuario.SelectedItem.Value);
 
             if (us.editUser(id, nombre, ape, dni, fec, nick, pass, idt) > 0)
             {
                 lblSuccess.Text = "Usuario Modificado con exito";
                 lblSuccess.Visible = true;
-
                 btnSubmit.Visible = false;
                 btnCancelar.Visible = false;
                 btnContinue.Visible = true;
@@ -213,5 +201,27 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         {
             Response.Redirect("~/Pages/Modificaciones/EditarUsuario.aspx");
         }
+
+        protected void onTextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+
+            txtFechaNac.Attributes.Remove("disabled");
+            if (txt.ID == txtPass.ID) FormHelper.validateInputPassword(txtPass.Text, errorPass);
+        }
+
+        private void checkInputs()
+        {
+            btnSubmit.Enabled = false;
+
+            if (txtFechaNac.Value.Length == 0) return;
+
+            if (txtPass.Text.Length == 0 || !FormHelper.validateInputPassword(txtPass.Text, errorPass)) return;
+
+            if (txtNick.Text.Length == 0) return;
+
+            btnSubmit.Enabled = true;
+        }
+
     }
 }

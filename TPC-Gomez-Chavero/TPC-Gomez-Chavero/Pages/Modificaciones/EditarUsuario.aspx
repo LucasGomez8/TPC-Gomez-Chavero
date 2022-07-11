@@ -37,22 +37,24 @@
                           </div>
                           <div class="col-md-3">
                                 <label for="txtFechaNac">Fecha de Nacimiento</label>
-                                <asp:TextBox ID="txtFechaNac" runat="server" TextMode="Date" Enabled="false" CssClass="form-control"></asp:TextBox>
+                                <input type="date" id="txtFechaNac" runat="server" class="form-control" disabled />
                           </div>
                       </div>
                       <div class="form-group mb-3">
                           <div class="row">
                               <div class="col-md-4">
                                   <label for="dropTipoUsuario">Tipo de Usuario</label>
-                                  <asp:DropDownList CssClass="form-control" Enabled="false" ID="dropTipoUsuario" runat="server"></asp:DropDownList>
+                                  <asp:DropDownList CssClass="form-control" Enabled="false" ID="dropTipoUsuario" runat="server" AutoPostBack="true" />
                               </div>
                               <div class="col-md-4">
                                 <label for="txtNick">Username</label>
-                                <asp:TextBox ID="txtNick" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtNick" runat="server" Enabled="false" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
                               </div>
                               <div class="col-md-4">
                                 <label for="txtPass">Contraseña</label>
-                                <asp:TextBox ID="txtPass" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtPass" runat="server" Enabled="false" CssClass="form-control" OnTextChanged="onTextChanged" />
+                                <asp:Label ID="errorPass" CssClass="text-danger" runat="server" />   
+
                               </div>
                           </div>
                      </div>

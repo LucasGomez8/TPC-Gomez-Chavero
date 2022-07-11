@@ -11,12 +11,11 @@ using services;
 
 namespace TPC_Gomez_Chavero.Pages.Modificaciones
 {
-    public partial class EditarCategoria : System.Web.UI.Page
+    public partial class EditarCategoria : Page
     {
 
         private ABMService abm;
         public List<ProductCategory> categoryList;
-        public ProductCategory Selected;
         public User whoIs;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -71,51 +70,66 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-            long id = Int64.Parse(dropCategorias.SelectedItem.Value);
-            Selected = findIt(id);
-
+            long id = long.Parse(dropCategorias.SelectedItem.Value);
+            if(id == 0)
+            {
+                lblSuccess.Text = "Por favor seleccione una opcion";
+                txtNCategoria.Text = "";
+                lblSuccess.Visible = true;
+                return;
+            }
             txtNCategoria.Enabled = true;
-            txtNCategoria.Text = Selected.Descripcion;
-
-            btnSubmit.Enabled = true;
+            lblSuccess.Visible = false;
+            txtNCategoria.Text = dropCategorias.SelectedItem.Text;
+            btnSubmit.Enabled = false;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
             ABMService abm = new ABMService();
-            long ids = Int64.Parse(dropCategorias.SelectedValue);
-            Selected = findIt(ids);
-
+            long id = long.Parse(dropCategorias.SelectedValue);
             string des = txtNCategoria.Text;
 
-            if (abm.changeStatus("Categorias","idCategoria",0,ids)==1)
+            if (abm.editType(id, des.ToLower()) == 1)
             {
-                if (abm.createTypes(des.ToLower(), "Categorias")==1)
-                {
-                    lblSuccess.Text = "Categoria Modificada con exito!";
-                }
+                lblSuccess.Text = "Categoria Modificada con exito!";
+                lblSuccess.Visible = true;
             }
-
+            else
+            {
+                lblSuccess.Text = "Hubo un error al modificar la Categoria";
+                lblSuccess.Visible = false;
+            }
+            dropLoader();
         }
 
-        public ProductCategory findIt(long id)
+        protected void dropCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            categoryList = abm.getCategory(1);
-            foreach (ProductCategory item in categoryList)
+            long idSelected = long.Parse(dropCategorias.SelectedValue);
+            if (idSelected == 0)
             {
-                if (item.Id == id)
-                {
-                    return item;
-                }
+                txtNCategoria.Enabled = false;
+                txtNCategoria.Text = "";
+                lblSuccess.Visible = false;
+                return;
             }
-
-            return null;
+            txtNCategoria.Enabled = true;
+            txtNCategoria.Text = dropCategorias.SelectedItem.Text;
+            btnSubmit.Enabled = false;
+            lblSuccess.Visible = false;
         }
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/Modificaciones/EditarCategoria.aspx");
+        }
+
+        protected void txtNCategoria_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNCategoria.Text != dropCategorias.SelectedItem.Text && txtNCategoria.Text.Length != 0)
+                btnSubmit.Enabled = true;
+            else
+                btnSubmit.Enabled = false;
         }
     }
 }

@@ -11,15 +11,16 @@ using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Modificaciones
 {
-    public partial class EditarTipoProducto : System.Web.UI.Page
+    public partial class EditarTipoProducto : Page
     {
 
         public List<ProductType> typeList;
-        public ProductType Selected;
         public User whoIs;
+        private ABMService abm;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
+            abm = new ABMService();
 
             if (Session["user"] != null)
             {
@@ -36,37 +37,65 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
 
             typeList = abm.getProductType(1);
-
-            dropLoader();
+            if (!IsPostBack)
+            {
+                dropLoader();
+            }
         }
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-            int id = dropTipo.SelectedIndex;
-            Selected = findIt(id);
-
-
+            long id = long.Parse(dropTipo.SelectedValue);
+            if (id == 0)
+            {
+                lblSuccess.Text = "Por favor seleccione una opcion";
+                txtNTipo.Text = "";
+                lblSuccess.Visible = true;
+                return;
+            }
             txtNTipo.Enabled = true;
-            txtNTipo.Text = Selected.Descripcion;
-            btnSubmit.Enabled = true;
+            txtNTipo.Text = dropTipo.SelectedItem.Text;
+            btnSubmit.Enabled = false;
+        }
+
+        protected void dropTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long idSelected = long.Parse(dropTipo.SelectedValue);
+            if (idSelected == 0)
+            {
+                txtNTipo.Enabled = false;
+                txtNTipo.Text = "";
+                lblSuccess.Visible = false;
+                return;
+            }
+            txtNTipo.Enabled = true;
+            txtNTipo.Text = dropTipo.SelectedItem.Text;
+            btnSubmit.Enabled = false;
+            lblSuccess.Visible = false;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            long id = Int64.Parse(dropTipo.SelectedItem.Value);
-            Selected = findIt(id);
+            long id = long.Parse(dropTipo.SelectedItem.Value);
             string des = txtNTipo.Text;
 
-
-            abm.editType(Selected.Id, des);
-
+            if (abm.editType(id, des) == 1)
+            {
+                lblSuccess.Text = "Tipo de producto modificado con exito!";
+                lblSuccess.Visible = true;
+            }
+            else
+            {
+                lblSuccess.Text = "Hubo un error al modificar la Tipo de Producto";
+                lblSuccess.Visible = false;
+            }
+            dropLoader();
         }
 
         public void dropLoader()
         {
-            ABMService abm = new ABMService();
             typeList = abm.getProductType(1);
+
             DataTable data = new DataTable();
             data.Columns.Add("id");
             data.Columns.Add("nombre");
@@ -89,20 +118,13 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
             dropTipo.DataValueField = "id";
             dropTipo.DataBind();
         }
-
-        public ProductType findIt(long id)
+        protected void txtNTipo_TextChanged(object sender, EventArgs e)
         {
-            ABMService abm = new ABMService();
-            typeList = abm.getProductType(1);
-            foreach (ProductType item in typeList)
-            {
-                if (item.Id == id)
-                {
-                    return item;
-                }
-            }
-
-            return null;
+            if (txtNTipo.Text != dropTipo.SelectedItem.Text && txtNTipo.Text.Length != 0)
+                btnSubmit.Enabled = true;
+            else
+                btnSubmit.Enabled = false;
         }
+
     }
 }

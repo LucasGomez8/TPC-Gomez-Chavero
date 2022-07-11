@@ -69,8 +69,16 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
+            long idSelected = long.Parse(dropMarca.SelectedValue);
+            if (idSelected == 0)
+            {
+                lblSuccess.Text = "Por favor seleccione una opcion";
+                lblSuccess.Visible = true;
+                return;
+            }
             txtNMarca.Enabled = true;
             txtNMarca.Text = dropMarca.SelectedItem.Text;
+            lblSuccess.Visible = false;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -93,6 +101,14 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
 
         protected void dropMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            long idSelected = long.Parse(dropMarca.SelectedValue);
+            if (idSelected == 0)
+            {
+                txtNMarca.Enabled = false;
+                txtNMarca.Text = "";
+                lblSuccess.Visible = false;
+                return;
+            }
             txtNMarca.Enabled = true;
             txtNMarca.Text = dropMarca.SelectedItem.Text;
             btnSubmit.Enabled = false;
