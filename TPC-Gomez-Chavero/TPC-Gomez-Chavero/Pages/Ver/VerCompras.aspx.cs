@@ -11,7 +11,7 @@ using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Ver
 {
-    public partial class VerCompras : System.Web.UI.Page
+    public partial class VerCompras : Page
     {
 
         private Filters filtro;
@@ -104,7 +104,7 @@ namespace TPC_Gomez_Chavero.Pages.Ver
 
                 if (checkNotLetters(txtBuscar.Text,lblErroBuscar))
                 {
-                    long quer = Int64.Parse(txtBuscar.Text);
+                    long quer = long.Parse(txtBuscar.Text);
                     filtro = new Filters();
                     paraOrdenar = filtro.listarCompras();
                     dgvCompras.DataSource = paraOrdenar.Where(x => x.NumeroFactura == quer).ToList();

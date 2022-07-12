@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using domain;
-
+using helpers;
 
 namespace services
 {
@@ -141,6 +141,7 @@ namespace services
 
                     response.ID = (long)da.dataReader["IDRegistro"];
                     response.NumeroFactura = (long)da.dataReader["NumeroFactura"];
+                    response.NumeroFacturaConPrefix = StringHelper.completeTicketNumbers(response.NumeroFactura, 2);
                     response.TiposFactura = new TipoFactura();
                     response.TiposFactura.Descripcion = (string)da.dataReader["descripcion"];
                     response.Vendedor = new User();
@@ -265,6 +266,7 @@ namespace services
 
                     response.ID = (long)da.dataReader["IDRegistro"];
                     response.NumeroFactura = (long)da.dataReader["NumeroFactura"];
+                    response.NumeroFacturaConPrefix = StringHelper.completeTicketNumbers(response.NumeroFactura, 1);
                     response.TiposFactura = new TipoFactura();
                     response.TiposFactura.Descripcion = (string)da.dataReader["descripcion"];
                     response.Usuario = new User();

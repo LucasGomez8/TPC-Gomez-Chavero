@@ -44,7 +44,9 @@
         public static long removeTicketNumbers(string ticket)
         {
             string removeSeparator = ticket.Replace("-", "");
-            return long.Parse(removeSeparator);
+            string removeSiglas = removeSeparator.Replace("FO", "");
+            string removeSiglas2 = removeSiglas.Replace("FD", "");
+            return long.Parse(removeSiglas2);
         }
     }
 }

@@ -55,5 +55,11 @@
     <Compile Include="UserType.cs" />
     <Compile Include="Ventas.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\helpers\helpers.csproj">
+      <Project>{ff1861f9-baf8-49bd-ac3b-c4b01c427874}</Project>
+      <Name>helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

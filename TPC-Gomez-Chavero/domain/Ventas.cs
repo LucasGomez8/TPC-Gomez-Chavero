@@ -19,5 +19,6 @@ namespace domain
         public DateTime FechaVenta { get; set; }
         public decimal MontoTotal { get; set; }
         public string Detalle { get; set; }
+        public string NumeroFacturaConPrefix { get; set; }
     }
 }
