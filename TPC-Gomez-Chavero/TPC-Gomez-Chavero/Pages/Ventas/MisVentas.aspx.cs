@@ -116,13 +116,12 @@ namespace TPC_Gomez_Chavero
             }
         }
 
-
-            private void setTicketNumber(long type)
-            {
-            long ticketNumber = vc.getTicketNumber(type);
-            txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber);
-            txtNumeroFactura.Enabled = false;
-            }
+        private void setTicketNumber(long type)
+        {
+        long ticketNumber = vc.getTicketNumber(type);
+        txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber, 2);
+        txtNumeroFactura.Enabled = false;
+        }
 
         public void dropTipoFacturaLoader()
         {
@@ -131,11 +130,6 @@ namespace TPC_Gomez_Chavero
             DataTable data = new DataTable();
             data.Columns.Add("id");
             data.Columns.Add("description");
-
-            DataRow emptyData = data.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            data.Rows.Add(emptyData);
 
             foreach (TipoFactura item in tfacturaList)
             {

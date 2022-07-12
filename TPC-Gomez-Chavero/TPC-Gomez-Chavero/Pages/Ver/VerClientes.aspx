@@ -32,7 +32,7 @@
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                        <asp:BoundField HeaderText="Cuit o DNI" DataField="CuitOrDni" />
-                       <asp:BoundField HeaderText="Fecha Nacimiento" DataField="fechaNac" />
+                       <asp:BoundField HeaderText="Fecha Nacimiento" DataField="fechaNac" DataFormatString="{0:dd/MM/yyyy}" />
                        <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
                        <asp:BoundField HeaderText="Email" DataField="Email" />
                        <asp:CheckBoxField HeaderText="Activo" DataField="Estado" />
@@ -46,7 +46,7 @@
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                        <asp:BoundField HeaderText="Cuit o DNI" DataField="CuitOrDni" />
-                       <asp:BoundField HeaderText="Fecha Nacimiento" DataField="fechaNac" />
+                       <asp:BoundField HeaderText="Fecha Nacimiento" DataField="fechaNac" DataFormatString="{0:dd/MM/yyyy}"/>
                        <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
                        <asp:BoundField HeaderText="Email" DataField="Email" />
                        <asp:CheckBoxField HeaderText="Activo" DataField="Estado" />

@@ -9,8 +9,7 @@ using domain;
 namespace Controllers
 {
     public class ComprasController
-    {
-       
+    {  
 
         public Product findIt(long id)
         {
@@ -47,7 +46,7 @@ namespace Controllers
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (i == 2)
+                    if (list[i].Descripcion == "Factura Duplicada")
                     {
                         list.Remove(list[i]);
                     }

@@ -32,12 +32,13 @@
             return newString;
         }
 
-        public static string completeTicketNumbers(long id)
+        public static string completeTicketNumbers(long id, int type)
         {
+            string siglas = type == 1 ? "FO-" : "FD-";
             string strID = id.ToString();
             string idAdded = TICKET_PREFIX.Insert(TICKET_PREFIX.Length - strID.Length, strID);
             string removeExtraNumbers = idAdded.Remove(TICKET_PREFIX.Length);
-            return removeExtraNumbers.Insert(4, "-");
+            return siglas + removeExtraNumbers.Insert(4, "-");
         }
 
         public static long removeTicketNumbers(string ticket)

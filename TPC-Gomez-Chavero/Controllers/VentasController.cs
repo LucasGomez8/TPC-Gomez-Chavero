@@ -52,7 +52,7 @@ namespace Controllers
             {
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (i == 1)
+                    if (list[i].Descripcion == "Factura Original")
                     {
                         list.Remove(list[i]);
                     }

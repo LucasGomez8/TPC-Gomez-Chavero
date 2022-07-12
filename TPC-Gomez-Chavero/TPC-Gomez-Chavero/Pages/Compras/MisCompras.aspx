@@ -22,7 +22,7 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="categoria">Tipo de Factura</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropTypeTicketOnChange" />
+                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropTypeTicketOnChange" Enabled="false" />
                       </div>
                       <div class="col-md-4">
                           <label for="marca">Proveedor</label>

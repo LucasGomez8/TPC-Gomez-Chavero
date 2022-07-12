@@ -12,7 +12,7 @@ using Controllers;
 
 namespace TPC_Gomez_Chavero.Pages.Ver
 {
-    public partial class VerClientes : System.Web.UI.Page
+    public partial class VerClientes : Page
     {
         private Filters filtros;
         public User whoIs;
@@ -39,8 +39,6 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             {
                 Response.Redirect("~/");
             }
-
-
             
         }
 

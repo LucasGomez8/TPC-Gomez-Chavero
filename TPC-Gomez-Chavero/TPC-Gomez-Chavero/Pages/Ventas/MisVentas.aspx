@@ -21,7 +21,7 @@
                   <div class="row">
                       <div class="col-md-4">
                           <label for="dropTipoFactura">Tipo de Factura</label>
-                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura" runat="server"/>
+                          <asp:DropDownList CssClass="form-control" ID="dropTipoFactura" runat="server" Enabled="false"/>
                       </div>
                       <div class="col-md-4">
                           <label for="dropCliente">Cliente</label>

@@ -106,7 +106,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         private void setTicketNumber(long type)
         {
             long ticketNumber = cc.getTicketNumber(type);
-            txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber);
+            txtNumeroFactura.Text = StringHelper.completeTicketNumbers(ticketNumber, 1);
             txtNumeroFactura.Enabled = false;
         }
 
@@ -193,7 +193,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             {
                 productosAgregados = (List<Product>)Session["Agregando"];
 
-
                 long numeroFactura = StringHelper.removeTicketNumbers(txtNumeroFactura.Text);
                 long tipoFactura = Int64.Parse(dropTipoFactura.SelectedItem.Value);
                 long idProv = Int64.Parse(dropProveedor.SelectedItem.Value);
@@ -201,7 +200,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 string fechaCompra = txtFechaCompra.Text;
                 decimal montoTotal = Decimal.Parse(txtMontoTotal.Text);
                 string detalle = txtDetalleCompra.Value;
-
 
                 if (cc.register(numeroFactura, tipoFactura, idProv, idadmin, fechaCompra, montoTotal, detalle, productosAgregados))
                 {
