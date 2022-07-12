@@ -88,7 +88,7 @@ go
 
 create table Ventas(
 	IDRegistro bigint primary key identity(1,1),
-	NumeroFactura bigint unique,
+	NumeroFactura bigint,
 	TipoFactura bigint foreign key references TipoDeFactura(idTipoFactura),
 	idVendedor bigint foreign key references Usuarios(idUsuario),
 	idCliente bigint foreign key references Clientes(IDCliente),
@@ -100,7 +100,7 @@ go
 
 create table Compras(
 	IDRegistro bigint primary key identity(1,1),
-	NumeroFactura bigint unique,
+	NumeroFactura bigint,
 	TipoFactura bigint foreign key references TipoDeFactura(idTipoFactura),
 	IDProveedor bigint foreign key references Proveedores(IDProveedor),
 	IDAdministrador bigint foreign key references Usuarios(IDUsuario),
@@ -136,7 +136,7 @@ values ('Admin','Admin','1111','1','Admin','Admin',GETDATE(), 1)
 go
 
 insert into TipoDeFactura(Descripcion)
-values('Nota de Credito'), ('Factura Original'), ('Factura Duplicada')
+values ('Factura Original'), ('Factura Duplicada')
 go
 
 Create Procedure sp_VistaVentas AS
@@ -209,4 +209,3 @@ Select Productos.Nombre, ProductoXVenta.Cantidad, ProductoXVenta.precioVenta fro
 inner join Productos on Productos.IDProducto = ProductoXVenta.IDProducto
 where ProductoXVenta.IDRegistro = @id
 go
-
