@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 using services;
 using domain;
 using Controllers;
-
+using helpers;
 
 namespace TPC_Gomez_Chavero.Pages.Reportes
 {
-    public partial class Reporte : System.Web.UI.Page
+    public partial class Reporte : Page
     {
         ReportesController rep = new ReportesController();
         public List<Product> lista;
@@ -19,7 +19,7 @@ namespace TPC_Gomez_Chavero.Pages.Reportes
         {
             if (Request.QueryString["id"] != null)
             {
-                long id = Int64.Parse(Request.QueryString["id"].ToString());
+                long id = long.Parse(Request.QueryString["id"].ToString());
                 cargarVentaURL(id);
             }
             else
@@ -34,7 +34,7 @@ namespace TPC_Gomez_Chavero.Pages.Reportes
             domain.Reportitos res = rep.setReporte(id);
             lista = rep.setProductosReporte(id);
 
-            lblNumeroFactura.Text = res.NumeroDeFactura.ToString();
+            lblNumeroFactura.Text = StringHelper.completeTicketNumbers(res.NumeroDeFactura, 2);
 
             forlblFecha.Text = "Fecha de Venta";
             lblFecha.Text = res.Fecha.ToString();

@@ -46,7 +46,7 @@
                        <asp:BoundField HeaderText="Tipo de Producto" DataField="Tipo.Descripcion" />
                        <asp:BoundField HeaderText="Stock" DataField="Stock" />
                        <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
-                       <asp:BoundField HeaderText="Porcentaje de Ganancia" DataField="PorcentajeVenta" />
+                       <asp:BoundField HeaderText="Porcentaje de Ganancia" DataField="PorcentajeVenta" DataFormatString="{0:0}%" />
                        <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
                        
                        <asp:CommandField ShowSelectButton="true" SelectText="📝" HeaderText="Acciones" />
@@ -63,7 +63,7 @@
                        <asp:BoundField HeaderText="Tipo de Producto" DataField="Tipo.Descripcion" />
                        <asp:BoundField HeaderText="Stock" DataField="Stock" />
                        <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
-                       <asp:BoundField HeaderText="Porcentaje de Ganancia" DataField="PorcentajeVenta" />
+                       <asp:BoundField HeaderText="Porcentaje de Ganancia" DataField="PorcentajeVenta" DataFormatString="{0:0}%" />
                        <asp:CheckBoxField HeaderText="Activo" DataField="Estado"/>
                    </Columns>
                   <PagerStyle CssClass="pagination" />

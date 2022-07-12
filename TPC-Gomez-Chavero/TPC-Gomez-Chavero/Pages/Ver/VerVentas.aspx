@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VerVentas.aspx.cs" Inherits="TPC_Gomez_Chavero.Pages.Ver.VerVentas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     
     <link href="../../css/Vistas.css" rel="stylesheet" type="text/css" />
 
@@ -44,8 +43,8 @@
                        <asp:BoundField HeaderText="Cliente" DataField="Cliente.Nombre" />
                        <asp:BoundField HeaderText="Producto" DataField="Producto.Nombre" />
                        <asp:BoundField HeaderText="Cantidad Vendida" DataField="CantidadVendida" />
-                       <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioUnitario" />
-                       <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" />
+                       <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioUnitario" DataFormatString="{0:C}" />
+                       <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" DataFormatString="{0:C}" />
                        <asp:BoundField HeaderText="Fecha de Venta" DataField="FechaVenta" DataFormatString="{0:dd/MM/yyyy}" />
                        <asp:BoundField HeaderText="Detalle de la Venta" DataField="Detalle" />
                        <asp:CommandField HeaderText="Reporte" ShowSelectButton="true" SelectText="Ver Reporte" />

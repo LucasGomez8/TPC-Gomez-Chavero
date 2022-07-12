@@ -15,6 +15,7 @@ namespace domain
         public User Usuario { get; set; }
         public List<Product> Productos { get; set; }
         public decimal MontoFinal { get; set; }
+        public TipoFactura type { get; set; }
 
 
     }
