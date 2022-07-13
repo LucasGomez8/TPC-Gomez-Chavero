@@ -43,12 +43,12 @@ namespace TPC_Gomez_Chavero
                 {
                     dropSellersLoader();
                     dropUsuario.Enabled = false;
-                    dropUsuario.SelectedValue = whoIs.ID.ToString();
                 }
                 else
                 {
                     dropSellersLoader();
                 }
+                dropUsuario.SelectedValue = whoIs.ID.ToString();
                 dropProductoLoader();
 
                 if (Session["Vendiendo"] != null)
@@ -178,11 +178,6 @@ namespace TPC_Gomez_Chavero
             DataTable data = new DataTable();
             data.Columns.Add("id");
             data.Columns.Add("nombre");
-
-            DataRow emptyData = data.NewRow();
-            emptyData[0] = 0;
-            emptyData[1] = "";
-            data.Rows.Add(emptyData);
 
             foreach (User item in sellerList)
             {
@@ -398,15 +393,16 @@ namespace TPC_Gomez_Chavero
             txtPrecioUnitario.Text = "";
             errocantidad.Visible = false;
             fil = new Filters();
-            decimal result = 0;
             Product costo = fil.getUltimoCosto(Int64.Parse(dropProductos.SelectedValue));
 
-            if (int.Parse(txtCantidadVendida.Text) > 0 && costo != null )
+            decimal precioXUnidad;
+            if (int.Parse(txtCantidadVendida.Text) > 0 && costo != null)
             {
-                long cantidad = 0;
-                if (txtCantidadVendida.Text.Length != 0) cantidad = Int64.Parse(txtCantidadVendida.Text);
-                result = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
-                if (txtPrecioUnitario.Text.Length == 0) txtPrecioUnitario.Text = result.ToString();
+                long cantidad = Int64.Parse(txtCantidadVendida.Text);
+                precioXUnidad = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
+                decimal subTotal = precioXUnidad * cantidad;
+                txtPrecioUnitario.Text = precioXUnidad.ToString();
+                txtSubTotal.Text = subTotal.ToString();
             }
             else
             {
@@ -414,9 +410,6 @@ namespace TPC_Gomez_Chavero
                 lblError.Text = "Ingrese una cantidad vendida valida o bien, revise si el producto fue compado independientemente del alta correspondiente";
                 lblError.Visible = true;
             }
-
-
-            result = 0;
 
         }
 

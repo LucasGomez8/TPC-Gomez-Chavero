@@ -33,21 +33,25 @@
                       </div>
                   </div>
                 </div>
-                  <div class="form-group mb-3">
-                      <div class="row ">
-                          <div class="col-md-4">
+                  <div class="form-group mb-4">
+                      <div class="row">
+                          <div class="col-md-3">
                               <label for="dropProductos">Producto</label>
                               <asp:DropDownList CssClass="form-control" ID="dropProductos" runat="server"  />
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                               <label for="txtCantidadVendida">Cantidad Vendida</label>
-                              <asp:TextBox ID="txtCantidadVendida" runat="server" OnTextChanged="txtCantidadVendida_TextChanged" AutoPostBack="true" onkeypress="return isNumberKey(event)" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtCantidadVendida" MaxLength="6" runat="server" OnTextChanged="txtCantidadVendida_TextChanged" AutoPostBack="true" onkeypress="return isNumberKey(event)" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
-                          <div class="col-md-4">
-                              <label for="txtPrecioUnitario">Precio Venta</label>
+                          <div class="col-md-3">
+                              <label for="txtPrecioUnitario">Precio Unitario</label>
                               <asp:TextBox ID="txtPrecioUnitario" Enabled="false" runat="server" CssClass="form-control"></asp:TextBox>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
+                              <label for="txtSubTotal">Subtotal</label>
+                              <asp:TextBox ID="txtSubTotal" Enabled="false" runat="server" CssClass="form-control"></asp:TextBox>
+                          </div>
+                          <div class="col-md-3">
                                <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary"   OnClick="addProduct_Click" />
                           </div>
                       </div>
