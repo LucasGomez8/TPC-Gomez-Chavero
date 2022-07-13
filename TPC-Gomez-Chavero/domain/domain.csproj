@@ -49,6 +49,7 @@
     <Compile Include="ProductType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
+    <Compile Include="ReporteCompra.cs" />
     <Compile Include="Reportitos.cs" />
     <Compile Include="TipoFactura.cs" />
     <Compile Include="User.cs" />

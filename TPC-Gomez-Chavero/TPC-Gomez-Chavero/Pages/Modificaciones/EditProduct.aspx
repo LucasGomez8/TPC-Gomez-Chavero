@@ -53,17 +53,17 @@
                       <div class="row">
                           <div class="col-md-4">
                               <label for="txtStock">Stock Actual</label>
-                              <asp:TextBox ID="txtStock" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:TextBox ID="txtStock" runat="server" Enabled="false" TextMode="Number" CssClass="form-control" onkeypress="return isNumberKey(event)"  AutoPostBack="true" OnTextChanged="onTextChanged" />
                               <asp:Label ID="errorCurrentStock" CssClass="text-danger" runat="server" />
                           </div>
                           <div class="col-md-4">
                               <label for="txtStockMinimo">Stock Minimo</label>
-                              <asp:TextBox ID="txtStockMinimo" runat="server" Enabled="false" TextMode="Number" min="1" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:TextBox ID="txtStockMinimo" runat="server" Enabled="false" TextMode="Number" min="1" CssClass="form-control" onkeypress="return isNumberKey(event)"  AutoPostBack="true" OnTextChanged="onTextChanged" />
                               <asp:Label ID="errorMinStock" CssClass="text-danger" runat="server" />
                           </div>
                           <div class="col-md-4">
                               <label for="porcentajeVenta">Porcentaje de Ganancia</label>
-                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" Enabled="false" TextMode="Number" min="1" max="100" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                              <asp:TextBox ID="txtPorcentajeVenta" runat="server" Enabled="false" TextMode="Number" min="1" max="100" CssClass="form-control" onkeypress="return isNumberKey(event)"  AutoPostBack="true" OnTextChanged="onTextChanged" />
                               <asp:Label ID="errorSellPercent" CssClass="text-danger" runat="server" />
                           </div>
                       </div>
@@ -80,4 +80,13 @@
             </div>
         </div>
     </div>
+
+           <script>
+           function isNumberKey(evt) {
+               var charCode = (evt.which) ? evt.which : evt.keyCode;
+               if (charCode > 31 && (charCode < 48 || charCode > 57))
+                   return false;
+               return true;
+           }
+           </script>
 </asp:Content>

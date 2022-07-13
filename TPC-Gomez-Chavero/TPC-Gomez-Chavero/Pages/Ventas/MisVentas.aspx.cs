@@ -422,7 +422,12 @@ namespace TPC_Gomez_Chavero
 
         protected void btnVerReporte_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Pages/Reportes/Reporte.aspx");
+            Ventas ven = new Ventas();
+            ReportesController x = new ReportesController();
+
+            ven.ID = x.getId("Ventas");
+
+            Response.Redirect("~/Pages/Reportes/Reporte.aspx?id="+ven.ID);
         }
     }
 }

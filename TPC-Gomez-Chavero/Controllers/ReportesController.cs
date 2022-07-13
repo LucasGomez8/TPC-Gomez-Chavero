@@ -10,8 +10,8 @@ using helpers;
 namespace Controllers
 {
     public class ReportesController
-    { 
-        
+    {
+
         public Reportitos setReporte(long id)
         {
             DataAccess da = new DataAccess();
@@ -54,7 +54,7 @@ namespace Controllers
             {
                 da.closeConnection();
             }
-            
+
         }
 
         public List<Product> setProductosReporte(long id)
@@ -86,12 +86,12 @@ namespace Controllers
             }
         }
 
-        public long getId()
+        public long getId(string table)
         {
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Select Ventas.IDRegistro from Ventas order by Ventas.IDRegistro desc");
+                da.setConsulta("Select IDRegistro from " + table + " order by IDRegistro desc");
                 da.execute();
 
                 if (da.dataReader.Read())
@@ -107,6 +107,74 @@ namespace Controllers
             }
         }
 
+        public ReporteCompra setReporteCompra(long id)
+        {
+            DataAccess da = new DataAccess();
+            ReporteCompra response = new ReporteCompra();
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_ReporteCompras");
+                da.setConsultaWhitParameters("@id", id);
+                da.execute();
 
+                if (da.dataReader.Read())
+                {
+                    response.NumeroDeFactura = (long)da.dataReader["NumeroFactura"];
+                    response.Fecha = (DateTime)da.dataReader["Fecha"];
+                    response.MontoFinal = (decimal)da.dataReader["MontoTotal"];
+
+                    response.Proveedor = new Provider();
+                    response.Proveedor.Nombre = (string)da.dataReader["NombreProveedor"];
+
+                    response.Usuario = new User();
+                    response.Usuario.Nombre = (string)da.dataReader["UsuarioNombre"];
+                    response.Usuario.Apellido = (string)da.dataReader["UsuarioApellido"];
+                    response.Usuario.type = new UserType();
+                    response.Usuario.type.Description = (string)da.dataReader["Cargo"];
+
+                    return response;
+                }
+
+                return null;
+            }
+            catch
+            {
+
+                return null;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+          }
+
+        public List<Product> setProductosReporteCompra(long id)
+        {
+            DataAccess da = new DataAccess();
+            List<Product> list = new List<Product>();
+
+            try
+            {
+                da.setProcedimientoAlmacenado("sp_ProductoxCompra");
+                da.setConsultaWhitParameters("@id", id);
+                da.execute();
+
+                while (da.dataReader.Read())
+                {
+                    Product response = new Product();
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.CantidadVenta = (long)da.dataReader["Cantidad"];
+                    response.PU = (decimal)da.dataReader["precioCompra"];
+
+                    list.Add(response);
+
+                }
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -65,12 +65,12 @@
                     <div class="row ">
                         <div class="col-md-6">
                             <label for="txtStockMinimo">Stock Minimo</label>
-                            <asp:TextBox ID="txtStockMinimo" runat="server" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                            <asp:TextBox ID="txtStockMinimo" runat="server" TextMode="Number" CssClass="form-control" AutoPostBack="true" onkeypress="return isNumberKey(event)" OnTextChanged="onTextChanged" />
                             <asp:Label CssClass="text-danger" ID="errorStock" runat="server" />
                         </div>
                         <div class="col-md-6">
                             <label for="porcentajeVenta">Porcentaje de Ganancia</label>
-                            <asp:TextBox ID="txtPorcentajeVenta" runat="server" TextMode="Number" CssClass="form-control" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                            <asp:TextBox ID="txtPorcentajeVenta" runat="server" TextMode="Number" CssClass="form-control" AutoPostBack="true" onkeypress="return isNumberKey(event)" OnTextChanged="onTextChanged" />
                             <asp:Label CssClass="text-danger" ID="errorPorcentaje" runat="server" />
                         </div>
                     </div>
@@ -112,4 +112,13 @@
             </div>
         </div>
     </div>
+
+       <script>
+           function isNumberKey(evt) {
+               var charCode = (evt.which) ? evt.which : evt.keyCode;
+               if (charCode > 31 && (charCode < 48 || charCode > 57))
+                   return false;
+               return true;
+           }
+       </script>
 </asp:Content>

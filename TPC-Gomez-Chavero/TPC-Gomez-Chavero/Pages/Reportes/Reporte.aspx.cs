@@ -24,7 +24,7 @@ namespace TPC_Gomez_Chavero.Pages.Reportes
             }
             else
             {
-                cargarVenta();
+                Response.Redirect("~/");
             }
 
         }
@@ -55,14 +55,14 @@ namespace TPC_Gomez_Chavero.Pages.Reportes
         public void cargarVenta()
         {
             rep = new ReportesController();
-            long id = rep.getId();
+            long id = rep.getId("Ventas");
             domain.Reportitos res = rep.setReporte(id);
             lista = rep.setProductosReporte(id);
 
             lblNumeroFactura.Text = res.NumeroDeFactura.ToString();
 
             forlblFecha.Text = "Fecha de Venta";
-            lblFecha.Text = res.Fecha.ToString();
+            lblFecha.Text = res.Fecha.ToString("dd/MM/yyyy");
 
             lblPersona.Text = res.Cliente.Nombre;
             lblPersonaCuitDni.Text = res.Cliente.CuitOrDni;

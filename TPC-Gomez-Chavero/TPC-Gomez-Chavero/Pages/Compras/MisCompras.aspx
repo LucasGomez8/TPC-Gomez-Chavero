@@ -52,7 +52,7 @@
                               <asp:DropDownList CssClass="form-control" ID="dropProductos"  AutoPostBack="true" OnSelectedIndexChanged="onDropProductoChanges" runat="server"  />
                           </div>
                           <div class="col-md-4">
-                              <asp:TextBox ID="txtCantidadComprada" runat="server" TextMode="Number" CssClass="form-control"/>
+                              <asp:TextBox ID="txtCantidadComprada" runat="server" TextMode="Number" onkeypress="return isNumberKey(event)" CssClass="form-control"/>
                           </div>
                           <div class="col-md-4">
                               <asp:TextBox ID="txtPrecioUnitario" runat="server" TextMode="Number" CssClass="form-control"/>
@@ -110,5 +110,13 @@
             </div>
         </div>
 
+           <script>
+           function isNumberKey(evt) {
+               var charCode = (evt.which) ? evt.which : evt.keyCode;
+               if (charCode > 31 && (charCode < 48 || charCode > 57))
+                   return false;
+               return true;
+           }
+           </script>
 
 </asp:Content>

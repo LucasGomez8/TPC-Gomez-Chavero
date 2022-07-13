@@ -41,7 +41,7 @@
                           </div>
                           <div class="col-md-4">
                               <label for="txtCantidadVendida">Cantidad Vendida</label>
-                              <asp:TextBox ID="txtCantidadVendida" runat="server" OnTextChanged="txtCantidadVendida_TextChanged" AutoPostBack="true"  TextMode="Number" CssClass="form-control"></asp:TextBox>
+                              <asp:TextBox ID="txtCantidadVendida" runat="server" OnTextChanged="txtCantidadVendida_TextChanged" AutoPostBack="true" onkeypress="return isNumberKey(event)" TextMode="Number" CssClass="form-control"></asp:TextBox>
                           </div>
                           <div class="col-md-4">
                               <label for="txtPrecioUnitario">Precio Venta</label>
@@ -102,7 +102,14 @@
     </div>
 
 
-
+               <script>
+           function isNumberKey(evt) {
+               var charCode = (evt.which) ? evt.which : evt.keyCode;
+               if (charCode > 31 && (charCode < 48 || charCode > 57))
+                   return false;
+               return true;
+           }
+               </script>
 
 
 

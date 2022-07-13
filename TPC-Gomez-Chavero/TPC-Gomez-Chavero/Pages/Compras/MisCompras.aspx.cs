@@ -268,7 +268,7 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             decimal res = 0;
 
 
-            if (txtCantidadComprada.Text.Length > 0 && int.Parse(dropProductos.SelectedValue)>0 && int.Parse(txtCantidadComprada.Text) > 0 && int.Parse(txtPrecioUnitario.Text) > 0)
+            if (txtCantidadComprada.Text.Length > 0 && int.Parse(dropProductos.SelectedValue)>0 && int.Parse(txtCantidadComprada.Text) > 0 && decimal.Parse(txtPrecioUnitario.Text) > 0)
             {
                 lblErrorCantidad.Visible = false;
                 errocantidad.Visible = false;

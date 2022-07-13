@@ -209,3 +209,21 @@ Select Productos.Nombre, ProductoXVenta.Cantidad, ProductoXVenta.precioVenta fro
 inner join Productos on Productos.IDProducto = ProductoXVenta.IDProducto
 where ProductoXVenta.IDRegistro = @id
 go
+
+create procedure sp_ReporteCompras 
+@id bigint
+as
+Select  Compras.NumeroFactura, Compras.Fecha, Compras.MontoTotal, Proveedores.Nombre as NombreProveedor,
+Usuarios.apellido as UsuarioApellido, Usuarios.nombre as UsuarioNombre, TipoUsuario.descripcion as Cargo  from Compras
+inner join Proveedores on Proveedores.IDProveedor = Compras.IDProveedor
+inner join Usuarios on Usuarios.idUsuario = Compras.IDAdministrador
+inner join TipoUsuario on TipoUsuario.idTipoUsuario = Usuarios.idUsuario
+where Compras.IDRegistro = @id
+go
+
+create procedure sp_ProductoxCompra
+@id bigint
+as
+Select Productos.Nombre, ProductoXCompra.Cantidad, ProductoXCompra.precioCompra from ProductoXCompra
+inner join Productos on Productos.IDProducto = ProductoXCompra.IDProducto
+where ProductoXCompra.IDRegistro = @id

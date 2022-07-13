@@ -122,5 +122,11 @@ namespace TPC_Gomez_Chavero.Pages.Ver
             }
 
         }
+
+        protected void dgvCompras_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long id = long.Parse(dgvCompras.SelectedRow.Cells[0].Text);
+            Response.Redirect("~/Pages/Reportes/ReporteCompras.aspx?id=" + id);
+        }
     }
 }

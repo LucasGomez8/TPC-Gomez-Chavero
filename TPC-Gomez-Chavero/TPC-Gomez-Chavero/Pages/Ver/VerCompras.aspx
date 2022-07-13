@@ -35,7 +35,7 @@
         </div>
         <div class="row mb-5 mt-5">
             <div class="col-md-12">
-               <asp:GridView ID="dgvCompras" AllowPaging="true" OnPageIndexChanging="dgvCompras_PageIndexChanging1" runat="server" CssClass="table border-0" AutoGenerateColumns="false">
+               <asp:GridView ID="dgvCompras" AllowPaging="true" OnPageIndexChanging="dgvCompras_PageIndexChanging1" runat="server" OnSelectedIndexChanged="dgvCompras_SelectedIndexChanged" CssClass="table border-0" AutoGenerateColumns="false">
                    <Columns>
                        <asp:BoundField HeaderText="ID" DataField="ID" />
                        <asp:BoundField HeaderText="Numero Factura" DataField="NumeroFacturaConPrefix" />
@@ -48,6 +48,7 @@
                        <asp:BoundField HeaderText="Monto Total" DataField="MontoTotal" DataFormatString="{0:C}"/>
                        <asp:BoundField HeaderText="Fecha de Venta" DataField="FechaVenta" DataFormatString="{0:dd/MM/yyyy}" />
                        <asp:BoundField HeaderText="Detalle de la Venta" DataField="Detalle" />
+                       <asp:CommandField HeaderText="Acciones" ShowSelectButton="true" SelectText="Factura Original" />
                    </Columns>
                   <PagerStyle CssClass="pagination" />
                </asp:GridView>
