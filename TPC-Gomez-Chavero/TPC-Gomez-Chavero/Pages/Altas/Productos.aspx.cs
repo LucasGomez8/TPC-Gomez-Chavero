@@ -425,7 +425,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
             if (long.Parse(dropProducto.SelectedValue) == 0) return;
 
-            if (txtStockMinimo.Text.Length < 9)
+            if (txtStockMinimo.Text.Length < 9 && txtStockMinimo.Text.Length > 0)
             {
 
                 if (txtStockMinimo.Text.Length == 0 ||
@@ -434,20 +434,26 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             }
             else
             {
-                errorStock.Text = "El numero que ha ingresado es muy grande, por favor, ingrese nuevo dato";
-                errorStock.Visible = true;
 
                 btnSubmit.Enabled = false;
+                btnRetorno.Enabled = false;
                 return;
             }
 
-            if (txtPorcentajeVenta.Text.Length != 0)
+            if (txtPorcentajeVenta.Text.Length > 0)
             {
                 if (int.Parse(txtPorcentajeVenta.Text) > 100 || !FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje)) {
                     btnSubmit.Enabled = false;
+                    btnRetorno.Enabled = false;
                     return;
                 }
 
+            }
+            else
+            {
+                btnSubmit.Enabled = false;
+                btnRetorno.Enabled = false;
+                return;
             }
 
             btnSubmit.Enabled = true;
@@ -459,7 +465,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         {
             TextBox txt = (TextBox)sender;
 
-            if (txtStockMinimo.Text.Length < 9)
+            if (txtStockMinimo.Text.Length < 9 && txtStockMinimo.Text.Length > 0)
             {
               if (txt.ID == txtStockMinimo.ID) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock);
             }
@@ -468,7 +474,20 @@ namespace TPC_Gomez_Chavero.Pages.Altas
                 errorStock.Text = "El numero que ha ingresado es muy grande, por favor, ingrese nuevo dato";
                 errorStock.Visible = true;
             }
-            if (txt.ID == txtPorcentajeVenta.ID) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje);
+            if (txtPorcentajeVenta.Text.Length!=0)
+            {
+                if (int.Parse(txtPorcentajeVenta.Text) < 100)
+                {
+                     if (txt.ID == txtPorcentajeVenta.ID) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje);
+                }
+                else
+                {
+                    errorPorcentaje.Text = "Porcentaje Invalido";
+                    errorPorcentaje.Visible = true;
+                }
+            }
+
+
             if (txt.ID == addCategoryTxt.ID)
             {
                 if (txt.Text.Length != 0) addCategoryBtn.Enabled = true;
