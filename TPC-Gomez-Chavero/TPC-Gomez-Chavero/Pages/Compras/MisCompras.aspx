@@ -37,27 +37,34 @@
                 </div>
                   <div class="form-group">
                       <div class="row ">
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                               <label for="dropProductos">Producto</label>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                               <label for="txtCantidadComprada">Cantidad Comprada</label>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                               <label for="txtPrecioUnitario">Precio Unitario</label>
                           </div>
+                          <div class="col-md-3">
+                              <label for="txtSubtotal">Subtotal</label>
+                          </div>
+
                       </div>
                       <div class="row ">
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                               <asp:DropDownList CssClass="form-control" ID="dropProductos"  AutoPostBack="true" OnSelectedIndexChanged="onDropProductoChanges" runat="server"  />
                           </div>
-                          <div class="col-md-4">
-                              <asp:TextBox ID="txtCantidadComprada" runat="server" TextMode="Number" onkeypress="return isNumberKey(event)" CssClass="form-control"/>
+                          <div class="col-md-3">
+                              <asp:TextBox ID="txtCantidadComprada" runat="server" MaxLength="2147483647" TextMode="Number" OnTextChanged="subtoRelleno" AutoPostBack="true" onkeypress="return isNumberKey(event)" CssClass="form-control"/>
                           </div>
-                          <div class="col-md-4">
-                              <asp:TextBox ID="txtPrecioUnitario" runat="server" TextMode="Number" CssClass="form-control"/>
+                          <div class="col-md-3">
+                              <asp:TextBox ID="txtPrecioUnitario" runat="server"  OnTextChanged="subtoRelleno" AutoPostBack="true" CssClass="form-control"/>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
+                              <asp:TextBox ID="txtSubtotal" runat="server" Enabled="false" CssClass="form-control"/>
+                          </div>
+                          <div class="col-md-3">
                                <asp:Button ID="addProduct" runat="server" Text="Agregar..." CssClass="btn btn-secondary" OnClick="onAddProductClicked" />
                           </div>
                       </div>
@@ -87,7 +94,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="txtMontoTotal">Monto Total de Compra</label>
-                            <asp:TextBox ID="txtMontoTotal" runat="server" Enabled="false" TextMode="number" CssClass="form-control" Text="0" />
+                            <asp:TextBox ID="txtMontoTotal" runat="server" Enabled="false"  CssClass="form-control" Text="0" />
                         </div>
                     </div>
                 </div>

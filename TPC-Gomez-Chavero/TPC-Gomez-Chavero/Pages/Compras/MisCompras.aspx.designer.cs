@@ -87,6 +87,15 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected global::System.Web.UI.WebControls.TextBox txtPrecioUnitario;
 
         /// <summary>
+        /// Control txtSubtotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSubtotal;
+
+        /// <summary>
         /// Control addProduct.
         /// </summary>
         /// <remarks>

@@ -390,26 +390,43 @@ namespace TPC_Gomez_Chavero
 
         protected void txtCantidadVendida_TextChanged(object sender, EventArgs e)
         {
-            txtPrecioUnitario.Text = "";
+
+            if (txtCantidadVendida.Text.Length <= 9) { 
             errocantidad.Visible = false;
             fil = new Filters();
             Product costo = fil.getUltimoCosto(Int64.Parse(dropProductos.SelectedValue));
 
             decimal precioXUnidad;
-            if (int.Parse(txtCantidadVendida.Text) > 0 && costo != null)
+            if (txtCantidadVendida.Text.Length > 0)
             {
-                long cantidad = Int64.Parse(txtCantidadVendida.Text);
-                precioXUnidad = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
-                decimal subTotal = precioXUnidad * cantidad;
-                txtPrecioUnitario.Text = precioXUnidad.ToString();
-                txtSubTotal.Text = subTotal.ToString();
+                if (int.Parse(txtCantidadVendida.Text) > 0 && costo != null)
+                {
+                    long cantidad = Int64.Parse(txtCantidadVendida.Text);
+                    precioXUnidad = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
+                    decimal subTotal = precioXUnidad * cantidad;
+                    txtPrecioUnitario.Text = precioXUnidad.ToString();
+                    txtSubTotal.Text = subTotal.ToString();
+                }
+                else
+                {
+                    errocantidad.Visible = true;
+                    lblError.Text = "Ingrese una cantidad vendida valida o bien, revise si el producto fue compado independientemente del alta correspondiente";
+                    lblError.Visible = true;
+                    txtCantidadVendida.Text = "";
+                }
             }
             else
             {
-                errocantidad.Visible = true;
-                lblError.Text = "Ingrese una cantidad vendida valida o bien, revise si el producto fue compado independientemente del alta correspondiente";
-                lblError.Visible = true;
+                dropProductos.SelectedValue = 0.ToString(); 
+                txtPrecioUnitario.Text = "";
+                txtSubTotal.Text = "";
             }
+            }
+            else
+            {
+                txtCantidadVendida.Text = "";
+            }
+
 
         }
 

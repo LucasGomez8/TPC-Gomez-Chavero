@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
@@ -265,42 +266,44 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void onAddProductClicked(object sender, EventArgs e)
         {
-            decimal res = 0;
 
 
-            if (txtCantidadComprada.Text.Length > 0 && int.Parse(dropProductos.SelectedValue)>0 && int.Parse(txtCantidadComprada.Text) > 0 && decimal.Parse(txtPrecioUnitario.Text) > 0)
-            {
-                lblErrorCantidad.Visible = false;
-                errocantidad.Visible = false;
-                productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
 
-                Product añadir = cc.findIt(Int64.Parse(dropProductos.SelectedValue));
-
-                añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
-                añadir.PU = decimal.Parse(txtPrecioUnitario.Text);
-
-
-                productosAgregados.Add(añadir);
-
-                Session.Add("Agregando", productosAgregados);
-
-                foreach (Product item in productosAgregados)
+                if (txtCantidadComprada.Text.Length > 0 && int.Parse(dropProductos.SelectedValue) > 0 && int.Parse(txtCantidadComprada.Text) > 0 && decimal.Parse(txtPrecioUnitario.Text) > 0)
                 {
-                    res += item.PU * item.Cantidad;
+                    decimal res = 0;
+                    lblErrorCantidad.Visible = false;
+                    errocantidad.Visible = false;
+                    productosAgregados = Session["Agregando"] != null ? (List<Product>)Session["Agregando"] : new List<Product>();
+
+                    Product añadir = cc.findIt(Int64.Parse(dropProductos.SelectedValue));
+
+                    añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
+                    añadir.PU = Decimal.Parse(txtPrecioUnitario.Text);
+
+
+                    productosAgregados.Add(añadir);
+
+                    Session.Add("Agregando", productosAgregados);
+
+                    foreach (Product item in productosAgregados)
+                    {
+                        res += item.PU * item.Cantidad;
+                    }
+
+                    txtCantidadComprada.Text = "";
+                    txtPrecioUnitario.Text = "";
+                    txtSubtotal.Text = "";
+
+                    txtMontoTotal.Text = res.ToString();
+
                 }
-
-                txtCantidadComprada.Text = "";
-                txtPrecioUnitario.Text = "";
-
-                txtMontoTotal.Text = res.ToString();
-
-            }
-            else
-            {
-                errocantidad.Visible = true;
-                lblErrorCantidad.Text = "Seleccione un producto o ingrese una cantidad comprada";
-                lblErrorCantidad.Visible = true;
-            }
+                else
+                {
+                    errocantidad.Visible = true;
+                    lblErrorCantidad.Text = "Seleccione un producto o ingrese una cantidad comprada";
+                    lblErrorCantidad.Visible = true;
+                }
 
         }
 
@@ -355,6 +358,55 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/Compras/MisCompras.aspx");
+        }
+
+
+        protected bool Nosobrepasar()
+        {
+            if (txtCantidadComprada.Text.Length>9 || long.Parse(txtCantidadComprada.Text) <0)
+            {
+                return false;
+            }
+
+
+            return true;
+        }
+
+        protected void subtoRelleno (object sender, EventArgs e)
+        {
+
+            if (txtCantidadComprada.Text.Length > 0 && txtPrecioUnitario.Text.Length > 0)
+            {
+                if (Nosobrepasar())
+                {
+                    long cant = Int64.Parse(txtCantidadComprada.Text);
+                    decimal pu;
+                    if (!Decimal.TryParse(txtPrecioUnitario.Text, out pu ))
+                    {
+                        txtPrecioUnitario.Text = "";
+                    }
+                    if (FormHelper.validateDecimalNumber(txtPrecioUnitario.Text))
+                    {
+                        pu = Decimal.Parse(txtPrecioUnitario.Text);
+                        decimal subto = pu * cant;
+
+                        txtSubtotal.Text = subto.ToString();
+                    }
+                    else
+                    {
+                        txtPrecioUnitario.Text = "";
+                    }
+                }
+                else
+                {
+                    txtCantidadComprada.Text = "";
+                }
+
+            }
+            else
+            {
+                txtSubtotal.Text = "";
+            }
         }
     }
 

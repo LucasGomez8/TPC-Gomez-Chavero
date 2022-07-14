@@ -20,6 +20,17 @@ namespace helpers
             return true;
         }
 
+        public static bool validateDecimalNumber(string number)
+        {
+            Regex re = new Regex(@"^[0-9]+([,][0-9]+)?$");
+            Match ma = re.Match(number);
+                if (!ma.Success)
+                {
+                    return false;
+                }
+                return true;
+            }
+
         public static bool validateInputDniOrCuit(string dni, Label lblError)
         {
             if (!dni.All(char.IsDigit))
@@ -97,7 +108,6 @@ namespace helpers
             lblError.Visible = false;
             return true;
         }
-
 
     }
 }
