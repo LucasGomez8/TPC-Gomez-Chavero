@@ -266,6 +266,24 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         {
             TextBox txt = (TextBox)sender;
 
+            if (txtStock.Text.Length > 9)
+            {
+                errorCurrentStock.Text = "Numero invalido";
+                return;
+            }
+
+            if (txtStockMinimo.Text.Length > 9)
+            {
+                errorMinStock.Text = "Numero invalido";
+                return;
+            }
+
+            if (int.Parse(txtPorcentajeVenta.Text) > 101)
+            {
+                errorSellPercent.Text = "Porcentaje Invalido";
+                return;
+            }
+
             if (txt.ID == txtStock.ID && txtStock.Text.Length != 0) FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock);
             if (txt.ID == txtStockMinimo.ID && txtStockMinimo.Text.Length != 0) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorMinStock);
             if (txt.ID == txtPorcentajeVenta.ID && txtPorcentajeVenta.Text.Length != 0) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorSellPercent);
@@ -275,12 +293,29 @@ namespace TPC_Gomez_Chavero.Pages.Modificaciones
         {
             btnSubmit.Enabled = false;
 
-            if (txtStock.Text.Length == 0) return;
-            if(!FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock)) return;
 
+            if (txtStock.Text.Length > 9)
+            {
+                errorCurrentStock.Text = "Numero invalido";
+                btnSubmit.Enabled = false;
+                return;
+            }
+            if (txtStock.Text.Length == 0) return;
+            if (!FormHelper.validateInputPositiveNumber(txtStock.Text, errorCurrentStock)) return;
+            if(txtStockMinimo.Text.Length > 9)
+            {
+               errorMinStock.Text = "Numero invalido";
+               btnSubmit.Enabled = false;
+                return;
+            }
             if (txtStockMinimo.Text.Length == 0) return;
             if(!FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorMinStock)) return;
-
+            if(int.Parse(txtPorcentajeVenta.Text) > 100)
+            {
+                errorSellPercent.Text = "Porcentaje Invalido";
+                btnSubmit.Enabled = false;
+                return;
+            }
             if (txtPorcentajeVenta.Text.Length == 0) return;
             if(!FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorSellPercent)) return;
 

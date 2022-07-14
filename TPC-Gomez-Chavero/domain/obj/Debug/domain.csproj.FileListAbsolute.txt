@@ -27,3 +27,6 @@ C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Deb
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\helpers.dll
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\helpers.pdb
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.CopyComplete
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\helpers.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\bin\Debug\helpers.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\domain\obj\Debug\domain.csproj.CopyComplete

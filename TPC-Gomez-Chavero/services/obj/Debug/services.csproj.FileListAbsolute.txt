@@ -38,3 +38,5 @@ C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\D
 C:\Users\Chavero\source\repos\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\helpers.pdb
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\helpers.dll
 C:\Users\Lucas\Documents\GitHub\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\helpers.pdb
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\helpers.dll
+C:\Users\Muni\Github\TPC-Gomez-Chavero\TPC-Gomez-Chavero\services\bin\Debug\helpers.pdb

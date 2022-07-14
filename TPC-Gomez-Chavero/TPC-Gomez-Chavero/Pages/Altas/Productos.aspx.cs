@@ -425,11 +425,30 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
             if (long.Parse(dropProducto.SelectedValue) == 0) return;
 
-            if (txtPorcentajeVenta.Text.Length == 0 || 
-                !FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje)) return;
+            if (txtStockMinimo.Text.Length < 9)
+            {
 
-            if (txtStockMinimo.Text.Length == 0 || 
-                !FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock)) return;
+                if (txtStockMinimo.Text.Length == 0 ||
+                    !FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock)) return;
+
+            }
+            else
+            {
+                errorStock.Text = "El numero que ha ingresado es muy grande, por favor, ingrese nuevo dato";
+                errorStock.Visible = true;
+
+                btnSubmit.Enabled = false;
+                return;
+            }
+
+            if (txtPorcentajeVenta.Text.Length != 0)
+            {
+                if (int.Parse(txtPorcentajeVenta.Text) > 100 || !FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje)) {
+                    btnSubmit.Enabled = false;
+                    return;
+                }
+
+            }
 
             btnSubmit.Enabled = true;
             btnRetorno.Enabled = true;
@@ -440,7 +459,15 @@ namespace TPC_Gomez_Chavero.Pages.Altas
         {
             TextBox txt = (TextBox)sender;
 
-            if (txt.ID == txtStockMinimo.ID) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock);
+            if (txtStockMinimo.Text.Length < 9)
+            {
+              if (txt.ID == txtStockMinimo.ID) FormHelper.validateInputPositiveNumber(txtStockMinimo.Text, errorStock);
+            }
+            else
+            {
+                errorStock.Text = "El numero que ha ingresado es muy grande, por favor, ingrese nuevo dato";
+                errorStock.Visible = true;
+            }
             if (txt.ID == txtPorcentajeVenta.ID) FormHelper.validateInputPositiveNumber(txtPorcentajeVenta.Text, errorPorcentaje);
             if (txt.ID == addCategoryTxt.ID)
             {
@@ -454,6 +481,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             {
                 if (txt.Text.Length != 0) addTypeBtn.Enabled = true;
             }
+
         }
     }
 }
