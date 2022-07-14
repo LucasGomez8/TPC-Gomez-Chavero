@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI;
 using services;
 using domain;
+using Controllers;
 using System.Data;
 using helpers;
 using System.Web.UI.WebControls;
@@ -112,16 +113,32 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
-            if (abm.addProduct(nombre.ToLower(), des.ToLower(), idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+            Product ex = new Product();
+            ProductController pc = new ProductController();
+            ex.Nombre = nombre;
+            ex.Marca = new ProductBranch();
+            ex.Marca.Id = idmarca;
+
+            if (pc.isExists(ex))
             {
-                lblSuccess.Text = "Producto cargado de forma exitosa!";
-                lblSuccess.Visible = true;
-                btnSubmit.Visible = false;
-                btnContinue.Visible = true;
+                if (abm.addProduct(nombre.ToLower(), des.ToLower(), idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+                {
+                    lblSuccess.Text = "Producto cargado de forma exitosa!";
+                    lblSuccess.Visible = true;
+                    btnSubmit.Visible = false;
+                    btnContinue.Visible = true;
+                }
+                else
+                {
+                    lblSuccess.Text = "Hubo un error al cargar el producto";
+                    lblSuccess.Visible = true;
+                    btnSubmit.Visible = true;
+                    btnContinue.Visible = false;
+                }
             }
             else
             {
-                lblSuccess.Text = "Hubo un error al cargar el producto";
+                lblSuccess.Text = "El producto ya existe o bien podria estar dado de baja, revisar en vista de productos";
                 lblSuccess.Visible = true;
                 btnSubmit.Visible = true;
                 btnContinue.Visible = false;
@@ -298,13 +315,28 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             int stockmin = int.Parse(txtStockMinimo.Text);
             short porc = Int16.Parse(txtPorcentajeVenta.Text);
 
-            if (abm.addProduct(nombre.ToLower(), des.ToLower(), idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+            Product ex = new Product();
+            ProductController pc = new ProductController();
+            ex.Nombre = nombre;
+            ex.Marca = new ProductBranch();
+            ex.Marca.Id = idmarca;
+            if (pc.isExists(ex))
             {
-                Response.Redirect("~/Pages/Compras/MisCompras.aspx");
+                if (abm.addProduct(nombre.ToLower(), des.ToLower(), idcategoria, idmarca, idtipo, stockmin, porc) == 1)
+                {
+                    Response.Redirect("~/Pages/Compras/MisCompras.aspx");
+                }
+                else
+                {
+                    lblSuccess.Text = "Hubo un error al cargar el producto";
+                    lblSuccess.Visible = true;
+                    btnSubmit.Visible = true;
+                    btnContinue.Visible = false;
+                }
             }
             else
             {
-                lblSuccess.Text = "Hubo un error al cargar el producto";
+                lblSuccess.Text = "El producto ya existe o bien podria estar dado de baja, revisar en vista de productos";
                 lblSuccess.Visible = true;
                 btnSubmit.Visible = true;
                 btnContinue.Visible = false;
