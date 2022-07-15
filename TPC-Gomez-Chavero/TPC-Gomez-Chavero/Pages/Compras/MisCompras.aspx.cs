@@ -359,14 +359,10 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 Response.Redirect("~/Pages/Altas/Productos.aspx");
             
             }
-
-            Filters fil = new Filters();
-            Product costo = fil.getUltimoCosto(Int64.Parse(dropProductos.SelectedValue));
-            decimal precioXUnidad = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
-            txtPrecioUnitario.Text = precioXUnidad.ToString();
-            if (txtCantidadComprada.Text.Length > 0)
+            if (txtCantidadComprada.Text.Length > 0 && txtPrecioUnitario.Text.Length > 0)
             {
                 long cantidad = long.Parse(txtCantidadComprada.Text);
+                decimal precioXUnidad = decimal.Parse(txtPrecioUnitario.Text);
                 txtSubtotal.Text = (precioXUnidad * cantidad).ToString();
             }
         }
