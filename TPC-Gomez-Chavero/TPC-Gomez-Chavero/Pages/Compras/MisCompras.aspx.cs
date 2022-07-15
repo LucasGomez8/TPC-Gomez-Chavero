@@ -9,6 +9,7 @@ using System.Data;
 using domain;
 using Controllers;
 using helpers;
+using services;
 
 namespace TPC_Gomez_Chavero.Pages.Compras
 {
@@ -26,8 +27,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             productosAgregados = new List<Product>();
             cc = new ComprasController();
             if (Session["user"] != null)
@@ -47,7 +46,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 ? (int)Session["itemsSaved"]
                 : 1;
 
-
             if (!IsPostBack)
             {
                 setTicketNumber(1);
@@ -65,6 +63,13 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 }
 
             }
+            User whoIs = Session["user"] != null ? (User)Session["user"] : null;
+            if (whoIs != null) dropAdministrador.SelectedValue = whoIs.ID.ToString();
+
+            productosAgregados = Session["Agregando"] != null
+                ? (List<Product>)Session["Agregando"]
+                : new List<Product>();
+
         }
 
 
@@ -96,10 +101,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             {
                 txtDetalleCompra.Value = (string)Session["Detalle"];
                 Session.Remove("Detalle");
-            }
-            if(Session["Agregando"] != null)
-            {
-                productosAgregados = (List<Product>)Session["Agregando"];
             }
 
         }
@@ -157,7 +158,9 @@ namespace TPC_Gomez_Chavero.Pages.Compras
         {
             adminList = cc.getAdmins();
 
-            DataTable data = createEmptyDataTable();
+            DataTable data = new DataTable();
+            data.Columns.Add("id");
+            data.Columns.Add("description");
 
             foreach (User item in adminList)
             {
@@ -266,9 +269,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
 
         protected void onAddProductClicked(object sender, EventArgs e)
         {
-
-
-
                 if (txtCantidadComprada.Text.Length > 0 && int.Parse(dropProductos.SelectedValue) > 0 && int.Parse(txtCantidadComprada.Text) > 0 && decimal.Parse(txtPrecioUnitario.Text) > 0)
                 {
                     decimal res = 0;
@@ -281,8 +281,25 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                     añadir.Cantidad = int.Parse(txtCantidadComprada.Text);
                     añadir.PU = Decimal.Parse(txtPrecioUnitario.Text);
 
-
-                    productosAgregados.Add(añadir);
+                    Product contain = null;
+                    foreach (Product item in productosAgregados)
+                    {
+                        if (item.Id == añadir.Id)
+                        {
+                            contain = item;
+                        }
+                    }
+                    if (contain != null)
+                    {
+                        productosAgregados.Remove(contain);
+                        contain.Cantidad += añadir.Cantidad;
+                        contain.PU = añadir.PU;
+                        productosAgregados.Add(contain);
+                    }
+                    else
+                    {
+                        productosAgregados.Add(añadir);
+                    }
 
                     Session.Add("Agregando", productosAgregados);
 
@@ -294,9 +311,9 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                     txtCantidadComprada.Text = "";
                     txtPrecioUnitario.Text = "";
                     txtSubtotal.Text = "";
+                    dropProductos.SelectedValue = "0";
 
                     txtMontoTotal.Text = res.ToString();
-
                 }
                 else
                 {
@@ -340,6 +357,17 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 Session["Comprando"] = true;
                 guardarEnSession();
                 Response.Redirect("~/Pages/Altas/Productos.aspx");
+            
+            }
+
+            Filters fil = new Filters();
+            Product costo = fil.getUltimoCosto(Int64.Parse(dropProductos.SelectedValue));
+            decimal precioXUnidad = (costo.Costo + ((costo.Costo * costo.PorcentajeVenta) / 100));
+            txtPrecioUnitario.Text = precioXUnidad.ToString();
+            if (txtCantidadComprada.Text.Length > 0)
+            {
+                long cantidad = long.Parse(txtCantidadComprada.Text);
+                txtSubtotal.Text = (precioXUnidad * cantidad).ToString();
             }
         }
 
@@ -372,9 +400,8 @@ namespace TPC_Gomez_Chavero.Pages.Compras
             return true;
         }
 
-        protected void subtoRelleno (object sender, EventArgs e)
+        protected void subtoRelleno(object sender, EventArgs e)
         {
-
             if (txtCantidadComprada.Text.Length > 0 && txtPrecioUnitario.Text.Length > 0)
             {
                 if (Nosobrepasar())
@@ -401,7 +428,6 @@ namespace TPC_Gomez_Chavero.Pages.Compras
                 {
                     txtCantidadComprada.Text = "";
                 }
-
             }
             else
             {

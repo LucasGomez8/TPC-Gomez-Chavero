@@ -37,7 +37,7 @@
                       <div class="row">
                           <div class="col-md-3">
                               <label for="dropProductos">Producto</label>
-                              <asp:DropDownList CssClass="form-control" ID="dropProductos" runat="server"  />
+                              <asp:DropDownList CssClass="form-control" ID="dropProductos" runat="server" AutoPostBack="true" OnSelectedIndexChanged="onDropProductChange" />
                           </div>
                           <div class="col-md-3">
                               <label for="txtCantidadVendida">Cantidad Vendida</label>
