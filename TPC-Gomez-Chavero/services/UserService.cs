@@ -178,13 +178,13 @@ namespace services
 
         }
 
-        public int userAdd(string nombre, string apellido, string dni, long idtipo, string nick, string pass, string date)
+        public int userAdd(string nombre, string apellido, string dni, long idtipo, string nick, string pass, string date, string email)
         {
             DataAccess da = new DataAccess();
 
             try
             {
-                da.setConsulta("insert into Usuarios(Nombre, Apellido, DNI, IdTipoUsuario, nick, contraseña, fechaNac, Estado) values(@nombre, @apellido, @dni, @idtipo, @nick, @pass, @date, 1)");
+                da.setConsulta("insert into Usuarios(Nombre, Apellido, DNI, IdTipoUsuario, nick, contraseña, fechaNac, Estado, email) values(@nombre, @apellido, @dni, @idtipo, @nick, @pass, @date, 1, @email)");
                 da.setConsultaWhitParameters("@nombre", nombre);
                 da.setConsultaWhitParameters("@apellido", apellido);
                 da.setConsultaWhitParameters("@dni", dni);
@@ -192,6 +192,7 @@ namespace services
                 da.setConsultaWhitParameters("@nick", nick);
                 da.setConsultaWhitParameters("@pass", pass);
                 da.setConsultaWhitParameters("@date", date);
+                da.setConsultaWhitParameters("@email", email);
 
                 da.executeAction();
 

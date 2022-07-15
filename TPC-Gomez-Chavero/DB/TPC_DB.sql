@@ -61,6 +61,7 @@ create table Usuarios(
 	nombre varchar(100) not null,
 	apellido varchar(100) not null,
 	dni varchar(11) not null unique,
+	email varchar(100) unique null,
 	IDTipoUsuario bigint foreign key references TipoUsuario(IDTipoUsuario),
 	contraseña varchar(20) not null,
 	nick varchar(25) not null unique,

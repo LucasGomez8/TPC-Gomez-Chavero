@@ -146,17 +146,16 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         private void checkInputs()
         {
-            if (txtNombreCliente.Text.Length == 0) return;
+            if (txtNombreCliente.Text.Length == 0) { btnSubmit.Enabled = false; btnReturn.Enabled = false; return; }
 
-            if (txtDNIorCuit.Text.Length == 0 || !FormHelper.validateInputDniOrCuit(txtDNIorCuit.Text, errorDNIorCuit)) return;
+            if (txtDNIorCuit.Text.Length == 0 || !FormHelper.validateInputDniOrCuit(txtDNIorCuit.Text, errorDNIorCuit)) { btnSubmit.Enabled = false; btnReturn.Enabled = false; return; }
 
-            if (txtFechaNac.Value.Length == 0) return;
+            if (txtFechaNac.Value.Length == 0) { btnSubmit.Enabled = false; btnReturn.Enabled = false; return; }
+            if (txtTelefono.Text.Length == 0 || !FormHelper.validateInputPhone(txtTelefono.Text, errorTelefono)) { btnSubmit.Enabled = false; btnReturn.Enabled = false; return; }
 
-            if (txtTelefono.Text.Length == 0 || !FormHelper.validateInputPhone(txtTelefono.Text, errorTelefono)) return;
-            
             if (txtEmail.Text.Length == 0  ||
-                !FormHelper.validateInputEmail(txtEmail.Text, errorEmail)) return;
-            
+                !FormHelper.validateInputEmail(txtEmail.Text, errorEmail)) { btnSubmit.Enabled = false; btnReturn.Enabled = false; return; }
+
             btnSubmit.Enabled = true;
             btnReturn.Enabled = true;
         }

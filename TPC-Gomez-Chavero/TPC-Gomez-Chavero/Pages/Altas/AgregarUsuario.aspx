@@ -35,15 +35,20 @@
               </div>
               <div class="form-group mb-3">
                   <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                           <label for="txtFechaNac">Fecha de Nacimiento</label>
                           <input type="date" id="txtFechaNac" runat="server" class="form-control" />
                           <asp:Label CssClass="text-danger" runat="server" />
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                           <label for="txtDni">DNI</label>
                           <asp:TextBox ID="txtDni" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="onTextChanged" />
                           <asp:Label ID="errorDNI" CssClass="text-danger" runat="server" />
+                      </div>
+                      <div class="col-md-4">
+                          <label for="txtEmail">Email</label>
+                          <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="onTextChanged" />
+                          <asp:Label ID="errorEmail" CssClass="text-danger" runat="server" />
                       </div>
                   </div>
                 </div>

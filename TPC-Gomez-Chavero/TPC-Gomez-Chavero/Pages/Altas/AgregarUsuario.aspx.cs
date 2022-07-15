@@ -48,8 +48,9 @@ namespace TPC_Gomez_Chavero.Pages.Altas
             long idtipo = long.Parse(dropUserType.SelectedValue);
             string nick = txtNick.Text;
             string pass = txtPass.Text;
+            string email = txtEmail.Text;
 
-            if (us.userAdd(nombre, apellido, dni, idtipo, nick, pass, date) == 1)
+            if (us.userAdd(nombre, apellido, dni, idtipo, nick, pass, date, email) == 1)
             {
                 lblSuccess.Text = "Usuario cargado con exito";
                 lblSuccess.Visible = true;
@@ -200,19 +201,22 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
         private void checkInputs()
         {
-            if (txtNombreUsuario.Text.Length == 0) return;
+            if (txtNombreUsuario.Text.Length == 0) { btnSubmit.Enabled = false; return; }
 
-            if (txtApellidoUsuario.Text.Length == 0) return;
+            if (txtApellidoUsuario.Text.Length == 0) { btnSubmit.Enabled = false; return; }
 
-            if (txtDni.Text.Length == 0 || !FormHelper.validateInputDniOrCuit(txtDni.Text, errorDNI)) return;
+            if (txtDni.Text.Length == 0 || !FormHelper.validateInputDniOrCuit(txtDni.Text, errorDNI)) { btnSubmit.Enabled = false; return; }
 
-            if (txtFechaNac.Value.Length == 0) return;
+            if (txtFechaNac.Value.Length == 0) { btnSubmit.Enabled = false; return; }
 
-            if (txtNick.Text.Length == 0) return;
+            if (txtNick.Text.Length == 0) { btnSubmit.Enabled = false; return; }
 
-            if (txtPass.Text.Length < 8 || !FormHelper.validateInputPassword(txtPass.Text, errorPasswd)) return;
+            if (txtEmail.Text.Length == 0 ||
+               !FormHelper.validateInputEmail(txtEmail.Text, errorEmail)) { btnSubmit.Enabled = false; return; }
 
-            if (long.Parse(dropUserType.SelectedValue) == 0) return;
+            if (txtPass.Text.Length < 8 || !FormHelper.validateInputPassword(txtPass.Text, errorPasswd)) { btnSubmit.Enabled = false; return; }
+
+            if (long.Parse(dropUserType.SelectedValue) == 0) { btnSubmit.Enabled = false; return; }
 
             btnSubmit.Enabled = true;
         }
@@ -223,6 +227,7 @@ namespace TPC_Gomez_Chavero.Pages.Altas
 
             if (txt.ID == txtDni.ID) FormHelper.validateInputDniOrCuit(txtDni.Text, errorDNI);
             if (txt.ID == txtPass.ID) FormHelper.validateInputPassword(txtPass.Text, errorPasswd);
+            if (txt.ID == txtEmail.ID) FormHelper.validateInputEmail(txtEmail.Text, errorEmail);
         }
     }
 }

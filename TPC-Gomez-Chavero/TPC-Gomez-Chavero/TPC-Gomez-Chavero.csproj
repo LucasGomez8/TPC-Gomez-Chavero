@@ -101,6 +101,7 @@
     <Content Include="Pages\Bajas\BajaTipoProducto.aspx" />
     <Content Include="Pages\Bajas\BajaUsuario.aspx" />
     <Content Include="Pages\Compras\MisCompras.aspx" />
+    <Content Include="Pages\ForgotPassword.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Modificaciones\EditarCategoria.aspx" />
     <Content Include="Pages\Modificaciones\EditarCliente.aspx" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="Pages\Compras\MisCompras.aspx.designer.cs">
       <DependentUpon>MisCompras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

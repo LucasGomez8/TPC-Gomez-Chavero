@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailService.cs" />
     <Compile Include="Filters.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="ABMService.cs" />
